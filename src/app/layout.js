@@ -2,7 +2,7 @@ import { PT_Sans } from "next/font/google";
 import "./globals.css";
 
 const ptSans = PT_Sans({
-  variable: "--font-geist-sans",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -15,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${ptSans.variable}`}>
+      <body className={`${ptSans.className}`}>
         {children}
       </body>
     </html>
