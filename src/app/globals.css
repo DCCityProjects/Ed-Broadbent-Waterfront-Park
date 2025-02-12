@@ -1,3 +1,7 @@
+:root{
+    --primary: #faa02a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,16 +10,11 @@
 
 main {
     background-color: white;
-
-    header{
-        display: flex;
-        justify-content: space-between;
-        padding: 0 10px;
-    }
 }
 
 a{
     text-decoration: none;
+    color: white;
 }
 
 /** UTILITY **/
@@ -36,3 +35,30 @@ a{
     justify-content: center;
     align-items: center;
 }
+
+.u-content-width{
+    margin: 0 5%;
+}
+
+/** HEADER **/
+.nav{
+    position: absolute;
+    z-index: 999999;
+    width: 100%;
+}
+
+.nav__list{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.nav__burger{
+    justify-self: flex-end;
+}
+
+.nav__link{
+    background-color: gray;
+}
+

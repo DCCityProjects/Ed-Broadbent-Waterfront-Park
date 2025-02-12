@@ -1,0 +1,16 @@
+#map{
+    width: 100%;
+    height: 100dvh;
+    background-color: white;
+}
+
+#map > div{
+    height:100dvh;
+    background-color: white;
+
+}
+
+img{
+    width: 32px;
+    height: 32px;
+}
