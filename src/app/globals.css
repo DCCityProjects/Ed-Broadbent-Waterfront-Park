@@ -45,20 +45,19 @@ a{
     position: absolute;
     z-index: 999999;
     width: 100%;
+    background-color: rgba(255, 0, 0, 0.241);
+    padding: 0.6rem 1rem;
 }
 
 .nav__list{
-    position: relative;
     display: flex;
     justify-content: space-between;
     list-style-type: none;
 }
 
-.nav__burger{
-    justify-self: flex-end;
-}
-
-.nav__link{
-    background-color: gray;
+.nav__item, .nav__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
