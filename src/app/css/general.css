@@ -1,0 +1,111 @@
+.general {
+    width: 100%;
+    height: auto;
+}
+
+.general__featured_image {
+    width: 100%;
+    height: 30vh;
+    background-color: rgb(0, 102, 255);
+}
+
+.general__information{
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    border-radius: 1.7rem;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 2rem;
+}
+
+.general__top_header{
+    background-color: #001444;
+    padding: 1rem 2rem;
+    color: white;
+    border-radius: 2rem;
+    margin-top: -1.5rem;
+}
+
+.general__go_home {
+    cursor: pointer;
+    background-color: var(--primary);
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 00;
+    padding: 0.6rem 2rem;
+    color: white;
+    border-radius: 10px;
+    transition: background-color 0.3s ;
+}
+
+.general__go_home:active {
+    background-color: #D38621;
+}
+
+.general__didYouKnowH2{
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+}
+
+.general__didYouKnowUl {
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    list-style-type: none;
+}
+
+.general__didYouKnowUl li {
+    margin-bottom: 1.5rem; 
+    position: relative;
+}
+
+.general__didYouKnowUl li::before {
+    content: "•";
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: bold;
+    position: absolute;
+    left: -1.6rem;
+    top: -0.7rem;
+}
+
+.general__amentiesH2{
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+}
+
+.general__amenties{
+    align-self: flex-start;
+}
+
+.general__amentiesUl {
+    font-size: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    column-gap: 3rem;
+    row-gap: 1rem;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.general__amentiesUl li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Icon Base Style */
+.amenity-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
+
+
