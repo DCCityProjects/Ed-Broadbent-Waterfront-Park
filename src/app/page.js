@@ -17,12 +17,12 @@ export default function LandingPage() {
 				<p className="assistance__description">Do you require text to speech assistance?</p>
 					<ul className="assistance__list">
 						<li className="assistance__item u-flex-column-align-center">
-							<input type="radio" name="assistanceCheckbox" value="yes" id="yes" />
-							<label htmlFor="yes">Yes</label>
+							<input type="radio" name="assistanceCheckbox" value="yes" id="assistance-yes" />
+							<label htmlFor="assistance-yes">Yes</label>
 						</li>
 						<li className="assistance__item u-flex-column-align-center">
-							<input type="radio" name="assistanceCheckbox" value="no" id="no" />
-							<label htmlFor="no">No</label>
+							<input type="radio" name="assistanceCheckbox" value="no" id="assistance-no" />
+							<label htmlFor="assistance-no">No</label>
 						</li>
 					</ul>
 			</section>

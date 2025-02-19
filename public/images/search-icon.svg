@@ -1,0 +1,9 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="search-icon">
+<circle id="search-icon__bg" cx="16" cy="16" r="16" fill="#FAA02A"/>
+<g id="mag">
+<path id="mag__glass" d="M14.3485 20.3432C17.3976 20.3432 19.8693 17.8887 19.8693 14.861C19.8693 11.8333 17.3976 9.37891 14.3485 9.37891C11.2994 9.37891 8.82764 11.8333 8.82764 14.861C8.82764 17.8887 11.2994 20.3432 14.3485 20.3432Z" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path id="mag__handle" d="M25.0173 21.3493L19.3845 17.5752L18.7626 18.4904L24.3953 22.2645L25.0173 21.3493Z" fill="black" stroke="white" stroke-width="3" stroke-miterlimit="10" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>

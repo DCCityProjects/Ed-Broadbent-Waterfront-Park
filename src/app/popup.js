@@ -1,0 +1,25 @@
+export default function Popup() {
+
+    return (
+        <svg width="401" height="309" viewBox="0 0 401 309" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="popup">
+                <g id="popup__window" filter="url(#filter0_d_9_1656)">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M237.777 25H370C384.912 25 397 37.0883 397 52V309H4V52C4 37.0883 16.0883 25 31 25H163.223C164.671 15.3775 172.974 8 183 8H218C228.026 8 236.329 15.3775 237.777 25Z" fill="white"/>
+                </g>
+                <path id="chevron" d="M210 19L200.702 27L191 19" stroke="#FAA02A" strokeOpacity="0.78" strokeWidth="4" strokeLinecap="round"/>
+            </g>
+            <defs>
+                <filter id="filter0_d_9_1656" x="0" y="0" width="401" height="309" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="-4"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_9_1656"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_9_1656" result="shape"/>
+                </filter>
+            </defs>
+        </svg>
+    );
+}

@@ -7,12 +7,13 @@ import { useEffect, useState } from "react";
 
 export default function LeafletMap() {
     const [zoom, setZoom] = useState(0);
-    const [center, setCenter] = useState([500, 200]);
+    const [center, setCenter] = useState([550, 520]);
 
 
-    const bounds = [[0, 0], [2592, 4326]];
-    const panBounds = [[-200,-200], [2992,4726]];
+    const bounds = [[0, 0], [2868, 4779]];
+    const panBounds = [[0,0], [2868, 4779]];
 
+    console.log(bounds)
 
     return (
         <div id="map">
