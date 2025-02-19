@@ -1,0 +1,109 @@
+.popup{
+    background-color: white;
+    position: absolute;
+    z-index: 99999;
+    /* top: 0; */
+    bottom: 0;
+    width: 100%;
+    padding: 0 5.7% 5.7% 5.7%;
+}
+
+.popup-tab{
+    position: inherit;
+    top: -48px;
+    width: calc(100% + 8px);
+    /* height: 100%; */
+}
+
+.navigation__title{
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 9px;
+}
+
+.navigation-fields{
+    background-image: url("data:image/svg+xml,%3csvg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='19' ry='19' stroke='%23FAA02AFF' stroke-width='1' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 19px;
+    padding: 12px 5%;
+    width: 100%;
+}
+
+.navigation-fields__hr{
+    border: 0.5px solid rgba(0, 0, 0, 0.10);
+    margin: 2% 0;
+}
+
+.navigation-fields__row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+.navigation-fields__select-wrapper{
+    width: 80%;
+}
+
+.navigation-fields__search{
+    min-width: 32px;
+}
+
+.navigation-fields__select{
+    font-family: "PT Sans", sans-serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--secondary--faded)
+}
+
+.navigation__go{
+    font-family: "PT Sans", sans-serif;
+    font-weight: 700;
+    font-size: 2.188rem;
+    color: white;
+    background-color: var(--primary);
+    border: 0;
+    border-radius: 11px;
+    width: 100%;
+    padding: 5px 0;
+    margin-top: 15px;
+}
+
+
+/**********      AMPHITHEATRE      ***************/
+.popup__title{
+    background-color: var(--secondary);
+    color: white;
+    font-size: 1.25rem;
+    padding: 14px 36px;
+    border-radius: 27.5px;
+    margin-bottom: 18px;
+}
+
+.slider{
+    height: 111px;
+    margin-top: 25px;
+}
+
+.popup__button-wrapper{
+    width: 100%;
+    height: 51px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.popup__back{
+    width: 51px;
+}
+
+.popup__read-more{
+    background-color: var(--primary);
+    color: white;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding:  0 20px;
+}

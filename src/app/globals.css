@@ -1,11 +1,25 @@
 :root{
     --primary: #faa02a;
+    --primary--highlight: #D38621;
+    --secondary: #0F0B38;
+    --secondary--faded: #0f0b3869;
+
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: var(--secondary);
+}
+
+button{
+    border: 0;
+    font-family: "PT Sans", sans-serif;
+}
+
+button:active{
+    background-color: var(--primary--highlight);
 }
 
 main {
@@ -15,6 +29,10 @@ main {
 a{
     text-decoration: none;
     color: white;
+}
+
+p{
+    font-size: 0.938rem;
 }
 
 /** UTILITY **/
