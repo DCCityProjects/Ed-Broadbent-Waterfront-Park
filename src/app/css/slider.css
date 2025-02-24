@@ -1,0 +1,49 @@
+/*** SWIPER ***/
+
+.swiper{
+    width: 100vw;
+    height: 111px;
+    margin-top: 17px;
+}
+
+.slider__image{
+    width: 33vw;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.slider-internal{
+    margin-top: 17px;
+    margin-bottom: 23px;
+}
+
+.swiper-button-next{
+    background-image: url("/images/icons/arrow-up.svg") !important;
+    transform: rotate(90deg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    width: 25px ;
+    height: 25px;
+    
+}
+
+.swiper-button-prev{
+    background-image: url("/images/icons/arrow-up.svg") !important;
+    transform: rotate(-90deg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    width: 25px ;
+    height: 25px;
+    
+}
+
+.swiper-button-next::after{
+    display: none;
+}
+
+.swiper-button-prev::after{
+    display: none;
+}

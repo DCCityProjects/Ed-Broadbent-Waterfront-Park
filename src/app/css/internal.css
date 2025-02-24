@@ -1,0 +1,154 @@
+.p-span{
+    color: var(--color--primary);
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+
+
+/**** For the internal page hero banner ****/
+.page-banner {
+    width: 100%;
+    height: 317px;
+    background-color: rgb(0, 102, 255);
+}
+
+.page-banner__image{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+/***  Page Section ***/
+
+.page-section{
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    border-radius: 27px;
+    margin-top: -33px;
+    padding-top: 64px;
+}
+
+.page-section__title{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -22.5px;
+    /* z-index: 9; */
+
+    background-color: var(--color--secondary);
+    color: white;
+    font-size: var(--font-size--internal-title);
+    text-align: center;
+
+    width: 280px;
+    height: 55px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50px;
+}
+
+
+
+.back-home-btn {
+    cursor: pointer;
+    background-color: var(--primary);
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 00;
+    padding: 0.6rem 2rem;
+    color: white;
+    border-radius: 10px;
+    transition: background-color 0.3s ;
+}
+
+.back-home-btn:active {
+    background-color: #D38621;
+}
+
+.did-you-know__list {
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    list-style-type: none;
+}
+
+.did-you-know__list li {
+    margin-bottom: 28px; 
+    position: relative;
+}
+
+.did-you-know__list li::before {
+    content: "•";
+    font-size: 2rem;
+    color: var(--color--primary);
+    font-weight: bold;
+    position: absolute;
+    left: -1.6rem;
+    top: -0.7rem;
+}
+
+/**** PAGE SUBSECTIONS ****/
+
+.page-subsection{
+    margin-top: 27px;
+    margin-bottom: 27px;
+}
+
+.page-subsection__title{
+    font-size: var(--font-size--xsmall);
+    margin-bottom: 20px;
+}
+
+.page-subsection__list {
+    font-size: var(--font-size--xsmall);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    column-gap: 3rem;
+    row-gap: 1rem;
+    padding-left: 0;
+    list-style-type: none;
+    padding-bottom: 11px;
+}
+
+.page-subsection__list li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Icon Base Style */
+.amenity-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
+.back-to-home{
+    display: flex;
+    background-color: var(--color--primary);
+    width: fit-content;
+    font-size: var(--font-size--medium);
+    font-weight: 700;
+    margin: 36px auto 74px auto;
+    padding: 7px 29px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+
