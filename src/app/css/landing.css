@@ -1,27 +1,46 @@
 /** Welcome Section  **/
 
 .welcome-section{
-    padding-top: 80px;
     background-color: #f0f0f0;
     text-align: center;
     width: 100%;
+    position: relative;
+}
+
+.welcome-section__logo-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    padding: 23px 21px 0 0;
 }
 
 .welcome-section__title{
+    font-size: 3.125rem;
+    margin-top: 44px;
     margin-bottom: 4px;
 }
 
 .welcome-section__description{
-    max-width: 70%;
+    /* max-width: 70%; */
+    margin: 0 21px 79px 21px;
+    font-size: 1.375rem;
+    line-height: 29px;
+
 }
 
 .welcome-section__button{
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    background-color: var(--primary);
+    position: absolute;
+    background-color: var(--color--primary);
+    font-size: 2.313rem;
+    font-weight: 700;
+
+    border-radius: 15px;
     border: none;
-    font-size: 2rem;
+
+    padding: 25px 50px;
+    bottom: -49px;
 }
+
+
 
 /** Assistance Section  **/
 .assistance__list{
@@ -30,20 +49,62 @@
 }
 
 /** Homepage Nav Section  **/
-.home-nav{
-    width: 100%;
-}
+
 
 .home-nav-section{
+    margin-top: 109px;
+    margin-bottom: 157px;
     text-align: center;
+}
+
+.home-nav-section__title{
+    margin-bottom: 23px;
+    font-size: var(--font-size--internal-title);
+}
+
+.home-nav{
+    width: 100%;
 }
 
 .home-nav__list{
     list-style-type: none;
 }
 
+.home-nav__item{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    margin-bottom: 31px;
+
+}
+
+.home-nav__item--general{
+    background-image: url("/images/general/hero-image.jpg");
+}
+
+.home-nav__item--about{
+    background-image: url("/images/aboutEdBroadbent/hero-image.jpg");
+}
+
+.home-nav__item--events{
+    background-image: url("/images/events/slider1.jpg");
+    background-position: 0 8%;
+}
+
 .home-nav__link{
-    background-color: rgb(92, 108, 151);
+    background-color: rgba(15, 11, 56, 0.7);
+    border-radius: 15px;
+
     width: 100%;
     height: 143px;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.home-nav__image{
+    /* position: ; */
+    width: 58px;
+    height: 58px;
+    object-fit: cover;
 }

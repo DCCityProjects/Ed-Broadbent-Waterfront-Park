@@ -8,12 +8,12 @@
 
 #map > div{
     height:100dvh;
-    background-color: rgb(103, 103, 103);
+    background-color: rgb(255, 255, 255);
 }
 
-img{
+/* img{
     width: 32px;
     height: 32px;
-}
+} */
 
 

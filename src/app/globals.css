@@ -1,16 +1,18 @@
 :root{
-    --primary: #faa02a;
-    --primary--highlight: #D38621;
-    --secondary: #0F0B38;
-    --secondary--faded: #0f0b3869;
-
+    --color--primary: #faa02a;
+    --color--primary--highlight: #D38621;
+    --color--secondary: #001444;
+    --color--secondary--faded: #0f0b3869;
+    --font-size--internal-title: 1.375rem;
+    --font-size--medium: 1.5rem;
+    --font-size--xsmall: 0.938rem
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--secondary);
+    color: var(--color--secondary);
 }
 
 button{
@@ -18,8 +20,8 @@ button{
     font-family: "PT Sans", sans-serif;
 }
 
-button:active{
-    background-color: var(--primary--highlight);
+.button-color-primary:active{
+    background-color: var(--color--primary--highlight);
 }
 
 main {
@@ -32,8 +34,11 @@ a{
 }
 
 p{
-    font-size: 0.938rem;
+    font-size: var(--font-size--xsmall);
+    line-height: 22px
 }
+
+
 
 /** UTILITY **/
 .u-flex-column{
@@ -55,7 +60,9 @@ p{
 }
 
 .u-content-width{
-    margin: 0 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+
 }
 
 /** HEADER **/
@@ -63,18 +70,28 @@ p{
     position: absolute;
     z-index: 999999;
     width: 100%;
-    padding: 1.2rem 1.2rem;
+    padding: 25px;
 }
 
 .nav__list{
+    position: relative;
     display: flex;
     justify-content: space-between;
     list-style-type: none;
+    height: 51px;
 }
 
-.nav__item, .nav__logo {
+.nav__burger{
+    justify-self: flex-end;
+}
+
+
+.nav__image{
+    width: 51px;
+    height: 51px;
+}
+
+.nav__link{
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
