@@ -6,7 +6,7 @@
     background-color: white;
 }
 
-#map > div{
+.leaflet-container{
     height:100dvh;
     background-color: rgb(255, 255, 255);
 }
@@ -17,3 +17,35 @@
 } */
 
 
+.map-pin{
+    position: relative;
+}
+
+#map-pin__entrance{
+
+}
+
+.leaflet-tooltip{
+    background-color: var(--color--secondary) !important;
+    color: white !important;
+    border-radius: 40px !important;
+    /* box-sizing: content-box !important; */
+    font-family: "PT Sans", sans-serif;
+    font-size: 1rem;
+    width: 165px !important;
+    height: 53px !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1 !important;
+    border: 0 !important;
+    margin-top: -56px !important;
+    text-wrap: wrap !important;
+    text-align: center;
+}
+
+.leaflet-tooltip-top:before{
+    border: 0 !important;
+    background-color: 0 !important;
+}

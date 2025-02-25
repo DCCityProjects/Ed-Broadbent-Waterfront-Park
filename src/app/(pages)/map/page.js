@@ -27,7 +27,13 @@ export default function Map() {
     const [content, setContent] = useState("navigation");
     const popupRef = useRef(null);
     const tabRef = useRef(null);
-    const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false});
+    const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false, loading: ()=>{
+        <div style={{textAlign: "center"}}>
+            Loading...
+        </div>
+    }});
+
+    
 
     const popupComponentsList = {
         "navigation": Navigation,
