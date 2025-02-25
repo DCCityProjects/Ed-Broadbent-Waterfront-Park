@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+//****  This layout is just so we can have the header up top for the map page and internals. *****/
 export default function InternalLayout({children}) {
     return (
         <main>
