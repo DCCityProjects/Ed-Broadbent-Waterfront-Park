@@ -21,13 +21,15 @@ import HumanRights from "./HumanRights";
 import OrangeGarden from "./OrangeGarden";
 import MainEntrance from "./MainEntrance";
 
+// Dynamically import LeafletMap (client-side only)
+const LeafletMap = dynamic(() => import("./LeafletMap"), { ssr: false, loading: () => <p>Loading map...</p> });
 
 export default function Map() {
     const [popupHeight, setPopupHeight] = useState(0);
     const [content, setContent] = useState("navigation");
     const popupRef = useRef(null);
     const tabRef = useRef(null);
-    const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false});
+    // const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false});
 
     const popupComponentsList = {
         "navigation": Navigation,
