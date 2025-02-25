@@ -29,6 +29,7 @@ export default function Map() {
     const [content, setContent] = useState("navigation");
     const popupRef = useRef(null);
     const tabRef = useRef(null);
+    const [isClient, setIsClient] = useState(false);
     // const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false});
 
     const popupComponentsList = {
@@ -83,14 +84,14 @@ export default function Map() {
             })
         }
 
-    }, [popupHeight])
+    }, [popupHeight, isClient]);
 
 
 
     
     return (
         <main>
-            <LeafletMap />
+            {isClient && <LeafletMap />}
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
