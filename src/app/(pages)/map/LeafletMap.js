@@ -9,6 +9,10 @@ export default function LeafletMap() {
     const [zoom, setZoom] = useState(0);
     const [center, setCenter] = useState([550, 520]);
 
+     // ! Ensures the component only renders on the client
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     const bounds = [[0, 0], [2868, 4779]];
     const panBounds = [[0,0], [2868, 4779]];
@@ -17,10 +21,12 @@ export default function LeafletMap() {
 
     return (
         <div id="map">
-            <MapContainer crs={L.CRS.Simple} center={center} zoom={zoom} minZoom={-2} maxBounds={panBounds} zoomControl={false}>
-                <ImageOverlay url="/images/svgs/map.svg" bounds={bounds}  />
-            </MapContainer>
-        
+            // ! Ensures the component only renders on the client
+            {isClient && (
+                <MapContainer crs={L.CRS.Simple} center={center} zoom={zoom} minZoom={-2} maxBounds={panBounds} zoomControl={false}>
+                    <ImageOverlay url="/images/svgs/map.svg" bounds={bounds}  />
+                </MapContainer>
+            )}
         </div>
     );
 }
