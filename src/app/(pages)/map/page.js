@@ -21,19 +21,22 @@ import HumanRights from "./HumanRights";
 import OrangeGarden from "./OrangeGarden";
 import MainEntrance from "./MainEntrance";
 
+// Dynamically import LeafletMap (client-side only)
+const LeafletMap = dynamic(() => import("./LeafletMap"), { ssr: false, loading: () => <p>Loading map...</p> });
 
 export default function Map() {
     const [popupHeight, setPopupHeight] = useState(0);
     const [content, setContent] = useState("navigation");
     const popupRef = useRef(null);
     const tabRef = useRef(null);
-    const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false, loading: ()=>{
+
+      const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false, loading: ()=>{
         <div style={{textAlign: "center"}}>
             Loading...
         </div>
     }});
-
-    
+    const [isClient, setIsClient] = useState(false);
+    // const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false});
 
     const popupComponentsList = {
         "navigation": Navigation,
@@ -87,14 +90,14 @@ export default function Map() {
             })
         }
 
-    }, [popupHeight])
+    }, [popupHeight, isClient]);
 
 
 
     
     return (
         <main>
-            <LeafletMap />
+            {isClient && <LeafletMap />}
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
