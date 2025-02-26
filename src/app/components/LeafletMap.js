@@ -18,19 +18,20 @@ import {
     iconParkingGrey,
     iconParkingSelect} from "@/app/components/mapPins"
 
+
 export default function LeafletMap() {
     const [zoom, setZoom] = useState(0);
     const [center, setCenter] = useState([550, 520]);
+    // const [L, setL] = useState(null);
+
 
     const bounds = [[0, 0], [2868, 4779]];
     const panBounds = [[0,0], [2868, 4779]];
 
     useEffect(()=>{
+        console.log(bounds)
 
     },[])
-
-
-    console.log(bounds)
 
     return (
         <div id="map">
