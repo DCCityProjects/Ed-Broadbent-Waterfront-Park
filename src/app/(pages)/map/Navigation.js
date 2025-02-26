@@ -1,7 +1,8 @@
+"use client"
+
 import IconSearch from "/public/images/svgs/icons/search-icon.svg";
 import IconVoice from "/public/images/svgs/icons/voice-activation-frame.svg";
 import Select from "react-select";
-import { popup } from "leaflet";
 
 export default function Navigation() {
 

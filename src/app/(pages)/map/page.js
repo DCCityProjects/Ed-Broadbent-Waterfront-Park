@@ -1,10 +1,10 @@
 "use client"
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import "/src/app/css/map.css"
 import "/src/app/css/popup.css";
 import Image from "next/image";
-import dynamic from "next/dynamic";
 import Popup from "../../popup";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -14,29 +14,26 @@ import IconSearch from "/public/images/svgs/icons/search-icon.svg";
 import IconVoice from "/public/images/svgs/icons/voice-activation-frame.svg";
 import { useEffect, useRef, useState } from "react";
 import Select from "react-select";
-import { popup } from "leaflet";
 import Navigation from "./Navigation";
 import Amphitheatre from "./Amphitheatre";
 import HumanRights from "./HumanRights";
 import OrangeGarden from "./OrangeGarden";
 import MainEntrance from "./MainEntrance";
 
-// Dynamically import LeafletMap (client-side only)
-const LeafletMap = dynamic(() => import("./LeafletMap"), { ssr: false, loading: () => <p>Loading map...</p> });
+const LeafletMap = dynamic(() => import('@/app/components/LeafletMap'), {
+    loading: () => <p>loading...</p>,
+    ssr: false
+});
+
 
 export default function Map() {
     const [popupHeight, setPopupHeight] = useState(0);
     const [content, setContent] = useState("navigation");
     const popupRef = useRef(null);
     const tabRef = useRef(null);
-
-      const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false, loading: ()=>{
-        <div style={{textAlign: "center"}}>
-            Loading...
-        </div>
-    }});
     const [isClient, setIsClient] = useState(false);
-    // const LeafletMap = dynamic(() => import('./LeafletMap'), {ssr: false});
+
+
 
     const popupComponentsList = {
         "navigation": Navigation,
@@ -48,19 +45,17 @@ export default function Map() {
 
     const PopupContent = popupComponentsList[content]
 
+    useEffect(()=>{
+        setIsClient(true);
+    }, [])
+
 
     useEffect(()=>{
-
         if(popupRef.current){
             setPopupHeight(popupRef.current.clientHeight)
             console.log(popupRef.current.clientHeight)
-
         }
     }, [])
-
-    // useEffect(()=>{
-    //     console.log(popupHeight)
-    // })
 
     useEffect(()=>{
         gsap.registerPlugin(Draggable);
@@ -92,12 +87,21 @@ export default function Map() {
 
     }, [popupHeight, isClient]);
 
-
+    // useEffect(() => {
+    //     if (isClient) {
+    //         import("leaflet").then((L) => {
+    //             // Use the leaflet library here
+    //             console.log("Leaflet loaded", L);
+    //         }).catch((error) => {
+    //             console.error("Error loading leaflet", error);
+    //         });
+    //     }
+    // }, [isClient]);
 
     
     return (
         <main>
-            {isClient && <LeafletMap />}
+            {typeof window !== "undefined" && isClient && <LeafletMap />}
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
