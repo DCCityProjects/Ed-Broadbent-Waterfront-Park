@@ -23,7 +23,7 @@ export default function General() {
 
         <main>
             <section className="page-banner">
-                <Image src="/images/general/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image"></Image>
+                <Image src="/images/general/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image General Information"></Image>
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">GENERAL INFORMATION</h1>
@@ -44,19 +44,19 @@ export default function General() {
                         className="mySwiper slider-internal"
                     >
                         <SwiperSlide>
-                            <Image src="/images/general/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider General" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider General" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider General" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider General" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider General" ></Image>
                         </SwiperSlide>
                     </Swiper>
                     {/* <div className="slider slider-internal">

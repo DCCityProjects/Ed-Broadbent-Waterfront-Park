@@ -19,7 +19,7 @@ export default function Events() {
 
         <main>
             <section className="page-banner">
-                <Image src="/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image"></Image>
+                <Image src="/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image Events"></Image>
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Events and Activities</h1>
@@ -46,19 +46,19 @@ export default function Events() {
                         className="mySwiper slider-internal"
                     >
                         <SwiperSlide>
-                            <Image src="/images/events/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/events/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider Events"></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/events/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/events/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider Events" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/events/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/events/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider Events" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/events/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/events/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider Events" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/events/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/events/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider Events" ></Image>
                         </SwiperSlide>
                 </Swiper>
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
