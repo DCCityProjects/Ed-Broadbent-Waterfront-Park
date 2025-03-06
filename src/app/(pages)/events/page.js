@@ -1,29 +1,50 @@
-"use client"
+"use client";
 
 import "/src/app/globals.css";
-
 import "/src/app/css/events.css";
 import "/src/app/css/internal.css";
-
 import "/src/app/css/slider.css";
 import 'swiper/css';
 import 'swiper/css/bundle';
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 
 export default function Events() {
-    return (
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState("");
 
+    const openModal = (imageSrc) => {
+        setSelectedImage(imageSrc);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        setSelectedImage("");
+    };
+
+    return (
         <main>
+            {modalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-container-events">
+                        <button className="modal-close-button" onClick={closeModal}>
+                            <Image src="/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
+                        </button>
+                        <Image src={selectedImage} alt="Expanded View" className="modal-image" width={800} height={600} />
+                    </div>
+                </div>
+            )}
             <section className="page-banner">
-                <Image src="/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image Events"></Image>
+                <Image src="/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image Events" />
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Events and Activities</h1>
-                <p className=" u-content-width">
+                <p className="u-content-width">
                     Enjoy exciting events at Ed Broadbent Park! From community gatherings to live entertainment, there is something for everyone.
                 </p>
                 <section className="page-subsection u-content-width">
@@ -32,40 +53,34 @@ export default function Events() {
                 </section>
                 <section className="page-subsection u-content-width">
                     <h2 className="page-subsection__title--events">Book an Event</h2>
-                    <p>Interested in hosting an event at Ed Broadbent Waterfront Park? Learn more about <span><a className="p-span" href="https://www.oshawa.ca/en/parks-recreation-and-culture/host-an-event.aspx">Hosting an Event</a> and <a className="p-span" href="https://www.oshawa.ca/en/parks-recreation-and-culture/facilities-and-rentals.aspx">Facility Bookings</a></span>  .</p>
+                    <p>Interested in hosting an event at Ed Broadbent Waterfront Park? Learn more about <span><a className="p-span" href="https://www.oshawa.ca/en/parks-recreation-and-culture/host-an-event.aspx">Hosting an Event</a> and <a className="p-span" href="https://www.oshawa.ca/en/parks-recreation-and-culture/facilities-and-rentals.aspx">Facility Bookings</a></span>.</p>
                 </section>
                 <Swiper
-                        slidesPerView={3}
-                        spaceBetween={14}
-                        loop={true}
-                        pagination={{
-                        clickable: true,
-                        }}
-                        navigation
-                        modules={[Navigation]}
-                        className="mySwiper slider-internal"
-                    >
-                        <SwiperSlide>
-                            <Image src="/images/events/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider Events"></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/images/events/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider Events" ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/images/events/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider Events" ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/images/events/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider Events" ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/images/events/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider Events" ></Image>
-                        </SwiperSlide>
+                    slidesPerView={3}
+                    spaceBetween={14}
+                    loop={true}
+                    navigation
+                    modules={[Navigation, Pagination]}
+                    className="mySwiper slider-internal"
+                >
+                    <SwiperSlide>
+                        <Image src="/images/events/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider Events" onClick={() => openModal("/images/events/slider1.jpg")} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image src="/images/events/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider Events" onClick={() => openModal("/images/events/slider2.jpg")} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image src="/images/events/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider Events" onClick={() => openModal("/images/events/slider3.jpg")} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image src="/images/events/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider Events" onClick={() => openModal("/images/events/slider4.jpg")} />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <Image src="/images/events/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider Events" onClick={() => openModal("/images/events/slider5.jpg")} />
+                    </SwiperSlide>
                 </Swiper>
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
-
             </section>
-
         </main>
-        
     );
 }
