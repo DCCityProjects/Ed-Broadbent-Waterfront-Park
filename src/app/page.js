@@ -12,14 +12,19 @@ export default function LandingPage() {
 	const [showModal, setShowModal] = useState(false);
     const [countdown, setCountdown] = useState(20);
 
-    useEffect(() => {
-        // Show modal after 1 second on each page load
-        const showTimer = setTimeout(() => {
-            setShowModal(true);
-        }, 1000);
-        
-        return () => clearTimeout(showTimer);
-    }, []);
+	useEffect(() => {
+		const hasSeenModal = sessionStorage.getItem("modalSeen");
+	
+		if (!hasSeenModal) {
+			// Show modal after 1 second only if it's the user's first visit in the session
+			const showTimer = setTimeout(() => {
+				setShowModal(true);
+			}, 1000);
+	
+			return () => clearTimeout(showTimer);
+		}
+	}, []);
+	
 
     useEffect(() => {
         if (showModal) {
@@ -44,13 +49,19 @@ export default function LandingPage() {
                         <h2 className="modal-overlay__title">WOULD YOU LIKE TO ENABLE AUDIO GUIDANCE?</h2>
                         <div className="modal-overlay__options">
 							<div>
-								<button className="modal-overlay__option-open" onClick={() => setShowModal(false)}>
+								<button className="modal-overlay__option-open" onClick={() => {
+									sessionStorage.setItem("modalSeen", "true");
+									setShowModal(false);
+								}}>
 									<Image src="/images/svgs/icons/open-landing.svg" alt="Open Icon" width={0} height={0} className="openIcon" />
 								</button>
 								<h3 className="modal-overlay__yesNoText">Yes!</h3>
 							</div>
 							<div>
-								<button className="modal-overlay__option-close" onClick={() => setShowModal(false)}>
+								<button className="modal-overlay__option-close" onClick={() => {
+									sessionStorage.setItem("modalSeen", "true");
+									setShowModal(false);
+								}}>
 									<Image src="/images/svgs/icons/close-landing.svg" alt="Close Icon" width={0} height={0} className="closeIcon" />
 								</button>
 								<h3 className="modal-overlay__yesNoText">No</h3>
