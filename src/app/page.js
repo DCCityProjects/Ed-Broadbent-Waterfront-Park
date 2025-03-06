@@ -1,14 +1,66 @@
+'use client'
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 import "./css/landing.css";
 
-import Image from "next/image";
 
 
 export default function LandingPage() {
+	const [showModal, setShowModal] = useState(false);
+    const [countdown, setCountdown] = useState(20);
+
+    useEffect(() => {
+        // Show modal after 1 second on each page load
+        const showTimer = setTimeout(() => {
+            setShowModal(true);
+        }, 1000);
+        
+        return () => clearTimeout(showTimer);
+    }, []);
+
+    useEffect(() => {
+        if (showModal) {
+            const timer = setInterval(() => {
+                setCountdown(prev => {
+                    if (prev === 1) {
+                        clearInterval(timer);
+                        setShowModal(false);
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+            return () => clearInterval(timer);
+        }
+    }, [showModal]);
 
 	return (
 		<main>
-			<section className="welcome-section ">
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-overlay__container">
+                        <h2 className="modal-overlay__title">WOULD YOU LIKE TO ENABLE AUDIO GUIDANCE?</h2>
+                        <div className="modal-overlay__options">
+							<div>
+								<button className="modal-overlay__option-open" onClick={() => setShowModal(false)}>
+									<Image src="/images/svgs/icons/open-landing.svg" alt="Open Icon" width={0} height={0} className="openIcon" />
+								</button>
+								<h3 className="modal-overlay__yesNoText">Yes!</h3>
+							</div>
+							<div>
+								<button className="modal-overlay__option-close" onClick={() => setShowModal(false)}>
+									<Image src="/images/svgs/icons/close-landing.svg" alt="Close Icon" width={0} height={0} className="closeIcon" />
+								</button>
+								<h3 className="modal-overlay__yesNoText">No</h3>
+							</div>
+                        </div>
+                        <div className="modal-overlay__timer">{countdown}</div>
+                    </div>
+                </div>
+            )}
+			<section className="welcome-section">
 				<div className="welcome-section__logo-wrapper">
 					<Image src="/images/svgs/icons/logo.svg" alt="Navigation Logo" width={58} height={58} className="welcome-section__logo"/>
 				</div>
@@ -18,19 +70,6 @@ export default function LandingPage() {
 					<Link href="/map" className="welcome-section__button button-color-primary" role="button">GO TO MAP</Link>
 				</div>
 			</section>
-			{/* <section className="assistance u-flex-column-align-center u-content-width">
-				<p className="assistance__description">Do you require text to speech assistance?</p>
-					<ul className="assistance__list">
-						<li className="assistance__item u-flex-column-align-center">
-							<input type="radio" name="assistanceCheckbox" value="yes" id="assistance-yes" />
-							<label htmlFor="assistance-yes">Yes</label>
-						</li>
-						<li className="assistance__item u-flex-column-align-center">
-							<input type="radio" name="assistanceCheckbox" value="no" id="assistance-no" />
-							<label htmlFor="assistance-no">No</label>
-						</li>
-					</ul>
-			</section> */}
 			<section className="home-nav-section u-flex-column-align-center u-content-width">
 				<h2 className="home-nav-section__title">Explore Ed Broadbent Park</h2>
 				<nav className="home-nav">

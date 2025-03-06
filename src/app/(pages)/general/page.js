@@ -18,7 +18,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 export default function General() {
 
-
+    
     return (
 
         <main>
@@ -59,12 +59,6 @@ export default function General() {
                             <Image src="/images/general/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider General" ></Image>
                         </SwiperSlide>
                     </Swiper>
-                    {/* <div className="slider slider-internal">
-                        <img src="/images/slider1.jpg" className="page-slider__image"></img>
-                        <img src="/images/slider2.JPG" className="page-slider__image"></img>
-                        <img src="/images/slider3.jpg" className="page-slider__image"></img>
-                        <img src="/images/slider4.jpg" className="page-slider__image"></img>
-                    </div> */}
                     <p className="u-content-width">
                         The park is connected to the picturesque <span><a className="p-span" href="https://facilities.oshawa.ca/Home/Detail?CategoryIds=&FacilityTypeIds=&Keywords=bike&ScrollTo=google-map-trigger&CloseMap=true&Id=e164eaa4-63f7-4c0b-8091-c7f76cc02d1c">Joseph Kolodzie Oshawa Creek Bike Path</a></span>, 
                         the <span><a className="p-span" href="https://facilities.oshawa.ca/Home/Detail?CategoryIds=&FacilityTypeIds=71168&Keywords=waterfront%20trail&ScrollTo=google-map-trigger&CloseMap=true&Id=6085fddb-d81f-4328-a859-fc859dc28e3a">Waterfront Trail</a></span>, and <span><a className="p-span" href="https://facilities.oshawa.ca/Home/Detail?CategoryIds=&FacilityTypeIds=&Keywords=lakeview%20park&ScrollTo=google-map-trigger&CloseMap=true&Id=ff127d8c-780d-46fe-ad52-36ecb9b2bee6">Lakeview Park</a></span>. The Larry Ladd Harbour Trail runs through the park and includes a new pedestrian bridge over the creek. The Trail is named in honour of local waterfront activist Larry Ladd. The park offers a great vantage point of the vibrant Port of Oshawa. The Park features an expansive Garden of Human Rights, a network of concrete and asphalt pathways as well as a stage with amphitheatre seating.
