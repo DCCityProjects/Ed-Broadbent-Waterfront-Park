@@ -1,11 +1,11 @@
-:root{
+:root {
     --color--primary: #faa02a;
     --color--primary--highlight: #D38621;
     --color--secondary: #001444;
     --color--secondary--faded: #0f0b3869;
     --font-size--internal-title: 1.375rem;
     --font-size--medium: 1.5rem;
-    --font-size--xsmall: 0.938rem
+    --font-size--xsmall: 0.938rem;
 }
 
 * {
@@ -15,12 +15,12 @@
     color: var(--color--secondary);
 }
 
-button{
+button {
     border: 0;
     font-family: "PT Sans", sans-serif;
 }
 
-.button-color-primary:active{
+.button-color-primary:active {
     background-color: var(--color--primary--highlight);
 }
 
@@ -28,52 +28,49 @@ main {
     background-color: white;
 }
 
-a{
+a {
     text-decoration: none;
     color: white;
 }
 
-p{
+p {
     font-size: var(--font-size--xsmall);
-    line-height: 22px
+    line-height: 22px;
 }
 
-
-
 /** UTILITY **/
-.u-flex-column{
+.u-flex-column {
     display: flex;
     flex-direction: column;
 }
 
-.u-flex-column-align-center{
+.u-flex-column-align-center {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.u-flex-column-justify-align-center{
+.u-flex-column-justify-align-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.u-content-width{
+.u-content-width {
     margin-left: 5%;
     margin-right: 5%;
-
 }
 
 /** HEADER **/
-.nav{
+.nav {
     position: absolute;
     z-index: 999999;
     width: 100%;
     padding: 25px;
 }
 
-.nav__list{
+.nav__list {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -81,17 +78,99 @@ p{
     height: 51px;
 }
 
-.nav__burger{
-    justify-self: flex-end;
-}
-
-
-.nav__image{
+.nav__image {
     width: 51px;
     height: 51px;
+    cursor: pointer;
 }
 
-.nav__link{
+/* Fade Animations */
+.fade-in:nth-child(1) {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s ease-out;
+}
+
+.fade-in:nth-child(2) {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Navigation Links */
+.nav__link {
     display: flex;
 }
 
+/* Close Icon Animations */
+.close-icon {
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Moves close icon to the right when menu is open */
+.move-right {
+    right: 0;
+}
+
+/* Moves close icon back when menu is closed */
+.move-back {
+    transform: translateX(-51px);
+}
+
+/* Slide-in Menu */
+.slide-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.97);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.4s ease-in-out;
+}
+
+/* When menu is open */
+.slide-menu.open {
+    left: 0;
+}
+
+/* Menu List */
+.menu-list {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+
+.menu-link {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color--secondary);
+    margin: 25px 0;
+    position: relative;
+}
+
+.menu-link::after {
+    content: "";
+    display: block;
+    width: auto;
+    height: 2px;
+    background: var(--color--primary);
+    margin-top: 5px;
+}
+
+/* Disable pointer events on inactive elements */
+.inactive {
+    pointer-events: none;
+}
