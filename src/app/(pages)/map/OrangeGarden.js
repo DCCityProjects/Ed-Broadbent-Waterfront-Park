@@ -1,8 +1,15 @@
 import Back from "/public/images/svgs/icons/left.svg";
 import Ar from "/public/images/svgs/icons/ar.svg";
+import MapBack from "@/app/components/MapBack";
 
 
-export default function OrangeGarden() {
+export default function OrangeGarden({setContent}) {
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        setContent("navigation");
+    }
+
     return (
         <>
             <h2 className="popup__title">ORANGE GARDEN</h2>
@@ -11,8 +18,8 @@ export default function OrangeGarden() {
                 
             </div>
             <div className="popup__button-wrapper">
-                <a type="button" className="popup__back">
-                    <Back />
+                <a type="button" className="popup__back" onClick={(e)=>{handleClick(e)}}>
+                    <MapBack />
                 </a>
 
                 <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
