@@ -9,6 +9,7 @@
 .leaflet-container{
     height:100dvh;
     background-color: rgb(255, 255, 255);
+    background: #ffffff !important;
 }
 
 /* img{
@@ -21,9 +22,6 @@
     position: relative;
 }
 
-#map-pin__entrance{
-
-}
 
 .leaflet-tooltip{
     background-color: var(--color--secondary) !important;

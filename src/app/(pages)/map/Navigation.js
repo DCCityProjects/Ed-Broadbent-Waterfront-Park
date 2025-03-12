@@ -7,15 +7,12 @@ import Select from "react-select";
 export default function Navigation() {
 
     const options = [
-        { value: "Amphitheater and Stage", label: "Amphitheater and Stage" },
-        { value: "Benches", label: "Benches" },
-        { value: "Bike Racks", label: "Bike Racks" },
-        { value: "Bridge", label: "Bridge" },
-        { value: "Garden of Human Rights", label: "Garden of Human Rights" },
-        { value: "Harbour Benches", label: "Harbour Benches" },
         { value: "Main Entrance", label: "Main Entrance" },
+        { value: "About Ed Broadbent", label: "About Ed Broadbent" },
+        { value: "Amphitheater and Stage", label: "Amphitheater and Stage" },
+        { value: "Garden of Human Rights", label: "Garden of Human Rights" },
         { value: "Orange Garden", label: "Orange Garden" },
-        { value: "Car Parking", label: "Car Parking" }
+        { value: "Parking Entrance", label: "Parking Entrance" }
     ];
 
     

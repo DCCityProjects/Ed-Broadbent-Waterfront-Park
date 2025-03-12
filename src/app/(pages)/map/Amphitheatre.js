@@ -1,8 +1,15 @@
 import Back from "/public/images/svgs/icons/left.svg";
 import Ar from "/public/images/svgs/icons/ar.svg";
 import Link from "next/link";
+import MapBack from "@/app/components/MapBack";
 
-export default function Amphitheatre() {
+export default function Amphitheatre({setContent}) {
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        setContent("navigation");
+    }
+
     return (
         <>
             <h2 className="popup__title">AMPHITHEATRE AND STAGE</h2>
@@ -11,8 +18,8 @@ export default function Amphitheatre() {
                 
             </div>
             <div className="popup__button-wrapper">
-                <a type="button" className="popup__back">
-                    <Back />
+                <a type="button" className="popup__back" onClick={(e)=>{handleClick(e)}}>
+                    <MapBack />
                 </a>
                 {/* <Link href="" className="popup__back">
                     <Back />

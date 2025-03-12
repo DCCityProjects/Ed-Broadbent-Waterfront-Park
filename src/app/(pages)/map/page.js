@@ -19,6 +19,8 @@ import Amphitheatre from "./Amphitheatre";
 import HumanRights from "./HumanRights";
 import OrangeGarden from "./OrangeGarden";
 import MainEntrance from "./MainEntrance";
+import ParkingEntrance from "./ParkingEntrance";
+import AboutEdBroadbent from "./AboutEdBroadbent";
 
 const LeafletMap = dynamic(() => import('@/app/components/LeafletMap'), {
     loading: () => <p>loading...</p>,
@@ -32,15 +34,18 @@ export default function Map() {
     const popupRef = useRef(null);
     const tabRef = useRef(null);
     const [isClient, setIsClient] = useState(false);
+    const [isUp, setIsUp] = useState(false);
 
 
 
     const popupComponentsList = {
         "navigation": Navigation,
-        "amphitheatre": Amphitheatre,
-        "humanRights": HumanRights,
-        "orangeGarden": OrangeGarden,
-        "mainEntrance": MainEntrance
+        "amphitheatre-and-stage": Amphitheatre,
+        "garden-of-human-rights": HumanRights,
+        "orange-garden": OrangeGarden,
+        "main-entrance": MainEntrance,
+        "parking-entrance": ParkingEntrance,
+        "about-ed-broadbent": AboutEdBroadbent
     }
 
     const PopupContent = popupComponentsList[content]
@@ -49,20 +54,22 @@ export default function Map() {
         setIsClient(true);
     }, [])
 
+    // useEffect(()=>{
+    //     console.log(content)
+    // },[content])
 
     useEffect(()=>{
         if(popupRef.current){
             setPopupHeight(popupRef.current.clientHeight)
-            console.log(popupRef.current.clientHeight)
         }
-    }, [])
+    }, [content])
 
     useEffect(()=>{
         gsap.registerPlugin(Draggable);
 
         if(popupRef.current && tabRef.current){
             console.log(popupHeight)
-            const chevron = document.querySelector("#popup-tab__chevron");
+            // const chevron = document.querySelector("#popup-tab__chevron");
 
             Draggable.create(popupRef.current, {
                 type: "y",
@@ -72,14 +79,16 @@ export default function Map() {
                 onRelease: function(){
                     console.log(this.y)
                     const y = this.y;
-                    //! TO DO ADD FLAG TO CHECK IF IT IS UP OR DOWN
+                    //todo TO DO ADD FLAG TO CHECK IF IT IS UP OR DOWN
                     if(y <= popupHeight/2){
                         //* to  make it go to the top
                         gsap.to(popupRef.current, {y: 0})
-                        gsap.to(chevron, {rotateY: 180})
+                        setIsUp(true);
+                        // gsap.to("#popup-tab__chevron", {rotateY: 180})
                     } else {
                         //* to  make it go to the bottom
                         gsap.to(popupRef.current, {y: popupHeight})
+                        setIsUp(false);
                     }
                 }
             })
@@ -101,11 +110,11 @@ export default function Map() {
     
     return (
         <main>
-            {typeof window !== "undefined" && isClient && <LeafletMap />}
+            {typeof window !== "undefined" && isClient && <LeafletMap setContent={setContent} popupRef={popupRef} />}
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
-                <PopupContent />
+                <PopupContent setContent={setContent} />
             </section>
         </main>
     );

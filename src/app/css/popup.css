@@ -10,7 +10,7 @@
 
 .popup-tab{
     position: inherit;
-    top: -48px;
+    top: calc(-1 * (100vw + 60px) / 8.931);
     width: calc(100% + 8px);
     /* height: 100%; */
 }
