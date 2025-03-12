@@ -17,9 +17,11 @@ export default function HumanRights() {
 
                 <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
 
-                <button type="button" className="popup__360">
-                    <Ar />
-                </button>
+                <Link href="/humanRights360">
+                    <button type="button" className="popup__360">
+                        <Ar />
+                    </button>
+                </Link>
             </div>
         </>
     );

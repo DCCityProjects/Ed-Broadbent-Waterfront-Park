@@ -28,7 +28,7 @@ const LeafletMap = dynamic(() => import('@/app/components/LeafletMap'), {
 
 export default function Map() {
     const [popupHeight, setPopupHeight] = useState(0);
-    const [content, setContent] = useState("navigation");
+    const [content, setContent] = useState("amphitheatre");
     const popupRef = useRef(null);
     const tabRef = useRef(null);
     const [isClient, setIsClient] = useState(false);

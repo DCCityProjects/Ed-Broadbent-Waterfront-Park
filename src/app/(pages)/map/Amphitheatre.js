@@ -20,9 +20,11 @@ export default function Amphitheatre() {
 
                 <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
 
-                <button type="button" className="popup__360">
-                    <Ar />
-                </button>
+                <Link href="/amphitheatre360">
+                    <button type="button" className="popup__360">
+                        <Ar />
+                    </button>
+                </Link>
             </div>
         </>
     );

@@ -17,9 +17,11 @@ export default function OrangeGarden() {
 
                 <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
 
-                <button type="button" className="popup__360">
-                    <Ar />
-                </button>
+                <Link href="/orangeGarden360">
+                    <button type="button" className="popup__360">
+                        <Ar />
+                    </button>
+                </Link>
             </div>
         </>
     );

@@ -14,9 +14,11 @@ export default function MainEntrance() {
 
                 <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
 
-                <button type="button" className="popup__360">
-                    <Ar />
-                </button>
+                <Link href="/mainEntrance360">
+                    <button type="button" className="popup__360">
+                        <Ar />
+                    </button>
+                </Link>
             </div>
         </>
     );
