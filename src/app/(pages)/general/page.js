@@ -65,19 +65,19 @@ export default function General() {
                         className="mySwiper slider-internal"
                     >
                         <SwiperSlide>
-                            <Image src="/images/general/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider1.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider2.jpg" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider2.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider3.jpg" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider3.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider4.jpg" width={0} height={0} alt="slider 4" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider4.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/general/slider5.jpg" width={0} height={0} alt="slider 5" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider5.jpg")} ></Image>
                         </SwiperSlide>
                     </Swiper>
                     <p className="u-content-width">
