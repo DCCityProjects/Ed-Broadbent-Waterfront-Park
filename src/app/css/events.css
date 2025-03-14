@@ -4,6 +4,11 @@
     margin-bottom: 8px;
 }
 
+/* .page-banner__image--events{
+    
+    object-position: 50% 20%;
+} */
+
 /* Modal Background Overlay */
 .modal-overlay {
     position: fixed;

@@ -25,7 +25,9 @@ export default function Amphitheatre({setContent}) {
                     <Back />
                 </Link> */}
 
-                <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
+                {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
+                <Link href="/amphitheatreAndStage" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
+
 
                 <Link href="/amphitheatre360">
                     <button type="button" className="popup__360">

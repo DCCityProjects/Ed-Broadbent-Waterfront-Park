@@ -3,6 +3,7 @@ import Ar from "/public/images/svgs/icons/ar.svg";
 import MapBack from "@/app/components/MapBack";
 import gsap from "gsap";
 import { useEffect } from "react";
+import Link from "next/link";
 
 
 export default function AboutEdBroadbent({setContent}) {
@@ -31,7 +32,9 @@ export default function AboutEdBroadbent({setContent}) {
                     <MapBack />
                 </a>
 
-                <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
+                {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
+                <Link href="/aboutEdBroadbent" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
+
 
                 <button type="button" className="popup__360">
                     <Ar />

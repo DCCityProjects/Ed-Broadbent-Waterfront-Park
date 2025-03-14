@@ -1,6 +1,7 @@
 // import Back from "/public/images/svgs/icons/left.svg";
 import MapBack from "@/app/components/MapBack";
 import Ar from "/public/images/svgs/icons/ar.svg";
+import Link from "next/link";
 
 export default function ParkingEntrance({setContent}) {
 
@@ -17,8 +18,8 @@ export default function ParkingEntrance({setContent}) {
                 <a type="button" className="popup__back" onClick={(e)=>{handleClick(e)}}>
                     <MapBack />
                 </a>
-
-                <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
+                <Link href="/general" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
+                {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
 
                 <button type="button" className="popup__360">
                     <Ar />

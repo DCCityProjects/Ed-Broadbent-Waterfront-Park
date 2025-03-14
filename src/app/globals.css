@@ -68,6 +68,7 @@ p {
     z-index: 999999;
     width: 100%;
     padding: 25px;
+    pointer-events: none;
 }
 
 .nav__list {

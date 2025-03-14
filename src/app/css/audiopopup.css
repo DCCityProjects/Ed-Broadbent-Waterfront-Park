@@ -1,0 +1,25 @@
+.audio-popup{
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding-bottom: 12px;
+}
+
+.audio-popup__wrapper{
+    background-color: #ECECEC;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    padding: 8px 12px;
+    margin: 0 7%;
+}
+
+.audio-popup__icon{
+    aspect-ratio: 1;
+    height: 100%;
+    width: auto;
+}

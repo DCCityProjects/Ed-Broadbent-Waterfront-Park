@@ -15,6 +15,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Information from "/public/images/svgs/icons/information.svg"
 import Ar from "/public/images/svgs/icons/ar.svg";
+import AudioPopupTab from "@/app/components/AudioPopupTab";
 
 export default function GardenOfHumanRights() {
 
@@ -86,7 +87,7 @@ export default function GardenOfHumanRights() {
                 </section>
 
                 <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-
+                <AudioPopupTab />
             </section>
 
         </main>

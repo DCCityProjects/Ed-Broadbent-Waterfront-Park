@@ -20,7 +20,9 @@ export default function MainEntrance({setContent}) {
                     <MapBack />
                 </a>
 
-                <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
+                <Link href="/general" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
+
+                {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
 
                 <Link href="/mainEntrance360">
                     <button type="button" className="popup__360">
