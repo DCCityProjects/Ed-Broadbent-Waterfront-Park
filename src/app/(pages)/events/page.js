@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import AudioPopupTab from "@/app/components/AudioPopupTab";
 
 export default function Events() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -40,7 +41,7 @@ export default function Events() {
                 </div>
             )}
             <section className="page-banner">
-                <Image src="/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image Events" />
+                <Image src="/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image page-banner__image--events" alt="Featured Image Events" />
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Events and Activities</h1>
@@ -81,6 +82,7 @@ export default function Events() {
                 </Swiper>
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
             </section>
+            <AudioPopupTab />
         </main>
     );
 }

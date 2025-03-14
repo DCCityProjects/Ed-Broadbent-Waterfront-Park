@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import "./css/landing.css";
+import AudioPopupTab from "./components/AudioPopupTab";
 
 
 
@@ -99,6 +100,7 @@ export default function LandingPage() {
 					</ul>
 				</nav>
 			</section>
+			<AudioPopupTab />
 		</main>
 	);
 }

@@ -1,6 +1,6 @@
 export default function PopupTab() {
     return (
-        <svg viewBox="0 0 401 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="popup-tab" viewBox="0 0 401 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="popup-tab">
                 <g id="popup-tab__shape" filter="url(#filter0D86229)">
                     <path d="M370 25H237.777C236.329 15.3774 228.026 8 218 8H183C172.974 8 164.671 15.3774 163.223 25H31C16.0884 25 4 37.0884 4 52H397C397 37.0884 384.912 25 370 25Z" fill="white"/>

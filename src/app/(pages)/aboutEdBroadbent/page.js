@@ -14,6 +14,7 @@ import { useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from 'swiper/modules';
+import AudioPopupTab from "@/app/components/AudioPopupTab";
 
 
 export default function EdBroadbent() {
@@ -104,6 +105,7 @@ export default function EdBroadbent() {
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
 
             </section>
+            <AudioPopupTab />
 
         </main>
         

@@ -12,6 +12,7 @@ import "/src/app/css/general.css";
 import "/src/app/css/slider.css";
 import 'swiper/css';
 import 'swiper/css/bundle';
+import AudioPopupTab from "@/app/components/AudioPopupTab";
 
 export default function General() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -48,7 +49,7 @@ export default function General() {
 
             <section className="page-section">
                 <h1 className="page-section__title">GENERAL INFORMATION</h1>
-                  <section>
+                    <section>
                     <p className="u-content-width">
                         Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, 
                         the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system.
@@ -110,6 +111,7 @@ export default function General() {
             </section>
 
             <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
+            <AudioPopupTab />
         </main>
     );
 }

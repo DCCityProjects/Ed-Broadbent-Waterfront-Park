@@ -1,6 +1,7 @@
 import Back from "/public/images/svgs/icons/left.svg";
 import Ar from "/public/images/svgs/icons/ar.svg";
 import MapBack from "@/app/components/MapBack";
+import Link from "next/link";
 
 
 export default function MainEntrance({setContent}) {
@@ -19,7 +20,9 @@ export default function MainEntrance({setContent}) {
                     <MapBack />
                 </a>
 
-                <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
+                <Link href="/general" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
+
+                {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
 
                 <button type="button" className="popup__360">
                     <Ar />

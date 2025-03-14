@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Ar from "/public/images/svgs/icons/ar.svg";
 import MapBack from "@/app/components/MapBack";
 
@@ -21,7 +22,9 @@ export default function HumanRights({setContent}) {
                     <MapBack />
                 </a>
 
-                <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
+                {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
+                <Link href="/gardenOfHumanRights" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
+
 
                 <button type="button" className="popup__360">
                     <Ar />

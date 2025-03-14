@@ -13,6 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import AudioPopupTab from "@/app/components/AudioPopupTab";
 
 export default function AmphitheatreAndStage() {
     return (
@@ -68,7 +69,7 @@ export default function AmphitheatreAndStage() {
                 </section>
 
                 <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-
+                <AudioPopupTab />
             </section>
 
         </main>
