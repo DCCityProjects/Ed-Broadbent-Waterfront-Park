@@ -3,11 +3,13 @@ import MapBack from "@/app/components/MapBack";
 import Ar from "/public/images/svgs/icons/ar.svg";
 import Link from "next/link";
 
-export default function ParkingEntrance({setContent}) {
+export default function ParkingEntrance({setContent, setIsIconClicked, resetIcons, iconState}) {
 
     const handleClick = (e) => {
         e.preventDefault();
         setContent("navigation");
+        setIsIconClicked(true);
+        resetIcons(iconState);
     }
 
     return (

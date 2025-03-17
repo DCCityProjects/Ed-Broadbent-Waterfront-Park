@@ -21,6 +21,8 @@ import OrangeGarden from "./OrangeGarden";
 import MainEntrance from "./MainEntrance";
 import ParkingEntrance from "./ParkingEntrance";
 import AboutEdBroadbent from "./AboutEdBroadbent";
+import resetIcons from "@/app/functions/resetIcons";
+import { useSearchParams } from "next/navigation";
 
 const LeafletMap = dynamic(() => import('@/app/components/LeafletMap'), {
     loading: () => <p>loading...</p>,
@@ -34,7 +36,11 @@ export default function Map() {
     const popupRef = useRef(null);
     const tabRef = useRef(null);
     const [isClient, setIsClient] = useState(false);
+    const [isIconClicked, setIsIconClicked] = useState(false);
     const [isUp, setIsUp] = useState(false);
+    const [iconState, setIconState] = useState([]);
+
+
 
 
 
@@ -110,11 +116,11 @@ export default function Map() {
     
     return (
         <main>
-            {typeof window !== "undefined" && isClient && <LeafletMap setContent={setContent} popupRef={popupRef} />}
+            {typeof window !== "undefined" && isClient && <LeafletMap setContent={setContent} resetIcons={resetIcons} iconState={iconState} setIconState={setIconState} isIconClicked={isIconClicked} setIsIconClicked={setIsIconClicked} popupRef={popupRef} />}
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
-                <PopupContent setContent={setContent} />
+                <PopupContent setContent={setContent} setIsIconClicked={setIsIconClicked} resetIcons={resetIcons} iconState={iconState} />
             </section>
         </main>
     );

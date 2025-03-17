@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 
-export default function AboutEdBroadbent({setContent}) {
+export default function AboutEdBroadbent({setContent, setIsIconClicked, resetIcons, iconState}) {
 
     
 
@@ -14,13 +14,9 @@ export default function AboutEdBroadbent({setContent}) {
     const handleClick = (e) => {
         e.preventDefault();
         setContent("navigation");
-        // gsap.to(popupRef.current, {y: 0, duration: 1})
-        // console.log(popupRef.current)
-        // if(popupRef.current){
-        //     console.log("popupRef" + popupRef.current)
-        // } else {
-        //     console.log("no popupRef")
-        // }
+        setIsIconClicked(true);
+        resetIcons(iconState);
+
     }
 
     return (
@@ -29,7 +25,7 @@ export default function AboutEdBroadbent({setContent}) {
             <p>Ed Broadbent was a Canadian political icon born and raised in Oshawa with long-standing service to our community and across our nation.</p>
             <div className="popup__button-wrapper">
                 <a type="button" className="popup__back" onClick={(e)=>{handleClick(e)}}>
-                    <MapBack />
+                    <MapBack  />
                 </a>
 
                 {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}

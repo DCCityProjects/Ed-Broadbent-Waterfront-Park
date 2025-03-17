@@ -3,11 +3,13 @@ import Ar from "/public/images/svgs/icons/ar.svg";
 import Link from "next/link";
 import MapBack from "@/app/components/MapBack";
 
-export default function Amphitheatre({setContent}) {
+export default function Amphitheatre({setContent, setIsIconClicked, resetIcons, iconState}) {
 
     const handleClick = (e) => {
         e.preventDefault();
         setContent("navigation");
+        setIsIconClicked(true);
+        resetIcons(iconState);
     }
 
     return (
