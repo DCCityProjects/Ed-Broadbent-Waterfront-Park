@@ -1,13 +1,16 @@
 import Back from "/public/images/svgs/icons/left.svg";
 import Ar from "/public/images/svgs/icons/ar.svg";
 import MapBack from "@/app/components/MapBack";
+import Link from "next/link";
 
 
-export default function OrangeGarden({setContent}) {
+export default function OrangeGarden({setContent, setIsIconClicked, resetIcons, iconState}) {
 
     const handleClick = (e) => {
         e.preventDefault();
         setContent("navigation");
+        setIsIconClicked(true);
+        resetIcons(iconState);
     }
 
     return (

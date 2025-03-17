@@ -4,11 +4,13 @@ import MapBack from "@/app/components/MapBack";
 import Link from "next/link";
 
 
-export default function MainEntrance({setContent}) {
+export default function MainEntrance({setContent, setIsIconClicked, resetIcons, iconState}) {
 
     const handleClick = (e) => {
         e.preventDefault();
         setContent("navigation");
+        setIsIconClicked(true);
+        resetIcons(iconState);
     }
     
     return (

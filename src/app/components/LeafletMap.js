@@ -1,6 +1,6 @@
 "use client"
 
-import { ImageOverlay, MapContainer, Marker, Popup, Tooltip, useMapEvent } from "react-leaflet";
+import { ImageOverlay, MapContainer, Marker, Popup, Tooltip, useMap, useMapEvent } from "react-leaflet";
 import L, { marker } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useEffect, useRef, useState } from "react";
@@ -24,71 +24,124 @@ import MapPin from "./MapPin";
 import ZoomTool from "./ZoomTool";
 import gsap from "gsap";
 import RecenterAutomatically from "./RecenterAutomatically";
+import { useSearchParams } from "next/navigation";
 
 
-export default function LeafletMap({setContent, popupRef}) {
+export default function LeafletMap({setContent, popupRef, resetIcons, isIconClicked, setIsIconClicked, iconState, setIconState}) {
     const [zoom, setZoom] = useState(0);
     const [center, setCenter] = useState([4300, 550]);
     const [iconSize, setIconSize] = useState(50);
-    const [iconState, setIconState] = useState([
-        
-    ]);
+    // const [iconState, setIconState] = useState([]);
+    const [iconList, setIconList] = useState([]);
     const [offset, setOffset] = useState(0);
 
     // const [L, setL] = useState(null);
 
+    const searchParams = useSearchParams();
+
+    useEffect(()=>{
+        setIconState([
+            {icon: iconMainGrey, iconGrey:iconMainGrey, iconSelect: iconMainSelect, name: "Main Entrance", permanent: false},
+            {icon: iconMainGrey, iconGrey: iconMainGrey, iconSelect: iconMainSelect, name: "About Ed Broadbent", permanent: false},
+            {icon: iconAmphitheatreGrey, iconGrey: iconAmphitheatreGrey, iconSelect: iconAmphitheatreSelect, name: "Amphitheatre and Stage", permanent: false},
+            {icon: iconGardenHRGrey, iconGrey:iconGardenHRGrey, iconSelect: iconGardenHRSelect, name: "Garden of Human Rights", permanent: false},
+            {icon: iconOrangeGardenGrey, iconGrey: iconOrangeGardenGrey, iconSelect: iconOrangeGardenSelect, name: "Orange Garden", permanent: false},
+            {icon: iconMainGrey, iconGrey: iconMainGrey, iconSelect: iconMainSelect, name: "Parking Entrance", permanent: false}
+        ])
+    }, [setIconState])
+
+    useEffect(()=>{
+        const contentParam = searchParams.get("content");
+        if(contentParam){
+            setContent(contentParam)
+            const markerIndex = markers.findIndex(marker=>marker.url === contentParam);
+            if(markerIndex !== -1){
+                const marker = markers[markerIndex];
+                setCenter(marker.position);
+                handleClick(null, marker, markerIndex);
+            }
+            console.log(contentParam)
+        }
+    },[])
+
 
     const bounds = [[0, 0], [4779, 2868]];
-    // const panBounds = [[0,0], [4779, 2868]];
+    const panBounds = [[-1000, -1000], [5779, 3868]];
 
     // useEffect(()=>{
     //     console.log(offset)
     // },[offset])
 
+    
 
-    useEffect(()=>{
-        setIconState([
-            {icon: iconMainGrey, name: "Main Entrance", permanent: false},
-            {icon: iconMainGrey, name: "About Ed Broadbent", permanent: false},
-            {icon: iconAmphitheatreGrey, name: "Amphitheatre and Stage", permanent: false},
-            {icon: iconGardenHRGrey, name: "Garden of Human Rights", permanent: false},
-            {icon: iconOrangeGardenGrey, name: "Orange Garden", permanent: false},
-            {icon: iconMainGrey, name: "Parking Entrance", permanent: false}
-        ])
-    }, [])
 
     useEffect(()=>{
         console.log(iconState)
     }, [iconState])
 
+    // const resetIcons = ()=>{
+    //     iconState.map((icon, index)=>{
+    //         icon.icon = icon.iconGrey;
+    //     })
+    // }
+
+
     const handleClick = (e, marker, index) => {
         console.log(`clicked ${marker.name}`);
-        setContent(marker.url);
-        setIconState(prev=>{
-            const newState = [...prev];
-            newState[index] = {
-                ...newState[index],
-                permanent: true,
-                icon: marker.iconGrey?.icon === iconMainGrey ? iconMainSelect :
-                marker.iconGrey?.icon === iconAmphitheatreGrey ? iconAmphitheatreSelect :
-                marker.iconGrey?.icon === iconGardenHRGrey ? iconGardenHRSelect :
-                marker.iconGrey?.icon === iconOrangeGardenGrey ? iconOrangeGardenSelect :
-                marker.iconGrey?.icon
-            };
-            return newState;
-        })
-        gsap.to(popupRef.current, {y: 0, duration: 1})
-        console.log(popupRef.current)
-        if(popupRef.current){
-            console.log("popupRef" + popupRef.current)
+        if(iconState[index]){
+            console.log(iconState[index].icon);
+            setIsIconClicked(false);
+            resetIcons(iconState);
+
+            const newIconState = [...iconState];
+            if (iconState[index].icon === iconMainGrey) {
+                newIconState[index].icon = iconMainSelect;
+            } else if (iconState[index].icon === iconAmphitheatreGrey) { 
+                newIconState[index].icon = iconAmphitheatreSelect;
+            } else if (iconState[index].icon === iconGardenHRGrey) {
+                newIconState[index].icon = iconGardenHRSelect;
+            } else if (iconState[index].icon === iconOrangeGardenGrey) {
+                newIconState[index].icon = iconOrangeGardenSelect;
+            }
+
+            setIconState(newIconState);
+            // if(iconState[index].icon === iconMainGrey){
+            //     iconState[index].icon = iconMainSelect;
+            // } else if (iconState[index].icon === iconAmphitheatreGrey){ 
+            //     iconState[index].icon = iconAmphitheatreSelect;
+            // } else if (iconState[index].icon === iconGardenHRGrey){
+            //     iconState[index].icon = iconGardenHRSelect;
+            // } else if (iconState[index].icon === iconOrangeGardenGrey){
+            //     iconState[index].icon = iconOrangeGardenSelect;
+            // }
+            marker.zIndexOffset = 10000;
+
+            setContent(marker.url);
+            // setIconState(prev=>{
+            //     const newState = [...prev];
+            //     newState[index] = {
+            //         ...newState[index],
+            //         permanent: true,
+            //     };
+            //     return newState;
+            // })
+            gsap.to(popupRef.current, {y: 0, duration: 1})
+            console.log(popupRef.current)
+            if(popupRef.current){
+                console.log("popupRef" + popupRef.current)
+            } else {
+                console.log("no popupRef")
+            }
         } else {
-            console.log("no popupRef")
+            console.log("No icon state")
         }
+        
     }
 
     const markers = [
         {
             position: [4300,550],
+            zIndexOffset: 1000,
             iconGrey: iconMainGrey,
             iconSelect: iconMainSelect,
             name: "Main Entrance",
@@ -96,6 +149,7 @@ export default function LeafletMap({setContent, popupRef}) {
         },
         {
             position: [4035,570],
+            zIndexOffset: 1000,
             iconGrey: iconMainGrey,
             iconSelect: iconMainSelect,
             name: "About Ed Broadbent",
@@ -103,6 +157,7 @@ export default function LeafletMap({setContent, popupRef}) {
         },
         {
             position: [3500,954],
+            zIndexOffset: 1000,
             iconGrey: iconAmphitheatreGrey,
             iconSelect: iconAmphitheatreSelect,
             name: "Amphitheatre and Stage",
@@ -110,6 +165,7 @@ export default function LeafletMap({setContent, popupRef}) {
         },
         {
             position: [3200,980],
+            zIndexOffset: 1000,
             iconGrey: iconGardenHRGrey,
             iconSelect: iconGardenHRSelect,
             name: "Garden of Human Rights",
@@ -117,6 +173,7 @@ export default function LeafletMap({setContent, popupRef}) {
         },
         {
             position: [920,1680],
+            zIndexOffset: 1000,
             iconGrey: iconOrangeGardenGrey,
             iconSelect: iconOrangeGardenSelect,
             name: "Orange Garden",
@@ -124,21 +181,35 @@ export default function LeafletMap({setContent, popupRef}) {
         },
         {
             position: [465,1570],
+            zIndexOffset: 1000,
             iconGrey: iconMainGrey,
             iconSelect: iconMainSelect,
             name: "Parking Entrance",
             url: "parking-entrance"
         }
     ];
+
+    function UpdateZoom ({center, zoom}) {
+        const map = useMap();
+
+        useEffect(()=>{
+            if(!isIconClicked){
+                map.flyTo(center, zoom);
+                setIsIconClicked(true);
+            }
+        }, [map, center, zoom])
+        return null
+    }
+    
     // maxBounds={panBounds}
     return (
         <div id="map">
-            <MapContainer crs={L.CRS.Simple} center={center} zoom={zoom} minZoom={-3} zoomControl={false} closePopupOnClick={false}>
-                {/* <ZoomTool setIconSize={setIconSize} setOffset={setOffset} /> */}
+            <MapContainer crs={L.CRS.Simple} center={center} zoomDelta={0.8} maxBounds={panBounds} zoomSnap={0} zoom={zoom} minZoom={-3} zoomControl={false} closePopupOnClick={false}>
+                {/* <ZoomTool setZoom={setZoom} /> */}
+                <UpdateZoom center={center} zoom={zoom} />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
                 {markers.map((marker, index) =>{
                     return (
-                        
                         <Marker 
                             key={index}
                             position={marker.position}
@@ -146,11 +217,12 @@ export default function LeafletMap({setContent, popupRef}) {
                             iconSize={[iconSize, iconSize]}
                             eventHandlers={{
                                 click: (e)=>{
+                                    setCenter(marker.position);
                                     handleClick(e, marker, index);    
-                                    setCenter(marker.position);                                    
+                                    // setZoom(-1);                        
                                 }
                             }}
-                            zIndexOffset={9999}>
+                            zIndexOffset={marker.zIndexOffset}>
                             
                             <Tooltip
                             className="map-pin"
