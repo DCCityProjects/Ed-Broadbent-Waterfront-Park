@@ -17,7 +17,6 @@ export default function LandingPage() {
 		const hasSeenModal = sessionStorage.getItem("modalSeen");
 	
 		if (!hasSeenModal) {
-			// Show modal after 1 second only if it's the user's first visit in the session
 			const showTimer = setTimeout(() => {
 				setShowModal(true);
 			}, 1000);
@@ -100,6 +99,7 @@ export default function LandingPage() {
 					</ul>
 				</nav>
 			</section>
+			{/* ADD THE AUDIO PATH HERE LATER */}
 			<AudioPopupTab />
 		</main>
 	);

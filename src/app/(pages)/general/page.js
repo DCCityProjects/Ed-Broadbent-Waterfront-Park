@@ -72,7 +72,7 @@ export default function General() {
                             <Image src="/images/general/slider2.jpg" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider2.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/general/slider3.jpg" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider3.jpg")} ></Image>
+                            <Image src="/images/general/slider3.JPG" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider3.JPG")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
                             <Image src="/images/general/slider4.jpg" width={0} height={0} alt="slider 4" sizes="33vw" className="slider__image" onClick={() => openModal("/images/general/slider4.jpg")} ></Image>
@@ -111,7 +111,7 @@ export default function General() {
             </section>
 
             <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-            <AudioPopupTab />
+            <AudioPopupTab audioSrc="/audio/general-info.mp3" />
         </main>
     );
 }

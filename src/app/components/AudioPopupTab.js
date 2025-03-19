@@ -1,76 +1,222 @@
-"use client"
-
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import PopupTab from "/public/images/svgs/popup-tab_v1.0.0.svg";
 import Play from "/public/images/svgs/icons/play.svg";
+import Pause from "/public/images/svgs/icons/pause.svg";
 import Restart from "/public/images/svgs/icons/restart.svg";
 import "/src/app/css/audiopopup.css";
-import "/src/app/css/popup.css"
+import "/src/app/css/popup.css";
 import gsap from "gsap";
 import Draggable from "gsap/dist/Draggable";
 
-export default function AudioPopupTab() {
-    const [isClient, setIsClient] = useState(false);
-    const [popupHeight, setPopupHeight] = useState(0);
-    const [isUp, setIsUp] = useState(false);
+export default function AudioPopupTab({ audioSrc }) {
+  const [isClient, setIsClient] = useState(false);
+  const [popupHeight, setPopupHeight] = useState(0);
+  const [isUp, setIsUp] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
+  const tabRef = useRef(null);
+  const popupRef = useRef(null);
+  const audioRef = useRef(null);
+  const thumbRef = useRef(null);
+  const fillRef = useRef(null);
+  const trackRef = useRef(null);
 
-    const tabRef = useRef(null);
-    const popupRef = useRef(null);
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
+  useEffect(() => {
+    if (popupRef.current) {
+      setPopupHeight(popupRef.current.clientHeight);
+    }
+  }, []);
 
-    useEffect(()=>{
-        setIsClient(true);
-    }, [])
+  useEffect(() => {
+    if (!isClient) return;
 
-    useEffect(()=>{
-        if(popupRef.current){
-            setPopupHeight(popupRef.current.clientHeight)
+    gsap.registerPlugin(Draggable);
+
+    let containerDraggable = null;
+
+    if (popupRef.current && tabRef.current) {
+      containerDraggable = Draggable.create(popupRef.current, {
+        type: "y",
+        inertia: true,
+        bounds: { minY: 0, maxY: popupHeight },
+        edgeResistance: 0.5,
+        dragClickables: true,
+        onRelease: function () {
+          const y = this.y;
+
+          if (y <= popupHeight / 2) {
+            gsap.to(popupRef.current, { y: 0 });
+            setIsUp(true);
+          } else {
+            gsap.to(popupRef.current, { y: popupHeight });
+            setIsUp(false);
+          }
         }
-    }, [])
+      })[0];
+    }
 
-    useEffect(()=>{
-        gsap.registerPlugin(Draggable);
-        console.log("wheee")
-        console.log(tabRef)
-        if(popupRef.current && tabRef.current){
-            console.log(popupHeight)
-            // const chevron = document.querySelector("#popup-tab__chevron");
+    const track = trackRef.current;
+    const fill = fillRef.current;
+    const thumb = thumbRef.current;
 
-            Draggable.create(popupRef.current, {
-                type: "y",
-                inertia: true,
-                bounds: {minY: 0, maxY: popupHeight},
-                edgeResistance: 0.5,
-                onRelease: function(){
-                    console.log(this.y)
-                    const y = this.y;
-                    //todo TO DO ADD FLAG TO CHECK IF IT IS UP OR DOWN
-                    if(y <= popupHeight/2){
-                        //* to  make it go to the top
-                        gsap.to(popupRef.current, {y: 0})
-                        setIsUp(true);
-                        // gsap.to("#popup-tab__chevron", {rotateY: 180})
-                    } else {
-                        //* to  make it go to the bottom
-                        gsap.to(popupRef.current, {y: popupHeight})
-                        setIsUp(false);
-                    }
-                }
-            })
-        }
+    if (track && fill && thumb) {
+      const createThumbDraggable = () => {
+        const trackWidth = track.clientWidth;
 
-    }, [isClient, popupHeight]);
-    
-    return (
-        <div className="audio-popup" ref={popupRef}>
-            <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef} />
-            <div className="audio-popup__wrapper">
-                <Play className="audio-popup__icon" />
-                <Restart className="audio-popup__icon" />
-            </div>
+        Draggable.create(thumb, {
+          type: "x",
+          bounds: { minX: 0, maxX: trackWidth },
 
+          onPress: function () {
+            if (containerDraggable) {
+              containerDraggable.disable();
+            }
+          },
+
+          onDrag: function () {
+            const trackWidth = track.clientWidth;
+            const percentage = this.x / trackWidth;
+
+            fill.style.width = `${percentage * 100}%`;
+
+            const audio = audioRef.current;
+            if (audio && audio.duration) {
+              audio.currentTime = percentage * audio.duration;
+            }
+          },
+
+          onRelease: function () {
+            if (containerDraggable) {
+              containerDraggable.enable();
+            }
+
+            const trackWidth = track.clientWidth;
+            const percentage = this.x / trackWidth;
+
+            const audio = audioRef.current;
+            if (audio && audio.duration) {
+              audio.currentTime = percentage * audio.duration;
+            }
+          }
+        });
+      };
+
+      createThumbDraggable();
+
+      const handleResize = () => {
+        Draggable.get(thumb)?.kill();
+        createThumbDraggable();
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, [isClient, popupHeight]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    const track = trackRef.current;
+    const fill = fillRef.current;
+    const thumb = thumbRef.current;
+
+    if (!audio || !track || !fill || !thumb) return;
+
+    const updateProgress = () => {
+      const trackWidth = track.clientWidth;
+
+      if (audio.duration) {
+        const percentage = audio.currentTime / audio.duration;
+
+        fill.style.width = `${percentage * 100}%`;
+
+        gsap.set(thumb, {
+          x: percentage * trackWidth
+        });
+      }
+
+      if (isPlaying) {
+        requestAnimationFrame(updateProgress);
+      }
+    };
+
+    if (isPlaying) {
+      requestAnimationFrame(updateProgress);
+    }
+
+    return () => cancelAnimationFrame(updateProgress);
+  }, [isPlaying]);
+
+  const handlePlay = () => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    if (audio.paused) {
+      audio.play();
+      setIsPlaying(true);
+    } else {
+      audio.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleRestart = () => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    audio.currentTime = 0;
+
+    if (!audio.paused) {
+      audio.play();
+      setIsPlaying(true);
+    }
+  };
+
+  return (
+    <div className="audio-popup" ref={popupRef}>
+      <PopupTab
+        className="popup-tab"
+        preserveAspectRatio="xMidYMin"
+        ref={tabRef}
+      />
+
+      <audio ref={audioRef} src={audioSrc} preload="metadata" />
+
+      <div className="audio-popup__wrapper">
+        {isPlaying ? (
+          <Pause
+            className="audio-popup__icon"
+            onClick={handlePlay}
+          />
+        ) : (
+          <Play
+            className="audio-popup__icon"
+            onClick={handlePlay}
+          />
+        )}
+
+        <div className="audio-popup__progress-bar">
+          <div className="progress-track" ref={trackRef}>
+            <div className="progress-fill" ref={fillRef}></div>
+            <div className="progress-thumb" ref={thumbRef}></div>
+          </div>
         </div>
-    );
+
+        <Restart
+          className="audio-popup__icon"
+          onClick={handleRestart}
+        />
+      </div>
+    </div>
+  );
 }

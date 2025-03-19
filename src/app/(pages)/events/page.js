@@ -82,7 +82,8 @@ export default function Events() {
                 </Swiper>
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
             </section>
-            <AudioPopupTab />
+            {/* Add the audio path here /audio/your-path.mp3 */}
+            <AudioPopupTab audioSrc="" />
         </main>
     );
 }

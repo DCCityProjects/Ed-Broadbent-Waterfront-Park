@@ -19,7 +19,7 @@ export default function AmphitheatreAndStage() {
     return (
         <main>
             <section className="page-banner">
-                <Image src="/images/amphitheatreAndStage/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image"></Image>
+                <Image src="/images/amphitheatreAndStage/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="main image 1"></Image>
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Amphitheatre and Stage</h1>
@@ -39,22 +39,22 @@ export default function AmphitheatreAndStage() {
                         className="mySwiper slider-internal"
                     >
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 2" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 3" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 4" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 5" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 6" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider6.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider6.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 7" ></Image>
                         </SwiperSlide>
                     </Swiper>
                 </section>
@@ -69,7 +69,7 @@ export default function AmphitheatreAndStage() {
                 </section>
 
                 <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-                <AudioPopupTab />
+                <AudioPopupTab audioSrc="/audio/amphitheatre-new.mp3" />
             </section>
 
         </main>

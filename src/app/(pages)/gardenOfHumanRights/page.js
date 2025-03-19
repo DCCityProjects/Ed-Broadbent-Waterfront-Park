@@ -38,7 +38,7 @@ export default function GardenOfHumanRights() {
     return (
         <main>
             <section className="page-banner">
-                <Image src="/images/gardenOfHumanRights/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image"></Image>
+                <Image src="/images/gardenOfHumanRights/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="main image 1"></Image>
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Garden of Human Rights</h1>
@@ -63,19 +63,19 @@ export default function GardenOfHumanRights() {
                         className="mySwiper slider-internal"
                     >
                         <SwiperSlide>
-                            <Image src="/images/gardenOfHumanRights/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/gardenOfHumanRights/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 2" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/gardenOfHumanRights/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/gardenOfHumanRights/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 3" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/gardenOfHumanRights/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/gardenOfHumanRights/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 4" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/gardenOfHumanRights/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/gardenOfHumanRights/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 5" ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/gardenOfHumanRights/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" ></Image>
+                            <Image src="/images/gardenOfHumanRights/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 6" ></Image>
                         </SwiperSlide>
                     </Swiper>
                     <p className="u-content-width">A variety of seating in the garden makes this a unique place for quiet reflection and contemplation.</p>
@@ -87,7 +87,7 @@ export default function GardenOfHumanRights() {
                 </section>
 
                 <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-                <AudioPopupTab />
+                <AudioPopupTab audioSrc="/audio/gardenOfHumanRights.mp3" />
             </section>
 
         </main>
