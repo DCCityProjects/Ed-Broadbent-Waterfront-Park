@@ -77,7 +77,7 @@ export default function InternalLayout({ children }) {
                     <li><Link href="/general" className="menu-link" onClick={closeMenu}>General information</Link></li>
                     <li><Link href="/aboutEdBroadbent" className="menu-link" onClick={closeMenu}>About Ed Broadbent</Link></li>
                     <li><Link href="/events" className="menu-link" onClick={closeMenu}>Events & Activities</Link></li>
-                    <li><Link href="/humanRights" className="menu-link" onClick={closeMenu}>Garden of Human Rights</Link></li>
+                    <li><Link href="/gardenOfHumanRights" className="menu-link" onClick={closeMenu}>Garden of Human Rights</Link></li>
                     <li><Link href="/amphitheater" className="menu-link" onClick={closeMenu}>Amphitheater</Link></li>
                     <li><Link href="/orangeGarden" className="menu-link" onClick={closeMenu}>Orange Garden</Link></li>
                 </ul>
