@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139.87 139.87">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #faa02a;
+      }
+    </style>
+  </defs>
+  <g id="pause">
+    <g>
+      <rect class="cls-2" width="139.87" height="139.87" rx="27.65" ry="27.65"/>
+      <g id="pause-2" data-name="pause">
+        <rect class="cls-1" x="43.77" y="26.08" width="17.92" height="89.07" rx="6.17" ry="6.17"/>
+        <rect class="cls-1" x="80.18" y="26.08" width="17.92" height="89.07" rx="6.18" ry="6.18"/>
+      </g>
+    </g>
+  </g>
+</svg>
