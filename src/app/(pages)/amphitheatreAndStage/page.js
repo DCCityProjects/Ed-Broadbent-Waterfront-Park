@@ -14,10 +14,36 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import AudioPopupTab from "@/app/components/AudioPopupTab";
+import { useState } from "react";
 
 export default function AmphitheatreAndStage() {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedImage, setSelectedImage] = useState("");
+    
+    const openModal = (imageSrc) => {
+        setSelectedImage(imageSrc);
+        setModalOpen(true);
+    };
+    
+    const closeModal = () => {
+        setModalOpen(false);
+        setSelectedImage("");
+    };
+
     return (
         <main>
+            {/* Image Modal */}
+            {modalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-container-general">
+                        <button className="modal-close-button" onClick={closeModal}>
+                            <Image src="/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
+                        </button>
+                        <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
+                    </div>
+                </div>
+            )}
+
             <section className="page-banner">
                 <Image src="/images/amphitheatreAndStage/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="main image 1"></Image>
             </section>
@@ -39,22 +65,22 @@ export default function AmphitheatreAndStage() {
                         className="mySwiper slider-internal"
                     >
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 2" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 2" onClick={() => openModal("/images/amphitheatreAndStage/slider1.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 3" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 3" onClick={() => openModal("/images/amphitheatreAndStage/slider2.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 4" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 4" onClick={() => openModal("/images/amphitheatreAndStage/slider3.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 5" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 5" onClick={() => openModal("/images/amphitheatreAndStage/slider4.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 6" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 6" onClick={() => openModal("/images/amphitheatreAndStage/slider5.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/amphitheatreAndStage/slider6.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 7" ></Image>
+                            <Image src="/images/amphitheatreAndStage/slider6.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 7" onClick={() => openModal("/images/amphitheatreAndStage/slider6.jpg")} ></Image>
                         </SwiperSlide>
                     </Swiper>
                 </section>
