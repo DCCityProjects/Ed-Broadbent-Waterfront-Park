@@ -16,7 +16,7 @@ import AudioPopupTab from "@/app/components/AudioPopupTab";
 
 export default function Events() {
     const [modalOpen, setModalOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("");
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const openModal = (imageSrc) => {
         setSelectedImage(imageSrc);
@@ -25,7 +25,7 @@ export default function Events() {
 
     const closeModal = () => {
         setModalOpen(false);
-        setSelectedImage("");
+        setSelectedImage(null);
     };
 
     return (
@@ -83,7 +83,7 @@ export default function Events() {
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
             </section>
             {/* Add the audio path here /audio/your-path.mp3 */}
-            <AudioPopupTab audioSrc="" />
+            <AudioPopupTab />
         </main>
     );
 }

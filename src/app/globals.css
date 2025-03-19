@@ -161,6 +161,18 @@ p {
     position: relative;
 }
 
+@media (max-width: 414px) {
+    .menu-link {
+        display: inline-block;
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: var(--color--secondary);
+        margin: 15px 0;
+        position: relative;
+    }
+}
+
 .menu-link::after {
     content: "";
     display: block;
@@ -173,4 +185,8 @@ p {
 /* Disable pointer events on inactive elements */
 .inactive {
     pointer-events: none;
+}
+
+.no-scroll {
+    overflow: hidden;
 }

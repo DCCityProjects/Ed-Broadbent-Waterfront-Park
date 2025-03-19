@@ -8,8 +8,24 @@ export default function InternalLayout({ children }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
-        setMenuOpen((prev) => !prev);
-    };
+        setMenuOpen((prev) => {
+            const isOpening = !prev;
+
+                if (isOpening) {
+                    document.body.classList.add("no-scroll");
+                } else {
+                    document.body.classList.remove("no-scroll");
+                }
+
+                return isOpening;
+            });
+        };
+
+        const closeMenu = () => {
+            document.body.classList.remove("no-scroll");
+            setMenuOpen(false);
+        };
+
 
     return (
         <main>
@@ -56,13 +72,14 @@ export default function InternalLayout({ children }) {
             {/* Slide-in Menu */}
             <nav className={`slide-menu ${menuOpen ? "open" : ""}`}>
 			<ul className="menu-list">
-                    <li><Link href="/" className="menu-link" onClick={() => setMenuOpen(false)}>Home Page</Link></li>
-                    <li><Link href="/map" className="menu-link" onClick={() => setMenuOpen(false)}>Go to Map</Link></li>
-                    <li><Link href="/general" className="menu-link" onClick={() => setMenuOpen(false)}>General information</Link></li>
-                    <li><Link href="/aboutEdBroadbent" className="menu-link" onClick={() => setMenuOpen(false)}>About Ed Broadbent</Link></li>
-                    <li><Link href="/humanRights" className="menu-link" onClick={() => setMenuOpen(false)}>Garden of Human Rights</Link></li>
-                    <li><Link href="/amphitheater" className="menu-link" onClick={() => setMenuOpen(false)}>Amphitheater</Link></li>
-                    <li><Link href="/orangeGarden" className="menu-link" onClick={() => setMenuOpen(false)}>Orange Garden</Link></li>
+                    <li><Link href="/" className="menu-link" onClick={closeMenu}>Home Page</Link></li>
+                    <li><Link href="/map" className="menu-link" onClick={closeMenu}>Go to Map</Link></li>
+                    <li><Link href="/general" className="menu-link" onClick={closeMenu}>General information</Link></li>
+                    <li><Link href="/aboutEdBroadbent" className="menu-link" onClick={closeMenu}>About Ed Broadbent</Link></li>
+                    <li><Link href="/events" className="menu-link" onClick={closeMenu}>Events & Activities</Link></li>
+                    <li><Link href="/humanRights" className="menu-link" onClick={closeMenu}>Garden of Human Rights</Link></li>
+                    <li><Link href="/amphitheater" className="menu-link" onClick={closeMenu}>Amphitheater</Link></li>
+                    <li><Link href="/orangeGarden" className="menu-link" onClick={closeMenu}>Orange Garden</Link></li>
                 </ul>
             </nav>
 
