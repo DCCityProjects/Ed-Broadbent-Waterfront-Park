@@ -28,8 +28,7 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
           GyroscopePlugin,
         ],
         navbar: [
-          "gyroscope",
-          "fullscreen",
+          "gyroscope"
         ]
       });
 

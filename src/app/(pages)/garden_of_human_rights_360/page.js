@@ -2,6 +2,7 @@
 
 import Head from 'next/head';
 import PhotoSphereViewerComponent from '../../components/PhotoSphereViewer';
+import PanoramaPopup from '@/app/components/PanoramaPopup';
 
 export default function GardenOfHumanRights360() {
   const imageUrl = '/images/360/garden-of-human-rights.JPG';
@@ -12,7 +13,7 @@ export default function GardenOfHumanRights360() {
         <title>360 Viewer</title>
         <meta name="description" content="360-degree viewer using Photo-Sphere-Viewer" />
       </Head>
-
+      <PanoramaPopup />
       <PhotoSphereViewerComponent imageUrl={imageUrl} />
     </div>
   );

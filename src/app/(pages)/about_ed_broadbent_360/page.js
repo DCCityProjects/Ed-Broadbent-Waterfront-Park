@@ -2,6 +2,7 @@
 
 import Head from 'next/head';
 import PhotoSphereViewerComponent from '../../components/PhotoSphereViewer';
+import PanoramaPopup from '@/app/components/PanoramaPopup';
 
 
 export default function About_ed_broadbent_360() {
@@ -14,6 +15,8 @@ export default function About_ed_broadbent_360() {
           <meta name="description" content="360-degree viewer using Photo-Sphere-Viewer" />
         </Head>
   
+        <PanoramaPopup />
+
         <PhotoSphereViewerComponent imageUrl={imageUrl} />
       </div>
     );

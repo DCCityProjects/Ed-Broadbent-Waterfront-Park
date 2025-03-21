@@ -1,0 +1,33 @@
+.panorama-popup{
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(0, 20, 68, 0.7);
+    position: absolute;
+    z-index: 9999999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.panorama-popup__title{
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 32px;
+}
+
+.panorama-popup__icon{
+    width: 91px;
+    height: 91px;
+    margin-bottom: 44px;
+}
+
+.panorama-popup__description{
+    margin-top: 16px;
+    text-align: center;
+    color: white;
+    font-size: 1.25rem;
+    max-width: 80%;
+}
