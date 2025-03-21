@@ -46,7 +46,7 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
   }, [imageUrl, isMounted]);
 
 
-  return <div ref={viewerRef} style={{ width: '100%', height: '100vh' }} />;
+  return <div ref={viewerRef} style={{ width: '100%', height: '100dvh' }} />;
 };
 
 export default PhotoSphereViewerComponent;
