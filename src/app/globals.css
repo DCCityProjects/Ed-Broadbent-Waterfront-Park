@@ -195,6 +195,7 @@ p {
     text-align: left;
     padding: 0;
     margin-right: 4rem;
+    /* overflow-y: scroll; */
 }
 
 .menu-link {
@@ -203,7 +204,7 @@ p {
     font-weight: bold;
     text-decoration: none;
     color: var(--color--secondary);
-    margin: 25px 0;
+    margin: 16px 0;
     position: relative;
 }
 
