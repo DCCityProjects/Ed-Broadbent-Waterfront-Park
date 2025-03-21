@@ -15,8 +15,7 @@
 }
 
 .slider-internal{
-    margin-top: 17px;
-    margin-bottom: 23px;
+    margin: 2.5rem 0rem;
 }
 
 .swiper-button-next{
@@ -27,7 +26,6 @@
     background-size: 100% auto;
     width: 25px ;
     height: 25px;
-    
 }
 
 .swiper-button-prev{
