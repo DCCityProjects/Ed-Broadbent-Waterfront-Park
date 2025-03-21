@@ -32,7 +32,7 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
           "fullscreen",
         ]
       });
-      
+
     } else {
       viewerInstance.current.setPanorama(imageUrl);
     }
