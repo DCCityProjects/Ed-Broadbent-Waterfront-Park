@@ -24,8 +24,8 @@ export default function OrangeGarden({setContent, setIsIconClicked, resetIcons, 
                 <a type="button" className="popup__back" onClick={(e)=>{handleClick(e)}}>
                     <MapBack />
                 </a>
-
-                <button type="button" className="popup__read-more button-color-primary">READ MORE</button>
+                <Link href="/orangeGarden" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
+                
 
                 {/* <Link className="popup__360" href={`panorama_view?location=/orange-garden`}> */}
                 <Link className="popup__360" href={`/orange_garden_360`}>
