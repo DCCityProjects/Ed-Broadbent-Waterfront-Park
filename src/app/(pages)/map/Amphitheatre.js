@@ -30,11 +30,9 @@ export default function Amphitheatre({setContent, setIsIconClicked, resetIcons, 
                 {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
                 <Link href="/amphitheatreAndStage" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
 
-
-                <Link href="/amphitheatre360">
-                    <button type="button" className="popup__360">
-                        <Ar />
-                    </button>
+                {/* <Link className="popup__360" href={`panorama_view?location=/amphitheatre-and-stage`}> */}
+                <Link className="popup__360" href={`/amphitheatre_and_stage_360`}>
+                    <Ar />
                 </Link>
             </div>
         </>

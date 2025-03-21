@@ -1,16 +1,19 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Viewer } from 'photo-sphere-viewer'; 
-import 'photo-sphere-viewer/dist/photo-sphere-viewer.css';
+import { Viewer } from '@photo-sphere-viewer/core'; 
+// import 'photo-sphere-viewer/dist/photo-sphere-viewer.css';
+import '@photo-sphere-viewer/core/index.css';
+
+// import '@photo-sphere-viewer/core/style.css';
 
 const PhotoSphereViewerComponent = ({ imageUrl }) => {
   const viewerRef = useRef(null);
   const viewerInstance = useRef(null);
   const [isMounted, setIsMounted] = useState(false);
-
+  
   useEffect(() => {
-    setIsMounted(true); // Ensures this runs after the component is mounted
+    setIsMounted(true);
   }, []);
 
   useEffect(() => {

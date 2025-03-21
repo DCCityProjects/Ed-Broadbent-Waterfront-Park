@@ -5,7 +5,7 @@
 
 .about-subsection__title{
     background-color: white;
-    font-size: 3rem;
+    font-size: var(--font-size--medium);
     font-weight: 700;
     align-self: flex-start;
 }

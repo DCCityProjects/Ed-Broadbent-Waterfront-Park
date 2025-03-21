@@ -23,9 +23,10 @@ export default function ParkingEntrance({setContent, setIsIconClicked, resetIcon
                 <Link href="/general" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
                 {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
 
-                <button type="button" className="popup__360">
+                {/* <Link className="popup__360" href={`panorama_view?location=/parking-entrance`}> */}
+                <Link className="popup__360" href={`/parking_entrance_360`}>
                     <Ar />
-                </button>
+                </Link>
             </div>
         </>
     );

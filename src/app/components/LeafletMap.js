@@ -156,7 +156,7 @@ export default function LeafletMap({setContent, popupRef, resetIcons, isIconClic
             url: "about-ed-broadbent"
         },
         {
-            position: [3500,954],
+            position: [3520,947],
             zIndexOffset: 1000,
             iconGrey: iconAmphitheatreGrey,
             iconSelect: iconAmphitheatreSelect,

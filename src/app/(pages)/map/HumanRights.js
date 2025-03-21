@@ -27,11 +27,9 @@ export default function HumanRights({setContent, setIsIconClicked, resetIcons, i
                 {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
                 <Link href="/gardenOfHumanRights" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
 
-
-                <Link href="/humanRights360">
-                    <button type="button" className="popup__360">
-                        <Ar />
-                    </button>
+                {/* <Link className="popup__360" href={`/panorama_view?location=/garden-of-human-rights`}> */}
+                <Link className="popup__360" href={`/garden_of_human_rights_360`}>
+                    <Ar />
                 </Link>
             </div>
         </>

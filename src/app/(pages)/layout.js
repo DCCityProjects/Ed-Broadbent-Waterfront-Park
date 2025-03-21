@@ -1,11 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import MapBack from "../components/MapBack";
 
 export default function InternalLayout({ children }) {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isInternalPage, setIsInternalPage] = useState(false);
+    const [is360View, setIs360View] = useState(false);
+    const [previousPage, setPreviousPage] = useState("");
+    const [page360, setPage360] = useState("");
+
+    const pathname = usePathname();
+    // console.log(pathname)
+
+    useEffect(()=>{
+        if (pathname === "/general" || pathname === "/aboutEdBroadbent" || pathname === "/events" || pathname === "/gardenOfHumanRights" || pathname === "/amphitheater" || pathname === "/orangeGarden") {
+            setIsInternalPage(true);
+        }
+    }, [pathname]);
+
+    // useEffect()
 
     const toggleMenu = () => {
         setMenuOpen((prev) => {
@@ -21,11 +38,61 @@ export default function InternalLayout({ children }) {
             });
         };
 
-        const closeMenu = () => {
-            document.body.classList.remove("no-scroll");
-            setMenuOpen(false);
-        };
+    const closeMenu = () => {
+        document.body.classList.remove("no-scroll");
+        setMenuOpen(false);
+    };
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        
+    }
+
+    useEffect(()=>{
+        if(pathname === "/main_entrance_360" || pathname === "/about_ed_broadbent_360" || pathname === "/amphitheatre_and_stage_360" || pathname === "/garden_of_human_rights_360" || pathname === "/orange_garden_360" || pathname === "/parking_entrance_360"){ 
+            setIs360View(true);
+        } else {
+            setIs360View(false);
+        }
+    }, [pathname])
+
+    useEffect(()=>{
+        if(pathname === "/main_entrance_360"){ 
+            setPreviousPage("/map/?content=main-entrance");
+        } else if (pathname === "/about_ed_broadbent_360") {
+            setPreviousPage("/map/?content=about-ed-broadbent");
+        } else if (pathname === "/amphitheatre_and_stage_360") {
+            setPreviousPage("/map/?content=amphitheatre-and-stage");
+        } else if (pathname === "/garden_of_human_rights_360") {
+            setPreviousPage("/map/?content=garden-of-human-rights");
+        } else if (pathname === "/orange_garden_360") {
+            setPreviousPage("/map/?content=orange-garden");
+        } else if (pathname === "parking_entrance_360") {
+            setPreviousPage("/map/?content=parking-entrance");
+        } else {
+            setPreviousPage("/");
+        }
+    }, [pathname])
+
+    useEffect(()=>{
+        console.log(is360View)
+    }, [is360View])
+
+    const navigateAR = () => {
+        if(pathname === "general"){
+            page360 = "/main_entrance_360";
+        } else if (pathname === "/aboutEdBroadbent") {
+            page360 = "/about_ed_broadbent_360";
+        } else if (pathname === "/events") {
+            page360 = "/amphitheatre_and_stage_360";
+        } else if (pathname === "/gardenOfHumanRights") {
+            page360 = "/garden_of_human_rights_360";
+        } else if (pathname === "/orangeGarden") {
+            page360 = "/orange_garden_360";
+        } else {
+            page360 = "";
+        }
+    }
 
     return (
         <main>
@@ -40,29 +107,36 @@ export default function InternalLayout({ children }) {
 								alt="Hamburger Menu"
 								width={51}
 								height={51}
-								className={`nav__image ${menuOpen ? "fade-out inactive" : "fade-in"}`}
-								style={{ position: menuOpen ? "absolute" : "relative" }}
+								className={`nav__image nav__image--burger ${is360View ? "hide" : "show"}`}
 							/>
 
-                            {/* Close Icon - Initially hidden, fades in when menu opens */}
-                            <Image
-                                src="/images/svgs/icons/close-landing.svg"
-                                alt="Close Menu"
-                                width={51}
-                                height={51}
-                                className={`nav__image close-icon ${menuOpen ? "fade-in move-right active" : "fade-out move-back inactive"}`}
-                                style={{ position: "absolute", transition: "transform 0.3s ease-in-out, opacity 0s ease-in-out" }}
-                            />
                         </div>
                     </li>
-					<li className="nav__item">
-						<Link href="/" className={`nav__link ${menuOpen ? "inactive" : ""}`}>
+                    <li className="nav__item" >
+                        <Link href={page360}>
+                            <Image
+                                src="/images/svgs/icons/ar.svg"
+                                alt="AR Icon"
+                                width={51}
+                                height={51}
+                                className={`nav__image nav__image--ar ${is360View ? "hide" : "show"} ${isInternalPage ? "show" : "hide"}`}
+                            />
+                        </Link>
+
+                    </li>
+                    <li className={`nav__item `}>
+                        <Link className={`nav__image ${is360View ? "show" : "hide"}`} href={previousPage}>
+                            <MapBack />
+                        </Link>
+                    </li>
+					<li className="nav__item nav__item--logo">
+						<Link href="/" className={`nav__link`}>
 							<Image 
 								src="/images/svgs/icons/logo.svg" 
 								alt="Navigation Logo" 
 								width={51}
 								height={51}
-								className={`nav__image logo-image ${menuOpen ? "fade-out" : "fade-in"}`}
+								className={`nav__image logo-image`}
 							/>
 						</Link>
 					</li>
@@ -70,18 +144,31 @@ export default function InternalLayout({ children }) {
             </header>
 
             {/* Slide-in Menu */}
-            <nav className={`slide-menu ${menuOpen ? "open" : ""}`}>
-			<ul className="menu-list">
-                    <li><Link href="/" className="menu-link" onClick={closeMenu}>Home Page</Link></li>
-                    <li><Link href="/map" className="menu-link" onClick={closeMenu}>Go to Map</Link></li>
-                    <li><Link href="/general" className="menu-link" onClick={closeMenu}>General information</Link></li>
-                    <li><Link href="/aboutEdBroadbent" className="menu-link" onClick={closeMenu}>About Ed Broadbent</Link></li>
-                    <li><Link href="/events" className="menu-link" onClick={closeMenu}>Events & Activities</Link></li>
-                    <li><Link href="/gardenOfHumanRights" className="menu-link" onClick={closeMenu}>Garden of Human Rights</Link></li>
-                    <li><Link href="/amphitheater" className="menu-link" onClick={closeMenu}>Amphitheater</Link></li>
-                    <li><Link href="/orangeGarden" className="menu-link" onClick={closeMenu}>Orange Garden</Link></li>
-                </ul>
-            </nav>
+            <section className={`slide-menu ${menuOpen ? "open" : ""}`}>
+                <header className="slide-menu__header">
+                    <Image
+                        src="/images/svgs/icons/close-landing.svg"
+                        alt="Close Menu"
+                        width={51}
+                        height={51}
+                        className={`nav__image close-icon`}
+                        onClick={toggleMenu}
+                    />
+                </header>
+                <nav className="slide-menu__nav">
+                    <ul className="menu-list">
+                        <li><Link href="/" className="menu-link" onClick={closeMenu}>Home Page</Link></li>
+                        <li><Link href="/map" className="menu-link" onClick={closeMenu}>Go to Map</Link></li>
+                        <li><Link href="/general" className="menu-link" onClick={closeMenu}>General Information</Link></li>
+                        <li><Link href="/aboutEdBroadbent" className="menu-link" onClick={closeMenu}>About Ed Broadbent</Link></li>
+                        <li><Link href="/events" className="menu-link" onClick={closeMenu}>Events & Activities</Link></li>
+                        <li><Link href="/gardenOfHumanRights" className="menu-link" onClick={closeMenu}>Garden of Human Rights</Link></li>
+                        <li><Link href="/amphitheater" className="menu-link" onClick={closeMenu}>Amphitheater and Stage</Link></li>
+                        <li><Link href="/orangeGarden" className="menu-link" onClick={closeMenu}>Orange Garden</Link></li>
+                    </ul>
+                </nav>
+            </section>
+
 
             {children}
         </main>

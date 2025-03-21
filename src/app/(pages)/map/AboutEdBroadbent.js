@@ -31,10 +31,10 @@ export default function AboutEdBroadbent({setContent, setIsIconClicked, resetIco
                 {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
                 <Link href="/aboutEdBroadbent" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
 
-
-                <button type="button" className="popup__360">
+                {/* <Link className="popup__360" href={`panorama_view?location=/about-ed-broadbent`}> */}
+                <Link className="popup__360" href={`about_ed_broadbent_360`}>
                     <Ar />
-                </button>
+                </Link>
             </div>
         </>
     );

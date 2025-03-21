@@ -12,6 +12,11 @@ export default function MainEntrance({setContent, setIsIconClicked, resetIcons, 
         setIsIconClicked(true);
         resetIcons(iconState);
     }
+
+    const navigate360 = (e) => {
+        e.preventDefault();
+        
+    }
     
     return (
         <>
@@ -25,11 +30,9 @@ export default function MainEntrance({setContent, setIsIconClicked, resetIcons, 
                 <Link href="/general" className="popup__read-more button-color-primary" role="button">READ MORE</Link>
 
                 {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
-
-                <Link href="/mainEntrance360">
-                    <button type="button" className="popup__360">
-                        <Ar />
-                    </button>
+                {/* <Link className="popup__360" href={`panorama_view?location=/main-entrance`}> */}
+                <Link className="popup__360" href={`/main_entrance_360`}>
+                    <Ar />
                 </Link>
             </div>
         </>
