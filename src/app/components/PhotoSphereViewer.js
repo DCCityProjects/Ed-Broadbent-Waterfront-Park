@@ -25,8 +25,12 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
         container: viewerRef.current,
         panorama: imageUrl,
         plugins: [
-          GyroscopePlugin
+          GyroscopePlugin,
         ],
+        navbar: [
+          "gyroscope",
+          "fullscreen",
+        ]
       });
       
     } else {
