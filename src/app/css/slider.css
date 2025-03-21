@@ -15,11 +15,12 @@
 }
 
 .slider-internal{
-    margin: 2.5rem 0rem;
+    margin-top: 16px;
+    margin-bottom: 24px;
 }
 
 .swiper-button-next{
-    background-image: url("/images/icons/arrow-up.svg") !important;
+    background-image: url("/images/svgs/icons/arrow-up.svg") !important;
     transform: rotate(90deg);
     background-repeat: no-repeat;
     background-position: center;
@@ -29,7 +30,7 @@
 }
 
 .swiper-button-prev{
-    background-image: url("/images/icons/arrow-up.svg") !important;
+    background-image: url("/images/svgs/icons/arrow-up.svg") !important;
     transform: rotate(-90deg);
     background-repeat: no-repeat;
     background-position: center;

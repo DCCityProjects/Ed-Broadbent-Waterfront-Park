@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Viewer } from '@photo-sphere-viewer/core'; 
 // import 'photo-sphere-viewer/dist/photo-sphere-viewer.css';
 import '@photo-sphere-viewer/core/index.css';
+import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
 
 // import '@photo-sphere-viewer/core/style.css';
 
@@ -23,7 +24,11 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
       viewerInstance.current = new Viewer({
         container: viewerRef.current,
         panorama: imageUrl,
+        plugins: [
+          GyroscopePlugin
+        ],
       });
+      
     } else {
       viewerInstance.current.setPanorama(imageUrl);
     }
@@ -35,6 +40,7 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
       }
     };
   }, [imageUrl, isMounted]);
+
 
   return <div ref={viewerRef} style={{ width: '100%', height: '100vh' }} />;
 };

@@ -1,3 +1,9 @@
+.slider-internal--orange-garden{
+    margin-top: 48px !important;
+    margin-bottom: 40px;
+}
+
+
 /* Modal Background Overlay */
 .modal-overlay {
     position: fixed;
@@ -96,6 +102,10 @@
     position: absolute;
     left: -1.6rem;
     top: -0.7rem;
+}
+
+.orange-garden-list__link{
+    font-weight: 700;
 }
 
 .custom-list{

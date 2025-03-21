@@ -13,6 +13,7 @@
     padding: 0;
     box-sizing: border-box;
     color: var(--color--secondary);
+    /* line-height: 22px; */
 }
 
 button {
