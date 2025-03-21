@@ -43,15 +43,12 @@ export default function InternalLayout({ children }) {
         setMenuOpen(false);
     };
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        
-    }
 
     useEffect(()=>{
         if(pathname === "/main_entrance_360" || pathname === "/about_ed_broadbent_360" || pathname === "/amphitheatre_and_stage_360" || pathname === "/garden_of_human_rights_360" || pathname === "/orange_garden_360" || pathname === "/parking_entrance_360"){ 
             setIs360View(true);
-        } else {
+        } else if (pathname === "/map"){
+        }else {
             setIs360View(false);
         }
     }, [pathname])
@@ -78,21 +75,21 @@ export default function InternalLayout({ children }) {
         console.log(is360View)
     }, [is360View])
 
-    const navigateAR = () => {
-        if(pathname === "general"){
-            page360 = "/main_entrance_360";
+    useEffect(()=>{
+        if(pathname === "/general"){
+            setPage360("/main_entrance_360");
         } else if (pathname === "/aboutEdBroadbent") {
-            page360 = "/about_ed_broadbent_360";
+            setPage360("/about_ed_broadbent_360");
         } else if (pathname === "/events") {
-            page360 = "/amphitheatre_and_stage_360";
+            setPage360("/amphitheatre_and_stage_360");
         } else if (pathname === "/gardenOfHumanRights") {
-            page360 = "/garden_of_human_rights_360";
+            setPage360("/garden_of_human_rights_360");
         } else if (pathname === "/orangeGarden") {
-            page360 = "/orange_garden_360";
+            setPage360("/orange_garden_360");
         } else {
-            page360 = "";
+            setPage360("");
         }
-    }
+    }, [pathname])
 
     return (
         <main>

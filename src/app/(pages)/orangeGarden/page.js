@@ -61,7 +61,7 @@ export default function General() {
                         }}
                         navigation
                         modules={[Navigation]}
-                        className="mySwiper slider-internal "
+                        className="mySwiper slider-internal--orange-garden"
                     >
                         <SwiperSlide>
                             <Image src="/images/orangeGarden/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/images/orangeGarden/slider1.jpg")} ></Image>
@@ -92,12 +92,12 @@ export default function General() {
             <section className="page-subsection u-content-width">
                 <ul className="orange-garden-list">
                     <li>
-                        <a href="https://www.oshawa.ca/en/city-hall/truth-and-reconciliation.aspx">
+                        <a href="https://www.oshawa.ca/en/city-hall/truth-and-reconciliation.aspx" className="orange-garden-list__link">
                             City of Oshawa, Truth and Reconciliation page.
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.oshawa.ca/en/city-hall/resources/Documents/CNCL-22-48_TR-Report.pdf">
+                        <a href="https://www.oshawa.ca/en/city-hall/resources/Documents/CNCL-22-48_TR-Report.pdf" className="orange-garden-list__link">
                             Response to the Truth and Reconciliation (TRC) Calls to Action and United Nations Declaration on the Rights of Indigenous Peoples (UNDRIP)
                         </a>
                     </li>
