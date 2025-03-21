@@ -74,7 +74,7 @@ export default function Events() {
                         <Image src="/images/events/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider Events" onClick={() => openModal("/images/events/slider3.jpg")} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Image src="/images/events/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider Events" onClick={() => openModal("/images/events/slider4.jpg")} />
+                        <Image src="/images/events/slider4.JPG" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider Events" onClick={() => openModal("/images/events/slider4.JPG")} />
                     </SwiperSlide>
                     <SwiperSlide>
                         <Image src="/images/events/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider Events" onClick={() => openModal("/images/events/slider5.jpg")} />
