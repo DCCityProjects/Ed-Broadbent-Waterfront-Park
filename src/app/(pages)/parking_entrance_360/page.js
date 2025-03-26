@@ -5,7 +5,7 @@ import PhotoSphereViewerComponent from '../../components/PhotoSphereViewer';
 
 
 export default function Parking_Entrance_360() {
-    const imageUrl = '/nextjs-github-pages/images/360/parking-entrance.JPG';
+    const imageUrl = '/Ed-Broadbent-Waterfront-Park/images/360/parking-entrance.JPG';
 
     return (
       <div>

@@ -35,7 +35,7 @@ export default function General() {
                 <div className="modal-overlay">
                     <div className="modal-container-general">
                         <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/nextjs-github-pages/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
                         </button>
                         <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
                     </div>
@@ -43,7 +43,7 @@ export default function General() {
             )}
 
             <section className="page-banner">
-                <Image src="/images/orangeGarden/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image Orange Garden Information" />
+                <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image Orange Garden Information" />
             </section>
 
             <section className="page-section">
@@ -64,22 +64,22 @@ export default function General() {
                         className="mySwiper slider-internal--orange-garden"
                     >
                         <SwiperSlide>
-                            <Image src="/images/orangeGarden/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/images/orangeGarden/slider1.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/orangeGarden/slider2.JPG" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/images/orangeGarden/slider2.JPG")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/orangeGarden/slider3.JPG" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/images/orangeGarden/slider3.JPG")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/orangeGarden/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/images/orangeGarden/slider1.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/orangeGarden/slider2.JPG" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/images/orangeGarden/slider2.JPG")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/images/orangeGarden/slider3.JPG" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/images/orangeGarden/slider3.JPG")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG")} ></Image>
                         </SwiperSlide>
 
                     </Swiper>

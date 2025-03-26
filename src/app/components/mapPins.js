@@ -1,8 +1,8 @@
 import L from "leaflet";
 
 const iconAmphitheatreGrey = new L.Icon({
-    iconUrl: "/nextjs-github-pages/images/svgs/mapPins/amphitheatre-grey.svg",
-    // iconRetinaUrl: '/nextjs-github-pages/images/svgs/mapPins/amphitheatre-grey.svg',
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/amphitheatre-grey.svg",
+    // iconRetinaUrl: '/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/amphitheatre-grey.svg',
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,-40],
@@ -13,7 +13,7 @@ const iconAmphitheatreGrey = new L.Icon({
 })
 
 const iconAmphitheatreSelect = new L.Icon({
-    iconUrl: "/nextjs-github-pages/images/svgs/mapPins/amphitheatre-select.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/amphitheatre-select.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,0],
@@ -24,7 +24,7 @@ const iconAmphitheatreSelect = new L.Icon({
 })
 
 const iconGardenHRGrey = new L.Icon({
-    iconUrl: "/nextjs-github-pages/images/svgs/mapPins/garden-hr-grey.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/garden-hr-grey.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,0],
@@ -35,7 +35,7 @@ const iconGardenHRGrey = new L.Icon({
 });
 
 const iconGardenHRSelect = new L.Icon({
-    iconUrl: "/nextjs-github-pages/images/svgs/mapPins/garden-hr-select.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/garden-hr-select.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,0],
@@ -46,7 +46,7 @@ const iconGardenHRSelect = new L.Icon({
 });
 
 const iconOrangeGardenGrey = new L.Icon({
-    iconUrl: "/nextjs-github-pages/images/svgs/mapPins/orange-garden-grey.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/orange-garden-grey.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,0],
@@ -57,7 +57,7 @@ const iconOrangeGardenGrey = new L.Icon({
 });
 
 const iconOrangeGardenSelect = new L.Icon({
-    iconUrl: "/nextjs-github-pages/images/svgs/mapPins/orange-garden-select.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/orange-garden-select.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,0],
@@ -68,7 +68,7 @@ const iconOrangeGardenSelect = new L.Icon({
 });
 
 const iconMainGrey = new L.Icon({
-    iconUrl: "/nextjs-github-pages/images/svgs/mapPins/main-grey.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/main-grey.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,-25],
@@ -79,7 +79,7 @@ const iconMainGrey = new L.Icon({
 });
 
 const iconMainSelect = new L.Icon({
-    iconUrl: "/nextjs-github-pages/images/svgs/mapPins/main-select.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/main-select.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,0],

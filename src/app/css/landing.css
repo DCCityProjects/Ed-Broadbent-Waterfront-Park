@@ -80,15 +80,15 @@
 }
 
 .home-nav__item--general{
-    background-image: url("/images/general/hero-image.jpg");
+    background-image: url("/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg");
 }
 
 .home-nav__item--about{
-    background-image: url("/images/aboutEdBroadbent/hero-image.jpg");
+    background-image: url("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg");
 }
 
 .home-nav__item--events{
-    background-image: url("/images/events/slider1.jpg");
+    background-image: url("/Ed-Broadbent-Waterfront-Park/images/events/slider1.jpg");
     background-position: 0 3%;
 }
 

@@ -56,7 +56,7 @@ export default function GardenOfHumanRights() {
                 <div className="modal-overlay">
                     <div className="modal-container-general">
                         <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/nextjs-github-pages/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
                         </button>
                         <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
                     </div>
@@ -64,7 +64,7 @@ export default function GardenOfHumanRights() {
             )}
 
             <section className="page-banner">
-                <Image src="/nextjs-github-pages/images/gardenOfHumanRights/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="main image 1"></Image>
+                <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="main image 1"></Image>
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Garden of Human Rights</h1>
@@ -89,19 +89,19 @@ export default function GardenOfHumanRights() {
                         className="mySwiper slider-internal"
                     >
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/gardenOfHumanRights/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 2" onClick={() => openModal("/nextjs-github-pages/images/gardenOfHumanRights/slider1.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 2" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider1.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/gardenOfHumanRights/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 3" onClick={() => openModal("/nextjs-github-pages/images/gardenOfHumanRights/slider2.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 3" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider2.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/gardenOfHumanRights/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 4" onClick={() => openModal("/nextjs-github-pages/images/gardenOfHumanRights/slider3.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 4" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider3.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/gardenOfHumanRights/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 5" onClick={() => openModal("/nextjs-github-pages/images/gardenOfHumanRights/slider4.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 5" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider4.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/gardenOfHumanRights/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 6" onClick={() => openModal("/nextjs-github-pages/images/gardenOfHumanRights/slider5.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 6" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider5.jpg")} ></Image>
                         </SwiperSlide>
                     </Swiper>
                     <p className="u-content-width">A variety of seating in the garden makes this a unique place for quiet reflection and contemplation.</p>

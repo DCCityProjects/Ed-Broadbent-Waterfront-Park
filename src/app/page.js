@@ -53,7 +53,7 @@ export default function LandingPage() {
 									sessionStorage.setItem("modalSeen", "true");
 									setShowModal(false);
 								}}>
-									<Image src="/nextjs-github-pages/images/svgs/icons/open-landing.svg" alt="Open Icon" width={0} height={0} className="openIcon" />
+									<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/open-landing.svg" alt="Open Icon" width={0} height={0} className="openIcon" />
 								</button>
 								<h3 className="modal-overlay__yesNoText">Yes!</h3>
 							</div>
@@ -62,7 +62,7 @@ export default function LandingPage() {
 									sessionStorage.setItem("modalSeen", "true");
 									setShowModal(false);
 								}}>
-									<Image src="/nextjs-github-pages/images/svgs/icons/close-landing.svg" alt="Close Icon" width={0} height={0} className="closeIcon" />
+									<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Icon" width={0} height={0} className="closeIcon" />
 								</button>
 								<h3 className="modal-overlay__yesNoText">No</h3>
 							</div>
@@ -73,7 +73,7 @@ export default function LandingPage() {
             )}
 			<section className="welcome-section">
 				<div className="welcome-section__logo-wrapper">
-					<Image src="/nextjs-github-pages/images/svgs/icons/logo.svg" alt="Navigation Logo" width={58} height={58} className="welcome-section__logo"/>
+					<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/logo.svg" alt="Navigation Logo" width={58} height={58} className="welcome-section__logo"/>
 				</div>
 				<div className="welcome-section__wrapper u-flex-column-justify-align-center u-content-width">
 					<h1 className="welcome-section__title">WELCOME</h1>

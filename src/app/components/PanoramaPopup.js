@@ -16,7 +16,7 @@ export default function PanoramaPopup() {
         <div className="panorama-popup" onClick={handleClick}>
             <h1 className="panorama-popup__title">Welcome to the 360 Experience</h1>
             <Image
-                src="/nextjs-github-pages/images/svgs/icons/ar.svg"
+                src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/ar.svg"
                 alt="AR Icon"
                 width={91}
                 height={91}

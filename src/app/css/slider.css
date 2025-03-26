@@ -20,7 +20,7 @@
 }
 
 .swiper-button-next{
-    background-image: url("/images/svgs/icons/arrow-up.svg") !important;
+    background-image: url("/Ed-Broadbent-Waterfront-Park/images/svgs/icons/arrow-up.svg") !important;
     transform: rotate(90deg);
     background-repeat: no-repeat;
     background-position: center;
@@ -30,7 +30,7 @@
 }
 
 .swiper-button-prev{
-    background-image: url("/images/svgs/icons/arrow-up.svg") !important;
+    background-image: url("/Ed-Broadbent-Waterfront-Park/images/svgs/icons/arrow-up.svg") !important;
     transform: rotate(-90deg);
     background-repeat: no-repeat;
     background-position: center;
