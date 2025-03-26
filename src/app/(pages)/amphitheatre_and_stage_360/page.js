@@ -5,7 +5,7 @@ import PhotoSphereViewerComponent from '../../components/PhotoSphereViewer';
 import PanoramaPopup from '@/app/components/PanoramaPopup';
 
 export default function Amphitheatre360() {
-  const imageUrl = '/nextjs-github-pages/images/360/amphitheatre-and-stage.JPG';
+  const imageUrl = '/Ed-Broadbent-Waterfront-Park/images/360/amphitheatre-and-stage.JPG';
 
   return (
     <div>
