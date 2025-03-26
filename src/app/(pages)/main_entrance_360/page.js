@@ -5,7 +5,7 @@ import PhotoSphereViewerComponent from '../../components/PhotoSphereViewer';
 import PanoramaPopup from '@/app/components/PanoramaPopup';
 
 export default function MainEntrance360() {
-  const imageUrl = '/images/360/main-entrance.JPG';
+  const imageUrl = '/nextjs-github-pages/images/360/main-entrance.JPG';
 
   return (
     <div>

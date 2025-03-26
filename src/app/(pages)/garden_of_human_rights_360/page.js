@@ -5,7 +5,7 @@ import PhotoSphereViewerComponent from '../../components/PhotoSphereViewer';
 import PanoramaPopup from '@/app/components/PanoramaPopup';
 
 export default function GardenOfHumanRights360() {
-  const imageUrl = '/images/360/garden-of-human-rights.JPG';
+  const imageUrl = '/nextjs-github-pages/images/360/garden-of-human-rights.JPG';
 
   return (
     <div>

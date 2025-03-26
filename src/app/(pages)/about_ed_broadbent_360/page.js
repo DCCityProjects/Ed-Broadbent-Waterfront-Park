@@ -6,7 +6,7 @@ import PanoramaPopup from '@/app/components/PanoramaPopup';
 
 
 export default function About_ed_broadbent_360() {
-    const imageUrl = '/images/360/about-ed-broadbent.JPG';
+    const imageUrl = '/nextjs-github-pages/images/360/about-ed-broadbent.JPG';
 
     return (
         <div>

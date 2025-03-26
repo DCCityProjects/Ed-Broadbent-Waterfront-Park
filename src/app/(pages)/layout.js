@@ -100,7 +100,7 @@ export default function InternalLayout({ children }) {
                         <div className="menu-icon-container">
                             {/* Hamburger Icon */}
 							<Image
-								src="/images/svgs/icons/hamburger.svg"
+								src="/nextjs-github-pages/images/svgs/icons/hamburger.svg"
 								alt="Hamburger Menu"
 								width={51}
 								height={51}
@@ -112,7 +112,7 @@ export default function InternalLayout({ children }) {
                     <li className="nav__item" >
                         <Link href={page360}>
                             <Image
-                                src="/images/svgs/icons/ar.svg"
+                                src="/nextjs-github-pages/images/svgs/icons/ar.svg"
                                 alt="AR Icon"
                                 width={51}
                                 height={51}
@@ -129,7 +129,7 @@ export default function InternalLayout({ children }) {
 					<li className="nav__item nav__item--logo">
 						<Link href="/" className={`nav__link`}>
 							<Image 
-								src="/images/svgs/icons/logo.svg" 
+								src="/nextjs-github-pages/images/svgs/icons/logo.svg" 
 								alt="Navigation Logo" 
 								width={51}
 								height={51}
@@ -144,7 +144,7 @@ export default function InternalLayout({ children }) {
             <section className={`slide-menu ${menuOpen ? "open" : ""}`}>
                 <header className="slide-menu__header">
                     <Image
-                        src="/images/svgs/icons/close-landing.svg"
+                        src="/nextjs-github-pages/images/svgs/icons/close-landing.svg"
                         alt="Close Menu"
                         width={51}
                         height={51}

@@ -34,14 +34,14 @@ export default function Events() {
                 <div className="modal-overlay">
                     <div className="modal-container-events">
                         <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
+                            <Image src="/nextjs-github-pages/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
                         </button>
                         <Image src={selectedImage} alt="Expanded View" className="modal-image" width={800} height={600} />
                     </div>
                 </div>
             )}
             <section className="page-banner">
-                <Image src="/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image page-banner__image--events" alt="Featured Image Events" />
+                <Image src="/nextjs-github-pages/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image page-banner__image--events" alt="Featured Image Events" />
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Events and Activities</h1>
@@ -65,19 +65,19 @@ export default function Events() {
                     className="mySwiper slider-internal"
                 >
                     <SwiperSlide>
-                        <Image src="/images/events/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider Events" onClick={() => openModal("/images/events/slider1.jpg")} />
+                        <Image src="/nextjs-github-pages/images/events/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider Events" onClick={() => openModal("/nextjs-github-pages/images/events/slider1.jpg")} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Image src="/images/events/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider Events" onClick={() => openModal("/images/events/slider2.jpg")} />
+                        <Image src="/nextjs-github-pages/images/events/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider Events" onClick={() => openModal("/nextjs-github-pages/images/events/slider2.jpg")} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Image src="/images/events/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider Events" onClick={() => openModal("/images/events/slider3.jpg")} />
+                        <Image src="/nextjs-github-pages/images/events/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider Events" onClick={() => openModal("/nextjs-github-pages/images/events/slider3.jpg")} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Image src="/images/events/slider4.JPG" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider Events" onClick={() => openModal("/images/events/slider4.JPG")} />
+                        <Image src="/nextjs-github-pages/images/events/slider4.JPG" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider Events" onClick={() => openModal("/nextjs-github-pages/images/events/slider4.JPG")} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Image src="/images/events/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider Events" onClick={() => openModal("/images/events/slider5.jpg")} />
+                        <Image src="/nextjs-github-pages/images/events/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider Events" onClick={() => openModal("/nextjs-github-pages/images/events/slider5.jpg")} />
                     </SwiperSlide>
                 </Swiper>
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>

@@ -260,7 +260,7 @@ export default function LeafletMap({setContent, popupRef, resetIcons, isIconClic
                     <Tooltip className="map-pin" direction="top" key={offset} closeButton={false} offset={[0, offset]} autoClose={false} closeOnClick={false}>Parking Entrance</Tooltip>
                 </Marker> */}
                 
-                <ImageOverlay url="/images/svgs/map.svg" bounds={bounds}  />
+                <ImageOverlay url="/nextjs-github-pages/images/svgs/map.svg" bounds={bounds}  />
             </MapContainer>
         
         </div>

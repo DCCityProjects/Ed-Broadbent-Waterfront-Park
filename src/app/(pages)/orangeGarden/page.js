@@ -35,7 +35,7 @@ export default function General() {
                 <div className="modal-overlay">
                     <div className="modal-container-general">
                         <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
+                            <Image src="/nextjs-github-pages/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
                         </button>
                         <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
                     </div>
