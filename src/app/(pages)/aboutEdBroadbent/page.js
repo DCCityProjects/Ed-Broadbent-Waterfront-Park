@@ -39,14 +39,14 @@ export default function EdBroadbent() {
                 <div className="modal-overlay">
                     <div className="modal-container-edBroadbent">
                         <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/nextjs-github-pages/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
                         </button>
                         <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
                     </div>
                 </div>
             )}
             <section className="page-banner">
-                <Image src="/nextjs-github-pages/images/aboutEdBroadbent/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image About EdBroadbent"></Image>
+                <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image About EdBroadbent"></Image>
             </section>
             <section className="page-section u-flex-column-align-center">
                 <h1 className="page-section__title">ABOUT ED BROADBENT</h1>
@@ -65,16 +65,16 @@ export default function EdBroadbent() {
                         className="mySwiper slider-internal"
                     >
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/aboutEdBroadbent/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider About EdBroadbent" onClick={() => openModal("/nextjs-github-pages/images/aboutEdBroadbent/slider1.jpg")}></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider About EdBroadbent" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider1.jpg")}></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/aboutEdBroadbent/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider About EdBroadbent" onClick={() => openModal("/nextjs-github-pages/images/aboutEdBroadbent/slider2.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider About EdBroadbent" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider2.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/aboutEdBroadbent/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider About EdBroadbent" onClick={() => openModal("/nextjs-github-pages/images/aboutEdBroadbent/slider3.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider About EdBroadbent" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider3.jpg")} ></Image>
                         </SwiperSlide>
                         <SwiperSlide>
-                            <Image src="/nextjs-github-pages/images/aboutEdBroadbent/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider About EdBroadbent" onClick={() => openModal("/nextjs-github-pages/images/aboutEdBroadbent/slider4.jpg")} ></Image>
+                            <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider About EdBroadbent" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider4.jpg")} ></Image>
                         </SwiperSlide>
                 </Swiper>
                 <section className="u-content-width">
