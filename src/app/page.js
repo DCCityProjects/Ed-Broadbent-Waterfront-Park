@@ -11,38 +11,69 @@ import AudioPopupTab from "./components/AudioPopupTab";
 
 export default function LandingPage() {
 	const [showModal, setShowModal] = useState(false);
-    const [countdown, setCountdown] = useState(20);
+	const [countdown, setCountdown] = useState(20);
+	const [isVisible, setIsVisible] = useState(true);
+	const [startFade, setStartFade] = useState(false); 
+	const [hasSeenModal, setHasSeenModal] = useState(true); 
 
+	// Get sessionStorage info once when component mounts
 	useEffect(() => {
-		const hasSeenModal = sessionStorage.getItem("modalSeen");
-	
-		if (!hasSeenModal) {
-			const showTimer = setTimeout(() => {
+		const seen = sessionStorage.getItem("modalSeen");
+		setHasSeenModal(seen === "true");
+	}, []);
+
+	// Loader fade-out logic
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setStartFade(true);
+			setTimeout(() => {
+				setIsVisible(false);
+			}, 1000);
+		}, 1500);
+		return () => clearTimeout(timer);
+	}, []);
+
+	// Modal delay logic: run after loader fades out
+	useEffect(() => {
+		if (!isVisible && !hasSeenModal) {
+			const modalTimer = setTimeout(() => {
 				setShowModal(true);
 			}, 1000);
-	
-			return () => clearTimeout(showTimer);
+			return () => clearTimeout(modalTimer);
 		}
-	}, []);
-	
+	}, [isVisible, hasSeenModal]);
 
-    useEffect(() => {
-        if (showModal) {
-            const timer = setInterval(() => {
-                setCountdown(prev => {
-                    if (prev === 1) {
-                        clearInterval(timer);
-                        setShowModal(false);
-                    }
-                    return prev - 1;
-                });
-            }, 1000);
-            return () => clearInterval(timer);
-        }
-    }, [showModal]);
+	// Countdown logic inside modal
+	useEffect(() => {
+		if (showModal) {
+			const timer = setInterval(() => {
+				setCountdown(prev => {
+					if (prev === 1) {
+						clearInterval(timer);
+						setShowModal(false);
+					}
+					return prev - 1;
+				});
+			}, 1000);
+			return () => clearInterval(timer);
+		}
+	}, [showModal]);
 
 	return (
 		<main>
+			<section
+				className={`loading-screen ${startFade ? 'fade-out' : ''}`}
+				style={{ display: isVisible ? 'flex' : 'none' }}
+			>
+				<Image
+					src="/Ed-Broadbent-Waterfront-Park/images/svgs/logo_loading.svg"
+					alt="Loading..."
+					width={100}
+					height={100}
+					className="loading-logo"
+				/>
+			</section>
+
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-overlay__container">
