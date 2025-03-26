@@ -113,7 +113,7 @@ export default function GardenOfHumanRights() {
                 </section>
 
                 <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-                <AudioPopupTab audioSrc="/audio/gardenOfHumanRights.mp3" />
+                <AudioPopupTab audioSrc="/Ed-Broadbent-Waterfront-Park/audio/garden-of-human-rights.mp3" />
             </section>
 
         </main>

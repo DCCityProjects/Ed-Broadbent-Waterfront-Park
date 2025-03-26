@@ -83,7 +83,7 @@ export default function Events() {
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
             </section>
             {/* Add the audio path here /audio/your-path.mp3 */}
-            <AudioPopupTab />
+            <AudioPopupTab audioSrc="/Ed-Broadbent-Waterfront-Park/audio/events.mp3" />
         </main>
     );
 }

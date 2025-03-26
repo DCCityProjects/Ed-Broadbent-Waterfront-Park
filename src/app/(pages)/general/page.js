@@ -111,7 +111,7 @@ export default function General() {
             </section>
 
             <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-            <AudioPopupTab audioSrc="/audio/general-info.mp3" />
+            <AudioPopupTab audioSrc="/Ed-Broadbent-Waterfront-Park/audio/general-information.mp3" />
         </main>
     );
 }

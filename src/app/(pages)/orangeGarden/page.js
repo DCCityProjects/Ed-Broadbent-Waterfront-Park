@@ -130,7 +130,7 @@ export default function General() {
             </ol>
 
             <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-            <AudioPopupTab audioSrc="/audio/orange-garden.mp3" />
+            <AudioPopupTab audioSrc="/Ed-Broadbent-Waterfront-Park/audio/orange-garden.mp3" />
         </main>
     );
 }

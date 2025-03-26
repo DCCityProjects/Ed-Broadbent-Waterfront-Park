@@ -95,7 +95,7 @@ export default function AmphitheatreAndStage() {
                 </section>
 
                 <Link href="/" className="back-to-home button-color-primary" role="button">BACK TO HOME</Link>
-                <AudioPopupTab audioSrc="/audio/amphitheatre-new.mp3" />
+                <AudioPopupTab audioSrc="/Ed-Broadbent-Waterfront-Park/audio/amphitheatre-and-stage.mp3" />
             </section>
 
         </main>

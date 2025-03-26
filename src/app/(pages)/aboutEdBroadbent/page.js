@@ -105,7 +105,7 @@ export default function EdBroadbent() {
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
 
             </section>
-            <AudioPopupTab audioSrc="/audio/aboutEd.mp3"/>
+            <AudioPopupTab audioSrc="/Ed-Broadbent-Waterfront-Park/audio/about-ed-broadbent.mp3"/>
 
         </main>
         
