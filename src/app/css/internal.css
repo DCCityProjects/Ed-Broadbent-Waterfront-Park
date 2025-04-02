@@ -1,11 +1,16 @@
 .p-span{
     color: var(--color--primary);
-    text-decoration: underline;
     font-weight: 700;
 }
 
 .p-span-bold{
     font-weight: 700;
+}
+
+.p-span-link{
+    color: var(--color--primary);
+    font-weight: 700;
+    text-decoration: underline;
 }
 
 

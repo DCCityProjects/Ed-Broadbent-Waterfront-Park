@@ -15,6 +15,9 @@ export default function LandingPage() {
 	const [isVisible, setIsVisible] = useState(true);
 	const [startFade, setStartFade] = useState(false); 
 	const [hasSeenModal, setHasSeenModal] = useState(true); 
+	const [audioGuidanceEnabled, setAudioGuidanceEnabled] = useState(true);
+	const [autoPlay, setAutoPlay] = useState(false);
+
 
 	// Get sessionStorage info once when component mounts
 	useEffect(() => {
@@ -83,6 +86,8 @@ export default function LandingPage() {
 								<button className="modal-overlay__option-open" onClick={() => {
 									sessionStorage.setItem("modalSeen", "true");
 									setShowModal(false);
+									setAutoPlay(true);
+
 								}}>
 									<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/open-landing.svg" alt="Open Icon" width={0} height={0} className="openIcon" />
 								</button>
@@ -91,6 +96,7 @@ export default function LandingPage() {
 							<div>
 								<button className="modal-overlay__option-close" onClick={() => {
 									sessionStorage.setItem("modalSeen", "true");
+									setAudioGuidanceEnabled(false);
 									setShowModal(false);
 								}}>
 									<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Icon" width={0} height={0} className="closeIcon" />
@@ -131,7 +137,7 @@ export default function LandingPage() {
 				</nav>
 			</section>
 			{/* ADD THE AUDIO PATH HERE LATER */}
-			<AudioPopupTab />
+			<AudioPopupTab audioSrc="/Ed-Broadbent-Waterfront-Park/audio/landing-page.mp3" audioGuidanceEnabled={audioGuidanceEnabled} autoPlay={autoPlay} />
 		</main>
 	);
 }

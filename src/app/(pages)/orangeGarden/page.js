@@ -122,9 +122,9 @@ export default function General() {
                 <li className="custom-list-item">
                     <div className="custom-list-content">
                         <span className="custom-text">The actual </span>
-                        <a href="https://oshawamuseum.wordpress.com/2018/06/15/the-scugog-carrying-place/" className="custom-link">Scugog Carrying Place</a>
+                        <a href="https://oshawamuseum.wordpress.com/2018/06/15/the-scugog-carrying-place/" className="custom-link" target="_blank" rel="noopener noreferrer">Scugog Carrying Place</a>
                         <span className="custom-text"> route followed what is now Simcoe Street in Oshawa and Port Perry and connected Lake Scugog and Simcoe with the Kawartha Lakes and Lake Ontario. </span>
-                        <a href="https://www.communitystories.ca/v2/ship-shore-oshawa-ontario_bateaux-jusqu-au-rivage/story/before-the-harbour-scugog-carrying-place/#:~:text=The%20Scugog%20Carrying%20Place%20Trail%20was%20considered%20one%20of%20four,the%20shore%20of%20Lake%20Scugog." className="custom-link">Before the Harbour Place: The Scugog Carrying Place Trail</a>.
+                        <a href="https://www.communitystories.ca/v2/ship-shore-oshawa-ontario_bateaux-jusqu-au-rivage/story/before-the-harbour-scugog-carrying-place/#:~:text=The%20Scugog%20Carrying%20Place%20Trail%20was%20considered%20one%20of%20four,the%20shore%20of%20Lake%20Scugog." className="custom-link" target="_blank" rel="noopener noreferrer">Before the Harbour Place: The Scugog Carrying Place Trail</a>.
                     </div>
                 </li>
             </ol>

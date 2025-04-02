@@ -66,7 +66,7 @@ export default function LeafletMap({setContent, popupRef, resetIcons, isIconClic
 
 
     const bounds = [[0, 0], [4779, 2868]];
-    const panBounds = [[-1000, -1000], [5779, 3868]];
+    const panBounds = [[-3000, -3000], [7779, 5868]];
 
     // useEffect(()=>{
     //     console.log(offset)

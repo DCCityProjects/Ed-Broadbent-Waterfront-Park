@@ -17,6 +17,7 @@
     font-size: 3.125rem;
     margin-top: 44px;
     margin-bottom: 4px;
+    letter-spacing: 0.06rem;
 }
 
 .welcome-section__description{
@@ -123,7 +124,6 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    padding: 6rem 0rem;
 }
 
 /* Modal Container */
@@ -137,7 +137,6 @@
     justify-content: center;
     text-align: center;
     width: 85%;
-    height: 100%;
     max-width: 500px;
     position: relative;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.9);
@@ -147,7 +146,6 @@
 .modal-overlay__title {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #1a1a1a;
     margin-bottom: 3rem;
     width: 100%;
     max-width: 300px;
@@ -168,7 +166,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #FAA02A;
+    background: var(--color--primary);
     color: white;
     border-radius: 10px;
     width: 100px;
@@ -181,7 +179,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #FAA02A;
+    background: var(--color--primary);
     color: white;
     border-radius: 10px;
     width: 100px;
@@ -201,7 +199,7 @@
     bottom: 10px;
     right: 10px;
     background: #d9d9d9;
-    color: #1a1a1a;
+    color: #313137;
     font-size: 1rem;
     font-weight: bold;
     padding-top: 0.4rem;

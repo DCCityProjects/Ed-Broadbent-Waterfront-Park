@@ -107,7 +107,7 @@ export default function GardenOfHumanRights() {
                     <p className="u-content-width">A variety of seating in the garden makes this a unique place for quiet reflection and contemplation.</p>
                     <div className="hr-learn-more u-content-width">
                         <Information className="hr-learn-more__icon" />
-                        <p className="hr-learn-more__description">Learn more about <span><a className="p-span" href="https://laws-lois.justice.gc.ca/eng/acts/h-6/page-1.html">The Canadian Human Rights Act.</a></span></p>
+                        <p className="hr-learn-more__description">Learn more about <span><a className="p-span-link" href="https://laws-lois.justice.gc.ca/eng/acts/h-6/page-1.html" target="_blank" rel="noopener noreferrer">The Canadian Human Rights Act.</a></span></p>
 
                     </div>
                 </section>

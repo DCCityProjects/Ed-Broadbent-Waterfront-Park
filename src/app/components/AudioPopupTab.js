@@ -10,7 +10,7 @@ import "/src/app/css/popup.css";
 import gsap from "gsap";
 import Draggable from "gsap/dist/Draggable";
 
-export default function AudioPopupTab({ audioSrc }) {
+export default function AudioPopupTab({ audioSrc, audioGuidanceEnabled, autoPlay }) {
   const [isClient, setIsClient] = useState(false);
   const [popupHeight, setPopupHeight] = useState(0);
   const [isUp, setIsUp] = useState(false);
@@ -23,6 +23,20 @@ export default function AudioPopupTab({ audioSrc }) {
   const fillRef = useRef(null);
   const trackRef = useRef(null);
 
+
+  // useEffect(() => {
+  //   setAudioGuidanceEnabled(sessionStorage.getItem("audioGuidanceEnabled") === "true" ?? true);
+  //   console.log(`getting the audio guidance and it is ${sessionStorage.getItem("audioGuidanceEnabled") === "true" ?? true}`)
+  // }, [])
+
+  useEffect(()=>{
+    if(audioGuidanceEnabled === "false"){
+      console.log("it is true!")
+      gsap.to(popupRef.current, { y: 0 });
+      setIsUp(true);
+    }
+  },[audioGuidanceEnabled])
+
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -32,6 +46,16 @@ export default function AudioPopupTab({ audioSrc }) {
       setPopupHeight(popupRef.current.clientHeight);
     }
   }, []);
+
+  useEffect(()=>{
+    if (audioGuidanceEnabled === "false"){
+      // console.log("it is false!")
+      gsap.to(popupRef.current, { y: popupHeight });
+      setIsUp(false);
+    } else if (audioGuidanceEnabled === "true"){ 
+      // console.log(`it is true! ${audioGuidanceEnabled}`)
+    }
+  }, [audioGuidanceEnabled, popupHeight])
 
   useEffect(() => {
     if (!isClient) return;
@@ -181,6 +205,13 @@ export default function AudioPopupTab({ audioSrc }) {
       setIsPlaying(true);
     }
   };
+
+  useEffect(()=>{
+    if(autoPlay){
+      console.log("playing audio cuz autoplay")
+      handlePlay();
+    }
+  }, [autoPlay])
 
   return (
     <div className="audio-popup" ref={popupRef}>
