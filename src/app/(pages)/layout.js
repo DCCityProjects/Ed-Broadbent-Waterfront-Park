@@ -144,7 +144,7 @@ export default function InternalLayout({ children }) {
             <section className={`slide-menu ${menuOpen ? "open" : ""}`}>
                 <header className="slide-menu__header">
                     <Image
-                        src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg"
+                        src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close.svg"
                         alt="Close Menu"
                         width={51}
                         height={51}

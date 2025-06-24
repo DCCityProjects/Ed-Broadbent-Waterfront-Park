@@ -4,49 +4,29 @@
 
 /** ICONS **/
 .amenity-accessibility{
-    background-image: url("/Ed-Broadbent-Waterfront-Park/images/svgs/icons/accessibility-icon.svg");
+    background-image: url("/Ed-Broadbent-Waterfront-Park/images/svgs/icons/accessibility.svg");
 }
 
 .amenity-bike {
-    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/bike-track-icon.svg');
+    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/bike.svg');
 }
 
 .amenity-garden {
-    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/garden-icon.svg');
+    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/garden.svg');
 }
 
 .amenity-parking {
-    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/parking-icon.svg');
+    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/parking.svg');
 }
 
 .amenity-trail {
-    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/recreational-trail-icon.svg');
+    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/recreational-trail.svg');
 }
 
 .back-to-home-general {
     margin-top: 72px;
 }
 
-/** ICONS **/
-.amenity-accessibility {
-    background-image: url("/Ed-Broadbent-Waterfront-Park/images/svgs/icons/accessibility-icon.svg");
-}
-
-.amenity-bike {
-    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/bike-track-icon.svg');
-}
-
-.amenity-garden {
-    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/garden-icon.svg');
-}
-
-.amenity-parking {
-    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/parking-icon.svg');
-}
-
-.amenity-trail {
-    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/recreational-trail-icon.svg');
-}
 
 /* Modal Background Overlay */
 .modal-overlay {

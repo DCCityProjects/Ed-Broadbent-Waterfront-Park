@@ -1,21 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139.87 139.87">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-        fill-rule: evenodd;
-      }
-
-      .cls-2 {
-        fill: #faa02a;
-      }
-    </style>
-  </defs>
-  <g id="Layer_1-2" data-name="Layer 1">
-    <g>
-      <rect class="cls-2" width="139.87" height="139.87" rx="27.65" ry="27.65"/>
-      <path class="cls-1" d="M74.63,38.66c-2.03-3.7-7.35-3.7-9.38,0L29.41,103.93l.03.06,36.22-8.73c2.81-.68,5.74-.68,8.55,0l36.22,8.73.03-.06-35.83-65.27Z"/>
-    </g>
-  </g>
+<svg width="236" height="236" viewBox="0 0 236 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="arrow-up" clip-path="url(#clip0_1_1254)">
+<g id="Layer 1">
+<g id="Group">
+<path id="Vector" d="M189.347 0H46.6533C20.8874 0 0 20.8874 0 46.6533V189.347C0 215.113 20.8874 236 46.6533 236H189.347C215.113 236 236 215.113 236 189.347V46.6533C236 20.8874 215.113 0 189.347 0Z" fill="#E55C00"/>
+<path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M125.922 65.2303C122.497 58.9874 113.52 58.9874 110.095 65.2303L49.623 175.359L49.6737 175.46L110.787 160.73C115.528 159.583 120.472 159.583 125.213 160.73L186.327 175.46L186.377 175.359L125.922 65.2303Z" fill="white"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1_1254">
+<rect width="236" height="236" fill="white"/>
+</clipPath>
+</defs>
 </svg>
