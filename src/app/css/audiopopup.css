@@ -19,28 +19,20 @@
     margin: 0 7%;
 }
 
-.audio-popup__button {
-    background-color: #F1A43C;
-    border-radius: 8px;
-    height: 35px;
-    width: 35px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
 .audio-popup__icon {
     cursor: pointer;
     height: 35px;
     width: 35px; 
-    padding: 6px;
-    background-color: #F1A43C;
+    /* background-color: var(--color--primary); */
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.audio-popup__icon > *{
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -65,7 +57,7 @@
     left: 0;
     height: 100%;
     width: 0%;
-    background-color: #F1A43C;
+    background-color: var(--color--primary);
     border-radius: 4px 0 0 4px;
 }
 

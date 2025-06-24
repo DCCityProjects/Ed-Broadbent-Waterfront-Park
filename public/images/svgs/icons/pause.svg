@@ -1,23 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 139.87 139.87">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-      }
-
-      .cls-2 {
-        fill: #faa02a;
-      }
-    </style>
-  </defs>
-  <g id="pause">
-    <g>
-      <rect class="cls-2" width="139.87" height="139.87" rx="27.65" ry="27.65"/>
-      <g id="pause-2" data-name="pause">
-        <rect class="cls-1" x="43.77" y="26.08" width="17.92" height="89.07" rx="6.17" ry="6.17"/>
-        <rect class="cls-1" x="80.18" y="26.08" width="17.92" height="89.07" rx="6.18" ry="6.18"/>
-      </g>
-    </g>
-  </g>
+<svg viewBox="0 0 236 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="pause" clip-path="url(#clip0_1_1302)">
+<path id="Vector" d="M189.347 0H46.6533C20.8874 0 0 20.8874 0 46.6533V189.347C0 215.113 20.8874 236 46.6533 236H189.347C215.113 236 236 215.113 236 189.347V46.6533C236 20.8874 215.113 0 189.347 0Z" fill="#E55C00"/>
+<g id="pause_2">
+<path id="Vector_2" d="M93.6778 44.0043H84.2628C78.5132 44.0043 73.8523 48.6652 73.8523 54.4148V183.88C73.8523 189.629 78.5132 194.29 84.2628 194.29H93.6778C99.4274 194.29 104.088 189.629 104.088 183.88V54.4148C104.088 48.6652 99.4274 44.0043 93.6778 44.0043Z" fill="white"/>
+<path id="Vector_3" d="M155.095 44.0043H145.714C139.955 44.0043 135.286 48.6728 135.286 54.4317V183.863C135.286 189.622 139.955 194.29 145.714 194.29H155.095C160.854 194.29 165.522 189.622 165.522 183.863V54.4317C165.522 48.6728 160.854 44.0043 155.095 44.0043Z" fill="white"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1_1302">
+<rect width="236" height="236" fill="white"/>
+</clipPath>
+</defs>
 </svg>

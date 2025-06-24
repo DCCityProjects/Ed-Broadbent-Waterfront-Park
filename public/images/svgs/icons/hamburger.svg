@@ -1,6 +1,15 @@
-<svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="51" height="51" rx="10" fill="#FAA02A"/>
-<line x1="11.5" y1="15.5" x2="39.5" y2="15.5" stroke="white" stroke-width="3" stroke-linecap="round"/>
-<line x1="11.5" y1="25.5" x2="39.5" y2="25.5" stroke="white" stroke-width="3" stroke-linecap="round"/>
-<line x1="11.5" y1="36.5" x2="39.5" y2="36.5" stroke="white" stroke-width="3" stroke-linecap="round"/>
+<svg width="236" height="236" viewBox="0 0 236 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="hamburger" clip-path="url(#clip0_2006_93)">
+<g id="hamburger_2">
+<rect id="Rectangle 26" width="236" height="236" rx="46.2745" fill="#E55C00"/>
+<line id="Line 1" x1="53.2156" y1="71.7256" x2="182.784" y2="71.7256" stroke="white" stroke-width="13.8824" stroke-linecap="round"/>
+<line id="Line 2" x1="53.2156" y1="118" x2="182.784" y2="118" stroke="white" stroke-width="13.8824" stroke-linecap="round"/>
+<line id="Line 3" x1="53.2156" y1="168.902" x2="182.784" y2="168.902" stroke="white" stroke-width="13.8824" stroke-linecap="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_2006_93">
+<rect width="236" height="236" fill="white"/>
+</clipPath>
+</defs>
 </svg>
