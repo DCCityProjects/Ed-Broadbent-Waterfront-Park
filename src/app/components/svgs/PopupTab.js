@@ -5,7 +5,7 @@ export default function PopupTab() {
                 <g id="popup-tab__shape" filter="url(#filter0D86229)">
                     <path d="M370 25H237.777C236.329 15.3774 228.026 8 218 8H183C172.974 8 164.671 15.3774 163.223 25H31C16.0884 25 4 37.0884 4 52H397C397 37.0884 384.912 25 370 25Z" fill="white"/>
                 </g>
-                <path id="popup-tab__chevron" d="M210 19L200.702 27L191 19" stroke="#FAA02A" strokeOpacity="0.78" strokeWidth="4" strokeLinecap="round"/>
+                <path id="popup-tab__chevron" d="M210 19L200.702 27L191 19" stroke="#E55C00" strokeOpacity="0.78" strokeWidth="4" strokeLinecap="round"/>
             </g>
             <defs>
                 <filter id="filter0D86229" x="0" y="0" width="401" height="52" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
