@@ -1,46 +1,49 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-
 import "/src/app/globals.css";
 import "/src/app/css/internal.css";
 import "/src/app/css/orangeGarden.css";
-import "/src/app/css/slider.css";
-import 'swiper/css';
-import 'swiper/css/bundle';
+
+import Link from "next/link";
+import Image from "next/image";
+
 import AudioPopupTab from "@/app/components/AudioPopupTab";
+import UseImageModal from "@/app/hooks/useImageModal";
+import ImageModal from "@/app/components/slider/imageModal";
+import Slider from "@/app/components/slider/Slider";
 
 export default function General() {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("");
+
+    const {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
+    } = UseImageModal();
     
-    const openModal = (imageSrc) => {
-        setSelectedImage(imageSrc);
-        setModalOpen(true);
+    const imageModalVariableList = {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
     };
-    
-    const closeModal = () => {
-        setModalOpen(false);
-        setSelectedImage("");
-    };  
+
+    const imageData = [
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg",
+            alt: "Image 1 of slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG",
+            alt: "Image 2 of slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG",
+            alt: "Image 3 of slider"
+        },
+    ]
 
     return (
         <main>
-            {/* Image Modal */}
-            {modalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-container-general">
-                        <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
-                        </button>
-                        <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
-                    </div>
-                </div>
-            )}
+            <ImageModal imageModalVariableList={imageModalVariableList} />
 
             <section className="page-banner">
                 <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image Orange Garden Information" />
@@ -50,41 +53,11 @@ export default function General() {
                 <h1 className="page-section__title">ORANGE GARDEN</h1>
                     <section>
                     <p className="u-content-width">
-                        The Orange Garden, built in June 2024, received a Ground Breaking and Round Dance Ceremony by Michi Saagiig Elder Dorothy Taylor who conducted this Indigenous tradition prior to the garden being planted. This milestone was tributed with a Round Dance to honour Indigenous communities' legacy of resilience and strength. A Round Dance is a sacred tradition that celebrates unity and interconnectedness that is an open opportunity for Indigenous and non-Indigenous peoples to come together.
+                        The Orange Garden, built in June 2024, received a Ground Breaking and Round Dance Ceremony by Michi Saagiig Elder Dorothy Taylor who conducted this Indigenous tradition prior to the garden being planted. This milestone was tributed with a Round Dance to honour Indigenous communities&apos; legacy of resilience and strength. A Round Dance is a sacred tradition that celebrates unity and interconnectedness that is an open opportunity for Indigenous and non-Indigenous peoples to come together.
                     </p>
-                    <Swiper
-                        slidesPerView={3}
-                        spaceBetween={14}
-                        loop={true}
-                        pagination={{
-                        clickable: true,
-                        }}
-                        navigation
-                        modules={[Navigation]}
-                        className="mySwiper slider-internal--orange-garden"
-                    >
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG")} ></Image>
-                        </SwiperSlide>
-
-                    </Swiper>
+                    <Slider imageData={imageData} openImageModal={openImageModal} />
                     <p className="u-content-width">
-                    The Garden symbolizes the City’s commitment made on June 20, 2022 by the Oshawa City council to implement the Truth and Reconciliation (T.R.C) 94 Calls to Action and the United Nations Declaration on the Rights of Indigenous Peoples (U.N.D.R.I.P) as a framework to move forward reconciliation. To learn more about the commitments made by the City, please visit the:
+                    The Garden symbolizes the City&apos;s commitment made on June 20, 2022 by the Oshawa City council to implement the Truth and Reconciliation (T.R.C) 94 Calls to Action and the United Nations Declaration on the Rights of Indigenous Peoples (U.N.D.R.I.P) as a framework to move forward reconciliation. To learn more about the commitments made by the City, please visit the:
                     </p>
                 </section>
             </section>

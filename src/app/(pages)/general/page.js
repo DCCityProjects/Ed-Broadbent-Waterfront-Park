@@ -1,47 +1,58 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
 
 import "/src/app/globals.css";
 import "/src/app/css/internal.css";
 import "/src/app/css/general.css";
-import "/src/app/css/slider.css";
-import 'swiper/css';
-import 'swiper/css/bundle';
+
+import Link from "next/link";
+import Image from "next/image";
+
 import AudioPopupTab from "@/app/components/AudioPopupTab";
+import UseImageModal from "@/app/hooks/useImageModal";
+import ImageModal from "@/app/components/slider/imageModal";
+import Slider from "@/app/components/slider/Slider";
 
 export default function General() {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("");
+
+    const {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
+    } = UseImageModal();
     
-    const openModal = (imageSrc) => {
-        setSelectedImage(imageSrc);
-        setModalOpen(true);
+    const imageModalVariableList = {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
     };
     
-    const closeModal = () => {
-        setModalOpen(false);
-        setSelectedImage("");
-    };
-    
+    const imageData = [
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/general/slider1.jpg",
+            alt: "Image 1 of slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/general/slider2.jpg",
+            alt: "Image 2 of slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/general/slider3.JPG",
+            alt: "Image 3 of slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/general/slider4.jpg",
+            alt: "Image 4 of slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/general/slider5.jpg",
+            alt: "Image 5 of slider"
+        },
+    ];
 
     return (
         <main>
-            {/* Image Modal */}
-            {modalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-container-general">
-                        <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
-                        </button>
-                        <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
-                    </div>
-                </div>
-            )}
+            <ImageModal imageModalVariableList={imageModalVariableList} />
 
             <section className="page-banner">
                 <Image src="/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image General Information" />
@@ -49,38 +60,12 @@ export default function General() {
 
             <section className="page-section">
                 <h1 className="page-section__title">GENERAL INFORMATION</h1>
-                    <section>
+                <section>
                     <p className="u-content-width">
                         Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, 
-                        the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system.
+                        the Ed Broadbent Waterfront Park is the City of Oshawa&apos;s newest addition to the waterfront parks system.
                     </p>
-                    <Swiper
-                        slidesPerView={3}
-                        spaceBetween={14}
-                        loop={true}
-                        pagination={{
-                        clickable: true,
-                        }}
-                        navigation
-                        modules={[Navigation]}
-                        className="mySwiper slider-internal"
-                    >
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/general/slider1.jpg" width={0} height={0} alt="slider 1" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/general/slider1.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/general/slider2.jpg" width={0} height={0} alt="slider 2" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/general/slider2.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/general/slider3.JPG" width={0} height={0} alt="slider 3" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/general/slider3.JPG")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/general/slider4.jpg" width={0} height={0} alt="slider 4" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/general/slider4.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/general/slider5.jpg" width={0} height={0} alt="slider 5" sizes="33vw" className="slider__image" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/general/slider5.jpg")} ></Image>
-                        </SwiperSlide>
-                    </Swiper>
+                    <Slider imageData={imageData} openImageModal={openImageModal} />
                     <p className="u-content-width">
                     The park is connected to the picturesque <span><a className="p-span-link" href="https://facilities.oshawa.ca/Home/Detail?CategoryIds=&FacilityTypeIds=&Keywords=bike&ScrollTo=google-map-trigger&CloseMap=true&Id=e164eaa4-63f7-4c0b-8091-c7f76cc02d1c" target="_blank" rel="noopener noreferrer">Joseph Kolodzie Oshawa Creek Bike Path</a></span>, 
                     the <span><a className="p-span-link" href="https://facilities.oshawa.ca/Home/Detail?CategoryIds=&FacilityTypeIds=71168&Keywords=waterfront%20trail&ScrollTo=google-map-trigger&CloseMap=true&Id=6085fddb-d81f-4328-a859-fc859dc28e3a"  target="_blank" rel="noopener noreferrer">Waterfront Trail</a></span>, and <span><a className="p-span-link" href="https://facilities.oshawa.ca/Home/Detail?CategoryIds=&FacilityTypeIds=&Keywords=lakeview%20park&ScrollTo=google-map-trigger&CloseMap=true&Id=ff127d8c-780d-46fe-ad52-36ecb9b2bee6" target="_blank" rel="noopener noreferrer">Lakeview Park</a></span>. The Larry Ladd Harbour Trail runs through the park and includes a new pedestrian bridge over the creek. The Trail is named in honour of local waterfront activist Larry Ladd. The park offers a great vantage point of the vibrant Port of Oshawa. The Park features an expansive Garden of Human Rights, a network of concrete and asphalt pathways as well as a stage with amphitheatre seating.

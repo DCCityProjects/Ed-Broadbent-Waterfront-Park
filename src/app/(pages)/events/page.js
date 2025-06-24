@@ -3,43 +3,55 @@
 import "/src/app/globals.css";
 import "/src/app/css/events.css";
 import "/src/app/css/internal.css";
-import "/src/app/css/slider.css";
-import 'swiper/css';
-import 'swiper/css/bundle';
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+
 import AudioPopupTab from "@/app/components/AudioPopupTab";
+import UseImageModal from "@/app/hooks/useImageModal";
+import ImageModal from "@/app/components/slider/imageModal";
+import Slider from "@/app/components/slider/Slider";
 
 export default function Events() {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
 
-    const openModal = (imageSrc) => {
-        setSelectedImage(imageSrc);
-        setModalOpen(true);
-    };
+    const {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
+    } = UseImageModal();
+    
+    const imageModalVariableList = {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
+    }
 
-    const closeModal = () => {
-        setModalOpen(false);
-        setSelectedImage(null);
-    };
+    const imageData = [
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/events/slider1.jpg",
+            alt: "Image 1 of slide"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/events/slider2.jpg",
+            alt: "Image 2 of slide"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/events/slider3.jpg",
+            alt: "Image 3 of slide"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/events/slider4.JPG",
+            alt: "Image 4 of slide"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/events/slider5.jpg",
+            alt: "Image 5 of slide"
+        },
+    ]
 
     return (
         <main>
-            {modalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-container-events">
-                        <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
-                        </button>
-                        <Image src={selectedImage} alt="Expanded View" className="modal-image" width={800} height={600} />
-                    </div>
-                </div>
-            )}
+            <ImageModal imageModalVariableList={imageModalVariableList} />
             <section className="page-banner">
                 <Image src="/Ed-Broadbent-Waterfront-Park/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image page-banner__image--events" alt="Featured Image Events" />
             </section>
@@ -56,30 +68,7 @@ export default function Events() {
                     <h2 className="page-subsection__title--events">Book an Event</h2>
                     <p>Interested in hosting an event at Ed Broadbent Waterfront Park? Learn more about <span><a className="p-span-link" href="https://www.oshawa.ca/en/parks-recreation-and-culture/host-an-event.aspx" target="_blank" rel="noopener noreferrer" >Hosting an Event</a> and <a className="p-span-link" href="https://www.oshawa.ca/en/parks-recreation-and-culture/facilities-and-rentals.aspx" target="_blank" rel="noopener noreferrer">Facility Bookings</a></span>.</p>
                 </section>
-                <Swiper
-                    slidesPerView={3}
-                    spaceBetween={14}
-                    loop={true}
-                    navigation
-                    modules={[Navigation, Pagination]}
-                    className="mySwiper slider-internal"
-                >
-                    <SwiperSlide>
-                        <Image src="/Ed-Broadbent-Waterfront-Park/images/events/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider Events" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/events/slider1.jpg")} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src="/Ed-Broadbent-Waterfront-Park/images/events/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider Events" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/events/slider2.jpg")} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src="/Ed-Broadbent-Waterfront-Park/images/events/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider Events" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/events/slider3.jpg")} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src="/Ed-Broadbent-Waterfront-Park/images/events/slider4.JPG" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider Events" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/events/slider4.JPG")} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Image src="/Ed-Broadbent-Waterfront-Park/images/events/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 5 of Slider Events" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/events/slider5.jpg")} />
-                    </SwiperSlide>
-                </Swiper>
+                <Slider imageData={imageData} openImageModal={openImageModal} />
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
             </section>
             {/* Add the audio path here /audio/your-path.mp3 */}
