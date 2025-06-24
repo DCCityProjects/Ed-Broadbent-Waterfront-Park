@@ -1,19 +1,15 @@
 "use client"
 
+
+import "@/app/css/pages/map.css"
+import "@/app/css/popup.css";
+
 import dynamic from "next/dynamic";
-import Link from "next/link";
-import "/src/app/css/map.css"
-import "/src/app/css/popup.css";
-import Image from "next/image";
-import Popup from "../../popup";
-import { useGSAP } from "@gsap/react";
+import { useEffect, useRef, useState } from "react";
+
 import gsap from "gsap";
 import Draggable from "gsap/dist/Draggable";
-import PopupTab from "/public/images/svgs/popup-tab_v1.0.0.svg";
-import IconSearch from "/public/images/svgs/icons/search-icon.svg";
-import IconVoice from "/public/images/svgs/icons/voice-activation-frame.svg";
-import { useEffect, useRef, useState } from "react";
-import Select from "react-select";
+
 import Navigation from "./Navigation";
 import Amphitheatre from "./Amphitheatre";
 import HumanRights from "./HumanRights";
@@ -21,8 +17,9 @@ import OrangeGarden from "./OrangeGarden";
 import MainEntrance from "./MainEntrance";
 import ParkingEntrance from "./ParkingEntrance";
 import AboutEdBroadbent from "./AboutEdBroadbent";
+
 import resetIcons from "@/app/functions/resetIcons";
-import { useSearchParams } from "next/navigation";
+import PopupTab from "@/app/components/svgs/PopupTab";
 
 const LeafletMap = dynamic(() => import('@/app/components/LeafletMap'), {
     loading: () => <p>loading...</p>,
