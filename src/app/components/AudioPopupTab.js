@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import PopupTab from "/public/images/svgs/popup-tab_v1.0.0.svg";
 import Play from "/public/images/svgs/icons/play.svg";
 import Pause from "/public/images/svgs/icons/pause.svg";
 import Restart from "/public/images/svgs/icons/restart.svg";
@@ -9,6 +8,7 @@ import "/src/app/css/audiopopup.css";
 import "/src/app/css/popup.css";
 import gsap from "gsap";
 import Draggable from "gsap/dist/Draggable";
+import PopupTab from "./svgs/PopupTab";
 
 export default function AudioPopupTab({ audioSrc, audioGuidanceEnabled, autoPlay }) {
   const [isClient, setIsClient] = useState(false);
