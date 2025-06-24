@@ -1,0 +1,71 @@
+/* Modal Background Overlay */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+/* Image Wrapper */
+.image-modal__image-wrapper {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+/* Closing button */
+.image-modal__button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+/* Closing button image */
+.image-modal__button-image{
+    width: 30px;
+    height: 30px;
+}
+
+/* Image */
+.image-modal__image{
+    width: 100%;
+    height: auto;
+    max-width: 95vw;
+    max-height: 85vh;
+    border-radius: 10px;
+    display: block;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

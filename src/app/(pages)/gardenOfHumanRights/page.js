@@ -5,33 +5,51 @@ import "/src/app/globals.css";
 import "/src/app/css/gardenOfHumanRights.css";
 import "/src/app/css/internal.css";
 
-import "/src/app/css/slider.css";
-import 'swiper/css';
-import 'swiper/css/bundle';
-
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+
 import Information from "/public/images/svgs/icons/information.svg"
-import Ar from "/public/images/svgs/icons/ar.svg";
 import AudioPopupTab from "@/app/components/AudioPopupTab";
-import { useState } from "react";
+import UseImageModal from "@/app/hooks/useImageModal";
+import Slider from "@/app/components/slider/Slider";
+import ImageModal from "@/app/components/slider/imageModal";
 
 export default function GardenOfHumanRights() {
 
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("");
+    const {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
+    } = UseImageModal();
     
-    const openModal = (imageSrc) => {
-        setSelectedImage(imageSrc);
-        setModalOpen(true);
-    };
-    
-    const closeModal = () => {
-        setModalOpen(false);
-        setSelectedImage("");
-    };
+    const imageModalVariableList = {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
+    }
+
+    const imageData = [
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider1.jpg",
+            alt: "Image 1 of slide"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider2.jpg",
+            alt: "Image 2 of slide"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider3.jpg",
+            alt: "Image 3 of slide"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider4.jpg",
+            alt: "Image 4 of slide"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider5.jpg",
+            alt: "Image 5 of slide"
+        }
+    ];
 
     const humanRights = [
         "Race",
@@ -51,18 +69,7 @@ export default function GardenOfHumanRights() {
 
     return (
         <main>
-            {/* Image Modal */}
-            {modalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-container-general">
-                        <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
-                        </button>
-                        <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
-                    </div>
-                </div>
-            )}
-
+            <ImageModal imageModalVariableList={imageModalVariableList} />
             <section className="page-banner">
                 <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="main image 1"></Image>
             </section>
@@ -77,33 +84,7 @@ export default function GardenOfHumanRights() {
                             <li key={index} className="human-rights__item">{right}</li>
                         ))}
                     </ol>
-                    <Swiper
-                        slidesPerView={3}
-                        spaceBetween={14}
-                        loop={true}
-                        pagination={{
-                        clickable: true,
-                        }}
-                        navigation
-                        modules={[Navigation]}
-                        className="mySwiper slider-internal"
-                    >
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 2" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider1.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 3" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider2.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 4" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider3.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 5" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider4.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider5.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="image 6" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider5.jpg")} ></Image>
-                        </SwiperSlide>
-                    </Swiper>
+                    <Slider imageData={imageData} openImageModal={openImageModal} />
                     <p className="u-content-width">A variety of seating in the garden makes this a unique place for quiet reflection and contemplation.</p>
                     <div className="hr-learn-more u-content-width">
                         <Information className="hr-learn-more__icon" />

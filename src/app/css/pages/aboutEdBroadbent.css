@@ -1,0 +1,16 @@
+.edBroadbent {
+    width: 100%;
+    height: auto;
+}
+
+.about-subsection__p{
+    border-left: 3px solid var(--color--primary);
+    padding-top: 10px;
+    padding-bottom: 6px;
+    padding: 10px 27px 6px 18px;
+    margin-top: 4px;
+    margin-left: 14px;
+    margin-bottom: 20px;
+}
+
+

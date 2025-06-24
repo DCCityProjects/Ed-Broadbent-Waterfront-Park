@@ -1,50 +1,58 @@
 "use client"
 
 import "/src/app/globals.css";
-import "/src/app/css/aboutEdBroadbent.css";
+import "/src/app/css/pages/aboutEdBroadbent.css";
 import "/src/app/css/internal.css";
-
-import "/src/app/css/slider.css";
-import 'swiper/css';
-import 'swiper/css/bundle';
+import "/src/app/css/imageModal.css"
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from 'swiper/modules';
 import AudioPopupTab from "@/app/components/AudioPopupTab";
+import Slider from "@/app/components/slider/Slider";
+import ImageModal from "@/app/components/slider/imageModal";
+import UseImageModal from "@/app/hooks/useImageModal";
 
 
 export default function EdBroadbent() {
-    const [modalOpen, setModalOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState("");
+
+
+    const {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
+    } = UseImageModal();
     
-    const openModal = (imageSrc) => {
-        setSelectedImage(imageSrc);
-        setModalOpen(true);
+    const imageModalVariableList = {
+        imageModalOpen, setImageModalOpen,
+        selectedImage, setSelectedImage,
+        openImageModal, closeImageModal
     };
-    
-    const closeModal = () => {
-        setModalOpen(false);
-        setSelectedImage("");
-    };
+
+
+    const imageData = [
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider1.jpg",
+            alt: "Image 1 of Slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider2.jpg",
+            alt: "Image 2 of Slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider3.jpg",
+            alt: "Image 3 of Slider"
+        },
+        {
+            src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider4.jpg",
+            alt: "Image 4 of Slider"
+        }
+    ];
 
     return (
 
         <main>
-            {/* Image Modal */}
-            {modalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-container-edBroadbent">
-                        <button className="modal-close-button" onClick={closeModal}>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Modal" width={30} height={30} />
-                        </button>
-                        <Image src={selectedImage} alt="Expanded View" className="modal-image" width={0} height={0} sizes="80vw" />
-                    </div>
-                </div>
-            )}
+            <ImageModal imageModalVariableList={imageModalVariableList} />
             <section className="page-banner">
                 <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image About EdBroadbent"></Image>
             </section>
@@ -53,30 +61,7 @@ export default function EdBroadbent() {
                 <p className="u-content-width">
                     Ed Broadbent was a Canadian political icon born and raised in Oshawa with long-standing service to our community and across our nation.
                 </p>
-                <Swiper
-                        slidesPerView={3}
-                        spaceBetween={14}
-                        loop={true}
-                        pagination={{
-                        clickable: true,
-                        }}
-                        navigation
-                        modules={[Navigation]}
-                        className="mySwiper slider-internal"
-                    >
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider1.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 1 of Slider About EdBroadbent" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider1.jpg")}></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider2.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 2 of Slider About EdBroadbent" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider2.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider3.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 3 of Slider About EdBroadbent" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider3.jpg")} ></Image>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider4.jpg" width={0} height={0} sizes="33vw" className="slider__image" alt="Image 4 of Slider About EdBroadbent" onClick={() => openModal("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider4.jpg")} ></Image>
-                        </SwiperSlide>
-                </Swiper>
+                <Slider imageData={imageData} openImageModal={openImageModal} />
                 <section className="u-content-width">
                     <div className="about-subsection">
                         <h2 className="about-subsection__title">1936 - 1966</h2>
@@ -97,9 +82,6 @@ export default function EdBroadbent() {
                             During his time in Ottawa, Mr. Broadbent’s focus was on Indigenous rights, women’s equality, child poverty, ethics in government, and tax equality. <br/> <br/>
                             He was invested as a Member of the Privy Council (<span className="p-span">1982</span>), Officer of the Order of Canada (<span className="p-span">1993</span>), and Companion of the Order of Canada (<span className="p-span">2002</span>).</p>
                     </div>
-
-
-
                 </section>
                 
                 <Link href="/" className="back-to-home back-to-home-about button-color-primary" role="button">BACK TO HOME</Link>
