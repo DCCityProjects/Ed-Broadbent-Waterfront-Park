@@ -1,0 +1,45 @@
+.human-rights__list{
+    columns: 2;
+    list-style-position: inside;
+    list-style: none;
+    counter-reset: item;
+    margin-top: 28px;
+    margin-bottom: 32px;
+}
+
+.human-rights__item{
+    counter-increment: item;
+    margin-bottom: 12px;
+}
+
+.human-rights__item:last-child{
+    margin-bottom: 0;
+}
+
+.human-rights__item::before{
+    border: 1px solid var(--color--primary);
+    border-radius: 5px;
+    content: counter(item);
+    color: var(--color--primary);
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    display: inline-block;
+
+    margin-right: 16px;
+
+}
+
+.hr-learn-more{
+    display: flex;
+    margin-top: 20px;
+}
+
+.hr-learn-more__icon{
+    width: 22px;
+    height: 22px;;
+}
+
+.hr-learn-more__description{
+    margin-left: 16px;
+}

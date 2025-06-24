@@ -2,8 +2,8 @@
 
 
 import "/src/app/globals.css";
-import "/src/app/css/internal.css";
-import "/src/app/css/general.css";
+import "/src/app/css/pages/internal.css";
+import "/src/app/css/pages/general.css";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -74,18 +74,18 @@ export default function General() {
             </section>
 
             <section className="u-content-width page-subsection">
-                <h2 className="page-subsection__title">Park Amenities:</h2>
+                <h2 className="page-subsection__title mb-16">Park Amenities:</h2>
                 <ul className="page-subsection__list">
-                    <li><i className="amenity-icon amenity-accessibility"></i> Accessible</li>
-                    <li><i className="amenity-icon amenity-bike"></i> Bike rack</li>
-                    <li><i className="amenity-icon amenity-garden"></i> Garden</li>
-                    <li><i className="amenity-icon amenity-parking"></i> Parking</li>
-                    <li><i className="amenity-icon amenity-trail"></i> Recreational trail</li>
+                    <li><i className="amenity-icon amenity-icon--accessibility"></i> Accessible</li>
+                    <li><i className="amenity-icon amenity-icon--bike"></i> Bike rack</li>
+                    <li><i className="amenity-icon amenity-icon--garden"></i> Garden</li>
+                    <li><i className="amenity-icon amenity-icon--parking"></i> Parking</li>
+                    <li><i className="amenity-icon amenity-icon--trail"></i> Recreational trail</li>
                 </ul>
             </section>
 
             <section className="page-subsection u-content-width">
-                <h2 className="page-subsection__title">Did you know?</h2>
+                <h2 className="page-subsection__title mb-16">Did you know?</h2>
                 <ul className="did-you-know__list">
                     <li>Ed Broadbent Waterfront Park is a two-phase redevelopment project.</li>
                     <li>Elements of the old marina infrastructure are still present on the eastern half of the project site.</li>

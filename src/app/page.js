@@ -1,8 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
-
-import "./css/landing.css";
-import AudioPopupTab from "./components/AudioPopupTab";
 import LandingPageContent from "./landingPageContent";
 
 

@@ -2,8 +2,8 @@
 
 import "/src/app/globals.css";
 
-import "/src/app/css/gardenOfHumanRights.css";
-import "/src/app/css/internal.css";
+import "/src/app/css/pages/gardenOfHumanRights.css";
+import "/src/app/css/pages/internal.css";
 
 import Image from "next/image";
 import Link from "next/link";
