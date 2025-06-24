@@ -1,4 +1,3 @@
-import Back from "/public/images/svgs/icons/left.svg";
 import Ar from "/public/images/svgs/icons/ar.svg";
 import MapBack from "@/app/components/MapBack";
 import Link from "next/link";

@@ -1,0 +1,53 @@
+.did-you-know__list {
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    list-style-type: none;
+}
+
+.did-you-know__list li {
+    margin-bottom: 16px; 
+    position: relative;
+}
+
+.did-you-know__list li::before {
+    content: "•";
+    font-size: 2rem;
+    color: var(--color--primary);
+    font-weight: bold;
+    position: absolute;
+    left: -1.6rem;
+    top: -0.7rem;
+}
+
+/* Icon Base Style */
+.amenity-icon {
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+}
+
+/** ICONS **/
+.amenity-icon--accessibility{
+    background-image: url("/Ed-Broadbent-Waterfront-Park/images/svgs/icons/accessibility.svg");
+}
+
+.amenity-icon--bike {
+    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/bike.svg');
+}
+
+.amenity-icon--garden {
+    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/garden.svg');
+}
+
+.amenity-icon--parking {
+    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/parking.svg');
+}
+
+.amenity-icon--trail {
+    background-image: url('/Ed-Broadbent-Waterfront-Park/images/svgs/icons/recreational-trail.svg');
+}

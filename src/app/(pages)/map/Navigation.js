@@ -1,7 +1,7 @@
 "use client"
 
-import IconSearch from "/public/images/svgs/icons/search-icon.svg";
-import IconVoice from "/public/images/svgs/icons/voice-activation-frame.svg";
+import IconSearch from "/images/svgs/icons/search.svg";
+import IconVoice from "/images/svgs/icons/voice-activation-frame.svg";
 import Select from "react-select";
 
 export default function Navigation() {

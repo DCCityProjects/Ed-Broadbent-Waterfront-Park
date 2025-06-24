@@ -1,5 +1,7 @@
 'use client'
 
+import "./css/pages/landing.css";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import AudioPopupTab from "./components/AudioPopupTab";
