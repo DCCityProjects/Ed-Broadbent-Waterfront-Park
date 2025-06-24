@@ -1,7 +1,6 @@
 "use client"
 
-import IconSearch from "/images/svgs/icons/search.svg";
-import IconVoice from "/images/svgs/icons/voice-activation-frame.svg";
+import Image from "next/image";
 import Select from "react-select";
 
 export default function Navigation() {
@@ -37,20 +36,20 @@ export default function Navigation() {
             <h2 className="navigation__title">Select Destination</h2>
                 <div className="navigation-fields">
                     <div className="navigation-fields__row"> 
-                        <IconSearch className="navigation-fields__search"/>
+                        <Image src="/images/svgs/icons/search.svg" alt="search bututon" className="navigation-fields__search" />
                         <div className="navigation-fields__select-wrapper">
                             <Select options={options} className="navigation-fields__select" styles={navFieldStyles} components={{IndicatorSeparator: ()=> null, DropdownIndicator:()=> null}} menuPlacement="top" placeholder="From Starting Point"/>
                         </div>
                         {/* <input defaultValue="From Starting Point" type="text" className="navigation-fields__input" /> */}
-                        <IconVoice />
+                        <Image src="/images/svgs/icons/voice-activation-frame.svg" alt="voice button" />
                     </div>
                     <hr className="navigation-fields__hr" />
                     <div className="navigation-fields__row">
-                        <IconSearch className="navigation-fields__search" />
+                        <Image src="/images/svgs/icons/search.svg" alt="search bututon" className="navigation-fields__search" />
                         <div className="navigation-fields__select-wrapper">
                             <Select options={options} className="navigation-fields__select" styles={navFieldStyles} components={{IndicatorSeparator: ()=> null, DropdownIndicator:()=> null}} menuPlacement="top" placeholder="To Destination"/>
                         </div>
-                        <IconVoice />
+                        <Image src="/images/svgs/icons/voice-activation-frame.svg" alt="voice button" />
                     </div>
                 </div>
             <button className="navigation__go">GO</button>
