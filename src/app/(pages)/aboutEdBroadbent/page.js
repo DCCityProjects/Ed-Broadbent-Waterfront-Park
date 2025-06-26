@@ -65,22 +65,22 @@ export default function EdBroadbent() {
                 <section className="u-content-width">
                     <div className="about-subsection">
                         <h2 className="about-subsection__title">1936 - 1966</h2>
-                        <p className="about-subsection__p">Ed Broadbent was born in Oshawa in <span className="p-span">1936</span> and raised in our city. After graduating first in his class in philosophy at the University of Toronto in <span className="p-span">1959</span>, he did postgraduate studies at the London School of Economics and obtained his doctorate in political science from the University of Toronto in <span className="p-span">1966</span>.</p>
+                        <p className="about-subsection__p">Ed Broadbent was born in Oshawa in 1936 and raised in our city. After graduating first in his class in philosophy at the University of Toronto in 1959, he did postgraduate studies at the London School of Economics and obtained his doctorate in political science from the University of Toronto in 1966.</p>
                     </div>
                     <div className="about-subsection">
                         <h2 className="about-subsection__title">1968 - 1989</h2>
-                        <p className="about-subsection__p">Mr. Broadbent was elected to Parliament as the NDP Member for Oshawa in <span className="p-span">1968</span> and served as the MP until <span className="p-span">1989</span>. From <span className="p-span">1975</span> to <span className="p-span">1989</span>, he was also Leader of the New Democratic Party.</p>
+                        <p className="about-subsection__p">Mr. Broadbent was elected to Parliament as the NDP Member for Oshawa in 1968 and served as the MP until 1989, he was also Leader of the New Democratic Party.</p>
                     </div>
                     <div className="about-subsection">
                         <h2 className="about-subsection__title">1990 - 1996</h2>
-                        <p className="about-subsection__p">Between <span className="p-span">1979</span> and <span className="p-span">1990</span>, he was Vice-President of the Socialist International. From <span className="p-span">1990</span> to <span className="p-span">1996</span>, he was the founding President of the International Centre for Human Rights and Democratic Development in Montreal.</p>
+                        <p className="about-subsection__p">Between 1979 and 1990, he was Vice-President of the Socialist International. From 1990 to 1996, he was the founding President of the International Centre for Human Rights and Democratic Development in Montreal.</p>
                     </div>
                     <div className="about-subsection">
                         <h2 className="about-subsection__title">2023</h2>
-                        <p className="about-subsection__p">In June <span className="p-span">2023</span>, the City officially opened Ed Broadbent Waterfront Park. The naming of the Park honours the numerous contributions Mr. Broadbent made to public service, Canadians and especially his commitment and service to the residents, workers and businesses of Oshawa. <br/> <br/>
-                            The Park features a Garden of Human Rights honouring Mr. Broadbent’s dedication and extensive work as a champion and advocate for human rights. <br/> <br/>
-                            During his time in Ottawa, Mr. Broadbent’s focus was on Indigenous rights, women’s equality, child poverty, ethics in government, and tax equality. <br/> <br/>
-                            He was invested as a Member of the Privy Council (<span className="p-span">1982</span>), Officer of the Order of Canada (<span className="p-span">1993</span>), and Companion of the Order of Canada (<span className="p-span">2002</span>).</p>
+                        <p className="about-subsection__p">In June 2023, the City officially opened Ed Broadbent Waterfront Park. The naming of the Park honours the numerous contributions Mr. Broadbent made to public service, Canadians and especially his commitment and service to the residents, workers and businesses of Oshawa. <br/> <br/>
+                            The Park features a Garden of Human Rights honouring Mr. Broadbent&apos;s dedication and extensive work as a champion and advocate for human rights. <br/> <br/>
+                            During his time in Ottawa, Mr. Broadbent&apos;s focus was on Indigenous rights, women&apos;s equality, child poverty, ethics in government, and tax equality. <br/> <br/>
+                            He was invested as a Member of the Privy Council (1982), Officer of the Order of Canada (1993), and Companion of the Order of Canada (2002).</p>
                     </div>
                 </section>
                 
