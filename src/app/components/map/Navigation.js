@@ -36,21 +36,42 @@ export default function Navigation() {
             <h2 className="navigation__title">Select Destination</h2>
                 <div className="navigation-fields">
                     <div className="navigation-fields__row"> 
-                        <Image src="/images/svgs/icons/search.svg" alt="search bututon" className="navigation-fields__search" />
+                        <Image 
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/search.svg"
+                            alt="search bututon"
+                            width={32}
+                            height={32}
+                            className="navigation-fields__search"
+                        />
                         <div className="navigation-fields__select-wrapper">
                             <Select options={options} className="navigation-fields__select" styles={navFieldStyles} components={{IndicatorSeparator: ()=> null, DropdownIndicator:()=> null}} menuPlacement="top" placeholder="From Starting Point"/>
                         </div>
                         {/* <input defaultValue="From Starting Point" type="text" className="navigation-fields__input" /> */}
-                        <Image src="/images/svgs/icons/voice-activation-frame.svg" alt="voice button" />
+                        <Image 
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/voice.svg"
+                            alt="voice button"
+                            width={32}
+                            height={32}
+                        />
                     </div>
                     <hr className="navigation-fields__hr" />
                     <div className="navigation-fields__row">
-                        <Image src="/images/svgs/icons/search.svg" alt="search bututon" className="navigation-fields__search" />
+                        <Image 
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/search.svg"
+                            alt="search bututon"
+                            width={32}
+                            height={32}
+                            className="navigation-fields__search"
+                        />
                         <div className="navigation-fields__select-wrapper">
                             <Select options={options} className="navigation-fields__select" styles={navFieldStyles} components={{IndicatorSeparator: ()=> null, DropdownIndicator:()=> null}} menuPlacement="top" placeholder="To Destination"/>
                         </div>
-                        <Image src="/images/svgs/icons/voice-activation-frame.svg" alt="voice button" />
-                    </div>
+                        <Image 
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/voice.svg"
+                            alt="voice button"
+                            width={32}
+                            height={32}
+                        />                    </div>
                 </div>
             <button className="navigation__go">GO</button>
         </>

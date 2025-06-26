@@ -105,26 +105,9 @@ export default function LeafletMap({setContent, popupRef, resetIcons, isIconClic
             }
 
             setIconState(newIconState);
-            // if(iconState[index].icon === iconMainGrey){
-            //     iconState[index].icon = iconMainSelect;
-            // } else if (iconState[index].icon === iconAmphitheatreGrey){ 
-            //     iconState[index].icon = iconAmphitheatreSelect;
-            // } else if (iconState[index].icon === iconGardenHRGrey){
-            //     iconState[index].icon = iconGardenHRSelect;
-            // } else if (iconState[index].icon === iconOrangeGardenGrey){
-            //     iconState[index].icon = iconOrangeGardenSelect;
-            // }
             marker.zIndexOffset = 10000;
 
             setContent(marker.url);
-            // setIconState(prev=>{
-            //     const newState = [...prev];
-            //     newState[index] = {
-            //         ...newState[index],
-            //         permanent: true,
-            //     };
-            //     return newState;
-            // })
             gsap.to(popupRef.current, {y: 0, duration: 1})
             console.log(popupRef.current)
             if(popupRef.current){

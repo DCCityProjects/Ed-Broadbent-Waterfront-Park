@@ -10,16 +10,12 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Draggable from "gsap/dist/Draggable";
 
-import Navigation from "./Navigation";
-import Amphitheatre from "./Amphitheatre";
-import HumanRights from "./HumanRights";
-import OrangeGarden from "./OrangeGarden";
-import MainEntrance from "./MainEntrance";
-import ParkingEntrance from "./ParkingEntrance";
-import AboutEdBroadbent from "./AboutEdBroadbent";
+import Navigation from "../../components/map/Navigation";
+
 
 import resetIcons from "@/app/functions/resetIcons";
 import PopupTab from "@/app/components/svgs/PopupTab";
+import MapPopup from "../../components/map/MapPopup";
 
 const LeafletMap = dynamic(() => import('@/app/components/LeafletMap'), {
     loading: () => <p>loading...</p>,
@@ -37,21 +33,13 @@ export default function Map() {
     const [isUp, setIsUp] = useState(false);
     const [iconState, setIconState] = useState([]);
 
-
-
-
-
-    const popupComponentsList = {
-        "navigation": Navigation,
-        "amphitheatre-and-stage": Amphitheatre,
-        "garden-of-human-rights": HumanRights,
-        "orange-garden": OrangeGarden,
-        "main-entrance": MainEntrance,
-        "parking-entrance": ParkingEntrance,
-        "about-ed-broadbent": AboutEdBroadbent
-    }
-
-    const PopupContent = popupComponentsList[content]
+    const stateList = {
+        content, setContent,
+        setIsIconClicked, resetIcons,
+        iconState, setIconState,
+        isIconClicked, setIsIconClicked,
+        popupRef
+    };
 
     useEffect(()=>{
         setIsClient(true);
@@ -117,7 +105,7 @@ export default function Map() {
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
-                <PopupContent setContent={setContent} setIsIconClicked={setIsIconClicked} resetIcons={resetIcons} iconState={iconState} />
+                {content === "navigation" ? (<Navigation />) : (<MapPopup stateList={stateList} />)}
             </section>
         </main>
     );
