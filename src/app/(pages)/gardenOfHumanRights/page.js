@@ -4,6 +4,8 @@ import "/src/app/globals.css";
 
 import "/src/app/css/pages/gardenOfHumanRights.css";
 import "/src/app/css/pages/internal.css";
+import "/src/app/css/imageModal.css"
+
 
 import Image from "next/image";
 import Link from "next/link";

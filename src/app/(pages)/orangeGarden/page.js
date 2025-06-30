@@ -3,6 +3,8 @@
 import "/src/app/globals.css";
 import "/src/app/css/pages/internal.css";
 import "/src/app/css/pages/orangeGarden.css";
+import "/src/app/css/imageModal.css"
+
 
 import Link from "next/link";
 import Image from "next/image";
