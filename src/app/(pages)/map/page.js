@@ -28,7 +28,7 @@ export default function Map() {
     const [content, setContent] = useState("navigation");
     const popupRef = useRef(null);
     const tabRef = useRef(null);
-    const [isClient, setIsClient] = useState(false);
+    // const [isClient, setIsClient] = useState(false);
     const [isIconClicked, setIsIconClicked] = useState(false);
     const [isUp, setIsUp] = useState(false);
     const [iconState, setIconState] = useState([]);
@@ -41,9 +41,9 @@ export default function Map() {
         popupRef
     };
 
-    useEffect(()=>{
-        setIsClient(true);
-    }, [])
+    // useEffect(()=>{
+    //     setIsClient(true);
+    // }, [])
 
     // useEffect(()=>{
     //     console.log(content)
@@ -85,7 +85,7 @@ export default function Map() {
             })
         }
 
-    }, [popupHeight, isClient]);
+    }, [popupHeight]);
 
     // useEffect(() => {
     //     if (isClient) {
@@ -101,7 +101,7 @@ export default function Map() {
     
     return (
         <main>
-            {typeof window !== "undefined" && isClient && <LeafletMap setContent={setContent} resetIcons={resetIcons} iconState={iconState} setIconState={setIconState} isIconClicked={isIconClicked} setIsIconClicked={setIsIconClicked} popupRef={popupRef} />}
+            <LeafletMap setContent={setContent} resetIcons={resetIcons} iconState={iconState} setIconState={setIconState} isIconClicked={isIconClicked} setIsIconClicked={setIsIconClicked} popupRef={popupRef} />
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
