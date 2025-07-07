@@ -5,7 +5,7 @@ import "@/app/css/pages/map.css"
 import "@/app/css/popup.css";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import Draggable from "gsap/dist/Draggable";
@@ -41,32 +41,26 @@ export default function Map() {
         popupRef
     };
 
-    // useEffect(()=>{
-    //     setIsClient(true);
-    // }, [])
-
-    // useEffect(()=>{
-    //     console.log(content)
-    // },[content])
-
+    //* popup height is used for the draggable element
+    //* to calculate the draggable distance
     useEffect(()=>{
         if(popupRef.current){
             setPopupHeight(popupRef.current.clientHeight)
         }
     }, [content])
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         gsap.registerPlugin(Draggable);
 
-        if(popupRef.current && tabRef.current){
-            console.log(popupHeight)
+        if(!popupRef.current) return;
+
             // const chevron = document.querySelector("#popup-tab__chevron");
 
             Draggable.create(popupRef.current, {
                 type: "y",
                 inertia: true,
                 bounds: {minY: 0, maxY: popupHeight},
-                edgeResistance: 0.5,
+                edgeResistance: 1,
                 onRelease: function(){
                     console.log(this.y)
                     const y = this.y;
@@ -83,25 +77,12 @@ export default function Map() {
                     }
                 }
             })
-        }
 
     }, [popupHeight]);
 
-    // useEffect(() => {
-    //     if (isClient) {
-    //         import("leaflet").then((L) => {
-    //             // Use the leaflet library here
-    //             console.log("Leaflet loaded", L);
-    //         }).catch((error) => {
-    //             console.error("Error loading leaflet", error);
-    //         });
-    //     }
-    // }, [isClient]);
-
-    
     return (
         <main>
-            <LeafletMap setContent={setContent} resetIcons={resetIcons} iconState={iconState} setIconState={setIconState} isIconClicked={isIconClicked} setIsIconClicked={setIsIconClicked} popupRef={popupRef} />
+            <LeafletMap stateList={stateList} />
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
