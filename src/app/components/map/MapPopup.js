@@ -9,7 +9,7 @@ export default function MapPopup({stateList}) {
         content, setContent,
         setIsIconClicked, resetIcons, 
         iconState
-    } = stateList
+    } = stateList;
 
     const popupData = {
         "amphitheatre-and-stage": {
