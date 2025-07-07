@@ -46,57 +46,28 @@ export default function LeafletMap({stateList}) {
             console.log("No icon state");
             return
         };
-            console.log(iconState[index].icon);
+            setContent(marker.url);
             setIsIconClicked(false);
             resetIcons(iconState);
 
             const newIconState = [...iconState];
 
             switch (iconState[index].icon) {
-                case iconAmpGrey:
-                    newIconState[index].icon = iconAmpCol;
-                    break;
-
-                case iconBenchesGrey:
-                    newIconState[index].icon = iconBenchesCol;
-                    break;
-            
-                case iconBikeGrey:
-                    newIconState[index].icon = iconBikeCol;
-                    break;
-
-                case iconBridgeGrey:
-                    newIconState[index].icon = iconBridgeCol;
-                    break;
-
-                case iconEBGrey:
-                    newIconState[index].icon = iconEBCol;
-                    break;
-
-                case iconHRGrey:
-                    newIconState[index].icon = iconHRCol;
-                    break;
-
-                case iconMapGrey:
-                    newIconState[index].icon = iconMapCol;
-                    break;
-
-                case iconOGGrey:
-                    newIconState[index].icon = iconOGCol;
-                    break;
-
-                case iconParkingGrey:
-                    newIconState[index].icon = iconParkingCol;
-                    break;
-
-                default:
-                    break;
-            }
+                case iconAmpGrey: newIconState[index].icon = iconAmpCol; break;
+                case iconBenchesGrey: newIconState[index].icon = iconBenchesCol; break;
+                case iconBikeGrey: newIconState[index].icon = iconBikeCol; break;
+                case iconBridgeGrey: newIconState[index].icon = iconBridgeCol; break;
+                case iconEBGrey: newIconState[index].icon = iconEBCol; break;
+                case iconHRGrey: newIconState[index].icon = iconHRCol; break;
+                case iconMapGrey: newIconState[index].icon = iconMapCol; break;
+                case iconOGGrey: newIconState[index].icon = iconOGCol; break;
+                case iconParkingGrey: newIconState[index].icon = iconParkingCol; break;
+                default: break;
+            };
 
             setIconState(newIconState);
             marker.zIndexOffset = 10000;
 
-            setContent(marker.url);
             gsap.to(popupRef.current, {y: 0, duration: 1})
             console.log(popupRef.current)
             if(popupRef.current){
@@ -113,6 +84,7 @@ export default function LeafletMap({stateList}) {
                 position: [3520, 750],
                 zIndexOffset: 1000,
                 icon: iconAmpGrey,
+                iconGrey: iconAmpGrey,
                 iconCol: iconAmpCol,
                 name: "Amphitheatre and Stage",
                 url: "amphitheatre-and-stage",
@@ -122,6 +94,7 @@ export default function LeafletMap({stateList}) {
                 position: [550, 1800],
                 zIndexOffset: 1000,
                 icon: iconBenchesGrey,
+                iconGrey: iconBenchesGrey,
                 iconCol: iconBenchesCol,
                 name: "Benches",
                 url:"benches",
@@ -131,6 +104,7 @@ export default function LeafletMap({stateList}) {
                 position: [3500, 310],
                 zIndexOffset: 1000,
                 icon: iconBikeGrey,
+                iconGrey: iconBikeGrey,
                 iconCol: iconBikeCol,
                 name: "Bike Parking",
                 url:"bike-parking",
@@ -140,6 +114,7 @@ export default function LeafletMap({stateList}) {
                 position: [3740, 1400],
                 zIndexOffset: 1000,
                 icon: iconBikeGrey,
+                iconGrey: iconBikeGrey,
                 iconCol: iconBikeCol,
                 name: "Bike Parking",
                 url:"bike-parking",
@@ -149,6 +124,7 @@ export default function LeafletMap({stateList}) {
                 position: [1500, 1720],
                 zIndexOffset: 1000,
                 icon: iconBridgeGrey,
+                iconGrey: iconBridgeGrey,
                 iconCol: iconBridgeCol,
                 name: "Larry Ladd Bridge",
                 url: "bridge",
@@ -158,6 +134,7 @@ export default function LeafletMap({stateList}) {
                 position: [4035, 300],
                 zIndexOffset: 1000,
                 icon: iconEBGrey,
+                iconGrey: iconEBGrey,
                 iconCol: iconEBCol,
                 name: "About Ed Broadbent",
                 url: "about-ed-broadbent",
@@ -167,6 +144,7 @@ export default function LeafletMap({stateList}) {
                 position: [3300, 750],
                 zIndexOffset: 1000,
                 icon: iconHRGrey,
+                iconGrey: iconHRGrey,
                 iconCol: iconHRCol,
                 name: "Garden of Human Rights",
                 url: "garden-of-human-rights",
@@ -184,6 +162,7 @@ export default function LeafletMap({stateList}) {
                 position: [4400, 350],
                 zIndexOffset: 1000,
                 icon: iconMapGrey,
+                iconGrey: iconMapGrey,
                 iconCol: iconMapCol,
                 name: "Main Map North",
                 url: "main-map",
@@ -193,6 +172,7 @@ export default function LeafletMap({stateList}) {
                 position: [440, 1550],
                 zIndexOffset: 1000,
                 icon: iconMapGrey,
+                iconGrey: iconMapGrey,
                 iconCol: iconMapCol,
                 name: "Main Map",
                 url: "main-map",
@@ -202,6 +182,7 @@ export default function LeafletMap({stateList}) {
                 position: [920, 1600],
                 zIndexOffset: 1000,
                 icon: iconOGGrey,
+                iconGrey: iconOGGrey,
                 iconCol: iconOGCol,
                 name: "Orange Garden",
                 url: "orange-garden",
@@ -211,6 +192,7 @@ export default function LeafletMap({stateList}) {
                 position: [168, 975],
                 zIndexOffset: 1000,
                 icon: iconParkingGrey,
+                iconGrey: iconParkingGrey,
                 iconCol: iconParkingCol,
                 name: "Parking",
                 url: "parking",
@@ -221,7 +203,7 @@ export default function LeafletMap({stateList}) {
 
     useEffect(()=>{
         const contentParam = searchParams.get("content");
-        if(contentParam){
+        if(contentParam && iconState.length > 0){
             setContent(contentParam)
             const markerIndex = iconState.findIndex(marker=>marker.url === contentParam);
             if(markerIndex !== -1){
