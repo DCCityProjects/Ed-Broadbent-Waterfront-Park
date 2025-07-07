@@ -122,7 +122,7 @@ const iconHRGrey = new L.Icon({
 });
 
 const iconHRCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--hr.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--hr-col.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,0],
@@ -188,7 +188,7 @@ const iconOGGrey = new L.Icon({
 });
 
 const iconOGCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--og.svg",
+    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--og-col.svg",
     iconSize: [50, 50],
     iconAnchor: [25, 25],
     popupAnchor: [0,0],
