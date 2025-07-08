@@ -15,8 +15,8 @@ import L from "leaflet";
 function makeDivIcon(src, className){
     return new L.DivIcon({
         html: `<img src=${src}>`,
-        iconSize: [50, 50],
-        iconAnchor: [25, 25],
+        iconSize: undefined,
+        iconAnchor: undefined,
         popupAnchor: [0, -40],
         className: className
     })
@@ -35,92 +35,92 @@ const iconAmpCol = makeDivIcon(
 
 const iconBenchesGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--benches.svg",
-    "mapPin mapPin__benches--grey"
+    "map-marker map-marker__benches--grey"
 );
 
 const iconBenchesCol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--benches-col.svg",
-    "mapPin mapPin__benches--col"
+    "map-marker map-marker__benches--col"
 );
 
 const iconBikeGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--bike.svg",
-    "mapPin mapPin__bike--grey"
+    "map-marker map-marker__bike--grey"
 );
 
 const iconBikeCol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--bike-col.svg",
-    "mapPin mapPin__bike--col"
+    "map-marker map-marker__bike--col"
 );
 
 const iconBridgeGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--bridge.svg",
-    "mapPin mapPin__bridge--grey"
+    "map-marker map-marker__bridge--grey"
 );
 
 const iconBridgeCol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--bridge-col.svg",
-    "mapPin mapPin__bridge--col"
+    "map-marker map-marker__bridge--col"
 );
 
 const iconEBGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--eb.svg",
-    "mapPin mapPin__eb--grey"
+    "map-marker map-marker__eb--grey"
 );
 
 const iconEBCol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--eb-col.svg",
-    "mapPin mapPin__eb--col"
+    "map-marker map-marker__eb--col"
 );
 
 const iconHRGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--hr.svg",
-    "mapPin mapPin__hr--grey"
+    "map-marker map-marker__hr--grey"
 );
 
 const iconHRCol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--hr-col.svg",
-    "mapPin mapPin__hr--col"
+    "map-marker map-marker__hr--col"
 );
 
 const iconIGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--i.svg",
-    "mapPin mapPin__i--grey"
+    "map-marker map-marker__i--grey"
 );
 
 const iconICol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--i-col.svg",
-    "mapPin mapPin__i--col"
+    "map-marker map-marker__i--col"
 );
 
 const iconMapGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--map.svg",
-    "mapPin mapPin__map--grey"
+    "map-marker map-marker__map--grey"
 );
 
 const iconMapCol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--map-col.svg",
-    "mapPin mapPin__map--col"
+    "map-marker map-marker__map--col"
 );
 
 const iconOGGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--og.svg",
-    "mapPin mapPin__og--grey"
+    "map-marker map-marker__og--grey"
 );
 
 const iconOGCol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--og-col.svg",
-    "mapPin mapPin__og--col"
+    "map-marker map-marker__og--col"
 );
 
 const iconParkingGrey = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--parking.svg",
-    "mapPin mapPin__parking--grey"
+    "map-marker map-marker__parking--grey"
 );
 
 const iconParkingCol = makeDivIcon(
     "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--parking-col.svg",
-    "mapPin mapPin__parking--col"
+    "map-marker map-marker__parking--col"
 );
 
 
