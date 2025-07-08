@@ -26,7 +26,6 @@ import { useSearchParams } from "next/navigation";
 export default function LeafletMap({stateList}) {
     const [zoom, setZoom] = useState(0);
     const [center, setCenter] = useState([4150, 210]);
-    const [iconSize, setIconSize] = useState(50);
     const [iconList, setIconList] = useState([]);
     const [offset, setOffset] = useState(0);
 
@@ -238,26 +237,23 @@ export default function LeafletMap({stateList}) {
 
     function MapEventHandler(){
         const map = useMapEvent("zoom", ()=>{
-            console.log("zoom changed")
             const currentZoom = map.getZoom();
-            console.log(currentZoom)
             const markerSize = getMarkerSize(currentZoom);
 
             if(currentZoom < -2){
-                console.log("changing to 25");
                 changeMarkerSize(markerSize);
             } else if (currentZoom >= -2) {
-                console.log("changing to 50")
                 changeMarkerSize(markerSize);
             }
         })
+
         return null
     };
 
     function changeMarkerSize(size){
         if(!mapWrapperRef) return
         mapWrapperRef.current.style.setProperty("--marker-width", `${size}px`);
-    }
+    };
 
     function getMarkerSize(zoom) {
         const minZoom = -3;
@@ -270,17 +266,11 @@ export default function LeafletMap({stateList}) {
         const t = (clampedZoom - maxZoom) / (minZoom - maxZoom);
 
         return minSize * t + maxSize * (1 - t);
-    }
-
-    useEffect(()=>{
-        console.log(iconSize)
-    }, [iconSize])
+    };
     
-    // maxBounds={panBounds}
     return (
         <div id="map-wrapper" ref={mapWrapperRef}>
             <MapContainer crs={L.CRS.Simple} center={center} zoomDelta={0.8} maxBounds={panBounds} zoomSnap={0} zoom={zoom} minZoom={-3.1} zoomControl={false} closePopupOnClick={false}>
-                {/* <ZoomTool setZoom={setZoom} /> */}
                 <UpdateZoom center={center} zoom={zoom} />
                 <MapEventHandler />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
@@ -290,23 +280,24 @@ export default function LeafletMap({stateList}) {
                             key={index}
                             position={marker.position}
                             icon={iconState[index]?.icon}
-                            iconSize={[iconSize, iconSize]}
                             eventHandlers={{
                                 click: (e)=>{
                                     setCenter(marker.position);
                                     handleClick(e, marker, index);    
-                                    // setZoom(-1);                     
                                 }
                             }}
                             zIndexOffset={marker.zIndexOffset}>
                             
                             <Tooltip
-                            className="map-pin"
-                            direction="top"
-                            offset={[0, iconSize/2]}
-                            permanent={iconState[index]?.permanent}
-                            closeButton={false}
-                            autoClose={false}
+                                className="map-pin"
+                                direction="top"
+                                permanent={false}
+                                opacity={1}
+                                closeButton={false}
+                                interactive={false}
+                                autoClose={false}
+                                bubblingMouseEvents={false}
+                                sticky={false}
                             >{marker.name}</Tooltip>
                         </Marker>
                     )

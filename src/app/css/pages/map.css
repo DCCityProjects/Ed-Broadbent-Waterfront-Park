@@ -37,9 +37,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 1 !important;
+    /* opacity: 1 !important; */
     border: 0 !important;
-    margin-top: -56px !important;
+    margin-top: calc( -1 * (var(--marker-width) - 6px)) !important;
     text-wrap: wrap !important;
     text-align: center;
 }
