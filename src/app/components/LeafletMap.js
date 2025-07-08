@@ -37,6 +37,14 @@ export default function LeafletMap({stateList}) {
         setIconState
     } = stateList;
 
+    const bounds = [[0, 0], [4767, 3070]];
+    const panBounds = [[-2000, -2000], [6767, 5070]];
+    const mapWrapperRef = useRef(null);
+
+    useEffect(()=>{
+        console.log(mapWrapperRef);
+
+    },[])
 
     const searchParams = useSearchParams();
 
@@ -216,68 +224,6 @@ export default function LeafletMap({stateList}) {
     },[handleClick, iconState, searchParams, setContent])
 
 
-    const bounds = [[0, 0], [4767, 3070]];
-    const panBounds = [[-1000, -1000], [5767, 4070]];
-
-
-    useEffect(()=>{
-        console.log(iconState)
-    }, [iconState])
-
-
-
-
-    // const markers = [
-    //     {
-    //         position: [4300,550],
-    //         zIndexOffset: 1000,
-    //         iconGrey: iconMainGrey,
-    //         iconSelect: iconMainSelect,
-    //         name: "Main Entrance",
-    //         url: "main-entrance"
-    //     },
-    //     {
-    //         position: [4035,570],
-    //         zIndexOffset: 1000,
-    //         iconGrey: iconMainGrey,
-    //         iconSelect: iconMainSelect,
-    //         name: "About Ed Broadbent",
-    //         url: "about-ed-broadbent"
-    //     },
-    //     {
-    //         position: [3520,947],
-    //         zIndexOffset: 1000,
-    //         iconGrey: iconAmphitheatreGrey,
-    //         iconSelect: iconAmphitheatreSelect,
-    //         name: "Amphitheatre and Stage",
-    //         url: "amphitheatre-and-stage"
-    //     },
-    //     {
-    //         position: [3200,980],
-    //         zIndexOffset: 1000,
-    //         iconGrey: iconGardenHRGrey,
-    //         iconSelect: iconGardenHRSelect,
-    //         name: "Garden of Human Rights",
-    //         url: "garden-of-human-rights"
-    //     },
-    //     {
-    //         position: [920,1680],
-    //         zIndexOffset: 1000,
-    //         iconGrey: iconOrangeGardenGrey,
-    //         iconSelect: iconOrangeGardenSelect,
-    //         name: "Orange Garden",
-    //         url: "orange-garden"
-    //     },
-    //     {
-    //         position: [465,1570],
-    //         zIndexOffset: 1000,
-    //         iconGrey: iconMainGrey,
-    //         iconSelect: iconMainSelect,
-    //         name: "Parking Entrance",
-    //         url: "parking-entrance"
-    //     }
-    // ];
-
     function UpdateZoom ({center, zoom}) {
         const map = useMap();
 
@@ -289,13 +235,54 @@ export default function LeafletMap({stateList}) {
         }, [map, center, zoom])
         return null
     }
+
+    function MapEventHandler(){
+        const map = useMapEvent("zoom", ()=>{
+            console.log("zoom changed")
+            const currentZoom = map.getZoom();
+            console.log(currentZoom)
+            const markerSize = getMarkerSize(currentZoom);
+
+            if(currentZoom < -2){
+                console.log("changing to 25");
+                changeMarkerSize(markerSize);
+            } else if (currentZoom >= -2) {
+                console.log("changing to 50")
+                changeMarkerSize(markerSize);
+            }
+        })
+        return null
+    };
+
+    function changeMarkerSize(size){
+        if(!mapWrapperRef) return
+        mapWrapperRef.current.style.setProperty("--marker-width", `${size}px`);
+    }
+
+    function getMarkerSize(zoom) {
+        const minZoom = -3;
+        const maxZoom = -2;
+        const minSize = 30;
+        const maxSize = 50;
+
+        const clampedZoom = Math.max(minZoom, Math.min(maxZoom, zoom));
+
+        const t = (clampedZoom - maxZoom) / (minZoom - maxZoom);
+
+        return minSize * t + maxSize * (1 - t);
+    }
+
+    useEffect(()=>{
+        console.log(iconSize)
+    }, [iconSize])
     
     // maxBounds={panBounds}
     return (
-        <div id="map-wrapper">
+        <div id="map-wrapper" ref={mapWrapperRef}>
             <MapContainer crs={L.CRS.Simple} center={center} zoomDelta={0.8} maxBounds={panBounds} zoomSnap={0} zoom={zoom} minZoom={-3.1} zoomControl={false} closePopupOnClick={false}>
                 {/* <ZoomTool setZoom={setZoom} /> */}
                 <UpdateZoom center={center} zoom={zoom} />
+                <MapEventHandler />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
                 {iconState.map((marker, index) =>{
                     return (
