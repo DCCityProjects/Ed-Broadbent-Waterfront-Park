@@ -1,224 +1,127 @@
 import L from "leaflet";
 
-const iconAmpGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--amp.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,-40],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__amphitheatre--grey"
-})
+// TODO: change the Icons to DivIcons so we can change scale!! and probably clean this up
+// const iconAmpGrey = new L.Icon({
+//     iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--amp.svg",
+//     iconSize: [50, 50],
+//     iconAnchor: [25, 25],
+//     popupAnchor: [0,-40],
+//     shadowUrl: null,
+//     shadowSize: null,
+//     shadowAnchor: null,
+//     className: "mapPin mapPin__amphitheatre--grey"
+// })
 
-const iconAmpCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--amp-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,-40],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__amphitheatre--grey"
-})
+function makeDivIcon(src, className){
+    return new L.DivIcon({
+        html: `<img src=${src}>`,
+        iconSize: [50, 50],
+        iconAnchor: [25, 25],
+        popupAnchor: [0, -40],
+        className: className
+    })
 
-const iconBenchesGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--benches.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__amphitheatre--select"
-})
+};
 
-const iconBenchesCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--benches-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__amphitheatre--select"
-})
+const iconAmpGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--amp.svg",
+    "map-marker map-marker__amp--grey"
+);
 
-const iconBikeGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--bike.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__gardenHR--grey"
-});
+const iconAmpCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--amp-col.svg",
+    "map-marker map-marker__amp--col"
+);
 
-const iconBikeCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--bike-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__gardenHR--grey"
-});
+const iconBenchesGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--benches.svg",
+    "mapPin mapPin__benches--grey"
+);
 
-const iconBridgeGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--bridge.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__gardenHR--select"
-});
+const iconBenchesCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--benches-col.svg",
+    "mapPin mapPin__benches--col"
+);
 
-const iconBridgeCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--bridge-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__gardenHR--select"
-});
+const iconBikeGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--bike.svg",
+    "mapPin mapPin__bike--grey"
+);
 
-const iconEBGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--eb.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__orangeGarden--grey"
-});
+const iconBikeCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--bike-col.svg",
+    "mapPin mapPin__bike--col"
+);
 
-const iconEBCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--eb-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__orangeGarden--grey"
-});
+const iconBridgeGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--bridge.svg",
+    "mapPin mapPin__bridge--grey"
+);
 
-const iconHRGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--hr.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__orangeGarden--select"
-});
+const iconBridgeCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--bridge-col.svg",
+    "mapPin mapPin__bridge--col"
+);
 
-const iconHRCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--hr-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__orangeGarden--select"
-});
+const iconEBGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--eb.svg",
+    "mapPin mapPin__eb--grey"
+);
 
-const iconIGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--i.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,-25],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__main--grey"
-});
+const iconEBCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--eb-col.svg",
+    "mapPin mapPin__eb--col"
+);
 
-const iconICol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--i-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,-25],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__main--grey"
-});
+const iconHRGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--hr.svg",
+    "mapPin mapPin__hr--grey"
+);
 
-const iconMapGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--map.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__main--select"
-});
+const iconHRCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--hr-col.svg",
+    "mapPin mapPin__hr--col"
+);
 
-const iconMapCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--map-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__main--select"
-});
+const iconIGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--i.svg",
+    "mapPin mapPin__i--grey"
+);
 
-const iconOGGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--og.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__main--select"
-});
+const iconICol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--i-col.svg",
+    "mapPin mapPin__i--col"
+);
 
-const iconOGCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--og-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__main--select"
-});
+const iconMapGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--map.svg",
+    "mapPin mapPin__map--grey"
+);
 
-const iconParkingGrey = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--parking.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__main--select"
-});
+const iconMapCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--map-col.svg",
+    "mapPin mapPin__map--col"
+);
 
-const iconParkingCol = new L.Icon({
-    iconUrl: "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--parking-col.svg",
-    iconSize: [50, 50],
-    iconAnchor: [25, 25],
-    popupAnchor: [0,0],
-    shadowUrl: null,
-    shadowSize: null,
-    shadowAnchor: null,
-    className: "mapPin mapPin__main--select"
-});
+const iconOGGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--og.svg",
+    "mapPin mapPin__og--grey"
+);
+
+const iconOGCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--og-col.svg",
+    "mapPin mapPin__og--col"
+);
+
+const iconParkingGrey = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/grey/icon--parking.svg",
+    "mapPin mapPin__parking--grey"
+);
+
+const iconParkingCol = makeDivIcon(
+    "/Ed-Broadbent-Waterfront-Park/images/svgs/mapPins/coloredOrange/icon--parking-col.svg",
+    "mapPin mapPin__parking--col"
+);
 
 
 export {
