@@ -1,9 +1,12 @@
 "use client"
 
 import Image from "next/image";
-import Select from "react-select";
+// import Select from "react-select";
+import dynamic from "next/dynamic";
 
 export default function Navigation() {
+
+    const Select = dynamic(() => import("react-select"), { ssr: false });
 
     const options = [
         { value: "Main Entrance", label: "Main Entrance" },
