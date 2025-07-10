@@ -92,9 +92,11 @@
     margin-top: 20px;
 }
 
-.popup__back{
+.popup__button{
     width: 51px;
+    height: 51px;
 }
+
 
 .popup__read-more{
     background-color: var(--color--primary);

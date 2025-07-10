@@ -5,21 +5,17 @@ import "@/app/css/pages/map.css"
 import "@/app/css/popup.css";
 
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import Draggable from "gsap/dist/Draggable";
 
-import Navigation from "./Navigation";
-import Amphitheatre from "./Amphitheatre";
-import HumanRights from "./HumanRights";
-import OrangeGarden from "./OrangeGarden";
-import MainEntrance from "./MainEntrance";
-import ParkingEntrance from "./ParkingEntrance";
-import AboutEdBroadbent from "./AboutEdBroadbent";
+import Navigation from "../../components/map/Navigation";
+
 
 import resetIcons from "@/app/functions/resetIcons";
 import PopupTab from "@/app/components/svgs/PopupTab";
+import MapPopup from "../../components/map/MapPopup";
 
 const LeafletMap = dynamic(() => import('@/app/components/LeafletMap'), {
     loading: () => <p>loading...</p>,
@@ -32,53 +28,39 @@ export default function Map() {
     const [content, setContent] = useState("navigation");
     const popupRef = useRef(null);
     const tabRef = useRef(null);
-    const [isClient, setIsClient] = useState(false);
+    // const [isClient, setIsClient] = useState(false);
     const [isIconClicked, setIsIconClicked] = useState(false);
     const [isUp, setIsUp] = useState(false);
     const [iconState, setIconState] = useState([]);
 
+    const stateList = {
+        content, setContent,
+        setIsIconClicked, resetIcons,
+        iconState, setIconState,
+        isIconClicked, setIsIconClicked,
+        popupRef
+    };
 
-
-
-
-    const popupComponentsList = {
-        "navigation": Navigation,
-        "amphitheatre-and-stage": Amphitheatre,
-        "garden-of-human-rights": HumanRights,
-        "orange-garden": OrangeGarden,
-        "main-entrance": MainEntrance,
-        "parking-entrance": ParkingEntrance,
-        "about-ed-broadbent": AboutEdBroadbent
-    }
-
-    const PopupContent = popupComponentsList[content]
-
-    useEffect(()=>{
-        setIsClient(true);
-    }, [])
-
-    // useEffect(()=>{
-    //     console.log(content)
-    // },[content])
-
+    //* popup height is used for the draggable element
+    //* to calculate the draggable distance
     useEffect(()=>{
         if(popupRef.current){
             setPopupHeight(popupRef.current.clientHeight)
         }
     }, [content])
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
         gsap.registerPlugin(Draggable);
 
-        if(popupRef.current && tabRef.current){
-            console.log(popupHeight)
+        if(!popupRef.current) return;
+
             // const chevron = document.querySelector("#popup-tab__chevron");
 
             Draggable.create(popupRef.current, {
                 type: "y",
                 inertia: true,
                 bounds: {minY: 0, maxY: popupHeight},
-                edgeResistance: 0.5,
+                edgeResistance: 1,
                 onRelease: function(){
                     console.log(this.y)
                     const y = this.y;
@@ -95,29 +77,16 @@ export default function Map() {
                     }
                 }
             })
-        }
 
-    }, [popupHeight, isClient]);
+    }, [popupHeight]);
 
-    // useEffect(() => {
-    //     if (isClient) {
-    //         import("leaflet").then((L) => {
-    //             // Use the leaflet library here
-    //             console.log("Leaflet loaded", L);
-    //         }).catch((error) => {
-    //             console.error("Error loading leaflet", error);
-    //         });
-    //     }
-    // }, [isClient]);
-
-    
     return (
         <main>
-            {typeof window !== "undefined" && isClient && <LeafletMap setContent={setContent} resetIcons={resetIcons} iconState={iconState} setIconState={setIconState} isIconClicked={isIconClicked} setIsIconClicked={setIsIconClicked} popupRef={popupRef} />}
+            <LeafletMap stateList={stateList} />
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
-                <PopupContent setContent={setContent} setIsIconClicked={setIsIconClicked} resetIcons={resetIcons} iconState={iconState} />
+                {content === "navigation" ? (<Navigation />) : (<MapPopup stateList={stateList} />)}
             </section>
         </main>
     );

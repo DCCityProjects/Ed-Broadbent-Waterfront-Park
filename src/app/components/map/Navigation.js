@@ -1,17 +1,20 @@
 "use client"
 
 import Image from "next/image";
-import Select from "react-select";
+// import Select from "react-select";
+import dynamic from "next/dynamic";
 
 export default function Navigation() {
 
+    const Select = dynamic(() => import("react-select"), { ssr: false });
+
     const options = [
-        { value: "Main Entrance", label: "Main Entrance" },
+        { value: "Main Map North", label: "Main Map North" },
         { value: "About Ed Broadbent", label: "About Ed Broadbent" },
         { value: "Amphitheater and Stage", label: "Amphitheater and Stage" },
         { value: "Garden of Human Rights", label: "Garden of Human Rights" },
         { value: "Orange Garden", label: "Orange Garden" },
-        { value: "Parking Entrance", label: "Parking Entrance" }
+        { value: "Main Map South", label: "Main Map South" }
     ];
 
     
@@ -36,21 +39,42 @@ export default function Navigation() {
             <h2 className="navigation__title">Select Destination</h2>
                 <div className="navigation-fields">
                     <div className="navigation-fields__row"> 
-                        <Image src="/images/svgs/icons/search.svg" alt="search bututon" className="navigation-fields__search" />
+                        <Image 
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/search.svg"
+                            alt="search bututon"
+                            width={32}
+                            height={32}
+                            className="navigation-fields__search"
+                        />
                         <div className="navigation-fields__select-wrapper">
                             <Select options={options} className="navigation-fields__select" styles={navFieldStyles} components={{IndicatorSeparator: ()=> null, DropdownIndicator:()=> null}} menuPlacement="top" placeholder="From Starting Point"/>
                         </div>
                         {/* <input defaultValue="From Starting Point" type="text" className="navigation-fields__input" /> */}
-                        <Image src="/images/svgs/icons/voice-activation-frame.svg" alt="voice button" />
+                        <Image 
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/voice.svg"
+                            alt="voice button"
+                            width={32}
+                            height={32}
+                        />
                     </div>
                     <hr className="navigation-fields__hr" />
                     <div className="navigation-fields__row">
-                        <Image src="/images/svgs/icons/search.svg" alt="search bututon" className="navigation-fields__search" />
+                        <Image 
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/search.svg"
+                            alt="search bututon"
+                            width={32}
+                            height={32}
+                            className="navigation-fields__search"
+                        />
                         <div className="navigation-fields__select-wrapper">
                             <Select options={options} className="navigation-fields__select" styles={navFieldStyles} components={{IndicatorSeparator: ()=> null, DropdownIndicator:()=> null}} menuPlacement="top" placeholder="To Destination"/>
                         </div>
-                        <Image src="/images/svgs/icons/voice-activation-frame.svg" alt="voice button" />
-                    </div>
+                        <Image 
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/voice.svg"
+                            alt="voice button"
+                            width={32}
+                            height={32}
+                        />                    </div>
                 </div>
             <button className="navigation__go">GO</button>
         </>
