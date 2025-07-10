@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icon--bike-cf" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 234.34 234.34">
+  <rect x="0" y="0" width="234.34" height="234.34" rx="12" ry="12" fill="#e55c00"/>
+  <g>
+    <circle cx="57.79" cy="142.42" r="30.53" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="7"/>
+    <circle cx="181.57" cy="142.42" r="30.53" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="7"/>
+    <path d="M181.57,139.64s-39.63-85.61-42.98-86.68l-10.65,4.75" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="7"/>
+    <line x1="107.73" y1="136.51" x2="78.55" y2="85.01" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="7"/>
+    <path d="M118.98,151.68l-61.62-3.86c-3.42,0-6.23-2.09-6.23-4.63v-3.6c0-2.55,2.8-4.63,6.23-4.63l61.62-3.86c3.42,0,6.23,2.09,6.23,4.63v11.33c0,2.55-2.8,4.63-6.23,4.63Z" fill="#fff"/>
+    <line x1="86.13" y1="99.6" x2="57.79" y2="142.42" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="7"/>
+    <line x1="123.3" y1="140.36" x2="161.75" y2="99.53" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="7"/>
+    <path d="M97.74,118.44s30.19,26.66,51.12-44.4" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="7"/>
+    <path d="M67.31,87.28h23.91c1.77,0,3.01-1.75,2.43-3.42-.78-2.22-2.27-4.73-5.03-4.85-5-.22-9.32,1.3-13.14,0-3.82-1.3-7.8-5.7-12.01-.02-1.36,1.84-2.28,3.35-2.9,4.56-.88,1.7.38,3.72,2.3,3.72h4.45Z" fill="#fff"/>
+    <polyline points="79.94 107.34 62.28 95.06 23.24 95.06" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="7"/>
+  </g>
+</svg>
