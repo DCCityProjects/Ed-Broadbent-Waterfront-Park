@@ -270,7 +270,7 @@ export default function LeafletMap({stateList}) {
     
     return (
         <div id="map-wrapper" ref={mapWrapperRef}>
-            <MapContainer crs={L.CRS.Simple} center={center} zoomDelta={0.8} maxBounds={panBounds} zoomSnap={0} zoom={zoom} minZoom={-3.1} zoomControl={false} closePopupOnClick={false}>
+            <MapContainer crs={L.CRS.Simple} center={center} zoomDelta={0.8} maxBounds={panBounds} zoomSnap={0} zoom={zoom} minZoom={-3.1} maxZoom={1.3} zoomControl={false} closePopupOnClick={false}>
                 <UpdateZoom center={center} zoom={zoom} />
                 <MapEventHandler />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
