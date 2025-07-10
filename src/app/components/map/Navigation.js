@@ -9,12 +9,12 @@ export default function Navigation() {
     const Select = dynamic(() => import("react-select"), { ssr: false });
 
     const options = [
-        { value: "Main Entrance", label: "Main Entrance" },
+        { value: "Main Map North", label: "Main Map North" },
         { value: "About Ed Broadbent", label: "About Ed Broadbent" },
         { value: "Amphitheater and Stage", label: "Amphitheater and Stage" },
         { value: "Garden of Human Rights", label: "Garden of Human Rights" },
         { value: "Orange Garden", label: "Orange Garden" },
-        { value: "Parking Entrance", label: "Parking Entrance" }
+        { value: "Main Map South", label: "Main Map South" }
     ];
 
     
