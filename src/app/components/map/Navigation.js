@@ -3,10 +3,13 @@
 import Image from "next/image";
 // import Select from "react-select";
 import dynamic from "next/dynamic";
+import { useState } from "react";
 
 export default function Navigation() {
-
-    const Select = dynamic(() => import("react-select"), { ssr: false });
+    const [isOption1Selected, setIsOption1Selected] = useState(false);
+    const [isOption2Selected, setIsOption2Selected] = useState(false);
+    const [selectedOption1, setSelectedOption1] = useState("");
+    const [selectedOption2, setSelectedOption2] = useState("");
 
     const options = [
         { value: "Main Map North", label: "Main Map North" },
@@ -34,6 +37,16 @@ export default function Navigation() {
         })
     }
 
+    const handleSelectFrom = (e)=>{
+        setSelectedOption1(e.target.value);
+        setIsOption1Selected(true);
+    }
+
+    const handleSelectTo = (e)=>{
+        setSelectedOption2(e.target.value);
+        setIsOption2Selected(true);
+    }
+
     return (
         <>
             <h2 className="navigation__title">Select Destination</h2>
@@ -41,21 +54,33 @@ export default function Navigation() {
                     <div className="navigation-fields__row"> 
                         <Image 
                             src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/search.svg"
-                            alt="search bututon"
+                            alt="search button"
                             width={32}
                             height={32}
                             className="navigation-fields__search"
                         />
                         <div className="navigation-fields__select-wrapper">
-                            <Select options={options} className="navigation-fields__select" styles={navFieldStyles} components={{IndicatorSeparator: ()=> null, DropdownIndicator:()=> null}} menuPlacement="top" placeholder="From Starting Point"/>
+                            <select onChange={(e) => handleSelectFrom(e)} value={selectedOption1} className={`navigation-fields__select ${isOption1Selected ? "navigation-fields__select--color" : ""}`}>
+                                <option value="" disabled hidden>From Starting Point</option>
+                                {options.map((option)=>{
+                                    return <option key={option.value} value={option.value}>{option.label}</option>
+                                })}
+                            </select>
                         </div>
+                        <Image
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-circle.svg"
+                            alt="close button"
+                            width={25}
+                            height={25}
+                            className="navigation-fields__close"
+                        />
                         {/* <input defaultValue="From Starting Point" type="text" className="navigation-fields__input" /> */}
-                        <Image 
+                        {/* <Image 
                             src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/voice.svg"
                             alt="voice button"
                             width={32}
                             height={32}
-                        />
+                        /> */}
                     </div>
                     <hr className="navigation-fields__hr" />
                     <div className="navigation-fields__row">
@@ -67,14 +92,20 @@ export default function Navigation() {
                             className="navigation-fields__search"
                         />
                         <div className="navigation-fields__select-wrapper">
-                            <Select options={options} className="navigation-fields__select" styles={navFieldStyles} components={{IndicatorSeparator: ()=> null, DropdownIndicator:()=> null}} menuPlacement="top" placeholder="To Destination"/>
+                            <select onChange={(e)=> handleSelectTo(e)} value={selectedOption2} className={`navigation-fields__select ${isOption2Selected ? "navigation-fields__select--color" : ""}`}>
+                                <option value="" className="navigation-fields__placeholder" disabled hidden >To Destination</option>
+                                {options.map((option)=>{
+                                    return <option key={option.value} value={option.value} className="optionTest">{option.value}</option>
+                                })}
+                            </select>
                         </div>
-                        <Image 
+                        {/* <Image 
                             src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/voice.svg"
                             alt="voice button"
                             width={32}
                             height={32}
-                        />                    </div>
+                        />                     */}
+                    </div>
                 </div>
             <button className="navigation__go">GO</button>
         </>
