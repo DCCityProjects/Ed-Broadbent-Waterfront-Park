@@ -37,14 +37,24 @@ export default function Navigation() {
         })
     }
 
-    const handleSelectFrom = (e)=>{
+    const handleSelectOption1 = (e)=>{
         setSelectedOption1(e.target.value);
         setIsOption1Selected(true);
     }
 
-    const handleSelectTo = (e)=>{
+    const handleSelectOption2 = (e)=>{
         setSelectedOption2(e.target.value);
         setIsOption2Selected(true);
+    }
+
+    const handleClearOption1 = (e)=>{
+        setSelectedOption1("");
+        setIsOption1Selected(false);
+    }
+
+    const handleClearOption2 = (e)=>{
+        setSelectedOption2("");
+        setIsOption2Selected(false);
     }
 
     return (
@@ -60,7 +70,7 @@ export default function Navigation() {
                             className="navigation-fields__search"
                         />
                         <div className="navigation-fields__select-wrapper">
-                            <select onChange={(e) => handleSelectFrom(e)} value={selectedOption1} className={`navigation-fields__select ${isOption1Selected ? "navigation-fields__select--color" : ""}`}>
+                            <select onChange={(e) => handleSelectOption1(e)} value={selectedOption1} className={`navigation-fields__select ${!isOption1Selected ? "navigation-fields__select--color" : ""}`}>
                                 <option value="" disabled hidden>From Starting Point</option>
                                 {options.map((option)=>{
                                     return <option key={option.value} value={option.value}>{option.label}</option>
@@ -68,11 +78,12 @@ export default function Navigation() {
                             </select>
                         </div>
                         <Image
+                            onClick={(e)=> handleClearOption1(e)}
                             src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-circle.svg"
                             alt="close button"
                             width={25}
                             height={25}
-                            className="navigation-fields__close"
+                            className={`navigation-fields__close ${!isOption1Selected ? "navigation-fields__close--hidden" : ""}`}
                         />
                         {/* <input defaultValue="From Starting Point" type="text" className="navigation-fields__input" /> */}
                         {/* <Image 
@@ -92,13 +103,21 @@ export default function Navigation() {
                             className="navigation-fields__search"
                         />
                         <div className="navigation-fields__select-wrapper">
-                            <select onChange={(e)=> handleSelectTo(e)} value={selectedOption2} className={`navigation-fields__select ${isOption2Selected ? "navigation-fields__select--color" : ""}`}>
+                            <select onChange={(e)=> handleSelectOption2(e)} value={selectedOption2} className={`navigation-fields__select ${!isOption2Selected ? "navigation-fields__select--color" : ""}`}>
                                 <option value="" className="navigation-fields__placeholder" disabled hidden >To Destination</option>
                                 {options.map((option)=>{
                                     return <option key={option.value} value={option.value} className="optionTest">{option.value}</option>
                                 })}
                             </select>
                         </div>
+                        <Image
+                            onClick={(e)=> handleClearOption2(e)}
+                            src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-circle.svg"
+                            alt="close button"
+                            width={25}
+                            height={25}
+                            className={`navigation-fields__close ${!isOption2Selected ? "navigation-fields__close--hidden" : ""}`}
+                        />
                         {/* <Image 
                             src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/voice.svg"
                             alt="voice button"
