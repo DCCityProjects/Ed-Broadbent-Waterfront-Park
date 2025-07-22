@@ -67,7 +67,7 @@ export default function Navigation({stateList}) {
 
     const handleSelectOption1 = async (e)=>{
         console.log(e.target.value);
-        const location = iconState.find((location) => location.name === e.target.value)
+        const location = iconState.find((location) => location.name === e.target.value);
         console.log(location)
 
         console.log(location.position);
@@ -77,7 +77,7 @@ export default function Navigation({stateList}) {
         const iconIndex = iconState.findIndex((num) => num.name === e.target.value);
         if(iconIndex !== -1){
             changeIconColor(iconIndex, iconState, setIconState);
-        }
+        };
 
         const distanceResult = checkDistance(location.position);
         console.log(distanceResult);
@@ -114,12 +114,13 @@ export default function Navigation({stateList}) {
     const handleClearOption1 = ()=>{
         setSelectedOption1("");
         setIsOption1Selected(false);
-        resetIcons(iconState, setIconState);
+        resetIconColor("1");
     }
 
     const handleClearOption2 = (e)=>{
         setSelectedOption2("");
         setIsOption2Selected(false);
+        resetIconColor("2");
     }
 
     function checkDistance(newPosition){
