@@ -4,18 +4,6 @@ import { ImageOverlay, MapContainer, Marker, Popup, Tooltip, useMap, useMapEvent
 import L, { marker } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-    iconAmpGrey, iconAmpCol,
-    iconBenchesGrey, iconBenchesCol,
-    iconBikeGrey, iconBikeCol,
-    iconBridgeGrey, iconBridgeCol,
-    iconEBGrey, iconEBCol,
-    iconHRGrey, iconHRCol,
-    iconIGrey, iconICol,
-    iconMapGrey, iconMapCol,
-    iconOGGrey, iconOGCol,
-    iconParkingGrey, iconParkingCol
-} from "@/app/components/mapPins"
 import MapPin from "./MapPin";
 import ZoomTool from "./ZoomTool";
 import gsap from "gsap";
@@ -24,17 +12,22 @@ import { useSearchParams } from "next/navigation";
 
 
 export default function LeafletMap({stateList}) {
-    const [zoom, setZoom] = useState(0);
-    const [center, setCenter] = useState([4150, 210]);
+
     const [iconList, setIconList] = useState([]);
     const [offset, setOffset] = useState(0);
 
     const {
         setContent, iconState,
+        zoom, setZoom,
+        center, setCenter,
         popupRef, resetIcons, 
         isIconClicked, setIsIconClicked,
-        setIconState
+        setIconState, changeIconColor,
+        setMapRef, mapRef, flyToLocation,
+        icons
     } = stateList;
+
+    const mapReference = useRef(null);
 
     const bounds = [[0, 0], [4767, 3070]];
     const panBounds = [[-2000, -2000], [6767, 5070]];
@@ -47,52 +40,44 @@ export default function LeafletMap({stateList}) {
 
     const searchParams = useSearchParams();
 
+    
     const handleClick = useCallback((e, marker, index) => {
         console.log(`clicked ${marker.name}`);
         if(!iconState[index]){
             console.log("No icon state");
             return
         };
-            setContent(marker.url);
-            setIsIconClicked(false);
-            resetIcons(iconState);
+        setContent(marker.url);
+        setIsIconClicked(false);
+        resetIcons(iconState);
 
-            const newIconState = [...iconState];
+        changeIconColor(index, iconState, setIconState);
+        marker.zIndexOffset = 10000;
 
-            switch (iconState[index].icon) {
-                case iconAmpGrey: newIconState[index].icon = iconAmpCol; break;
-                case iconBenchesGrey: newIconState[index].icon = iconBenchesCol; break;
-                case iconBikeGrey: newIconState[index].icon = iconBikeCol; break;
-                case iconBridgeGrey: newIconState[index].icon = iconBridgeCol; break;
-                case iconEBGrey: newIconState[index].icon = iconEBCol; break;
-                case iconHRGrey: newIconState[index].icon = iconHRCol; break;
-                case iconMapGrey: newIconState[index].icon = iconMapCol; break;
-                case iconOGGrey: newIconState[index].icon = iconOGCol; break;
-                case iconParkingGrey: newIconState[index].icon = iconParkingCol; break;
-                default: break;
-            };
-
-            setIconState(newIconState);
-            marker.zIndexOffset = 10000;
-
-            gsap.to(popupRef.current, {y: 0, duration: 1})
-            console.log(popupRef.current)
-            if(popupRef.current){
-                console.log("popupRef" + popupRef.current)
-            } else {
-                console.log("no popupRef")
-            }
+        flyToLocation(marker.position, -2, 1);
+        setIsIconClicked(true);
+        gsap.to(popupRef.current, {y: 0, duration: 1})
+        console.log(popupRef.current)
+        if(popupRef.current){
+            console.log("popupRef" + popupRef.current)
+        } else {
+            console.log("no popupRef")
+        }
         
-    }, [iconState, resetIcons, setIsIconClicked, setIconState, setContent, popupRef])
+    }, [iconState, setIconState, resetIcons, setIsIconClicked, setContent, popupRef, changeIconColor, flyToLocation])
+
+
 
     useEffect(()=>{
+        if(!icons) return;
+
         setIconState([
             {
                 position: [3520, 750],
                 zIndexOffset: 1000,
-                icon: iconAmpGrey,
-                iconGrey: iconAmpGrey,
-                iconCol: iconAmpCol,
+                icon: icons.iconAmpGrey,
+                iconGrey: icons.iconAmpGrey,
+                iconCol: icons.iconAmpCol,
                 name: "Amphitheatre and Stage",
                 url: "amphitheatre-and-stage",
                 permanent: false
@@ -100,9 +85,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [550, 1800],
                 zIndexOffset: 1000,
-                icon: iconBenchesGrey,
-                iconGrey: iconBenchesGrey,
-                iconCol: iconBenchesCol,
+                icon: icons.iconBenchesGrey,
+                iconGrey: icons.iconBenchesGrey,
+                iconCol: icons.iconBenchesCol,
                 name: "Benches",
                 url:"benches",
                 permanent: false
@@ -110,9 +95,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [3500, 310],
                 zIndexOffset: 1000,
-                icon: iconBikeGrey,
-                iconGrey: iconBikeGrey,
-                iconCol: iconBikeCol,
+                icon: icons.iconBikeGrey,
+                iconGrey: icons.iconBikeGrey,
+                iconCol: icons.iconBikeCol,
                 name: "Bike Parking",
                 url:"bike-parking",
                 permanent: false
@@ -120,9 +105,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [3740, 1400],
                 zIndexOffset: 1000,
-                icon: iconBikeGrey,
-                iconGrey: iconBikeGrey,
-                iconCol: iconBikeCol,
+                icon: icons.iconBikeGrey,
+                iconGrey: icons.iconBikeGrey,
+                iconCol: icons.iconBikeCol,
                 name: "Bike Parking",
                 url:"bike-parking",
                 permanent: false
@@ -130,9 +115,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [1500, 1720],
                 zIndexOffset: 1000,
-                icon: iconBridgeGrey,
-                iconGrey: iconBridgeGrey,
-                iconCol: iconBridgeCol,
+                icon: icons.iconBridgeGrey,
+                iconGrey: icons.iconBridgeGrey,
+                iconCol: icons.iconBridgeCol,
                 name: "Larry Ladd Bridge",
                 url: "bridge",
                 permanent: false
@@ -140,9 +125,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [4035, 300],
                 zIndexOffset: 1000,
-                icon: iconEBGrey,
-                iconGrey: iconEBGrey,
-                iconCol: iconEBCol,
+                icon: icons.iconEBGrey,
+                iconGrey: icons.iconEBGrey,
+                iconCol: icons.iconEBCol,
                 name: "About Ed Broadbent",
                 url: "about-ed-broadbent",
                 permanent: false
@@ -150,9 +135,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [3300, 750],
                 zIndexOffset: 1000,
-                icon: iconHRGrey,
-                iconGrey: iconHRGrey,
-                iconCol: iconHRCol,
+                icon: icons.iconHRGrey,
+                iconGrey: icons.iconHRGrey,
+                iconCol: icons.iconHRCol,
                 name: "Garden of Human Rights",
                 url: "garden-of-human-rights",
                 permanent: false
@@ -168,9 +153,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [4400, 350],
                 zIndexOffset: 1000,
-                icon: iconMapGrey,
-                iconGrey: iconMapGrey,
-                iconCol: iconMapCol,
+                icon: icons.iconMapGrey,
+                iconGrey: icons.iconMapGrey,
+                iconCol: icons.iconMapCol,
                 name: "Main Map North",
                 url: "main-map",
                 permanent: false
@@ -178,9 +163,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [440, 1550],
                 zIndexOffset: 1000,
-                icon: iconMapGrey,
-                iconGrey: iconMapGrey,
-                iconCol: iconMapCol,
+                icon: icons.iconMapGrey,
+                iconGrey: icons.iconMapGrey,
+                iconCol: icons.iconMapCol,
                 name: "Main Map",
                 url: "main-map",
                 permanent: false
@@ -188,9 +173,9 @@ export default function LeafletMap({stateList}) {
             {
                 position: [920, 1600],
                 zIndexOffset: 1000,
-                icon: iconOGGrey,
-                iconGrey: iconOGGrey,
-                iconCol: iconOGCol,
+                icon: icons.iconOGGrey,
+                iconGrey: icons.iconOGGrey,
+                iconCol: icons.iconOGCol,
                 name: "Orange Garden",
                 url: "orange-garden",
                 permanent: false
@@ -198,15 +183,15 @@ export default function LeafletMap({stateList}) {
             {
                 position: [168, 975],
                 zIndexOffset: 1000,
-                icon: iconParkingGrey,
-                iconGrey: iconParkingGrey,
-                iconCol: iconParkingCol,
+                icon: icons.iconParkingGrey,
+                iconGrey: icons.iconParkingGrey,
+                iconCol: icons.iconParkingCol,
                 name: "Parking",
                 url: "parking",
                 permanent: false
             },
         ])
-    }, [setIconState])
+    }, [setIconState, icons])
 
     useEffect(()=>{
         const contentParam = searchParams.get("content");
@@ -220,20 +205,10 @@ export default function LeafletMap({stateList}) {
             }
             console.log(contentParam)
         }
-    },[handleClick, iconState, searchParams, setContent])
+    },[handleClick, iconState, searchParams, setContent, setCenter])
 
 
-    function UpdateZoom ({center, zoom}) {
-        const map = useMap();
 
-        useEffect(()=>{
-            if(!isIconClicked){
-                map.flyTo(center, zoom);
-                setIsIconClicked(true);
-            }
-        }, [map, center, zoom])
-        return null
-    }
 
     function MapEventHandler(){
         const map = useMapEvent("zoom", ()=>{
@@ -267,11 +242,26 @@ export default function LeafletMap({stateList}) {
 
         return minSize * t + maxSize * (1 - t);
     };
+
+    // useEffect(()=>{
+    //     console.log(mapRef)
+    // }, [mapRef])
     
     return (
         <div id="map-wrapper" ref={mapWrapperRef}>
-            <MapContainer crs={L.CRS.Simple} center={center} zoomDelta={0.8} maxBounds={panBounds} zoomSnap={0} zoom={zoom} minZoom={-3.1} maxZoom={1.3} zoomControl={false} closePopupOnClick={false}>
-                <UpdateZoom center={center} zoom={zoom} />
+            <MapContainer 
+                crs={L.CRS.Simple}
+                center={center}
+                zoomDelta={0.8}
+                maxBounds={panBounds}
+                zoomSnap={0}
+                zoom={zoom}
+                minZoom={-3.1}
+                maxZoom={-1}
+                zoomControl={false}
+                closePopupOnClick={false}
+                ref={mapRef}
+                >
                 <MapEventHandler />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
                 {iconState.map((marker, index) =>{
@@ -282,7 +272,7 @@ export default function LeafletMap({stateList}) {
                             icon={iconState[index]?.icon}
                             eventHandlers={{
                                 click: (e)=>{
-                                    setCenter(marker.position);
+                                    // setCenter(marker.position);
                                     handleClick(e, marker, index);    
                                 }
                             }}
