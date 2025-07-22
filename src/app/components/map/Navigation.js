@@ -14,7 +14,7 @@ export default function Navigation() {
     const options = [
         { value: "Main Map North", label: "Main Map North" },
         { value: "About Ed Broadbent", label: "About Ed Broadbent" },
-        { value: "Amphitheater and Stage", label: "Amphitheater and Stage" },
+        { value: "Amphitheatre and Stage", label: "Amphitheatre and Stage" },
         { value: "Garden of Human Rights", label: "Garden of Human Rights" },
         { value: "Orange Garden", label: "Orange Garden" },
         { value: "Main Map South", label: "Main Map South" }
