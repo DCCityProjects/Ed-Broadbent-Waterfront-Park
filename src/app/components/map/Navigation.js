@@ -60,7 +60,7 @@ export default function Navigation({stateList}) {
         if(iconIndex !== -1){
             changeIconColor(iconIndex, iconState, setIconState);
         }
-        
+
         const distanceResult = checkDistance(location.position);
         console.log(distanceResult);
         if(distanceResult <= 500){
@@ -80,6 +80,7 @@ export default function Navigation({stateList}) {
     const handleClearOption1 = (e)=>{
         setSelectedOption1("");
         setIsOption1Selected(false);
+        resetIcons(iconState, setIconState);
     }
 
     const handleClearOption2 = (e)=>{

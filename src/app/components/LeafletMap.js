@@ -49,7 +49,7 @@ export default function LeafletMap({stateList}) {
         };
         setContent(marker.url);
         setIsIconClicked(false);
-        resetIcons(iconState);
+        resetIcons(iconState, setIconState);
 
         changeIconColor(index, iconState, setIconState);
         marker.zIndexOffset = 10000;

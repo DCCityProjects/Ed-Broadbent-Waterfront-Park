@@ -8,7 +8,7 @@ export default function MapPopup({stateList}) {
     const {
         content, setContent,
         setIsIconClicked, resetIcons, 
-        iconState
+        iconState, setIconState
     } = stateList;
 
     const popupData = {
@@ -58,7 +58,7 @@ export default function MapPopup({stateList}) {
         e.preventDefault();
         setContent("navigation");
         setIsIconClicked(true);
-        resetIcons(iconState);
+        resetIcons(iconState, setIconState);
     }
 
     useEffect(()=>{
