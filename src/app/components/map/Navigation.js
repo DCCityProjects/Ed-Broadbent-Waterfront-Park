@@ -91,11 +91,27 @@ export default function Navigation({stateList}) {
     }
 
     const handleSelectOption2 = (e)=>{
+        const location = iconState.find((location) => location.name === e.target.value);
         setSelectedOption2(e.target.value);
         setIsOption2Selected(true);
+
+        const iconIndex = iconState.findIndex((num) => num.name === e.target.value);
+        if(iconIndex !== -1){
+            changeIconColor(iconIndex, iconState, setIconState);
+        };
+
+        const distanceResult = checkDistance(location.position);
+        console.log(distanceResult);
+
+        if(distanceResult <= 500){
+            flyToLocation(location.position, -2, 1);
+        } else if((distanceResult > 500) && (distanceResult < 2900)){
+            flyToLocation(location.position, -2, 1.5)
+            console.log("flying!")
+        }
     }
 
-    const handleClearOption1 = (e)=>{
+    const handleClearOption1 = ()=>{
         setSelectedOption1("");
         setIsOption1Selected(false);
         resetIcons(iconState, setIconState);
