@@ -30,7 +30,7 @@ export default function LeafletMap({stateList}) {
     const mapReference = useRef(null);
 
     const bounds = [[0, 0], [4767, 3070]];
-    const panBounds = [[-2000, -2000], [6767, 5070]];
+    const panBounds = [[-3400, -2500], [8567, 5570]];
     const mapWrapperRef = useRef(null);
 
     useEffect(()=>{
@@ -133,7 +133,7 @@ export default function LeafletMap({stateList}) {
                 maxBounds={panBounds}
                 zoomSnap={0}
                 zoom={zoom}
-                minZoom={-3.1}
+                minZoom={-3.7}
                 maxZoom={-1}
                 zoomControl={false}
                 closePopupOnClick={false}
