@@ -3,13 +3,23 @@
 import Image from "next/image";
 // import Select from "react-select";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-export default function Navigation() {
+export default function Navigation({stateList}) {
     const [isOption1Selected, setIsOption1Selected] = useState(false);
     const [isOption2Selected, setIsOption2Selected] = useState(false);
     const [selectedOption1, setSelectedOption1] = useState("");
     const [selectedOption2, setSelectedOption2] = useState("");
+
+    const {
+        setContent, iconState,
+        zoom, setZoom,
+        center, setCenter,
+        popupRef, resetIcons, 
+        isIconClicked, setIsIconClicked,
+        setIconState, changeIconColor,
+        mapRef, setMapRef, flyToLocation
+    } = stateList;
 
     const options = [
         { value: "Main Map North", label: "Main Map North" },
@@ -37,9 +47,29 @@ export default function Navigation() {
         })
     }
 
-    const handleSelectOption1 = (e)=>{
+    const handleSelectOption1 = async (e)=>{
+        console.log(e.target.value);
+        const location = iconState.find((location) => location.name === e.target.value)
+        console.log(location)
+
+        console.log(location.position);
         setSelectedOption1(e.target.value);
         setIsOption1Selected(true);
+
+        const iconIndex = iconState.findIndex((num) => num.name === e.target.value);
+        if(iconIndex !== -1){
+            changeIconColor(iconIndex, iconState, setIconState);
+        }
+        
+        const distanceResult = checkDistance(location.position);
+        console.log(distanceResult);
+        if(distanceResult <= 500){
+            flyToLocation(location.position, -2, 1);
+        } else if((distanceResult > 500) && (distanceResult < 2900)){
+            flyToLocation(location.position, -2, 1.5)
+            console.log("flying!")
+        }
+        // flyToLocation(location.position, -2, 1.5);
     }
 
     const handleSelectOption2 = (e)=>{
