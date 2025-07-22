@@ -57,6 +57,36 @@ export default function Navigation() {
         setIsOption2Selected(false);
     }
 
+    function checkDistance(newPosition){
+        const map = mapRef.current;
+        const distance = map.distance(newPosition, L.latLng(center));
+        return distance;
+    }
+
+
+
+    // useEffect(()=>{
+    //     if(!mapRef.current) return;
+    //     // console.log(mapRef);
+
+    //     const map = mapRef.current;
+    //     const currentCenter = map.getCenter();
+    //     flyToLocation(center, -2, 1.5)
+    //     // const differenceCenter = currentCenter.map((coords, index)=> coords - center[index]);
+    //     // console.log(differenceCenter)
+    // }, [mapRef, center, flyToLocation])
+
+
+
+    function getMidPoints(x, y){
+        console.log("x", x);
+        console.log("y", y)
+        const x1 = x[0];
+        const x2 = x[1];
+        const y1 = y[0];
+        const y2 = y[1]
+        return [(x1 + y1) / 2, (x2 + y2) / 2];
+    }
     return (
         <>
             <h2 className="navigation__title">Select Destination</h2>
