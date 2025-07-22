@@ -4,10 +4,10 @@ import { ImageOverlay, MapContainer, Marker, Popup, Tooltip, useMap, useMapEvent
 import L, { marker } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useCallback, useEffect, useRef, useState } from "react";
-import MapPin from "./MapPin";
-import ZoomTool from "./ZoomTool";
+import MapPin from "../MapPin";
+import ZoomTool from "../ZoomTool";
 import gsap from "gsap";
-import RecenterAutomatically from "./map/RecenterAutomatically";
+import RecenterAutomatically from "./RecenterAutomatically";
 import { useSearchParams } from "next/navigation";
 
 

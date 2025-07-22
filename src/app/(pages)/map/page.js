@@ -19,7 +19,7 @@ import { useMap } from "react-leaflet";
 import useFlyToLocation from "@/app/hooks/useFlyToLocation";
 import useMarkerData from "@/app/hooks/useMarkerData";
 
-const LeafletMap = dynamic(() => import('@/app/components/LeafletMap'), {
+const LeafletMap = dynamic(() => import('@/app/components/map/LeafletMap'), {
     loading: () => <p>loading...</p>,
     ssr: false
 });
