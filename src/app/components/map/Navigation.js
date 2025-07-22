@@ -45,7 +45,25 @@ export default function Navigation({stateList}) {
                 border: state.isFocused ? 0 :0
             }
         })
-    }
+    };
+
+    function resetIconColor(option){
+        let location;
+        switch (option) {
+            case "1":
+                location = iconState.find((location) => location.name === selectedOption1);
+                location.icon = location.iconGrey;
+                break;
+            case "2":
+                location = iconState.find((location) => location.name === selectedOption2);
+                location.icon = location.iconGrey;
+                break;
+            default:
+                break;
+        }
+
+        setIconState([...iconState]);
+    };
 
     const handleSelectOption1 = async (e)=>{
         console.log(e.target.value);
