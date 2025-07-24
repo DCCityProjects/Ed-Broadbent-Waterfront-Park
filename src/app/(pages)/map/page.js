@@ -32,7 +32,6 @@ export default function Map() {
     const popupRef = useRef(null);
     const tabRef = useRef(null);
     const [icons, setIcons] = useState(null);
-    const [isIconClicked, setIsIconClicked] = useState(false);
     const [isUp, setIsUp] = useState(false);
     const [iconState, setIconState] = useState([]);
 
@@ -74,9 +73,8 @@ export default function Map() {
         content, setContent,
         zoom, setZoom,
         center, setCenter,
-        setIsIconClicked, resetIcons,
+        resetIcons,
         iconState, setIconState,
-        isIconClicked, setIsIconClicked,
         popupRef, changeIconColor,
         mapRef, flyToLocation,
         icons

@@ -21,7 +21,6 @@ export default function LeafletMap({stateList}) {
         zoom, setZoom,
         center, setCenter,
         popupRef, resetIcons, 
-        isIconClicked, setIsIconClicked,
         setIconState, changeIconColor,
         setMapRef, mapRef, flyToLocation,
         icons
@@ -55,7 +54,6 @@ export default function LeafletMap({stateList}) {
         marker.zIndexOffset = 10000;
 
         flyToLocation(marker.position, -2, 1);
-        setIsIconClicked(true);
         gsap.to(popupRef.current, {y: 0, duration: 1})
         console.log(popupRef.current)
         if(popupRef.current){

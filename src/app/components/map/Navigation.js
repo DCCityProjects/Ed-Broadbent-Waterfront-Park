@@ -16,7 +16,6 @@ export default function Navigation({stateList}) {
         zoom, setZoom,
         center, setCenter,
         popupRef, resetIcons, 
-        isIconClicked, setIsIconClicked,
         setIconState, changeIconColor,
         mapRef, setMapRef, flyToLocation
     } = stateList;
