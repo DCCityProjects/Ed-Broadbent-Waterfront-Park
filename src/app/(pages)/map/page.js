@@ -49,7 +49,7 @@ export default function Map() {
     const flyToLocation = useFlyToLocation(mapRef);
     useMarkerData(icons, setIconState);
 
-    const changeIconColor = useCallback((index, iconState, setIconState) => {
+    const changeIconColor = useCallback((index, iconState) => {
         if(!icons) return;
         const newIconState = [...iconState];
 
@@ -65,8 +65,8 @@ export default function Map() {
             case icons.iconParkingGrey: newIconState[index].icon = icons.iconParkingCol; break;
             default: break;
         };
+        return newIconState;
 
-        setIconState(newIconState);
     }, [icons])
 
     const stateList = {

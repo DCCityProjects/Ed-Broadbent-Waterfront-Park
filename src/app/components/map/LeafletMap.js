@@ -50,6 +50,10 @@ export default function LeafletMap({stateList}) {
         let resetState = resetIcons(iconState);
         setIconState(resetState);
         console.log(resetState)
+
+        let newIconState = changeIconColor(index, resetState);
+        setIconState(newIconState);
+
         marker.zIndexOffset = 10000;
 
         flyToLocation(marker.position, -2, 1);
