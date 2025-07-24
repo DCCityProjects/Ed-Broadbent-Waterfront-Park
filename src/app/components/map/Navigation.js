@@ -4,6 +4,7 @@ import Image from "next/image";
 // import Select from "react-select";
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
+import { getMidPoints, hasTwoSelectedOptions } from "@/app/utils/navigationUtils";
 
 export default function Navigation({stateList}) {
     const [isOption1Selected, setIsOption1Selected] = useState(false);
@@ -12,6 +13,7 @@ export default function Navigation({stateList}) {
     const [selectedOption2, setSelectedOption2] = useState("");
 
     const {
+        content,
         setContent, iconState,
         zoom, setZoom,
         center, setCenter,
@@ -30,21 +32,59 @@ export default function Navigation({stateList}) {
     ];
 
     
-    const navFieldStyles = {
-        control: (base, state)=>({
-            ...base,
-            display: "flex",
-            border:"none",
-            whiteSpace:"nowrap",
-            width: "100%",
-            minwidth: "auto",
-            border: state.isFocused ? 0 : 0,
-            boxShadow: state.isFocused ? 0: 0,
-            '& hover': {
-                border: state.isFocused ? 0 :0
-            }
-        })
+    const handleSelectOption = (optionNum, e) =>{
+        console.log(e)
+        const option = e.target.value;
+        const location = iconState.find(location => location.name === option);
+        console.log(`%c${content}`, `color: PURPLE`)
+
+        if(optionNum === 1){
+            setSelectedOption1(option);
+            setIsOption1Selected(true);
+        } else if (optionNum === 2){
+            setSelectedOption2(option);
+            setIsOption2Selected(true);
+        };
+
+        const iconIndex = iconState.findIndex((num) => num.name === option);
+        if(iconIndex !== -1){
+            const newIconState = changeIconColor(iconIndex, iconState, setIconState);
+            setIconState(newIconState);
+        };
+
+        const option1 = optionNum === 1 ? option : selectedOption1;
+        const option2 = optionNum === 2 ? option : selectedOption2;
+        const areBothOptionsSelected = hasTwoSelectedOptions(option1, option2);
+
+        if(!areBothOptionsSelected){
+            console.log("there's only one selected")
+            const distanceResult = checkDistance(location.position);
+            console.log(distanceResult);
+            if(distanceResult <= 500){
+                flyToLocation(location.position, -2, 1);
+            } else if((distanceResult > 500) && (distanceResult < 2900)){
+                flyToLocation(location.position, -2, 1.5)
+                console.log("flying!");
+            };
+        };
     };
+
+
+    const handleClearOption = (optionNum) => {
+        switch (optionNum) {
+            case 1:
+                setSelectedOption1("");
+                setIsOption1Selected(false);
+                resetIconColor("1");
+                break;
+            case 2:
+                setSelectedOption2("");
+                setIsOption2Selected(false);
+                resetIconColor("2");
+                break;
+        };
+    };
+
 
     function resetIconColor(option){
         let location;
@@ -63,64 +103,6 @@ export default function Navigation({stateList}) {
 
         setIconState([...iconState]);
     };
-
-    const handleSelectOption1 = async (e)=>{
-        console.log(e.target.value);
-        const location = iconState.find((location) => location.name === e.target.value);
-        console.log(location)
-
-        console.log(location.position);
-        setSelectedOption1(e.target.value);
-        setIsOption1Selected(true);
-
-        const iconIndex = iconState.findIndex((num) => num.name === e.target.value);
-        if(iconIndex !== -1){
-            changeIconColor(iconIndex, iconState, setIconState);
-        };
-
-        const distanceResult = checkDistance(location.position);
-        console.log(distanceResult);
-        if(distanceResult <= 500){
-            flyToLocation(location.position, -2, 1);
-        } else if((distanceResult > 500) && (distanceResult < 2900)){
-            flyToLocation(location.position, -2, 1.5)
-            console.log("flying!")
-        }
-        // flyToLocation(location.position, -2, 1.5);
-    }
-
-    const handleSelectOption2 = (e)=>{
-        const location = iconState.find((location) => location.name === e.target.value);
-        setSelectedOption2(e.target.value);
-        setIsOption2Selected(true);
-
-        const iconIndex = iconState.findIndex((num) => num.name === e.target.value);
-        if(iconIndex !== -1){
-            changeIconColor(iconIndex, iconState, setIconState);
-        };
-
-        const distanceResult = checkDistance(location.position);
-        console.log(distanceResult);
-
-        if(distanceResult <= 500){
-            flyToLocation(location.position, -2, 1);
-        } else if((distanceResult > 500) && (distanceResult < 2900)){
-            flyToLocation(location.position, -2, 1.5)
-            console.log("flying!")
-        }
-    }
-
-    const handleClearOption1 = ()=>{
-        setSelectedOption1("");
-        setIsOption1Selected(false);
-        resetIconColor("1");
-    }
-
-    const handleClearOption2 = (e)=>{
-        setSelectedOption2("");
-        setIsOption2Selected(false);
-        resetIconColor("2");
-    }
 
     function checkDistance(newPosition){
         const map = mapRef.current;
@@ -165,7 +147,7 @@ export default function Navigation({stateList}) {
                             className="navigation-fields__search"
                         />
                         <div className="navigation-fields__select-wrapper">
-                            <select onChange={(e) => handleSelectOption1(e)} value={selectedOption1} className={`navigation-fields__select ${!isOption1Selected ? "navigation-fields__select--color" : ""}`}>
+                            <select onChange={(e) => handleSelectOption(1, e)} value={selectedOption1} className={`navigation-fields__select ${!isOption1Selected ? "navigation-fields__select--color" : ""}`}>
                                 <option value="" disabled hidden>From Starting Point</option>
                                 {options.map((option)=>{
                                     return <option key={option.value} value={option.value}>{option.label}</option>
@@ -173,7 +155,7 @@ export default function Navigation({stateList}) {
                             </select>
                         </div>
                         <Image
-                            onClick={(e)=> handleClearOption1(e)}
+                            onClick={(e)=> handleClearOption(1)}
                             src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-circle.svg"
                             alt="close button"
                             width={25}
@@ -198,7 +180,7 @@ export default function Navigation({stateList}) {
                             className="navigation-fields__search"
                         />
                         <div className="navigation-fields__select-wrapper">
-                            <select onChange={(e)=> handleSelectOption2(e)} value={selectedOption2} className={`navigation-fields__select ${!isOption2Selected ? "navigation-fields__select--color" : ""}`}>
+                            <select onChange={(e)=> handleSelectOption(2, e)} value={selectedOption2} className={`navigation-fields__select ${!isOption2Selected ? "navigation-fields__select--color" : ""}`}>
                                 <option value="" className="navigation-fields__placeholder" disabled hidden >To Destination</option>
                                 {options.map((option)=>{
                                     return <option key={option.value} value={option.value} className="optionTest">{option.value}</option>
@@ -206,7 +188,7 @@ export default function Navigation({stateList}) {
                             </select>
                         </div>
                         <Image
-                            onClick={(e)=> handleClearOption2(e)}
+                            onClick={(e)=> handleClearOption(2)}
                             src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-circle.svg"
                             alt="close button"
                             width={25}
