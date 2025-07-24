@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 
@@ -52,28 +53,32 @@ export default function MapPopup({stateList}) {
 
     const currentContent = popupData[content];
 
+    const router = useRouter();
+    const searchParams = useSearchParams();
 
+    const handleClick = () => {
+        console.log(`%cPressed the back button to go back to wayfinding!`, `color: red`);
+        const params = new URLSearchParams(searchParams);
+        params.delete("content");
+        router.replace(`?${params.toString()}`);
 
-    const handleClick = (e) => {
-        e.preventDefault();
         setContent("navigation");
-        setIsIconClicked(true);
-        resetIcons(iconState, setIconState);
+        const newState = resetIcons(iconState);
+        console.log(newState)
+        setIconState(newState);
+        console.log("wheee")
     }
 
-    useEffect(()=>{
-        console.log("testing")
-        console.log(currentContent)
-    }, [])
+
 
     return (
         <>
             <h2 className="popup__title">{currentContent.title}</h2>
             <p>{currentContent.p}</p>
             <div className="popup__button-wrapper">
-                <a type="button" className="popup__back" onClick={(e)=>{handleClick(e)}}>
+                <button type="button" className="popup__back" onClick={handleClick}>
                     <img src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/left.svg" alt="back button" className="popup__button" />
-                </a>
+                </button>
                 {/* <Link href="" className="popup__back">
                     <Back />
                 </Link> */}

@@ -45,11 +45,11 @@ export default function Map() {
 
         loadIcons();
     }, []);
-
-    const flyToLocation = useFlyToLocation(mapRef);
+    
     useMarkerData(icons, setIconState);
+    const flyToLocation = useFlyToLocation(mapRef);
 
-    const changeIconColor = useCallback((index, iconState, setIconState) => {
+    const changeIconColor = useCallback((index, iconState) => {
         if(!icons) return;
         const newIconState = [...iconState];
 
@@ -65,8 +65,8 @@ export default function Map() {
             case icons.iconParkingGrey: newIconState[index].icon = icons.iconParkingCol; break;
             default: break;
         };
+        return newIconState;
 
-        setIconState(newIconState);
     }, [icons])
 
     const stateList = {
@@ -85,10 +85,12 @@ export default function Map() {
     useEffect(()=>{
         if(popupRef.current){
             setPopupHeight(popupRef.current.clientHeight)
-            console.log("Popupheight is set")
-            console.log(popupRef.current.clientHeight)
-            console.log(popupRef.current)
+            console.log(`Popupheight is set`)
         }
+    }, [])
+
+    useEffect(()=>{
+        console.log(`%c${content}`, `color: PURPLE`)
     }, [content])
 
     useLayoutEffect(()=>{

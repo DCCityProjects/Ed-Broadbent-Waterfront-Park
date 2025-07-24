@@ -8,16 +8,14 @@ import MapPin from "../MapPin";
 import ZoomTool from "../ZoomTool";
 import gsap from "gsap";
 import RecenterAutomatically from "./RecenterAutomatically";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
+import { findMarkerIndex } from "@/app/utils/navigationUtils";
 
 
 export default function LeafletMap({stateList}) {
-
-    const [iconList, setIconList] = useState([]);
-    const [offset, setOffset] = useState(0);
-
     const {
-        setContent, iconState,
+        setContent, content,
+        iconState,
         zoom, setZoom,
         center, setCenter,
         popupRef, resetIcons, 
@@ -26,64 +24,64 @@ export default function LeafletMap({stateList}) {
         icons
     } = stateList;
 
-    const mapReference = useRef(null);
-
     const bounds = [[0, 0], [4767, 3070]];
     const panBounds = [[-3400, -2500], [8567, 5570]];
     const mapWrapperRef = useRef(null);
 
-    useEffect(()=>{
-        console.log(mapWrapperRef);
-
-    },[])
-
+    const router = useRouter();
     const searchParams = useSearchParams();
-
-    
-    const handleClick = useCallback((e, marker, index) => {
-        console.log(`clicked ${marker.name}`);
-        if(!iconState[index]){
-            console.log("No icon state");
-            return
-        };
-        setContent(marker.url);
-        setIsIconClicked(false);
-        resetIcons(iconState, setIconState);
-
-        changeIconColor(index, iconState, setIconState);
-        marker.zIndexOffset = 10000;
-
-        flyToLocation(marker.position, -2, 1);
-        gsap.to(popupRef.current, {y: 0, duration: 1})
-        console.log(popupRef.current)
-        if(popupRef.current){
-            console.log("popupRef" + popupRef.current)
-        } else {
-            console.log("no popupRef")
-        }
-        
-    }, [iconState, setIconState, resetIcons, setIsIconClicked, setContent, popupRef, changeIconColor, flyToLocation])
-
-
-
-
+    const iconStateRef = useRef(null);
+    //* ref flag for people coming from teh QR or direct link with the ?content
+    const cameFromURLRef = useRef(true);
 
     useEffect(()=>{
-        const contentParam = searchParams.get("content");
-        if(contentParam && iconState.length > 0){
-            setContent(contentParam)
-            const markerIndex = iconState.findIndex(marker=>marker.url === contentParam);
-            if(markerIndex !== -1){
-                const marker = iconState[markerIndex];
-                setCenter(marker.position);
-                handleClick(null, marker, markerIndex);
-            }
-            console.log(contentParam)
-        }
-    },[handleClick, iconState, searchParams, setContent, setCenter])
+        if(!icons) return;
+        if (iconStateRef.current === null && iconState.length > 0){
+            iconStateRef.current = [...iconState];
+        };
+    }, [iconState, icons]);
 
+    const handleClick = useCallback((marker, index) => {
+        if(!iconStateRef.current) return;
+        let resetState = resetIcons(iconStateRef.current);
+        iconStateRef.current = resetState;
+        setIconState(resetState);
 
+        let newIconState = changeIconColor(index, resetState);
+        setIconState(newIconState);
+        setContent(marker.url);
 
+        marker.zIndexOffset = 10000;
+        flyToLocation(marker.position, -2, 1);
+        gsap.to(popupRef.current, {y: 0, duration: 1});
+
+        const params = new URLSearchParams(searchParams);
+        params.set("content", marker.url);
+        router.replace(`?${params.toString()}`);
+        
+    }, [resetIcons, setIconState, changeIconColor, flyToLocation, popupRef, router, searchParams, setContent]);
+
+    useEffect(()=>{
+        function reactToSearchParams(){
+            const contentParam = searchParams.get("content");
+            //* Gotta make sure that the flag is true (for when you come from QR or URL)
+            //* also have to check if both iconState and iconStateRef aren't null, just so it really waits.
+            if(contentParam && cameFromURLRef.current && iconState && iconStateRef.current){
+                const markerIndex = findMarkerIndex(iconStateRef.current, contentParam);
+
+                if(markerIndex !== -1){
+                    cameFromURLRef.current = false;
+                    const marker = iconStateRef.current[markerIndex];
+
+                    //* Setting the center here because the flyToLocation isn't gonna be perfect
+                    //* when coming from the QR or URL
+                    setCenter(marker.position)
+                    handleClick(marker, markerIndex);
+                }
+            };
+        };
+        reactToSearchParams();
+    },[searchParams, setContent, handleClick, setCenter, iconState]);
 
     function MapEventHandler(){
         const map = useMapEvent("zoom", ()=>{
@@ -94,14 +92,14 @@ export default function LeafletMap({stateList}) {
                 changeMarkerSize(markerSize);
             } else if (currentZoom >= -2) {
                 changeMarkerSize(markerSize);
-            }
-        })
+            };
+        });
 
-        return null
+        return null;
     };
 
     function changeMarkerSize(size){
-        if(!mapWrapperRef) return
+        if(!mapWrapperRef) return;
         mapWrapperRef.current.style.setProperty("--marker-width", `${size}px`);
     };
 
@@ -117,10 +115,6 @@ export default function LeafletMap({stateList}) {
 
         return minSize * t + maxSize * (1 - t);
     };
-
-    // useEffect(()=>{
-    //     console.log(mapRef)
-    // }, [mapRef])
     
     return (
         <div id="map-wrapper" ref={mapWrapperRef}>
@@ -146,9 +140,9 @@ export default function LeafletMap({stateList}) {
                             position={marker.position}
                             icon={iconState[index]?.icon}
                             eventHandlers={{
-                                click: (e)=>{
+                                click: ()=>{
                                     // setCenter(marker.position);
-                                    handleClick(e, marker, index);    
+                                    handleClick(marker, index);    
                                 }
                             }}
                             zIndexOffset={marker.zIndexOffset}>
