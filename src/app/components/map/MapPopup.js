@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 
@@ -9,13 +8,13 @@ export default function MapPopup({stateList}) {
     const {
         content, setContent,
         setIsIconClicked, resetIcons, 
-        iconState, setIconState
+        iconState
     } = stateList;
 
     const popupData = {
         "amphitheatre-and-stage": {
             title: "AMPHITHEATRE AND STAGE",
-            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
+            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa&apos;s newest addition to the waterfront parks system....",
             srcReadMore: "/amphitheatreAndStage",
             src360: "/amphitheatre_and_stage_360"
         },
@@ -33,13 +32,13 @@ export default function MapPopup({stateList}) {
         },
         "main-entrance": {
             title: "MAIN ENTRANCE",
-            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
+            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa&apos;s newest addition to the waterfront parks system....",
             srcReadMore: "/general",
             src360: "/main_entrance_360"
         },
         "parking-entrance": {
             title: "PARKING ENTRANCE",
-            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
+            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa&apos;s newest addition to the waterfront parks system....",
             srcReadMore: "/general",
             src360: "/parking_entrance_360"
         },
@@ -53,32 +52,28 @@ export default function MapPopup({stateList}) {
 
     const currentContent = popupData[content];
 
-    const router = useRouter();
-    const searchParams = useSearchParams();
 
-    const handleClick = () => {
-        console.log(`%cPressed the back button to go back to wayfinding!`, `color: red`);
-        const params = new URLSearchParams(searchParams);
-        params.delete("content");
-        router.replace(`?${params.toString()}`);
 
+    const handleClick = (e) => {
+        e.preventDefault();
         setContent("navigation");
-        const newState = resetIcons(iconState);
-        console.log(newState)
-        setIconState(newState);
-        console.log("wheee")
+        setIsIconClicked(true);
+        resetIcons(iconState);
     }
 
-
+    useEffect(()=>{
+        console.log("testing")
+        console.log(currentContent)
+    }, [])
 
     return (
         <>
             <h2 className="popup__title">{currentContent.title}</h2>
             <p>{currentContent.p}</p>
             <div className="popup__button-wrapper">
-                <button type="button" className="popup__back" onClick={handleClick}>
+                <a type="button" className="popup__back" onClick={(e)=>{handleClick(e)}}>
                     <img src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/left.svg" alt="back button" className="popup__button" />
-                </button>
+                </a>
                 {/* <Link href="" className="popup__back">
                     <Back />
                 </Link> */}

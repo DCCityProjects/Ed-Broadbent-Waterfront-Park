@@ -53,34 +53,9 @@
 
 .navigation-fields__select{
     font-family: "PT Sans", sans-serif;
-    /* font-style: italic; */
+    font-style: italic;
     font-size: 1.25rem;
-    /* color: var(--color--secondary--faded); */
-    border: 0;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-
-}
-
-.navigation-fields__select:focus,
-.navigation-fields__select:focus-visible{
-    border: 0;
-    outline: 0;
-}
-
-.navigation-fields__select--color{
-    color: var(--color--secondary--faded);
-}
-
-
-.navigation-fields__placeholder{
-    color: var(--color--secondary--faded);
-}
-
-.navigation-fields__close--hidden{
-    opacity: 0;
-    pointer-events: none;
+    color: var(--secondary--faded)
 }
 
 .navigation__go{
