@@ -9,6 +9,7 @@ import ZoomTool from "../ZoomTool";
 import gsap from "gsap";
 import RecenterAutomatically from "./RecenterAutomatically";
 import { useSearchParams, useRouter } from "next/navigation";
+import { findMarkerIndex } from "@/app/utils/navigationUtils";
 
 
 export default function LeafletMap({stateList}) {
@@ -39,7 +40,7 @@ export default function LeafletMap({stateList}) {
     const router = useRouter();
     const searchParams = useSearchParams();
     //* I'm using this ref to compare to contentParam later on to make sure they aren't the same.
-    const contentParamRef = useRef();
+    const contentRef = useRef();
     const stopSearchParamEffectRef = useRef(false);
     const iconStateRef = useRef(null);
 
@@ -52,41 +53,28 @@ export default function LeafletMap({stateList}) {
     }, [iconState, icons])
 
     useEffect(()=>{
-        console.log(iconStateRef.current)
-    },[iconStateRef])
+        function updateContentRef(){
+            console.log("starting the update content ref!");
+            console.log("content is:", content);
+            contentRef.current = content;
+        }
 
-    const handleClick = useCallback((marker, index) => {
+        updateContentRef();
+    }, [content])
+
+    useEffect(()=>{
+        console.log(iconStateRef.current)
+    },[])
+
+    const handleClick = useCallback((marker) => {
         console.log(`%cClicked ${marker.name}`, `color: green`);
-        if(!iconState[index]){
-            console.log("No icon state");
-            return;
-        };
 
         stopSearchParamEffectRef.current = true;
         const params = new URLSearchParams(searchParams);
         params.set("content", marker.url);
         router.replace(`?${params.toString()}`);
-
-        setTimeout(() => {
-            console.log(`%cTimeout!`, `color: red`)
-            stopSearchParamEffectRef.current = false;
-        }, 500);
-
-        console.log("Setting contents!")
-        setContent(marker.url);
         
-        let resetState = resetIcons(iconState);
-        setIconState(resetState);
-        console.log(resetState)
-
-        let newIconState = changeIconColor(index, resetState);
-        setIconState(newIconState);
-
-        marker.zIndexOffset = 10000;
-        flyToLocation(marker.position, -2, 1);
-        gsap.to(popupRef.current, {y: 0, duration: 1})
-        
-    }, [iconState, setIconState, resetIcons, setContent, popupRef, changeIconColor, flyToLocation, searchParams, router])
+    }, [searchParams, router])
 
     // useEffect(()=>{
     //     if(stopSearchParamEffectRef.current){
@@ -110,36 +98,50 @@ export default function LeafletMap({stateList}) {
     //         console.log(contentParam)
     //     }
     // },[contentParam, handleClick, iconState, searchParams, setContent, flyToLocation])
-
+    useEffect(() => {
+        const testParam = searchParams.get("content");
+        console.log("URL param content is:", testParam);
+    }, [searchParams]);
 
     useEffect(()=>{
         function reactToSearchParams(){
-            console.log(`%cStarting get search params`, `color: green`)
+            console.log(`%cStarting reactToSearchParams`, `color: green`);
             const contentParam = searchParams.get("content");
-            console.log("content param ref is", contentParamRef.current)
-            console.log("contentParam is", contentParam)
-
-            if(!contentParam || contentParamRef.current) return;
-            console.log("contentParamRef is now", contentParamRef.current, contentParam)
-            if(stopSearchParamEffectRef.current){
-                console.log("Looks like we don't need to continue! search param effect is stopped!");
-                return;
+            if(contentParam){
+                console.log("contentParam exists! we are now setting content!")
+                setContent(contentParam);
             };
-            if(!iconStateRef.current) return;
-            contentParamRef.current = contentParam;
-
-            const markerIndex = iconStateRef.current.findIndex(marker=>marker.url === contentParam);
-            if(markerIndex === -1) return;
-            const marker = iconStateRef.current[markerIndex];
-            setCenter(marker.position)
-            handleClick(iconStateRef.current[markerIndex], markerIndex);
-        }
-
+        };
         reactToSearchParams();
+    },[searchParams, setContent]);
 
-    },[searchParams, handleClick, setCenter, iconStateRef])
+    useEffect(()=>{
+        console.log(content)
+    }, [content]);
 
+    useEffect(()=>{
+        function selectIcon(){
+            // console.log(iconState)
+            console.log(iconStateRef.current)
+            if(!iconStateRef.current) return;
+            let resetState = resetIcons(iconStateRef.current);
+            iconStateRef.current = resetState;
+            setIconState(resetState);
+            console.log("the reset state is", resetState);
+            console.log(content)
+            const markerIndex = findMarkerIndex(iconStateRef.current, content);
+            console.log("marker is:", markerIndex);
+            if(markerIndex === -1) return;
+            let newIconState = changeIconColor(markerIndex, resetState);
+            setIconState(newIconState);
+            const marker = newIconState[markerIndex];
+            marker.zIndexOffset = 10000;
+            flyToLocation(marker.position, -2, 1);
+            gsap.to(popupRef.current, {y: 0, duration: 1})
+        };
 
+        selectIcon();
+    }, [resetIcons, setIconState, content, changeIconColor, flyToLocation, popupRef]);
 
     function MapEventHandler(){
         const map = useMapEvent("zoom", ()=>{

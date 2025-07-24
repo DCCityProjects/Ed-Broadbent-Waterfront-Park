@@ -11,3 +11,10 @@ export function getMidPoints(x, y) {
 export function hasTwoSelectedOptions(option1, option2) {
     return !!(option1 && option2);
 };
+
+export function findMarkerIndex(markerList, currentContent){
+    console.log(markerList);
+    console.log(currentContent)
+    const marker = markerList.findIndex(marker => marker.url === currentContent);
+    return marker;
+}
