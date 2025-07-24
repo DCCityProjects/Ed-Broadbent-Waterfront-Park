@@ -57,14 +57,9 @@ export default function MapPopup({stateList}) {
     const handleClick = (e) => {
         e.preventDefault();
         setContent("navigation");
-        setIsIconClicked(true);
-        resetIcons(iconState, setIconState);
-    }
-
-    useEffect(()=>{
-        console.log("testing")
-        console.log(currentContent)
-    }, [])
+        const newState = resetIcons(iconState);
+        console.log(newState)
+        setIconState(newState);
 
     return (
         <>

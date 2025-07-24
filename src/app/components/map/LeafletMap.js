@@ -47,10 +47,9 @@ export default function LeafletMap({stateList}) {
             return
         };
         setContent(marker.url);
-        setIsIconClicked(false);
-        resetIcons(iconState, setIconState);
-
-        changeIconColor(index, iconState, setIconState);
+        let resetState = resetIcons(iconState);
+        setIconState(resetState);
+        console.log(resetState)
         marker.zIndexOffset = 10000;
 
         flyToLocation(marker.position, -2, 1);
