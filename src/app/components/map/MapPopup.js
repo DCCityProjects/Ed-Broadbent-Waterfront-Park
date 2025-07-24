@@ -14,7 +14,7 @@ export default function MapPopup({stateList}) {
     const popupData = {
         "amphitheatre-and-stage": {
             title: "AMPHITHEATRE AND STAGE",
-            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa&apos;s newest addition to the waterfront parks system....",
+            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/amphitheatreAndStage",
             src360: "/amphitheatre_and_stage_360"
         },
@@ -32,13 +32,13 @@ export default function MapPopup({stateList}) {
         },
         "main-entrance": {
             title: "MAIN ENTRANCE",
-            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa&apos;s newest addition to the waterfront parks system....",
+            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/general",
             src360: "/main_entrance_360"
         },
         "parking-entrance": {
             title: "PARKING ENTRANCE",
-            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa&apos;s newest addition to the waterfront parks system....",
+            p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/general",
             src360: "/parking_entrance_360"
         },
