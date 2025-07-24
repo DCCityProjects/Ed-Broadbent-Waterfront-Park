@@ -45,9 +45,9 @@ export default function Map() {
 
         loadIcons();
     }, []);
-
-    const flyToLocation = useFlyToLocation(mapRef);
+    
     useMarkerData(icons, setIconState);
+    const flyToLocation = useFlyToLocation(mapRef);
 
     const changeIconColor = useCallback((index, iconState) => {
         if(!icons) return;
