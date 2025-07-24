@@ -69,6 +69,35 @@ export default function Navigation({stateList}) {
         };
     };
 
+    useEffect(()=>{
+        function flyToMidPoint(){
+            console.log("launch flytomidpoint!")
+            const iconIndexOption1 = iconState.findIndex((num) => num.name === selectedOption1);
+            const iconIndexOption2 = iconState.findIndex((num) => num.name === selectedOption2);
+            console.log(iconIndexOption1);
+            console.log(iconIndexOption2)
+            const testMidPoints = getMidPoints(iconState[iconIndexOption1].position, iconState[iconIndexOption2].position);
+            console.log(testMidPoints);
+
+            const map = mapRef.current;
+            const bounds = L.latLngBounds([
+                iconState[iconIndexOption1].position,
+                iconState[iconIndexOption2].position,
+            ]);
+            console.log(bounds)
+            
+            map.flyToBounds(bounds, {
+                paddingTopLeft: [20, 100], // add padding if needed
+                paddingBottomRight: [40, 280],
+                maxZoom: -1,       // optional: prevent zooming in too much
+                duration: 1.5
+            });
+        };
+
+        if(isOption1Selected && isOption2Selected){
+            flyToMidPoint();
+        };
+    }, [iconState, isOption1Selected, isOption2Selected, selectedOption1, selectedOption2, flyToLocation, mapRef])
 
     const handleClearOption = (optionNum) => {
         switch (optionNum) {
