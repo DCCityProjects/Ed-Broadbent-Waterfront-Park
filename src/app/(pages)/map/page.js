@@ -85,10 +85,12 @@ export default function Map() {
     useEffect(()=>{
         if(popupRef.current){
             setPopupHeight(popupRef.current.clientHeight)
-            console.log("Popupheight is set")
-            console.log(popupRef.current.clientHeight)
-            console.log(popupRef.current)
+            console.log(`Popupheight is set`)
         }
+    }, [])
+
+    useEffect(()=>{
+        console.log(`%c${content}`, `color: PURPLE`)
     }, [content])
 
     useLayoutEffect(()=>{
