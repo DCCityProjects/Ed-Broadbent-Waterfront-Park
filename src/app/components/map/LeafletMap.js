@@ -13,10 +13,6 @@ import { findMarkerIndex } from "@/app/utils/navigationUtils";
 
 
 export default function LeafletMap({stateList}) {
-
-    const [iconList, setIconList] = useState([]);
-    const [offset, setOffset] = useState(0);
-
     const {
         setContent, content,
         iconState,
@@ -32,49 +28,20 @@ export default function LeafletMap({stateList}) {
     const panBounds = [[-3400, -2500], [8567, 5570]];
     const mapWrapperRef = useRef(null);
 
-    useEffect(()=>{
-        console.log(mapWrapperRef);
-
-    },[])
-
     const router = useRouter();
     const searchParams = useSearchParams();
-    //* I'm using this ref to compare to contentParam later on to make sure they aren't the same.
-    const contentRef = useRef();
-    const stopSearchParamEffectRef = useRef(false);
     const iconStateRef = useRef(null);
+    //* ref flag for people coming from teh QR or direct link with the ?content
     const cameFromURLRef = useRef(true);
 
     useEffect(()=>{
         if(!icons) return;
-        console.log("icons are now here!")
         if (iconStateRef.current === null && iconState.length > 0){
-            console.log("setting iconstateref to iconstate")
             iconStateRef.current = [...iconState];
-            console.log(iconState);
-            console.log(iconStateRef.current)
-        }
-    }, [iconState, icons])
-
-
-
-    useEffect(()=>{
-        function updateContentRef(){
-            console.log("starting the update content ref!");
-            console.log("content is:", content);
-            contentRef.current = content;
-            
-        }
-
-        updateContentRef();
-    }, [content])
-
-    useEffect(()=>{
-        console.log(iconStateRef.current)
-    },[])
+        };
+    }, [iconState, icons]);
 
     const handleClick = useCallback((marker, index) => {
-        console.log(`%cClicked ${marker.name}`, `color: green`);
         if(!iconStateRef.current) return;
         let resetState = resetIcons(iconStateRef.current);
         iconStateRef.current = resetState;
@@ -82,37 +49,32 @@ export default function LeafletMap({stateList}) {
 
         let newIconState = changeIconColor(index, resetState);
         setIconState(newIconState);
-        setContent(marker.url)
+        setContent(marker.url);
 
         marker.zIndexOffset = 10000;
         flyToLocation(marker.position, -2, 1);
         gsap.to(popupRef.current, {y: 0, duration: 1});
 
-        stopSearchParamEffectRef.current = true;
         const params = new URLSearchParams(searchParams);
         params.set("content", marker.url);
         router.replace(`?${params.toString()}`);
         
-    }, [resetIcons, setIconState, changeIconColor, flyToLocation, popupRef, router, searchParams, setContent])
-
-    useEffect(() => {
-        const testParam = searchParams.get("content");
-        console.log("URL param content is:", testParam);
-    }, [searchParams]);
+    }, [resetIcons, setIconState, changeIconColor, flyToLocation, popupRef, router, searchParams, setContent]);
 
     useEffect(()=>{
         function reactToSearchParams(){
-            console.log(`%cStarting reactToSearchParams`, `color: green`);
             const contentParam = searchParams.get("content");
+            //* Gotta make sure that the flag is true (for when you come from QR or URL)
+            //* also have to check if both iconState and iconStateRef aren't null, just so it really waits.
             if(contentParam && cameFromURLRef.current && iconState && iconStateRef.current){
-                console.log(`%ccontentParam exists! we are now setting content!`, `color: red`)
                 const markerIndex = findMarkerIndex(iconStateRef.current, contentParam);
-                console.log(markerIndex);
+
                 if(markerIndex !== -1){
                     cameFromURLRef.current = false;
                     const marker = iconStateRef.current[markerIndex];
-                    console.log(marker);
-                    console.log("hello from reacttosearchparams! gonna do the handleclick")
+
+                    //* Setting the center here because the flyToLocation isn't gonna be perfect
+                    //* when coming from the QR or URL
                     setCenter(marker.position)
                     handleClick(marker, markerIndex);
                 }
@@ -120,10 +82,6 @@ export default function LeafletMap({stateList}) {
         };
         reactToSearchParams();
     },[searchParams, setContent, handleClick, setCenter, iconState]);
-
-    useEffect(()=>{
-        console.log(content)
-    }, [content]);
 
     function MapEventHandler(){
         const map = useMapEvent("zoom", ()=>{
@@ -134,14 +92,14 @@ export default function LeafletMap({stateList}) {
                 changeMarkerSize(markerSize);
             } else if (currentZoom >= -2) {
                 changeMarkerSize(markerSize);
-            }
-        })
+            };
+        });
 
-        return null
+        return null;
     };
 
     function changeMarkerSize(size){
-        if(!mapWrapperRef) return
+        if(!mapWrapperRef) return;
         mapWrapperRef.current.style.setProperty("--marker-width", `${size}px`);
     };
 
@@ -157,10 +115,6 @@ export default function LeafletMap({stateList}) {
 
         return minSize * t + maxSize * (1 - t);
     };
-
-    // useEffect(()=>{
-    //     console.log(mapRef)
-    // }, [mapRef])
     
     return (
         <div id="map-wrapper" ref={mapWrapperRef}>
