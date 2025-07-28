@@ -37,11 +37,12 @@ export default function Navigation({stateList}) {
         const option = e.target.value;
         const location = iconState.find(location => location.name === option);
         console.log(`%c${content}`, `color: PURPLE`)
-
         if(optionNum === 1){
+            resetIconColor("1");
             setSelectedOption1(option);
             setIsOption1Selected(true);
         } else if (optionNum === 2){
+            resetIconColor("2");
             setSelectedOption2(option);
             setIsOption2Selected(true);
         };
@@ -120,10 +121,12 @@ export default function Navigation({stateList}) {
         switch (option) {
             case "1":
                 location = iconState.find((location) => location.name === selectedOption1);
+                if (!location) return;
                 location.icon = location.iconGrey;
                 break;
             case "2":
                 location = iconState.find((location) => location.name === selectedOption2);
+                if (!location) return;
                 location.icon = location.iconGrey;
                 break;
             default:
@@ -139,6 +142,10 @@ export default function Navigation({stateList}) {
         return distance;
     }
 
+    useEffect(()=>{
+        console.log("option 1 is:", selectedOption1);
+        console.log("option 2 is:", selectedOption2)
+    }, [selectedOption1, selectedOption2])
 
 
     // useEffect(()=>{
