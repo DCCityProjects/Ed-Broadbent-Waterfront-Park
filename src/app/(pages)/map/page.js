@@ -18,6 +18,7 @@ import MapPopup from "../../components/map/MapPopup";
 import { useMap } from "react-leaflet";
 import useFlyToLocation from "@/app/hooks/useFlyToLocation";
 import useMarkerData from "@/app/hooks/useMarkerData";
+import {DrawSVGPlugin} from "gsap/DrawSVGPlugin";
 
 const LeafletMap = dynamic(() => import('@/app/components/map/LeafletMap'), {
     loading: () => <p>loading...</p>,
@@ -48,6 +49,8 @@ export default function Map() {
     
     useMarkerData(icons, setIconState);
     const flyToLocation = useFlyToLocation(mapRef);
+    gsap.registerPlugin(Draggable, DrawSVGPlugin);
+
 
     const changeIconColor = useCallback((index, iconState) => {
         if(!icons) return;
@@ -94,7 +97,6 @@ export default function Map() {
     }, [content])
 
     useLayoutEffect(()=>{
-        gsap.registerPlugin(Draggable);
 
         if(!popupRef.current) return;
 
