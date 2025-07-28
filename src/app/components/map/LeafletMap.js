@@ -148,12 +148,14 @@ export default function LeafletMap({stateList}) {
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 <path 
+                                id={path.id}
                                 d={path.d} 
                                 stroke={path.stroke}
                                 strokeMiterlimit={path.strokeMiterlimit}
                                 strokeWidth={path.strokeWidth}
                                 fill={path.fill}
                                 vectorEffect="non-scaling-stroke"
+                                style={{ visibility: "hidden"}}
                                 >
                                 </path>
                             </svg>
