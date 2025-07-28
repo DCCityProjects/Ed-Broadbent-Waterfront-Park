@@ -131,6 +131,9 @@ export default function LeafletMap({stateList}) {
                 maxZoom={-1}
                 zoomControl={false}
                 closePopupOnClick={false}
+                bounceAtZoomLimits={true}
+                scrollWheelZoom={true}
+                touchZoom={true}
                 ref={mapRef}
                 >
                 <MapEventHandler />
