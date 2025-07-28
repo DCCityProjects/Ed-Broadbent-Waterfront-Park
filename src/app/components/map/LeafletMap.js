@@ -1,15 +1,14 @@
 "use client"
 
-import { ImageOverlay, MapContainer, Marker, Popup, Tooltip, useMap, useMapEvent } from "react-leaflet";
+import { ImageOverlay, MapContainer, Marker, Popup, SVGOverlay, Tooltip, useMap, useMapEvent } from "react-leaflet";
 import L, { marker } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useCallback, useEffect, useRef, useState } from "react";
-import MapPin from "../MapPin";
-import ZoomTool from "../ZoomTool";
 import gsap from "gsap";
 import RecenterAutomatically from "./RecenterAutomatically";
 import { useSearchParams, useRouter } from "next/navigation";
 import { findMarkerIndex } from "@/app/utils/navigationUtils";
+import { pathList } from "@/app/data/pathList";
 
 
 export default function LeafletMap({stateList}) {
@@ -33,6 +32,9 @@ export default function LeafletMap({stateList}) {
     const iconStateRef = useRef(null);
     //* ref flag for people coming from teh QR or direct link with the ?content
     const cameFromURLRef = useRef(true);
+
+
+    // const edBroadbentToGardenOfHR = L.svgOverlay(EdBroadbentToGardenOfHR, bounds).addTo(mapRef);
 
     useEffect(()=>{
         if(!icons) return;
