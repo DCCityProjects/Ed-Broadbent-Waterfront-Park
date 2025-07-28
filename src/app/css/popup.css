@@ -4,14 +4,16 @@
     z-index: 99999;
     /* top: 0; */
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     padding: 0 5.7% 5.7% 5.7%;
 }
 
 .popup-tab{
     position: absolute;
     top: calc(-1 * (100vw + 60px) / 8.931);
-    width: calc(100% + 8px);
+    width: calc(100%);
+    left: -4px;
+    overflow: visible;
     /* height: 100%; */
 }
 
