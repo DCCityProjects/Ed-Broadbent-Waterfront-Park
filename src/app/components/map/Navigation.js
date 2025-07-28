@@ -4,13 +4,16 @@ import Image from "next/image";
 // import Select from "react-select";
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
-import { getMidPoints, hasTwoSelectedOptions } from "@/app/utils/navigationUtils";
+import { findPathIndexToUse, getMidPoints, hasTwoSelectedOptions } from "@/app/utils/navigationUtils";
+import gsap from "gsap";
+import { pathList } from "@/app/data/pathList";
 
 export default function Navigation({stateList}) {
     const [isOption1Selected, setIsOption1Selected] = useState(false);
     const [isOption2Selected, setIsOption2Selected] = useState(false);
     const [selectedOption1, setSelectedOption1] = useState("");
     const [selectedOption2, setSelectedOption2] = useState("");
+    const [isWayfinding, setIsWayfinding] = useState(false);
 
     const {
         content,
@@ -70,35 +73,59 @@ export default function Navigation({stateList}) {
         };
     };
 
+    const flyToMidPoint = useCallback((type) =>{
+        console.log("launch flytomidpoint!")
+        const iconIndexOption1 = iconState.findIndex((num) => num.name === selectedOption1);
+        const iconIndexOption2 = iconState.findIndex((num) => num.name === selectedOption2);
+        console.log(iconIndexOption1);
+        console.log(iconIndexOption2)
+        const testMidPoints = getMidPoints(iconState[iconIndexOption1].position, iconState[iconIndexOption2].position);
+        console.log(testMidPoints);
+
+        const map = mapRef.current;
+        const bounds = L.latLngBounds([
+            iconState[iconIndexOption1].position,
+            iconState[iconIndexOption2].position,
+        ]);
+        console.log(bounds)
+        switch (type) {
+            case "before wayfinding":
+                map.flyToBounds(bounds, {
+                    paddingTopLeft: [20, 100],
+                    paddingBottomRight: [40, 280],
+                    maxZoom: -1,
+                    duration: 1.5
+                });
+            break;
+            case "during wayfinding":
+                map.flyToBounds(bounds, {
+                    paddingTopLeft: [20, 100],
+                    paddingBottomRight: [40, 200],
+                    maxZoom: -1,
+                    duration: 1.5
+                });
+            break;
+        }
+        
+
+    }, [iconState, selectedOption1, selectedOption2, mapRef]);
+
     useEffect(()=>{
-        function flyToMidPoint(){
-            console.log("launch flytomidpoint!")
-            const iconIndexOption1 = iconState.findIndex((num) => num.name === selectedOption1);
-            const iconIndexOption2 = iconState.findIndex((num) => num.name === selectedOption2);
-            console.log(iconIndexOption1);
-            console.log(iconIndexOption2)
-            const testMidPoints = getMidPoints(iconState[iconIndexOption1].position, iconState[iconIndexOption2].position);
-            console.log(testMidPoints);
-
-            const map = mapRef.current;
-            const bounds = L.latLngBounds([
-                iconState[iconIndexOption1].position,
-                iconState[iconIndexOption2].position,
-            ]);
-            console.log(bounds)
-            
-            map.flyToBounds(bounds, {
-                paddingTopLeft: [20, 100], // add padding if needed
-                paddingBottomRight: [40, 280],
-                maxZoom: -1,       // optional: prevent zooming in too much
-                duration: 1.5
-            });
-        };
-
         if(isOption1Selected && isOption2Selected){
-            flyToMidPoint();
+            console.log("both options selected!")
+            flyToMidPoint("before wayfinding");
         };
-    }, [iconState, isOption1Selected, isOption2Selected, selectedOption1, selectedOption2, flyToLocation, mapRef])
+    }, [isOption1Selected, isOption2Selected, flyToMidPoint])
+
+    useEffect(()=>{
+        if(isWayfinding){
+            console.log("wayfinding is starting!")
+            flyToMidPoint("during wayfinding");
+        } else if (!isWayfinding && isOption1Selected && isOption2Selected) {
+            console.log("wayfinding is stopping!")
+            flyToMidPoint("before wayfinding");
+        }
+    }, [isWayfinding, flyToMidPoint, isOption1Selected, isOption2Selected])
 
     const handleClearOption = (optionNum) => {
         switch (optionNum) {
@@ -159,13 +186,55 @@ export default function Navigation({stateList}) {
     //     // console.log(differenceCenter)
     // }, [mapRef, center, flyToLocation])
 
+    const handleGo = (pathList) =>{
+        console.log("pressed go!");
+        if(selectedOption1 && selectedOption2){
+            console.log("We have both options, time to wayfind!")
+            setIsWayfinding(true);
+            const tl = gsap.timeline();
+            console.log("selectedOption1", selectedOption1)
+            console.log("selectedOption2", selectedOption2)
+            const pathIndex = findPathIndexToUse(pathList, selectedOption1, selectedOption2);
+            console.log("path is", pathIndex);
+            const path = pathList[pathIndex];
+            gsap.set(`#${path.id}`, {visibility: "visible"})
+            tl
+                .from(`#${path.id}`, {
+                    drawSVG: "0%",
+                    duration: 3,
+                    ease: "none",
+                    onStart: ()=>{
+                        mapRef.current.scrollWheelZoom.disable()
+                        mapRef.current.touchZoom.disable()
+                        
+                    },
+                    onComplete: ()=>{
+                        mapRef.current.scrollWheelZoom.enable()
+                        mapRef.current.touchZoom.enable()
+                    }
+                });
+                
+        }
+    }
 
+    const handleExit = (pathList) => {
+        console.log("pressed exit!");
+        const pathIndex = findPathIndexToUse(pathList, selectedOption1, selectedOption2);
+        console.log("path is", pathIndex);
+        const path = pathList[pathIndex];
+        gsap.set(`#${path.id}`, {visibility: "hidden"})
+        setIsWayfinding(false);
+    }
+
+    useEffect(()=>{
+        console.log(isWayfinding)
+    }, [isWayfinding])
 
 
     return (
         <>
-            <h2 className="navigation__title">Select Destination</h2>
-                <div className="navigation-fields">
+            <h2 className={`navigation__title ${isWayfinding ? "wayfindingToHide--hidden" : ""}`}>Select Destination</h2>
+                <div className={`navigation-fields ${isWayfinding ? "wayfindingToHide--hidden" : ""}`}>
                     <div className="navigation-fields__row"> 
                         <Image 
                             src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/search.svg"
@@ -231,7 +300,8 @@ export default function Navigation({stateList}) {
                         />                     */}
                     </div>
                 </div>
-            <button className="navigation__go">GO</button>
+            <button className={`navigation__go ${isWayfinding ? "wayfindingToHide--hidden" : ""}`} onClick={() => handleGo(pathList)}>GO</button>
+            <button className={`navigation__go ${isWayfinding ? "" : "wayfindingToHide--hidden"}`} onClick={() => handleExit(pathList)}>EXIT</button>
         </>
     );
 }

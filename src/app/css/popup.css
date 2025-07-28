@@ -33,6 +33,17 @@
     width: 100%;
 }
 
+.wayfindingToHide--hidden{
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 0 !important;
+}
+
 .navigation-fields__hr{
     border: 0.5px solid rgba(0, 0, 0, 0.10);
     margin: 2% 0;

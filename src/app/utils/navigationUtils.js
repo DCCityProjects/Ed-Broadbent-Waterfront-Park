@@ -18,3 +18,8 @@ export function findMarkerIndex(markerList, currentContent){
     const marker = markerList.findIndex(marker => marker.url === currentContent);
     return marker;
 }
+
+export function findPathIndexToUse(pathList, option1, option2){
+    const path = pathList.findIndex(path => path.from === option1 && path.to === option2);
+    return path;
+}
