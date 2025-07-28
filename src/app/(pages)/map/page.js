@@ -128,13 +128,13 @@ export default function Map() {
 
 
     return (
-        <main>
+        <section id="map-page">
             <LeafletMap stateList={stateList} />
             <section className="popup u-flex-column-align-center" ref={popupRef}>
                 {/* <Popup /> */}
                 <PopupTab className="popup-tab" preserveAspectRatio="xMidYMin" ref={tabRef}/>
                 {content === "navigation" ? (<Navigation stateList={stateList} />) : (<MapPopup stateList={stateList} />)}
             </section>
-        </main>
+        </section>
     );
 }
