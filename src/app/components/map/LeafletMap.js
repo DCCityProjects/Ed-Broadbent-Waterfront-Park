@@ -133,6 +133,32 @@ export default function LeafletMap({stateList}) {
                 >
                 <MapEventHandler />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
+                {pathList.map((path, index) => {
+                    console.log(path)
+                    return (
+                        <SVGOverlay
+                        key={index}
+                        bounds={path.bounds}
+                        attributes={{zIndex: 99999}}>
+                            <svg
+                                viewBox={`0 0 ${path.width} ${path.height}`}
+                                preserveAspectRatio="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path 
+                                d={path.d} 
+                                stroke={path.stroke}
+                                strokeMiterlimit={path.strokeMiterlimit}
+                                strokeWidth={path.strokeWidth}
+                                fill={path.fill}
+                                vectorEffect="non-scaling-stroke"
+                                >
+                                </path>
+                            </svg>
+
+                        </SVGOverlay>
+                    )
+                })};
                 {iconState.map((marker, index) =>{
                     return (
                         <Marker 
