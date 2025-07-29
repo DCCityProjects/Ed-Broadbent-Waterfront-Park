@@ -6,7 +6,7 @@ useEffect(()=>{
 
         setIconState([
             {
-                position: [3520, 750],
+                position: [3460, 350],
                 zIndexOffset: 1000,
                 icon: icons.iconAmpGrey,
                 iconGrey: icons.iconAmpGrey,
@@ -16,7 +16,7 @@ useEffect(()=>{
                 permanent: false
             },
             {
-                position: [550, 1800],
+                position: [570, 1820],
                 zIndexOffset: 1000,
                 icon: icons.iconBenchesGrey,
                 iconGrey: icons.iconBenchesGrey,
@@ -26,7 +26,7 @@ useEffect(()=>{
                 permanent: false
             },
             {
-                position: [3500, 310],
+                position: [3540, 310],
                 zIndexOffset: 1000,
                 icon: icons.iconBikeGrey,
                 iconGrey: icons.iconBikeGrey,
@@ -56,7 +56,7 @@ useEffect(()=>{
                 permanent: false
             },
             {
-                position: [4035, 300],
+                position: [4235, 400],
                 zIndexOffset: 1000,
                 icon: icons.iconEBGrey,
                 iconGrey: icons.iconEBGrey,
@@ -66,7 +66,7 @@ useEffect(()=>{
                 permanent: false
             },
             {
-                position: [3300, 750],
+                position: [3145, 780],
                 zIndexOffset: 1000,
                 icon: icons.iconHRGrey,
                 iconGrey: icons.iconHRGrey,
@@ -84,27 +84,27 @@ useEffect(()=>{
             //     permanent: false
             // },
             {
-                position: [4400, 350],
+                position: [4280, 320],
                 zIndexOffset: 1000,
                 icon: icons.iconMapGrey,
                 iconGrey: icons.iconMapGrey,
                 iconCol: icons.iconMapCol,
                 name: "Main Map North",
-                url: "main-map",
+                url: "main-map-north",
                 permanent: false
             },
             {
-                position: [440, 1550],
+                position: [400, 1570],
                 zIndexOffset: 1000,
                 icon: icons.iconMapGrey,
                 iconGrey: icons.iconMapGrey,
                 iconCol: icons.iconMapCol,
-                name: "Main Map",
-                url: "main-map",
+                name: "Main Map South",
+                url: "main-map-south",
                 permanent: false
             },
             {
-                position: [920, 1600],
+                position: [775, 1590],
                 zIndexOffset: 1000,
                 icon: icons.iconOGGrey,
                 iconGrey: icons.iconOGGrey,

@@ -129,7 +129,7 @@ export default function LeafletMap({stateList}) {
                 zoomSnap={0}
                 zoom={zoom}
                 minZoom={-3.7}
-                maxZoom={-1}
+                maxZoom={-0.5}
                 zoomControl={false}
                 closePopupOnClick={false}
                 bounceAtZoomLimits={true}
