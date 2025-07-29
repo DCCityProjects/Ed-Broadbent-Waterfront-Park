@@ -3,8 +3,8 @@
 import Image from "next/image";
 // import Select from "react-select";
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useState } from "react";
-import { findPathIndexToUse, getMidPoints, hasTwoSelectedOptions } from "@/app/utils/navigationUtils";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { filteredOptionList, findPathIndexToUse, getMidPoints, hasTwoSelectedOptions } from "@/app/utils/navigationUtils";
 import gsap from "gsap";
 import { pathList } from "@/app/data/pathList";
 
@@ -13,7 +13,6 @@ export default function Navigation({stateList}) {
     const [isOption2Selected, setIsOption2Selected] = useState(false);
     const [selectedOption1, setSelectedOption1] = useState("");
     const [selectedOption2, setSelectedOption2] = useState("");
-    const [isWayfinding, setIsWayfinding] = useState(false);
 
     const {
         content,
@@ -22,17 +21,30 @@ export default function Navigation({stateList}) {
         center, setCenter,
         popupRef, resetIcons, 
         setIconState, changeIconColor,
-        mapRef, setMapRef, flyToLocation
+        mapRef, setMapRef, flyToLocation,
+        isWayfinding, setIsWayfinding
     } = stateList;
 
-    const options = [
+    const options = useMemo(() => [
         { value: "Main Map North", label: "Main Map North" },
         { value: "About Ed Broadbent", label: "About Ed Broadbent" },
         { value: "Amphitheatre and Stage", label: "Amphitheatre and Stage" },
         { value: "Garden of Human Rights", label: "Garden of Human Rights" },
         { value: "Orange Garden", label: "Orange Garden" },
         { value: "Main Map South", label: "Main Map South" }
-    ];
+    ], []);
+
+    const select1Ref = useRef(null);
+    const select2Ref = useRef(null);
+
+    const optionList1 = useMemo(()=>{
+        return filteredOptionList(options, selectedOption2)
+    }, [options, selectedOption2]);
+
+    const optionList2 = useMemo(()=>{
+        return filteredOptionList(options, selectedOption1)
+    }, [options, selectedOption1])
+
 
 
     const handleSelectOption = (optionNum, e) =>{
@@ -206,7 +218,7 @@ export default function Navigation({stateList}) {
                     onStart: ()=>{
                         mapRef.current.scrollWheelZoom.disable()
                         mapRef.current.touchZoom.disable()
-                        
+
                     },
                     onComplete: ()=>{
                         mapRef.current.scrollWheelZoom.enable()
@@ -244,10 +256,10 @@ export default function Navigation({stateList}) {
                             className="navigation-fields__search"
                         />
                         <div className="navigation-fields__select-wrapper">
-                            <select onChange={(e) => handleSelectOption(1, e)} value={selectedOption1} className={`navigation-fields__select ${!isOption1Selected ? "navigation-fields__select--color" : ""}`}>
+                            <select ref={select1Ref} onChange={(e) => handleSelectOption(1, e)} value={selectedOption1} className={`navigation-fields__select ${!isOption1Selected ? "navigation-fields__select--color" : ""}`}>
                                 <option value="" disabled hidden>From Starting Point</option>
-                                {options.map((option)=>{
-                                    return <option key={option.value} value={option.value}>{option.label}</option>
+                                {optionList1.map((option)=>{
+                                    return <option key={option.value} value={option.value}>{option.value}</option>
                                 })}
                             </select>
                         </div>
@@ -277,9 +289,9 @@ export default function Navigation({stateList}) {
                             className="navigation-fields__search"
                         />
                         <div className="navigation-fields__select-wrapper">
-                            <select onChange={(e)=> handleSelectOption(2, e)} value={selectedOption2} className={`navigation-fields__select ${!isOption2Selected ? "navigation-fields__select--color" : ""}`}>
+                            <select ref={select2Ref} onChange={(e)=> handleSelectOption(2, e)} value={selectedOption2} className={`navigation-fields__select ${!isOption2Selected ? "navigation-fields__select--color" : ""}`}>
                                 <option value="" className="navigation-fields__placeholder" disabled hidden >To Destination</option>
-                                {options.map((option)=>{
+                                {optionList2.map((option)=>{
                                     return <option key={option.value} value={option.value} className="optionTest">{option.value}</option>
                                 })}
                             </select>

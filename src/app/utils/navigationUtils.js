@@ -23,3 +23,7 @@ export function findPathIndexToUse(pathList, option1, option2){
     const path = pathList.findIndex(path => path.from === option1 && path.to === option2);
     return path;
 }
+
+export function filteredOptionList(optionList, option){
+    return optionList.filter((opt) => opt.value !== option);
+};
