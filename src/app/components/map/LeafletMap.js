@@ -81,7 +81,9 @@ export default function LeafletMap({stateList}) {
                     setCenter(marker.position)
                     handleClick(marker, markerIndex);
                 }
-            };
+            } else if (!contentParam && cameFromURLRef.current){
+                cameFromURLRef.current = false;
+            }
         };
         reactToSearchParams();
     },[searchParams, setContent, handleClick, setCenter, iconState]);
