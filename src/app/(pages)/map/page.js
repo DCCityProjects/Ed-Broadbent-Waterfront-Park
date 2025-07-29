@@ -35,6 +35,7 @@ export default function Map() {
     const [icons, setIcons] = useState(null);
     const [isUp, setIsUp] = useState(false);
     const [iconState, setIconState] = useState([]);
+    const [isWayfinding, setIsWayfinding] = useState(false);
 
     const mapRef = useRef(null);
 
@@ -80,7 +81,7 @@ export default function Map() {
         iconState, setIconState,
         popupRef, changeIconColor,
         mapRef, flyToLocation,
-        icons
+        icons, isWayfinding, setIsWayfinding
     };
 
     //* popup height is used for the draggable element

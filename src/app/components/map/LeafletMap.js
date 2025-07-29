@@ -20,7 +20,7 @@ export default function LeafletMap({stateList}) {
         popupRef, resetIcons, 
         setIconState, changeIconColor,
         setMapRef, mapRef, flyToLocation,
-        icons
+        icons, isWayfinding, setIsWayFinding
     } = stateList;
 
     const bounds = [[0, 0], [4767, 3070]];
@@ -45,6 +45,7 @@ export default function LeafletMap({stateList}) {
 
     const handleClick = useCallback((marker, index) => {
         if(!iconStateRef.current) return;
+        if(isWayfinding) return;
         let resetState = resetIcons(iconStateRef.current);
         iconStateRef.current = resetState;
         setIconState(resetState);
@@ -61,7 +62,7 @@ export default function LeafletMap({stateList}) {
         params.set("content", marker.url);
         router.replace(`?${params.toString()}`);
         
-    }, [resetIcons, setIconState, changeIconColor, flyToLocation, popupRef, router, searchParams, setContent]);
+    }, [resetIcons, setIconState, changeIconColor, flyToLocation, popupRef, router, searchParams, setContent, isWayfinding]);
 
     useEffect(()=>{
         function reactToSearchParams(){
@@ -139,7 +140,6 @@ export default function LeafletMap({stateList}) {
                 <MapEventHandler />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
                 {pathList.map((path, index) => {
-                    console.log(path)
                     return (
                         <SVGOverlay
                         key={index}
