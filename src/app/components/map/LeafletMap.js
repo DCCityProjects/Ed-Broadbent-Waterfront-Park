@@ -55,6 +55,10 @@ export default function LeafletMap({stateList}) {
         setIconState(newIconState);
         setContent(marker.url);
 
+        const otherMarkers = markersRef.current.filter((_, index) => !index);
+        otherMarkers.forEach(mark => {
+            mark.setZIndexOffset(1000);
+        });
         markersRef.current[index].setZIndexOffset(10000);
         console.log(marker)
         flyToLocation(marker.position, -1, 1);
