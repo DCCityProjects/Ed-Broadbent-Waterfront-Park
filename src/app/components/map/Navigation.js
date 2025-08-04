@@ -213,7 +213,7 @@ export default function Navigation({stateList}) {
     //     // console.log(differenceCenter)
     // }, [mapRef, center, flyToLocation])
 
-    const handleGo = (pathList) =>{
+    const handleGo = (pathList, markersRef) =>{
         console.log("pressed go!");
         if(selectedOption1 && selectedOption2){
             console.log("We have both options, time to wayfind!")
@@ -222,6 +222,7 @@ export default function Navigation({stateList}) {
             console.log("selectedOption1", selectedOption1)
             console.log("selectedOption2", selectedOption2)
             const pathIndex = findPathIndexToUse(pathList, selectedOption1, selectedOption2);
+            hideOtherMarkers(markersRef, selectedOption1, selectedOption2)
             console.log("path is", pathIndex);
             const path = pathList[pathIndex];
             gsap.set(`#${path.id}`, {visibility: "visible"})
@@ -244,12 +245,32 @@ export default function Navigation({stateList}) {
         }
     }
 
-    const handleExit = (pathList) => {
+    function hideOtherMarkers(markersRef, option1, option2){
+        const iconIndex1 = iconState.findIndex((num) => num.name === option1);
+        const iconIndex2 = iconState.findIndex((num) => num.name === option2);
+        const iconIndexes = [iconIndex1, iconIndex2]
+        const otherMarkers = markersRef.current.filter((_, index) => !iconIndexes.includes(index));
+        otherMarkers.forEach(marker => {
+            marker.setOpacity(0);
+        });
+    };
+    function showOtherMarkers(markersRef, option1, option2){
+        const iconIndex1 = iconState.findIndex((num) => num.name === option1);
+        const iconIndex2 = iconState.findIndex((num) => num.name === option2);
+        const iconIndexes = [iconIndex1, iconIndex2]
+        const otherMarkers = markersRef.current.filter((_, index) => !iconIndexes.includes(index));
+        otherMarkers.forEach(marker => {
+            marker.setOpacity(1);
+        });
+    }
+
+    const handleExit = (pathList, markersRef) => {
         console.log("pressed exit!");
         const pathIndex = findPathIndexToUse(pathList, selectedOption1, selectedOption2);
         console.log("path is", pathIndex);
         const path = pathList[pathIndex];
-        gsap.set(`#${path.id}`, {visibility: "hidden"})
+        gsap.set(`#${path.id}`, {visibility: "hidden"});
+        showOtherMarkers(markersRef, selectedOption1, selectedOption2)
         setIsWayfinding(false);
     }
 
@@ -327,8 +348,8 @@ export default function Navigation({stateList}) {
                         />                     */}
                     </div>
                 </div>
-            <button className={`navigation__go ${isWayfinding ? "wayfindingToHide--hidden" : ""}`} onClick={() => handleGo(pathList)}>GO</button>
-            <button className={`navigation__go ${isWayfinding ? "" : "wayfindingToHide--hidden"}`} onClick={() => handleExit(pathList)}>EXIT</button>
+            <button className={`navigation__go ${isWayfinding ? "wayfindingToHide--hidden" : ""}`} onClick={() => handleGo(pathList, markersRef)}>GO</button>
+            <button className={`navigation__go ${isWayfinding ? "" : "wayfindingToHide--hidden"}`} onClick={() => handleExit(pathList, markersRef)}>EXIT</button>
         </>
     );
 }
