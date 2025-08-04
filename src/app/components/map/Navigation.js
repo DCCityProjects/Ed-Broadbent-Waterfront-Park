@@ -109,8 +109,8 @@ export default function Navigation({stateList}) {
             case "before wayfinding":
                 map.flyToBounds(bounds, {
                     paddingTopLeft: [20, 100],
-                    paddingBottomRight: [40, 280],
-                    maxZoom: -1,
+                    paddingBottomRight: [40, 300],
+                    maxZoom: 0,
                     duration: 1.5
                 });
             break;
@@ -118,7 +118,7 @@ export default function Navigation({stateList}) {
                 map.flyToBounds(bounds, {
                     paddingTopLeft: [20, 100],
                     paddingBottomRight: [40, 200],
-                    maxZoom: -1,
+                    maxZoom: 0,
                     duration: 1.5
                 });
             break;
