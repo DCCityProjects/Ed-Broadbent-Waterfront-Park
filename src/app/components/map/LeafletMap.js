@@ -55,15 +55,16 @@ export default function LeafletMap({stateList}) {
         setIconState(newIconState);
         setContent(marker.url);
 
-        marker.zIndexOffset = 10000;
-        flyToLocation(marker.position, -2, 1);
+        markersRef.current[index].setZIndexOffset(10000);
+        console.log(marker)
+        flyToLocation(marker.position, -1, 1);
         gsap.to(popupRef.current, {y: 0, duration: 1});
 
         const params = new URLSearchParams(searchParams);
         params.set("content", marker.url);
         router.replace(`?${params.toString()}`);
         
-    }, [resetIcons, setIconState, changeIconColor, flyToLocation, popupRef, router, searchParams, setContent, isWayfinding]);
+    }, [resetIcons, setIconState, changeIconColor, markersRef, flyToLocation, popupRef, router, searchParams, setContent, isWayfinding]);
 
     useEffect(()=>{
         function reactToSearchParams(){
