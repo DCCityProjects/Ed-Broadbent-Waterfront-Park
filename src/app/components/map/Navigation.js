@@ -22,7 +22,8 @@ export default function Navigation({stateList}) {
         popupRef, resetIcons, 
         setIconState, changeIconColor,
         mapRef, setMapRef, flyToLocation,
-        isWayfinding, setIsWayfinding
+        isWayfinding, setIsWayfinding,
+        markersRef
     } = stateList;
 
     const options = useMemo(() => [
@@ -65,8 +66,12 @@ export default function Navigation({stateList}) {
         const iconIndex = iconState.findIndex((num) => num.name === option);
         if(iconIndex !== -1){
             const newIconState = changeIconColor(iconIndex, iconState, setIconState);
+            console.log(markersRef.current[iconIndex])
+            markersRef.current[iconIndex].options.zIndexOffset = 10000;
             setIconState(newIconState);
         };
+        console.log("markers ref", markersRef.current);
+
 
         const option1 = optionNum === 1 ? option : selectedOption1;
         const option2 = optionNum === 2 ? option : selectedOption2;
@@ -78,7 +83,7 @@ export default function Navigation({stateList}) {
             console.log(distanceResult);
             if(distanceResult <= 500){
                 flyToLocation(location.position, -2, 1);
-            } else if((distanceResult > 500) && (distanceResult < 2900)){
+            } else if((distanceResult > 500) && (distanceResult < 3200)){
                 flyToLocation(location.position, -2, 1.5)
                 console.log("flying!");
             };
@@ -162,17 +167,27 @@ export default function Navigation({stateList}) {
                 location = iconState.find((location) => location.name === selectedOption1);
                 if (!location) return;
                 location.icon = location.iconGrey;
+                resetZIndex(location);
                 break;
             case "2":
                 location = iconState.find((location) => location.name === selectedOption2);
                 if (!location) return;
                 location.icon = location.iconGrey;
+                resetZIndex(location);
                 break;
             default:
                 break;
         }
 
         setIconState([...iconState]);
+    };
+
+    function resetZIndex(location){
+        console.log(location.name)
+        const iconIndex = iconState.findIndex((num) => num.name === location.name);
+        console.log(iconIndex);
+        console.log(markersRef.current[iconIndex])
+        markersRef.current[iconIndex].options.zIndexOffset = 1000;
     };
 
     function checkDistance(newPosition){
