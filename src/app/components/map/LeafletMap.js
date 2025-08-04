@@ -20,7 +20,8 @@ export default function LeafletMap({stateList}) {
         popupRef, resetIcons, 
         setIconState, changeIconColor,
         setMapRef, mapRef, flyToLocation,
-        icons, isWayfinding, setIsWayFinding
+        icons, isWayfinding, setIsWayFinding,
+        markersRef
     } = stateList;
 
     const bounds = [[0, 0], [4767, 3070]];
@@ -131,7 +132,7 @@ export default function LeafletMap({stateList}) {
                 zoomSnap={0}
                 zoom={zoom}
                 minZoom={-3.7}
-                maxZoom={-0.5}
+                maxZoom={0}
                 zoomControl={false}
                 closePopupOnClick={false}
                 bounceAtZoomLimits={true}
@@ -146,11 +147,14 @@ export default function LeafletMap({stateList}) {
                         <SVGOverlay
                         key={index}
                         bounds={path.bounds}
-                        attributes={{zIndex: 99999}}>
+                        attributes={{zIndex: 99999, preserveAspectRatio: "none"}}>
                             <svg
+                                className={`path-svg`}
                                 viewBox={`0 0 ${path.width} ${path.height}`}
                                 preserveAspectRatio="none"
                                 xmlns="http://www.w3.org/2000/svg"
+                                width={`100%`}
+                                height={`100%`}
                             >
                                 <path 
                                 id={path.id}
@@ -158,8 +162,10 @@ export default function LeafletMap({stateList}) {
                                 stroke={path.stroke}
                                 strokeMiterlimit={path.strokeMiterlimit}
                                 strokeWidth={path.strokeWidth}
+                                strokeLinecap={path.strokeLinecap}
+                                strokeLinejoin={path.strokeLinejoin}
                                 fill={path.fill}
-                                vectorEffect="non-scaling-stroke"
+                                preserveAspectRatio="none"
                                 style={{ visibility: "hidden"}}
                                 >
                                 </path>
@@ -180,7 +186,9 @@ export default function LeafletMap({stateList}) {
                                     handleClick(marker, index);    
                                 }
                             }}
-                            zIndexOffset={marker.zIndexOffset}>
+                            zIndexOffset={marker.zIndexOffset}
+                            ref={(markerRef) => (markersRef.current[index] = markerRef)}
+                            >
                             
                             <Tooltip
                                 className="map-pin"

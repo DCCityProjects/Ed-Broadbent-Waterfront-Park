@@ -6,7 +6,7 @@ useEffect(()=>{
 
         setIconState([
             {
-                position: [3460, 350],
+                position: [3458, 350],
                 zIndexOffset: 1000,
                 icon: icons.iconAmpGrey,
                 iconGrey: icons.iconAmpGrey,
@@ -56,7 +56,7 @@ useEffect(()=>{
                 permanent: false
             },
             {
-                position: [4235, 400],
+                position: [4250, 400],
                 zIndexOffset: 1000,
                 icon: icons.iconEBGrey,
                 iconGrey: icons.iconEBGrey,
@@ -84,7 +84,7 @@ useEffect(()=>{
             //     permanent: false
             // },
             {
-                position: [4280, 320],
+                position: [4270, 320],
                 zIndexOffset: 1000,
                 icon: icons.iconMapGrey,
                 iconGrey: icons.iconMapGrey,
@@ -94,7 +94,7 @@ useEffect(()=>{
                 permanent: false
             },
             {
-                position: [400, 1570],
+                position: [405, 1553],
                 zIndexOffset: 1000,
                 icon: icons.iconMapGrey,
                 iconGrey: icons.iconMapGrey,
