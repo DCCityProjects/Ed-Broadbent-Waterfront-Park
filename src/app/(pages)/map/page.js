@@ -12,7 +12,7 @@ import Draggable from "gsap/dist/Draggable";
 
 import Navigation from "../../components/map/Navigation";
 
-import resetIcons from "@/app/components/map/resetIcons";
+import resetIcons from "@/app/functions/resetIcons";
 import PopupTab from "@/app/components/svgs/PopupTab";
 import MapPopup from "../../components/map/MapPopup";
 import { useMap } from "react-leaflet";
