@@ -34,19 +34,19 @@ export default function MapPopup({stateList}) {
             srcReadMore: "/orangeGarden",
             src360: "/orange_garden_360"
         },
-        "main-entrance": {
-            title: "MAIN ENTRANCE",
+        "main-map-north": {
+            title: "MAIN MAP NORTH",
             isPOI: true,
             p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/general",
             src360: "/main_entrance_360"
         },
-        "parking-entrance": {
-            title: "PARKING ENTRANCE",
+        "main-map-south": {
+            title: "MAIN MAP SOUTH",
             isPOI: true,
             p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/general",
-            src360: "/parking_entrance_360"
+            src360: "/main_entrance_360"
         },
         "about-ed-broadbent": {
             title: "ABOUT ED BROADBENT",
@@ -56,23 +56,23 @@ export default function MapPopup({stateList}) {
             src360: "/about_ed_broadbent_360"
         },
         "benches": {
-            title: "Sun Loungers",
+            title: "SUN LOUNGERS",
             isPOI: false
         },
         "bike-parking-west": {
-            title: "Bike Parking",
+            title: "BIKE PARKING",
             isPOI: false
         },
         "bike-parking-east": {
-            title: "Bike Parking",
+            title: "BIKE PARKING",
             isPOI: false
         },
         "bridge": {
-            title: "Larry Ladd Bridge",
+            title: "LARRY LADD BRIDGE",
             isPOI: false
         },
         "parking": {
-            title: "Parking Lot",
+            title: "PARKING LOT",
             isPOI: false
         }
     }
