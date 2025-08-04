@@ -32,7 +32,7 @@ useEffect(()=>{
                 iconGrey: icons.iconBikeGrey,
                 iconCol: icons.iconBikeCol,
                 name: "Bike Parking",
-                url:"bike-parking",
+                url:"bike-parking-west",
                 permanent: false
             },
             {
@@ -42,7 +42,7 @@ useEffect(()=>{
                 iconGrey: icons.iconBikeGrey,
                 iconCol: icons.iconBikeCol,
                 name: "Bike Parking",
-                url:"bike-parking",
+                url:"bike-parking-east",
                 permanent: false
             },
             {
