@@ -52,11 +52,14 @@ export default function LeafletMap({stateList}) {
         setIconState(newIconState);
         setContent(marker.url);
 
-        const otherMarkers = markersRef.current.filter((_, index) => !index);
+        const otherMarkers = markersRef.current.filter((_, i) => i !== index);
         otherMarkers.forEach(mark => {
             mark.setZIndexOffset(1000);
         });
-        markersRef.current[index].setZIndexOffset(10000);
+        if(markersRef.current[index]){
+            markersRef.current[index].setZIndexOffset(10000);
+        };
+        
         console.log(marker)
         flyToLocation(marker.position, -1, 1);
         gsap.to(popupRef.current, {y: 0, duration: 1});
