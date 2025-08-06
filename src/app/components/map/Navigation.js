@@ -201,18 +201,6 @@ export default function Navigation({stateList}) {
         console.log("option 2 is:", selectedOption2)
     }, [selectedOption1, selectedOption2])
 
-
-    // useEffect(()=>{
-    //     if(!mapRef.current) return;
-    //     // console.log(mapRef);
-
-    //     const map = mapRef.current;
-    //     const currentCenter = map.getCenter();
-    //     flyToLocation(center, -2, 1.5)
-    //     // const differenceCenter = currentCenter.map((coords, index)=> coords - center[index]);
-    //     // console.log(differenceCenter)
-    // }, [mapRef, center, flyToLocation])
-
     const handleGo = (pathList, markersRef) =>{
         console.log("pressed go!");
         if(selectedOption1 && selectedOption2){

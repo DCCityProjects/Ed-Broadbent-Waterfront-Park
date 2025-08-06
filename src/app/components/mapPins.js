@@ -106,5 +106,5 @@ export function getAllIcons() {
         "map-marker map-marker__parking--col"
         ),
     };
-}
+};
 

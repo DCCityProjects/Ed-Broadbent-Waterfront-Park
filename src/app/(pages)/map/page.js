@@ -45,7 +45,6 @@ export default function Map() {
             const { getAllIcons } = await import("@/app/components/mapPins");
             setIcons(getAllIcons());
         }
-
         loadIcons();
     }, []);
     

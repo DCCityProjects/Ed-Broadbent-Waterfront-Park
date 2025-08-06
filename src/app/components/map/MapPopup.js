@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 
 export default function MapPopup({stateList}) {
-    // console.log(stateList)
 
     const {
         content, setContent,

@@ -34,9 +34,6 @@ export default function LeafletMap({stateList}) {
     //* ref flag for people coming from teh QR or direct link with the ?content
     const cameFromURLRef = useRef(true);
 
-
-    // const edBroadbentToGardenOfHR = L.svgOverlay(EdBroadbentToGardenOfHR, bounds).addTo(mapRef);
-
     useEffect(()=>{
         if(!icons) return;
         if (iconStateRef.current === null && iconState.length > 0){
