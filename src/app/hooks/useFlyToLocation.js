@@ -9,4 +9,4 @@ export default function useFlyToLocation(mapRef) {
     }, [mapRef])
 
     return flyToLocation;
-}
+};
