@@ -12,7 +12,7 @@
     "@gsap/react": "^2.1.2",
     "@photo-sphere-viewer/core": "^5.12.1",
     "@photo-sphere-viewer/gyroscope-plugin": "^5.12.1",
-    "gsap": "^3.12.7",
+    "gsap": "^3.13.0",
     "leaflet": "^1.9.4",
     "next": "^15.2.3",
     "react": "^19.0.0",
