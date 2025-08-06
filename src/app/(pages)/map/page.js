@@ -53,7 +53,6 @@ export default function Map() {
     const flyToLocation = useFlyToLocation(mapRef);
     gsap.registerPlugin(Draggable, DrawSVGPlugin);
 
-
     const changeIconColor = useCallback((index, iconState) => {
         if(!icons) return;
         const newIconState = [...iconState];
