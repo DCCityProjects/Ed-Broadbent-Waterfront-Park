@@ -105,7 +105,8 @@
     border: 0;
     border-radius: 11px;
     width: 100%;
-    padding: 5px 0;
+    /* padding: 5px 0; */
+    height: 51px;
     margin-top: 15px;
 }
 
@@ -129,11 +130,23 @@
     margin-top: 20px;
 }
 
-.popup__button{
-    width: 51px;
-    height: 51px;
+.popup__back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color--primary);
+    border-radius: 10px;
 }
 
+.popup__back--stretch{
+    flex-grow: 1;
+    padding: 5px 0;
+}
+
+.popup__button{
+    min-width: 51px;
+    max-height: 51px;
+}
 
 .popup__read-more{
     background-color: var(--color--primary);

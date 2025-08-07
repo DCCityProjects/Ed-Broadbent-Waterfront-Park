@@ -101,7 +101,7 @@ export default function MapPopup({stateList}) {
             <h2 className="popup__title">{currentContent.title}</h2>
             {currentContent.isPOI ? <p>{currentContent.p}</p> : ""}
             <div className="popup__button-wrapper">
-                <button type="button" className="popup__back" onClick={handleClick}>
+                <button type="button" className={`popup__back ${currentContent.isPOI ? "" : `popup__back--stretch`}`} onClick={handleClick}>
                     <img src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/left.svg" alt="back button" className="popup__button" />
                 </button>
                 {/* <Link href="" className="popup__back">
