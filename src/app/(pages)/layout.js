@@ -19,6 +19,8 @@ export default function InternalLayout({ children }) {
     useEffect(()=>{
         if (pathname === "/general" || pathname === "/aboutEdBroadbent" || pathname === "/events" || pathname === "/gardenOfHumanRights" || pathname === "/amphitheater" || pathname === "/orangeGarden") {
             setIsInternalPage(true);
+        } else{
+            setIsInternalPage(false);
         }
     }, [pathname]);
 
@@ -45,10 +47,9 @@ export default function InternalLayout({ children }) {
 
 
     useEffect(()=>{
-        if(pathname === "/main_entrance_360" || pathname === "/about_ed_broadbent_360" || pathname === "/amphitheatre_and_stage_360" || pathname === "/garden_of_human_rights_360" || pathname === "/orange_garden_360" || pathname === "/parking_entrance_360"){ 
+        if(pathname.includes("/panorama_view")){ 
             setIs360View(true);
-        } else if (pathname === "/map"){
-        }else {
+        } else {
             setIs360View(false);
         }
     }, [pathname])
@@ -67,7 +68,7 @@ export default function InternalLayout({ children }) {
         } else if (pathname === "parking_entrance_360") {
             setPreviousPage("/map/?content=parking-entrance");
         } else {
-            setPreviousPage("/");
+            setPreviousPage("/map");
         }
     }, [pathname])
 
@@ -123,7 +124,13 @@ export default function InternalLayout({ children }) {
                     </li>
                     <li className={`nav__item `}>
                         <Link className={`nav__image ${is360View ? "show" : "hide"}`} href={previousPage}>
-                            <MapBack />
+                            <Image 
+                                src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/left.svg"
+                                alt="Back arrow button"
+                                width={51}
+                                height={51}
+                                className={`nav__image nav__image--back ${is360View ? "show" : "hide"} ${isInternalPage ? "hide" : "show"}`}
+                            />
                         </Link>
                     </li>
 					<li className="nav__item nav__item--logo">
