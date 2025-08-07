@@ -28,7 +28,7 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
           GyroscopePlugin,
         ],
         navbar: [
-          "gyroscope"
+          "gyroscope",
         ]
       });
 
@@ -45,7 +45,7 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
   }, [imageUrl, isMounted]);
 
 
-  return <div ref={viewerRef} style={{ width: '100%', height: '100dvh' }} />;
+  return <section ref={viewerRef} style={{ width: '100%', height: '100dvh' }} />;
 };
 
 export default PhotoSphereViewerComponent;
