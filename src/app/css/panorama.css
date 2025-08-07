@@ -31,3 +31,22 @@
     font-size: 1.25rem;
     max-width: 80%;
 }
+
+/** PHOTO SPHERE VIEWER **/
+.psv-navbar{
+    height: 80px !important;
+    /* background: var(--color--primary); */
+}
+
+.psv-button{
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    background-color: var(--color--primary);
+}
+
+.psv-button-svg > *{
+    fill: #ffffff;
+}
+
