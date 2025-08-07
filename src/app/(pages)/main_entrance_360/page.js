@@ -1,8 +1,8 @@
 'use client';
 
 import Head from 'next/head';
-import PhotoSphereViewerComponent from '../../components/PhotoSphereViewer';
-import PanoramaPopup from '@/app/components/PanoramaPopup';
+import PhotoSphereViewerComponent from '../../components/360/PhotoSphereViewer';
+import PanoramaPopup from '@/app/components/360/PanoramaPopup';
 
 export default function MainEntrance360() {
   const imageUrl = '/Ed-Broadbent-Waterfront-Park/images/360/main-entrance.JPG';

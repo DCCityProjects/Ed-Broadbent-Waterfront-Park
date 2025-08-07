@@ -1,7 +1,7 @@
 'use client';
 
 import Head from 'next/head';
-import PhotoSphereViewerComponent from '../../components/PhotoSphereViewer';
+import PhotoSphereViewerComponent from '../../components/360/PhotoSphereViewer';
 
 
 export default function Parking_Entrance_360() {
