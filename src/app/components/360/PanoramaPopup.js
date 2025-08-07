@@ -1,19 +1,24 @@
 "use client"
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "/src/app/css/panorama.css";
 import Image from "next/image";
 
 export default function PanoramaPopup() {
+    
+    const panoramaPopupRef = useRef(null);
     useEffect(()=>{
-        document.querySelector('.panorama-popup').style.display = "flex";
+        panoramaPopupRef.current.style.display = "flex";
     }, [])
 
     const handleClick = ()=>{
-        document.querySelector('.panorama-popup').style.display = "none";
+        panoramaPopupRef.current.style.display = "none";
     }
+
+
+
     return (
-        <div className="panorama-popup" onClick={handleClick}>
+        <div className="panorama-popup" ref={panoramaPopupRef} onClick={handleClick}>
             <h1 className="panorama-popup__title">Welcome to the 360 Experience</h1>
             <Image
                 src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/ar.svg"
