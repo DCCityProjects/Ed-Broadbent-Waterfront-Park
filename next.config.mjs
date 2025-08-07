@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const nextConfig = {
     // basePath: "/teachingcitytest"
     /**
@@ -30,32 +38,32 @@ const nextConfig = {
     webpack(config) {
         // Grab the existing rule that handles SVG imports
         const fileLoaderRule = config.module.rules.find((rule) =>
-        rule.test?.test?.('.svg'),
-        )
+        rule.test?.test?.('.svg')
+        );
 
         config.module.rules.push(
-        // Reapply the existing rule, but only for svg imports ending in ?url
         {
             ...fileLoaderRule,
             test: /\.svg$/i,
             resourceQuery: /url/, // *.svg?url
         },
-        // Convert all other *.svg imports to React components
         {
             test: /\.svg$/i,
             issuer: fileLoaderRule.issuer,
-            resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+            resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] },
             use: ['@svgr/webpack'],
-        },
-        )
+        }
+        );
 
-        // Modify the file loader rule to ignore *.svg, since we have it handled now.
-        fileLoaderRule.exclude = /\.svg$/i
+        // ✅ Fix multiple instances of Three.js
+        config.resolve.alias['three'] = path.resolve(__dirname, 'node_modules/three');
 
-        return config
+        fileLoaderRule.exclude = /\.svg$/i;
+
+        return config;
     },
-
 };
+
 
 
 export default nextConfig;
