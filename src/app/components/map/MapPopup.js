@@ -17,42 +17,42 @@ export default function MapPopup({stateList}) {
             isPOI: true,
             p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/amphitheatreAndStage",
-            src360: "/amphitheatre_and_stage_360"
+            src360: "/panorama_view?content=amphitheatre-and-stage"
         },
         "garden-of-human-rights": {
             title: "GARDEN OF HUMAN RIGHTS",
             isPOI: true,
             p: "The Garden features 13 garden beds representing the 13 prohibited grounds of discrimination within the Canadian Human Rights Act.",
             srcReadMore: "/gardenOfHumanRights",
-            src360: "/garden_of_human_rights_360"
+            src360: "/panorama_view?content=garden-of-human-rights"
         },
         "orange-garden": {
             title: "ORANGE GARDEN",
             isPOI: true,
             p: "The Orange Garden is a designated space meant for community to reflect, learn and commemorate the legacy of harms caused towards the Indigenous stewards of Turtle Island (North America) to promote healing, equity and inclusion for all.",
             srcReadMore: "/orangeGarden",
-            src360: "/orange_garden_360"
+            src360: "/panorama_view?content=orange-garden"
         },
         "main-map-north": {
             title: "MAIN MAP NORTH",
             isPOI: true,
             p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/general",
-            src360: "/main_entrance_360"
+            src360: "/panorama_view?content=main-map-north"
         },
         "main-map-south": {
             title: "MAIN MAP SOUTH",
             isPOI: true,
             p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/general",
-            src360: "/main_entrance_360"
+            src360: "/panorama_view?content=main-map-south"
         },
         "about-ed-broadbent": {
             title: "ABOUT ED BROADBENT",
             isPOI: true,
             p: "Ed Broadbent was a Canadian political icon born and raised in Oshawa with long-standing service to our community and across our nation.",
             srcReadMore: "/aboutEdBroadbent",
-            src360: "/about_ed_broadbent_360"
+            src360: "/panorama_view?content=about-ed-broadbent"
         },
         "benches": {
             title: "SUN LOUNGERS",
