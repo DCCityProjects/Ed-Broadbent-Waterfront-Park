@@ -17,7 +17,7 @@ export default function InternalLayout({ children }) {
     // console.log(pathname)
 
     useEffect(()=>{
-        if (pathname === "/general" || pathname === "/aboutEdBroadbent" || pathname === "/events" || pathname === "/gardenOfHumanRights" || pathname === "/amphitheater" || pathname === "/orangeGarden") {
+        if (pathname === "/general" || pathname === "/aboutEdBroadbent" || pathname === "/events" || pathname === "/gardenOfHumanRights" || pathname === "/amphitheatre" || pathname === "/orangeGarden") {
             setIsInternalPage(true);
         } else{
             setIsInternalPage(false);
