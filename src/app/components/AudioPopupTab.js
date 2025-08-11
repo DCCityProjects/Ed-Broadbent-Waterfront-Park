@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Play from "/public/images/svgs/icons/play.svg";
 import Pause from "/public/images/svgs/icons/pause.svg";
 import Restart from "/public/images/svgs/icons/restart.svg";
@@ -11,243 +11,243 @@ import Draggable from "gsap/dist/Draggable";
 import PopupTab from "./svgs/PopupTab";
 
 export default function AudioPopupTab({ audioSrc, audioGuidanceEnabled, autoPlay }) {
-  const [isClient, setIsClient] = useState(false);
-  const [popupHeight, setPopupHeight] = useState(0);
-  const [isUp, setIsUp] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+	const [isClient, setIsClient] = useState(false);
+	const [popupHeight, setPopupHeight] = useState(0);
+	const [isUp, setIsUp] = useState(false);
+	const [isPlaying, setIsPlaying] = useState(false);
 
-  const tabRef = useRef(null);
-  const popupRef = useRef(null);
-  const audioRef = useRef(null);
-  const thumbRef = useRef(null);
-  const fillRef = useRef(null);
-  const trackRef = useRef(null);
+	const popupDraggableRef = useRef(null);
+	const tabRef = useRef(null);
+	const popupRef = useRef(null);
+	const audioRef = useRef(null);
+	const thumbRef = useRef(null);
+	const fillRef = useRef(null);
+	const trackRef = useRef(null);
 
+	gsap.registerPlugin(Draggable);
+	// useEffect(() => {
+	//   setAudioGuidanceEnabled(sessionStorage.getItem("audioGuidanceEnabled") === "true" ?? true);
+	//   console.log(`getting the audio guidance and it is ${sessionStorage.getItem("audioGuidanceEnabled") === "true" ?? true}`)
+	// }, [])
 
-  // useEffect(() => {
-  //   setAudioGuidanceEnabled(sessionStorage.getItem("audioGuidanceEnabled") === "true" ?? true);
-  //   console.log(`getting the audio guidance and it is ${sessionStorage.getItem("audioGuidanceEnabled") === "true" ?? true}`)
-  // }, [])
+	useEffect(()=>{
+		if(audioGuidanceEnabled === "false"){
+			console.log("it is true!")
+			gsap.to(popupRef.current, { y: 0 });
+			setIsUp(true);
+		}
+	},[audioGuidanceEnabled])
 
-  useEffect(()=>{
-    if(audioGuidanceEnabled === "false"){
-      console.log("it is true!")
-      gsap.to(popupRef.current, { y: 0 });
-      setIsUp(true);
-    }
-  },[audioGuidanceEnabled])
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+	useEffect(() => {
+		if (popupRef.current) {
+		setPopupHeight(popupRef.current.clientHeight);
+		}
+	}, []);
 
-  useEffect(() => {
-    if (popupRef.current) {
-      setPopupHeight(popupRef.current.clientHeight);
-    }
-  }, []);
+	useEffect(()=>{
+		if (audioGuidanceEnabled === "false"){
+		// console.log("it is false!")
+			gsap.to(popupRef.current, { y: popupHeight });
+			setIsUp(false);
+		} else if (audioGuidanceEnabled === "true"){ 
+		// console.log(`it is true! ${audioGuidanceEnabled}`)
+		};
+	}, [audioGuidanceEnabled, popupHeight]);
 
-  useEffect(()=>{
-    if (audioGuidanceEnabled === "false"){
-      // console.log("it is false!")
-      gsap.to(popupRef.current, { y: popupHeight });
-      setIsUp(false);
-    } else if (audioGuidanceEnabled === "true"){ 
-      // console.log(`it is true! ${audioGuidanceEnabled}`)
-    }
-  }, [audioGuidanceEnabled, popupHeight])
+	useLayoutEffect(()=>{
+		if (popupRef.current) {
+			popupDraggableRef.current = Draggable.create(popupRef.current, {
+				type: "y",
+				inertia: true,
+				bounds: { minY: 0, maxY: popupHeight },
+				edgeResistance: 0.5,
+				dragClickables: true,
+				onRelease: function () {
+					const y = this.y;
 
-  useEffect(() => {
-    if (!isClient) return;
+					if (y <= popupHeight / 2) {
+						gsap.to(popupRef.current, { y: 0 });
+						setIsUp(true);
+					} else {
+						gsap.to(popupRef.current, { y: popupHeight });
+						setIsUp(false);
+					};
+				}
+			});
+		};
+	}, [popupHeight]);
 
-    gsap.registerPlugin(Draggable);
+	useEffect(() => {
+		if (!isClient) return;
+		if(!popupDraggableRef.current) return;
 
-    let containerDraggable = null;
+		const track = trackRef.current;
+		const fill = fillRef.current;
+		const thumb = thumbRef.current;
 
-    if (popupRef.current && tabRef.current) {
-      containerDraggable = Draggable.create(popupRef.current, {
-        type: "y",
-        inertia: true,
-        bounds: { minY: 0, maxY: popupHeight },
-        edgeResistance: 0.5,
-        dragClickables: true,
-        onRelease: function () {
-          const y = this.y;
+		if (track && fill && thumb) {
+		const createThumbDraggable = () => {
+			const trackWidth = track.clientWidth;
 
-          if (y <= popupHeight / 2) {
-            gsap.to(popupRef.current, { y: 0 });
-            setIsUp(true);
-          } else {
-            gsap.to(popupRef.current, { y: popupHeight });
-            setIsUp(false);
-          }
-        }
-      })[0];
-    }
+			Draggable.create(thumb, {
+				type: "x",
+				bounds: { minX: 0, maxX: trackWidth },
 
-    const track = trackRef.current;
-    const fill = fillRef.current;
-    const thumb = thumbRef.current;
+				onPress: function () {
+					if (popupDraggableRef.current) {
+						popupDraggableRef.current[0].disable();
+					}
+				},
 
-    if (track && fill && thumb) {
-      const createThumbDraggable = () => {
-        const trackWidth = track.clientWidth;
+				onDrag: function () {
+					const trackWidth = track.clientWidth;
+					const percentage = this.x / trackWidth;
 
-        Draggable.create(thumb, {
-          type: "x",
-          bounds: { minX: 0, maxX: trackWidth },
+					fill.style.width = `${percentage * 100}%`;
 
-          onPress: function () {
-            if (containerDraggable) {
-              containerDraggable.disable();
-            }
-          },
+					const audio = audioRef.current;
+					if (audio && audio.duration) {
+					audio.currentTime = percentage * audio.duration;
+					}
+				},
 
-          onDrag: function () {
-            const trackWidth = track.clientWidth;
-            const percentage = this.x / trackWidth;
+				onRelease: function () {
+					if (popupDraggableRef.current) {
+						popupDraggableRef.current[0].enable();
+					}
 
-            fill.style.width = `${percentage * 100}%`;
+					const trackWidth = track.clientWidth;
+					const percentage = this.x / trackWidth;
 
-            const audio = audioRef.current;
-            if (audio && audio.duration) {
-              audio.currentTime = percentage * audio.duration;
-            }
-          },
+					const audio = audioRef.current;
+					if (audio && audio.duration) {
+						audio.currentTime = percentage * audio.duration;
+					}
+				}
+			});
+		};
 
-          onRelease: function () {
-            if (containerDraggable) {
-              containerDraggable.enable();
-            }
+		createThumbDraggable();
 
-            const trackWidth = track.clientWidth;
-            const percentage = this.x / trackWidth;
+		const handleResize = () => {
+			Draggable.get(thumb)?.kill();
+			createThumbDraggable();
+		};
 
-            const audio = audioRef.current;
-            if (audio && audio.duration) {
-              audio.currentTime = percentage * audio.duration;
-            }
-          }
-        });
-      };
+		window.addEventListener("resize", handleResize);
 
-      createThumbDraggable();
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+		}
+	}, [isClient, popupHeight]);
 
-      const handleResize = () => {
-        Draggable.get(thumb)?.kill();
-        createThumbDraggable();
-      };
+	useEffect(() => {
+		const audio = audioRef.current;
+		const track = trackRef.current;
+		const fill = fillRef.current;
+		const thumb = thumbRef.current;
 
-      window.addEventListener("resize", handleResize);
+		if (!audio || !track || !fill || !thumb) return;
 
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, [isClient, popupHeight]);
+		const updateProgress = () => {
+		const trackWidth = track.clientWidth;
 
-  useEffect(() => {
-    const audio = audioRef.current;
-    const track = trackRef.current;
-    const fill = fillRef.current;
-    const thumb = thumbRef.current;
+		if (audio.duration) {
+			const percentage = audio.currentTime / audio.duration;
 
-    if (!audio || !track || !fill || !thumb) return;
+			fill.style.width = `${percentage * 100}%`;
 
-    const updateProgress = () => {
-      const trackWidth = track.clientWidth;
+			gsap.set(thumb, {
+			x: percentage * trackWidth
+			});
+		}
 
-      if (audio.duration) {
-        const percentage = audio.currentTime / audio.duration;
+		if (isPlaying) {
+			requestAnimationFrame(updateProgress);
+		}
+		};
 
-        fill.style.width = `${percentage * 100}%`;
+		if (isPlaying) {
+		requestAnimationFrame(updateProgress);
+		}
 
-        gsap.set(thumb, {
-          x: percentage * trackWidth
-        });
-      }
+		return () => cancelAnimationFrame(updateProgress);
+	}, [isPlaying]);
 
-      if (isPlaying) {
-        requestAnimationFrame(updateProgress);
-      }
-    };
+	const handlePlay = () => {
+		const audio = audioRef.current;
 
-    if (isPlaying) {
-      requestAnimationFrame(updateProgress);
-    }
+		if (!audio) return;
 
-    return () => cancelAnimationFrame(updateProgress);
-  }, [isPlaying]);
+		if (audio.paused) {
+			audio.play();
+			setIsPlaying(true);
+		} else {
+			audio.pause();
+			setIsPlaying(false);
+		}
+	};
 
-  const handlePlay = () => {
-    const audio = audioRef.current;
+	const handleRestart = () => {
+		const audio = audioRef.current;
 
-    if (!audio) return;
+		if (!audio) return;
 
-    if (audio.paused) {
-      audio.play();
-      setIsPlaying(true);
-    } else {
-      audio.pause();
-      setIsPlaying(false);
-    }
-  };
+		audio.currentTime = 0;
 
-  const handleRestart = () => {
-    const audio = audioRef.current;
+		if (!audio.paused) {
+		audio.play();
+		setIsPlaying(true);
+		}
+	};
 
-    if (!audio) return;
+	useEffect(()=>{
+		if(autoPlay){
+		console.log("playing audio cuz autoplay")
+		handlePlay();
+		}
+	}, [autoPlay])
 
-    audio.currentTime = 0;
+	return (
+		<div className="audio-popup" ref={popupRef}>
+		<PopupTab
+			className="popup-tab"
+			preserveAspectRatio="xMidYMin"
+			ref={tabRef}
+		/>
 
-    if (!audio.paused) {
-      audio.play();
-      setIsPlaying(true);
-    }
-  };
+		<audio ref={audioRef} src={audioSrc} preload="metadata" />
 
-  useEffect(()=>{
-    if(autoPlay){
-      console.log("playing audio cuz autoplay")
-      handlePlay();
-    }
-  }, [autoPlay])
+		<div className="audio-popup__wrapper">
+			{isPlaying ? (
+			<Pause
+				className="audio-popup__icon"
+				onClick={handlePlay}
+			/>
+			) : (
+			<Play
+				className="audio-popup__icon"
+				onClick={handlePlay}
+			/>
+			)}
 
-  return (
-    <div className="audio-popup" ref={popupRef}>
-      <PopupTab
-        className="popup-tab"
-        preserveAspectRatio="xMidYMin"
-        ref={tabRef}
-      />
+			<div className="audio-popup__progress-bar">
+			<div className="progress-track" ref={trackRef}>
+				<div className="progress-fill" ref={fillRef}></div>
+				<div className="progress-thumb" ref={thumbRef}></div>
+			</div>
+			</div>
 
-      <audio ref={audioRef} src={audioSrc} preload="metadata" />
-
-      <div className="audio-popup__wrapper">
-        {isPlaying ? (
-          <Pause
-            className="audio-popup__icon"
-            onClick={handlePlay}
-          />
-        ) : (
-          <Play
-            className="audio-popup__icon"
-            onClick={handlePlay}
-          />
-        )}
-
-        <div className="audio-popup__progress-bar">
-          <div className="progress-track" ref={trackRef}>
-            <div className="progress-fill" ref={fillRef}></div>
-            <div className="progress-thumb" ref={thumbRef}></div>
-          </div>
-        </div>
-
-        <Restart
-          className="audio-popup__icon"
-          onClick={handleRestart}
-        />
-      </div>
-    </div>
-  );
+			<Restart
+			className="audio-popup__icon"
+			onClick={handleRestart}
+			/>
+		</div>
+		</div>
+	);
 }
