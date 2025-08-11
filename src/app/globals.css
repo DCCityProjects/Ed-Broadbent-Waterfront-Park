@@ -104,6 +104,7 @@ p {
     height: 51px;
     cursor: pointer;
     display: inline-block;
+    background-color: transparent;
 }
 
 .nav__image--ar {
