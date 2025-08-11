@@ -10,39 +10,28 @@ import Image from "next/image";
 export default function LandingPageContent() {
     const [showModal, setShowModal] = useState(false);
 	const [countdown, setCountdown] = useState(20);
-	const [isVisible, setIsVisible] = useState(true);
+	const [isVisible, setIsVisible] = useState(false);
 	const [startFade, setStartFade] = useState(false); 
 	const [sawPreloader, setSawPreloader] = useState(false);
-	const [hasSeenModal, setHasSeenModal] = useState(true); 
+	const [hasSeenModal, setHasSeenModal] = useState(false); 
 	const [audioGuidanceEnabled, setAudioGuidanceEnabled] = useState(true);
 	const [autoPlay, setAutoPlay] = useState(false);
 
 
-	// Get sessionStorage info once when component mounts
 	useEffect(() => {
 		const seen = sessionStorage.getItem("modalSeen");
 		setHasSeenModal(seen === "true");
 	}, []);
 
-	// Loader fade-out logic
-	// useEffect(() => {
-	// 	const timer = setTimeout(() => {
-	// 		setStartFade(true);
-	// 		setTimeout(() => {
-	// 			setIsVisible(false);
-	// 		}, 1000);
-	// 	}, 1500);
-	// 	setSawPreloader(true);
-	// 	return () => clearTimeout(timer);
-	// }, []);
-
-
 	// Modal delay logic: run after loader fades out
 	useEffect(() => {
+		console.log("isvisible is", isVisible);
+		console.log("hasseenmodal is", hasSeenModal);
 		if (!isVisible && !hasSeenModal) {
+			console.log("start timer!")
 			const modalTimer = setTimeout(() => {
 				setShowModal(true);
-			}, 2000);
+			}, 500);
 			return () => clearTimeout(modalTimer);
 		}
 	}, [isVisible, hasSeenModal]);
@@ -65,19 +54,6 @@ export default function LandingPageContent() {
 
     return (
 		<main>
-			{/* <section
-				className={`loading-screen ${startFade ? 'fade-out' : ''}`}
-				style={{ display: isVisible ? 'flex' : 'none' }}
-			>
-				<Image
-					src="/Ed-Broadbent-Waterfront-Park/images/svgs/logo_loading.svg"
-					alt="Loading..."
-					width={100}
-					height={100}
-					className="loading-logo"
-				/>
-			</section> */}
-
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-overlay__container">
@@ -90,7 +66,7 @@ export default function LandingPageContent() {
 									setAutoPlay(true);
 
 								}}>
-									<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/open-landing.svg" alt="Open Icon" width={0} height={0} className="openIcon" />
+									<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/check.svg" alt="Open Icon" width={0} height={0} className="openIcon" />
 								</button>
 								<h3 className="modal-overlay__yesNoText">Yes!</h3>
 							</div>
@@ -100,7 +76,7 @@ export default function LandingPageContent() {
 									setAudioGuidanceEnabled(false);
 									setShowModal(false);
 								}}>
-									<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close-landing.svg" alt="Close Icon" width={0} height={0} className="closeIcon" />
+									<Image src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/close.svg" alt="Close Icon" width={0} height={0} className="closeIcon" />
 								</button>
 								<h3 className="modal-overlay__yesNoText">No</h3>
 							</div>

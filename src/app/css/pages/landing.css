@@ -129,7 +129,7 @@
 /* Modal Container */
 .modal-overlay__container {
     background: #fff;
-    border: 6px solid #FAA02A;
+    border: 6px solid var(--color--primary);
     border-radius: 15px;
     padding: 2rem;
     display: flex;
