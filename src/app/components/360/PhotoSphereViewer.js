@@ -9,43 +9,44 @@ import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
 // import '@photo-sphere-viewer/core/style.css';
 
 const PhotoSphereViewerComponent = ({ imageUrl }) => {
-  const viewerRef = useRef(null);
-  const viewerInstance = useRef(null);
-  const [isMounted, setIsMounted] = useState(false);
-  
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+	const viewerRef = useRef(null);
+	const viewerInstance = useRef(null);
+	const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    if (!isMounted || !viewerRef.current) return;
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 
-    if (!viewerInstance.current) {
-      viewerInstance.current = new Viewer({
-        container: viewerRef.current,
-        panorama: imageUrl,
-        plugins: [
-          GyroscopePlugin,
-        ],
-        navbar: [
-          "gyroscope",
-        ]
-      });
+	useEffect(() => {
+		if (!isMounted || !viewerRef.current) return;
 
-    } else {
-      viewerInstance.current.setPanorama(imageUrl);
-    }
+		if (!viewerInstance.current) {
+			viewerInstance.current = new Viewer({
+				container: viewerRef.current,
+				panorama: imageUrl,
+				caption: "<p>Tap icon to toggle gyroscope.</p>",
+				plugins: [
+					GyroscopePlugin,
+				],
+				navbar: [
+					"gyroscope",
+					"caption"
+				]
+			});
 
-    return () => {
-      if (viewerInstance.current) {
-        viewerInstance.current.destroy();
-        viewerInstance.current = null;
-      }
-    };
-  }, [imageUrl, isMounted]);
+			} else {
+				viewerInstance.current.setPanorama(imageUrl);
+			}
 
+		return () => {
+			if (viewerInstance.current) {
+				viewerInstance.current.destroy();
+				viewerInstance.current = null;
+			}
+		};
+	}, [imageUrl, isMounted]);
 
-  return <section ref={viewerRef} style={{ width: '100%', height: '100dvh' }} />;
+	return <section ref={viewerRef} style={{ width: '100%', height: '100dvh' }} />;
 };
 
 export default PhotoSphereViewerComponent;
