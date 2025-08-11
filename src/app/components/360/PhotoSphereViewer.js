@@ -24,6 +24,7 @@ const PhotoSphereViewerComponent = ({ imageUrl }) => {
 			viewerInstance.current = new Viewer({
 				container: viewerRef.current,
 				panorama: imageUrl,
+				defaultZoomLvl: 0,
 				caption: "<p>Tap icon to toggle gyroscope.</p>",
 				plugins: [
 					GyroscopePlugin,
