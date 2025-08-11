@@ -13,6 +13,7 @@ export default function InternalLayout({ children }) {
     const [is360View, setIs360View] = useState(false);
     const [previousPage, setPreviousPage] = useState("");
     const [page360, setPage360] = useState("");
+    const [has360, setHas360] = useState(true);
 
     const pathname = usePathname();
     const router = useRouter();
@@ -26,6 +27,13 @@ export default function InternalLayout({ children }) {
         }
     }, [pathname]);
 
+    useEffect(() => {
+        if (pathname === "/events"){
+            setHas360(false);
+        } else {
+            setHas360(true);
+        }
+    }, [pathname]);
     // useEffect()
 
     const toggleMenu = () => {
@@ -87,6 +95,8 @@ export default function InternalLayout({ children }) {
             setPage360("/panorama_view?content=orange-garden");
         }  else if (pathname === "/amphitheatreAndStage") {
             setPage360("/panorama_view?content=amphitheatre-and-stage");
+        } else if (pathname === "/general") {
+            setPage360("/panorama_view?content=main-map-north");
         } else {
             setPage360("");
         }
@@ -117,7 +127,7 @@ export default function InternalLayout({ children }) {
                                 alt="AR Icon"
                                 width={51}
                                 height={51}
-                                className={`nav__image nav__image--ar ${is360View ? "hide" : "show"} ${isInternalPage ? "show" : "hide"}`}
+                                className={`nav__image nav__image--ar ${is360View ? "hide" : "show"} ${isInternalPage && has360 ? "show" : "hide"}`}
                             />
                         </Link>
 
