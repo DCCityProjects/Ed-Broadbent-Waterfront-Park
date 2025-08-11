@@ -64,7 +64,7 @@ export default function AudioPopupTab({ audioSrc, audioGuidanceEnabled, autoPlay
 				type: "y",
 				inertia: true,
 				bounds: { minY: 0, maxY: popupHeight },
-				edgeResistance: 0.5,
+				edgeResistance: 1,
 				dragClickables: true,
 				onRelease: function () {
 					const y = this.y;
