@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MapBack from "../components/MapBack";
+import { useRouter } from "next/navigation";
 
 export default function InternalLayout({ children }) {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function InternalLayout({ children }) {
     const [page360, setPage360] = useState("");
 
     const pathname = usePathname();
+    const router = useRouter();
     // console.log(pathname)
 
     useEffect(()=>{
@@ -121,7 +123,7 @@ export default function InternalLayout({ children }) {
 
                     </li>
                     <li className={`nav__item `}>
-                        <Link className={`nav__image ${is360View ? "show" : "hide"}`} href={previousPage}>
+                        <button className={`nav__image ${is360View ? "show" : "hide"}`} onClick={()=> router.back()}>
                             <Image 
                                 src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/left.svg"
                                 alt="Back arrow button"
@@ -129,7 +131,7 @@ export default function InternalLayout({ children }) {
                                 height={51}
                                 className={`nav__image nav__image--back ${is360View ? "show" : "hide"} ${isInternalPage ? "hide" : "show"}`}
                             />
-                        </Link>
+                        </button>
                     </li>
 					<li className="nav__item nav__item--logo">
 						<Link href="/" className={`nav__link`}>
