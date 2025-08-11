@@ -110,10 +110,6 @@ p {
     margin-left: 16px;
 }
 
-.nav__image--back {
-    rotate: 270deg;
-}
-
 .nav__link {
     display: flex;
 }
