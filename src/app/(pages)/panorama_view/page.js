@@ -14,10 +14,12 @@ export default function Panorama_view() {
 
     useEffect(()=>{
         const imageList = {
-            "about-ed-broadbent": "/Ed-Broadbent-Waterfront-Park/images/360/about-ed-broadbent.JPG",
-            "amphitheatre-and-stage": "/Ed-Broadbent-Waterfront-Park/images/360/amphitheatre-and-stage.JPG",
-            "garden-of-human-rights": "/Ed-Broadbent-Waterfront-Park/images/360/garden-of-human-rights.JPG",
-            "orange-garden": "/Ed-Broadbent-Waterfront-Park/images/360/orange-garden.JPG"
+            "main-map-north": "/Ed-Broadbent-Waterfront-Park/images/360/mainMapNorth.webp",
+            "about-ed-broadbent": "/Ed-Broadbent-Waterfront-Park/images/360/aboutEdBroadbent.webp",
+            "amphitheatre-and-stage": "/Ed-Broadbent-Waterfront-Park/images/360/amphitheatreAndStage.webp",
+            "garden-of-human-rights": "/Ed-Broadbent-Waterfront-Park/images/360/gardenOfHumanRights.webp",
+            "orange-garden": "/Ed-Broadbent-Waterfront-Park/images/360/orangeGarden.webp",
+            "main-map-south": "/Ed-Broadbent-Waterfront-Park/images/360/mainMapSouth.webp"
         };
 
         function reactToSearchParams(){
