@@ -39,6 +39,7 @@ export default function Map() {
 
     const mapRef = useRef(null);
     const markersRef = useRef([]);
+    gsap.registerPlugin(Draggable, DrawSVGPlugin);
 
     useEffect(()=>{
         async function loadIcons(){
@@ -50,7 +51,6 @@ export default function Map() {
     
     useMarkerData(icons, setIconState);
     const flyToLocation = useFlyToLocation(mapRef);
-    gsap.registerPlugin(Draggable, DrawSVGPlugin);
 
     const changeIconColor = useCallback((index, iconState) => {
         if(!icons) return;
