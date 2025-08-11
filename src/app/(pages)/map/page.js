@@ -91,7 +91,7 @@ export default function Map() {
             setPopupHeight(popupRef.current.clientHeight)
             console.log(`Popupheight is set`)
         }
-    }, [])
+    }, [content])
 
     useEffect(()=>{
         console.log(`%c${content}`, `color: PURPLE`)
