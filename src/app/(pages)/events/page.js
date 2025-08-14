@@ -16,13 +16,13 @@ import Slider from "@/app/components/slider/Slider";
 export default function Events() {
 
     const {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     } = UseImageModal();
     
     const imageModalVariableList = {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     }
@@ -30,23 +30,23 @@ export default function Events() {
     const imageData = [
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/events/slider1.jpg",
-            alt: "Image 1 of slide"
+            alt: "An indigenous performer in full regalia."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/events/slider2.jpg",
-            alt: "Image 2 of slide"
+            alt: "Two people on stage doing a performance with large rings."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/events/slider3.jpg",
-            alt: "Image 3 of slide"
+            alt: "A child smiling while holding percussion instruments."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/events/slider4.JPG",
-            alt: "Image 4 of slide"
+            alt: "Two children (left) and one adult performing in full regalia."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/events/slider5.jpg",
-            alt: "Image 5 of slide"
+            alt: "Five indigenous people smiling in traditional regalia."
         },
     ]
 
@@ -54,7 +54,12 @@ export default function Events() {
         <main>
             <ImageModal imageModalVariableList={imageModalVariableList} />
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image page-banner__image--events" alt="Featured Image Events" />
+                <Image
+                src="/Ed-Broadbent-Waterfront-Park/images/events/hero-image.jpg"
+                className="page-banner__image page-banner__image--events"
+                objectFit="cover"
+                fill={true}
+                alt="An indigenous performer in full regalia." />
             </section>
             <section className="page-section">
                 <h1 className="page-section__title mb-8">Events and Activities</h1>
