@@ -59,7 +59,7 @@ export default function Events() {
                 className="page-banner__image page-banner__image--events"
                 objectFit="cover"
                 fill={true}
-                alt="Featured Image Events" />
+                alt="An indigenous performer in full regalia." />
             </section>
             <section className="page-section">
                 <h1 className="page-section__title mb-8">Events and Activities</h1>
