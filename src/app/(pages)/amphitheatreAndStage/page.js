@@ -16,13 +16,13 @@ import Slider from "@/app/components/slider/Slider";
 export default function AmphitheatreAndStage() {
 
     const {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     } = UseImageModal();
     
     const imageModalVariableList = {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     }

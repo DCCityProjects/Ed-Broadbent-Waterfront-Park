@@ -18,13 +18,13 @@ export default function EdBroadbent() {
 
 
     const {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     } = UseImageModal();
     
     const imageModalVariableList = {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     };
