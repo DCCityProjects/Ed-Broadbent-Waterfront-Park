@@ -57,7 +57,13 @@ export default function General() {
             <ImageModal imageModalVariableList={imageModalVariableList} />
 
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image General Information" />
+                <Image
+                    src="/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg"
+                    className="page-banner__image page-banner__image--general"
+                    objectFit="cover"
+                    fill={true}
+                    alt="An aerial shot from the north side of the Ed Broadbent Waterfront Park."
+                />
             </section>
 
             <section className="page-section">
