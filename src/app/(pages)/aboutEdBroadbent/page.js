@@ -57,8 +57,9 @@ export default function EdBroadbent() {
                 <Image
                 src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg"
                 className="page-banner__image"
-                objectFit="cover"
+                style={{objectFit: "cover"}}
                 fill={true}
+                priority={true}
                 alt="Ed Broadbent talking at a podium."></Image>
             </section>
             <section className="page-section u-flex-column-align-center">

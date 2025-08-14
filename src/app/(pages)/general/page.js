@@ -60,8 +60,9 @@ export default function General() {
                 <Image
                     src="/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg"
                     className="page-banner__image page-banner__image--general"
-                    objectFit="cover"
+                    style={{objectFit: "cover"}}
                     fill={true}
+                    priority={true}
                     alt="An aerial shot from the north side of the Ed Broadbent Waterfront Park."
                 />
             </section>

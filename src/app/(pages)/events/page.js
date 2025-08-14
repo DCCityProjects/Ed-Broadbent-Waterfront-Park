@@ -57,8 +57,9 @@ export default function Events() {
                 <Image
                 src="/Ed-Broadbent-Waterfront-Park/images/events/hero-image.jpg"
                 className="page-banner__image page-banner__image--events"
-                objectFit="cover"
+                style={{objectFit: "cover"}}
                 fill={true}
+                priority={true}
                 alt="An indigenous performer in full regalia." />
             </section>
             <section className="page-section">
