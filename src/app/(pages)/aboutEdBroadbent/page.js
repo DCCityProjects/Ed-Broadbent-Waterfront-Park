@@ -54,7 +54,12 @@ export default function EdBroadbent() {
         <main>
             <ImageModal imageModalVariableList={imageModalVariableList} />
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image About EdBroadbent"></Image>
+                <Image
+                src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg"
+                className="page-banner__image"
+                objectFit="cover"
+                fill={true}
+                alt="Ed Broadbent talking at a podium."></Image>
             </section>
             <section className="page-section u-flex-column-align-center">
                 <h1 className="page-section__title">ABOUT ED BROADBENT</h1>
