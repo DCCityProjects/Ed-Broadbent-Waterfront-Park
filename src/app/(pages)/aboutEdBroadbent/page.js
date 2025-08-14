@@ -33,19 +33,19 @@ export default function EdBroadbent() {
     const imageData = [
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider1.jpg",
-            alt: "Image 1 of Slider"
+            alt: "Ed Broadbent campaigning in 1971."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider2.jpg",
-            alt: "Image 2 of Slider"
+            alt: "Ed Broadbent happy in a cockpit in the 1980s."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider3.jpg",
-            alt: "Image 3 of Slider"
+            alt: "Ed Broadbent and Audrey Mclaughlin behind a podium with their hands raised together."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider4.jpg",
-            alt: "Image 4 of Slider"
+            alt: "Ed Broadbent and Governer General David Johnston gleefully shaking hands."
         }
     ];
 
