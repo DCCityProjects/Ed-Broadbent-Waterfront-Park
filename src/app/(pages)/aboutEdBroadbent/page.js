@@ -45,7 +45,7 @@ export default function EdBroadbent() {
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider4.jpg",
-            alt: "Ed Broadbent and Governer General David Johnston gleefully shaking hands."
+            alt: "Ed Broadbent and Governor General David Johnston gleefully shaking hands."
         }
     ];
 
