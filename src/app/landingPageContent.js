@@ -100,15 +100,49 @@ export default function LandingPageContent() {
 				<nav className="home-nav">
 					<ul className="home-nav__list">
 						<li className="home-nav__item home-nav__item--general">
-							<Link href="/general" className="home-nav__link  u-flex-column-justify-align-center">General Information
-								{/* <Image src="/images/general/hero-image.jpg" width={0} height={0} sizes="100%" className="home-nav__image"></Image> */}
+							<Link href="/general" className="home-nav__link  u-flex-column-justify-align-center">
+								<div className="home-nav__image-wrapper">
+									<Image 
+									src="/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg"
+									fill={true}
+									objectFit= "cover"
+									sizes="100%"
+									className="home-nav__image home-nav__image--general" 
+									alt="An aerial shot from the north side of the Ed Broadbent Waterfront Park."
+									></Image>
+								</div>
+								<p className="home-nav__link-text">General Information</p>
 							</Link>
 						</li>
 						<li className="home-nav__item home-nav__item--about">
-							<Link href="/aboutEdBroadbent" className="home-nav__link  u-flex-column-justify-align-center">About Ed Broadbent</Link>
+							<Link href="/aboutEdBroadbent" className="home-nav__link  u-flex-column-justify-align-center">
+								<div className="home-nav__image-wrapper">
+									<Image 
+									src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg"
+									fill={true}
+									objectFit= "cover"
+									sizes="100%"
+									className="home-nav__image home-nav__image--about" 
+									alt="Ed Broadbent talking at a podium."
+									></Image>
+								</div>
+								<p className="home-nav__link-text">About Ed Broadbent</p>
+							</Link>
 						</li>
 						<li className="home-nav__item home-nav__item--events">
-							<Link href="/events" className="home-nav__link u-flex-column-justify-align-center">Events and Activities</Link>
+							<Link href="/events" className="home-nav__link  u-flex-column-justify-align-center">
+								<div className="home-nav__image-wrapper">
+									<Image 
+									src="/Ed-Broadbent-Waterfront-Park/images/events/slider1.jpg"
+									fill={true}
+									objectFit= "cover"
+									sizes="100%"
+									className="home-nav__image home-nav__image--events" 
+									alt="An indigenous performer in full regalia."
+									></Image>
+								</div>
+								<p className="home-nav__link-text">Events and Activities</p>
+							</Link>
 						</li>
 					</ul>
 				</nav>
