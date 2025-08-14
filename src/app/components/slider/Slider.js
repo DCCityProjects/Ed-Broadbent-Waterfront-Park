@@ -31,7 +31,7 @@ export default function Slider({imageData, openImageModal}) {
                         sizes="33vw"
                         className="slider__image"
                         alt={image.alt}
-                        onClick={()=> openImageModal(image.src)}
+                        onClick={()=> openImageModal(image.src, image.alt)}
                     >
                     </Image>
                 </SwiperSlide>
