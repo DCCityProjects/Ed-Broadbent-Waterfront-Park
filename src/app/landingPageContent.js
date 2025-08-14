@@ -105,7 +105,7 @@ export default function LandingPageContent() {
 									<Image 
 									src="/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg"
 									fill={true}
-									objectFit= "cover"
+									style={{objectFit: "cover"}}
 									sizes="100%"
 									className="home-nav__image home-nav__image--general" 
 									alt="An aerial shot from the north side of the Ed Broadbent Waterfront Park."
@@ -120,7 +120,7 @@ export default function LandingPageContent() {
 									<Image 
 									src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg"
 									fill={true}
-									objectFit= "cover"
+									style={{objectFit: "cover"}}
 									sizes="100%"
 									className="home-nav__image home-nav__image--about" 
 									alt="Ed Broadbent talking at a podium."
@@ -135,7 +135,7 @@ export default function LandingPageContent() {
 									<Image 
 									src="/Ed-Broadbent-Waterfront-Park/images/events/slider1.jpg"
 									fill={true}
-									objectFit= "cover"
+									style={{objectFit: "cover"}}
 									sizes="100%"
 									className="home-nav__image home-nav__image--events" 
 									alt="An indigenous performer in full regalia."
