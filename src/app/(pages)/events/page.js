@@ -54,7 +54,12 @@ export default function Events() {
         <main>
             <ImageModal imageModalVariableList={imageModalVariableList} />
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/events/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image page-banner__image--events" alt="Featured Image Events" />
+                <Image
+                src="/Ed-Broadbent-Waterfront-Park/images/events/hero-image.jpg"
+                className="page-banner__image page-banner__image--events"
+                objectFit="cover"
+                fill={true}
+                alt="Featured Image Events" />
             </section>
             <section className="page-section">
                 <h1 className="page-section__title mb-8">Events and Activities</h1>
