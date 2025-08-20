@@ -59,7 +59,13 @@ export default function AmphitheatreAndStage() {
             <ImageModal imageModalVariableList={imageModalVariableList} />
 
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/amphitheatreAndStage/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="main image 1"></Image>
+                <Image
+                src="/Ed-Broadbent-Waterfront-Park/images/amphitheatreAndStage/hero-image.jpg"
+                className="page-banner__image page-banner__image--amphitheatre"
+                style={{objectFit: "cover"}}
+                fill={true}
+                priority={true}
+                alt="A bird's eye view of the amphitheatre and stage." />
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Amphitheatre and Stage</h1>
