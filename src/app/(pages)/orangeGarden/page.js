@@ -31,15 +31,15 @@ export default function General() {
     const imageData = [
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider1.jpg",
-            alt: "Image 1 of slider"
+            alt: "A worm's eye view of the Orange Garden, with an orange flag raised on a large pole, several red flowers, and two large plants sprouting from the ground."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider2.JPG",
-            alt: "Image 2 of slider"
+            alt: "Rows of purple and red flowers and bushes."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/orangeGarden/slider3.JPG",
-            alt: "Image 3 of slider"
+            alt: "The Orange Garden filled with a variety of flowers lining the ground, three larger plants, and an orange flag raised on a pole. "
         },
     ]
 
