@@ -23,7 +23,8 @@ export default function Navigation({stateList}) {
         setIconState, changeIconColor,
         mapRef, setMapRef, flyToLocation,
         isWayfinding, setIsWayfinding,
-        markersRef
+        markersRef, markerDataRef,
+        setActiveMarkers
     } = stateList;
 
     const options = useMemo(() => [
@@ -51,8 +52,10 @@ export default function Navigation({stateList}) {
     const handleSelectOption = (optionNum, e) =>{
         console.log(e)
         const option = e.target.value;
-        const location = iconState.find(location => location.name === option);
+        const location = markerDataRef.current.find(location => location.name === option);
         console.log(`%c${content}`, `color: PURPLE`)
+        const iconIndex = markerDataRef.current.findIndex((location) => location.name === option);
+        
         if(optionNum === 1){
             resetIconColor("1");
             setSelectedOption1(option);
@@ -62,13 +65,16 @@ export default function Navigation({stateList}) {
             setSelectedOption2(option);
             setIsOption2Selected(true);
         };
-
-        const iconIndex = iconState.findIndex((num) => num.name === option);
+        console.log(location)
         if(iconIndex !== -1){
-            const newIconState = changeIconColor(iconIndex, iconState, setIconState);
+            setActiveMarkers(prev => {
+                const updated = [...prev];
+                updated[optionNum - 1] = location.url;
+                return updated;
+            });
+            console.log(markersRef.current)
             console.log(markersRef.current[iconIndex])
             markersRef.current[iconIndex].options.zIndexOffset = 10000;
-            setIconState(newIconState);
         };
         console.log("markers ref", markersRef.current);
 
@@ -92,17 +98,17 @@ export default function Navigation({stateList}) {
 
     const flyToMidPoint = useCallback((type) =>{
         console.log("launch flytomidpoint!")
-        const iconIndexOption1 = iconState.findIndex((num) => num.name === selectedOption1);
-        const iconIndexOption2 = iconState.findIndex((num) => num.name === selectedOption2);
+        const iconIndexOption1 = markerDataRef.current.findIndex((num) => num.name === selectedOption1);
+        const iconIndexOption2 = markerDataRef.current.findIndex((num) => num.name === selectedOption2);
         console.log(iconIndexOption1);
         console.log(iconIndexOption2)
-        const testMidPoints = getMidPoints(iconState[iconIndexOption1].position, iconState[iconIndexOption2].position);
+        const testMidPoints = getMidPoints(markerDataRef.current[iconIndexOption1].position, markerDataRef.current[iconIndexOption2].position);
         console.log(testMidPoints);
 
         const map = mapRef.current;
         const bounds = L.latLngBounds([
-            iconState[iconIndexOption1].position,
-            iconState[iconIndexOption2].position,
+            markerDataRef.current[iconIndexOption1].position,
+            markerDataRef.current[iconIndexOption2].position,
         ]);
         console.log(bounds)
         switch (type) {
@@ -125,7 +131,7 @@ export default function Navigation({stateList}) {
         }
         
 
-    }, [iconState, selectedOption1, selectedOption2, mapRef]);
+    }, [selectedOption1, selectedOption2, mapRef, markerDataRef]);
 
     useEffect(()=>{
         if(isOption1Selected && isOption2Selected){
@@ -164,15 +170,26 @@ export default function Navigation({stateList}) {
         let location;
         switch (option) {
             case "1":
-                location = iconState.find((location) => location.name === selectedOption1);
+                location = markerDataRef.current.find((location) => location.name === selectedOption1);
+                console.log(location)
                 if (!location) return;
-                location.icon = location.iconGrey;
+                console.log(location)
+                setActiveMarkers(prev => {
+                    const updated = [...prev];
+                    updated[option - 1] = "";
+                    return updated;
+                });
                 resetZIndex(location);
                 break;
             case "2":
-                location = iconState.find((location) => location.name === selectedOption2);
+                location = markerDataRef.current.find((location) => location.name === selectedOption2);
                 if (!location) return;
-                location.icon = location.iconGrey;
+                console.log(location);
+                setActiveMarkers(prev => {
+                    const updated = [...prev];
+                    updated[option - 1] = "";
+                    return updated;
+                });                
                 resetZIndex(location);
                 break;
             default:
@@ -184,7 +201,7 @@ export default function Navigation({stateList}) {
 
     function resetZIndex(location){
         console.log(location.name)
-        const iconIndex = iconState.findIndex((num) => num.name === location.name);
+        const iconIndex = markerDataRef.current.findIndex((num) => num.name === location.name);
         console.log(iconIndex);
         console.log(markersRef.current[iconIndex])
         markersRef.current[iconIndex].options.zIndexOffset = 1000;
@@ -234,8 +251,8 @@ export default function Navigation({stateList}) {
     }
 
     function hideOtherMarkers(markersRef, option1, option2){
-        const iconIndex1 = iconState.findIndex((num) => num.name === option1);
-        const iconIndex2 = iconState.findIndex((num) => num.name === option2);
+        const iconIndex1 = markerDataRef.current.findIndex((num) => num.name === option1);
+        const iconIndex2 = markerDataRef.current.findIndex((num) => num.name === option2);
         const iconIndexes = [iconIndex1, iconIndex2]
         const otherMarkers = markersRef.current.filter((_, index) => !iconIndexes.includes(index));
         otherMarkers.forEach(marker => {
@@ -243,8 +260,8 @@ export default function Navigation({stateList}) {
         });
     };
     function showOtherMarkers(markersRef, option1, option2){
-        const iconIndex1 = iconState.findIndex((num) => num.name === option1);
-        const iconIndex2 = iconState.findIndex((num) => num.name === option2);
+        const iconIndex1 = markerDataRef.current.findIndex((num) => num.name === option1);
+        const iconIndex2 = markerDataRef.current.findIndex((num) => num.name === option2);
         const iconIndexes = [iconIndex1, iconIndex2]
         const otherMarkers = markersRef.current.filter((_, index) => !iconIndexes.includes(index));
         otherMarkers.forEach(marker => {
