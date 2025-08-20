@@ -19,6 +19,7 @@ import { useMap } from "react-leaflet";
 import useFlyToLocation from "@/app/hooks/useFlyToLocation";
 import useMarkerData from "@/app/hooks/useMarkerData";
 import {DrawSVGPlugin} from "gsap/DrawSVGPlugin";
+import getMarkerData from "@/app/data/markerData";
 
 const LeafletMap = dynamic(() => import('@/app/components/map/LeafletMap'), {
     loading: () => <p>loading...</p>,
@@ -33,10 +34,13 @@ export default function Map() {
     const popupRef = useRef(null);
     const tabRef = useRef(null);
     const [icons, setIcons] = useState(null);
+    const [markerDataLoaded, setMarkerDataLoaded] = useState(false);
     const [isUp, setIsUp] = useState(false);
     const [iconState, setIconState] = useState([]);
+    const [activeMarkers, setActiveMarkers] = useState([]);
     const [isWayfinding, setIsWayfinding] = useState(false);
 
+    const markerDataRef = useRef(null);
     const mapRef = useRef(null);
     const markersRef = useRef([]);
     gsap.registerPlugin(Draggable, DrawSVGPlugin);
@@ -49,7 +53,20 @@ export default function Map() {
         loadIcons();
     }, []);
     
-    useMarkerData(icons, setIconState);
+    useEffect(() => {
+        if(!icons) return;
+        markerDataRef.current = getMarkerData(icons);
+        setMarkerDataLoaded(true);
+    }, [icons]);
+
+    // useEffect(() => {
+    //     if(!markerDataLoaded) return;
+    //     console.log(markerDataRef.current);
+    // }, [markerDataLoaded]);
+
+    // useEffect(() => {
+    //     console.log(activeMarkers)
+    // }, [activeMarkers]);
     const flyToLocation = useFlyToLocation(mapRef);
 
     const changeIconColor = useCallback((index, iconState) => {
@@ -81,7 +98,9 @@ export default function Map() {
         popupRef, changeIconColor,
         mapRef, flyToLocation,
         icons, isWayfinding, setIsWayfinding,
-        markersRef
+        markersRef, markerDataRef,
+        activeMarkers, setActiveMarkers,
+        markerDataLoaded
     };
 
     //* popup height is used for the draggable element
@@ -89,13 +108,13 @@ export default function Map() {
     useEffect(()=>{
         if(popupRef.current){
             setPopupHeight(popupRef.current.clientHeight)
-            console.log(`Popupheight is set`)
+            // console.log(`Popupheight is set`)
         }
     }, [content])
 
-    useEffect(()=>{
-        console.log(`%c${content}`, `color: PURPLE`)
-    }, [content])
+    // useEffect(()=>{
+    //     console.log(`%c${content}`, `color: PURPLE`)
+    // }, [content])
 
     useLayoutEffect(()=>{
 
@@ -109,8 +128,8 @@ export default function Map() {
                 bounds: {minY: 0, maxY: popupHeight},
                 edgeResistance: 1,
                 onRelease: function(){
-                    console.log(this.y)
-                    console.log(popupHeight)
+                    // console.log(this.y)
+                    // console.log(popupHeight)
                     const y = this.y;
                     //todo TO DO ADD FLAG TO CHECK IF IT IS UP OR DOWN
                     if(y <= popupHeight/2){
