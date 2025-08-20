@@ -48,7 +48,13 @@ export default function General() {
             <ImageModal imageModalVariableList={imageModalVariableList} />
 
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image Orange Garden Information" />
+                <Image
+                src="/Ed-Broadbent-Waterfront-Park/images/orangeGarden/hero-image.jpg"
+                className="page-banner__image"
+                style={{objectFit: "cover"}}
+                fill={true}
+                priority={true}
+                alt="Featured Image Orange Garden Information" />
             </section>
 
             <section className="page-section">
