@@ -33,23 +33,23 @@ export default function GardenOfHumanRights() {
     const imageData = [
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider1.jpg",
-            alt: "Image 1 of slide"
+            alt: "The stone sign of the Garden of Human Rights."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider2.jpg",
-            alt: "Image 2 of slide"
+            alt: "A strip of stones of varying sizes surrounding a collection of trees in front of the Garden of Human Rights."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider3.jpg",
-            alt: "Image 3 of slide"
+            alt: "A garden bed in the Garden of Human Rights with plants freshly sprouting from the ground."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider4.jpg",
-            alt: "Image 4 of slide"
+            alt: "One section of the Garden of Human Rights with benches lining a part of a garden bed."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/slider5.jpg",
-            alt: "Image 5 of slide"
+            alt: "A section of the Garden of Human Rights with a long bench going across with half of it having a backrest."
         }
     ];
 
