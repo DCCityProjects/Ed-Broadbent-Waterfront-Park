@@ -8,7 +8,8 @@ export default function MapPopup({stateList}) {
     const {
         content, setContent,
         setIsIconClicked, resetIcons, 
-        iconState, setIconState
+        iconState, setIconState, 
+        setActiveMarkers
     } = stateList;
 
     const popupData = {
@@ -82,17 +83,13 @@ export default function MapPopup({stateList}) {
     const searchParams = useSearchParams();
 
     const handleClick = () => {
-        console.log(`%cPressed the back button to go back to wayfinding!`, `color: red`);
         const params = new URLSearchParams(searchParams);
         params.delete("content");
         router.replace(`?${params.toString()}`);
 
         setContent("navigation");
-        const newState = resetIcons(iconState);
-        console.log(newState)
-        setIconState(newState);
-        console.log("wheee")
-    }
+        setActiveMarkers("");
+    };
 
 
 
