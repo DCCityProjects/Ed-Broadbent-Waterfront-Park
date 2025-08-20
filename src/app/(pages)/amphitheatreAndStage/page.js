@@ -30,27 +30,27 @@ export default function AmphitheatreAndStage() {
     const imageData = [
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/amphitheatreAndStage/slider1.jpg",
-            alt: "Image 1 of Slider"
+            alt: "A crowd of people is sitting on chairs in the amphitheatre watching an event."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/amphitheatreAndStage/slider2.jpg",
-            alt: "Image 2 of Slider"
+            alt: "Indigenous people posing for a photo with some in traditional regalia."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/amphitheatreAndStage/slider3.jpg",
-            alt: "Image 3 of Slider"
+            alt: "A speaker talking on stage."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/amphitheatreAndStage/slider4.jpg",
-            alt: "Image 4 of Slider"
+            alt: "Two people on stage doing a performance with large rings."
         },
                 {
             src: "/Ed-Broadbent-Waterfront-Park/images/amphitheatreAndStage/slider5.jpg",
-            alt: "Image 5 of Slider"
+            alt: "A view of the stage from the east side."
         },
                 {
             src: "/Ed-Broadbent-Waterfront-Park/images/amphitheatreAndStage/slider6.jpg",
-            alt: "Image 6 of Slider"
+            alt: "A view of the stage and skyline from the top of the amphitheatre."
         }
     ];
 
