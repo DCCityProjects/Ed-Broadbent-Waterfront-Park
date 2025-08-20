@@ -21,7 +21,9 @@ export default function LeafletMap({stateList}) {
         setIconState, changeIconColor,
         setMapRef, mapRef, flyToLocation,
         icons, isWayfinding, setIsWayFinding,
-        markersRef
+        markersRef, markerDataRef,
+        activeMarkers, setActiveMarkers,
+        markerDataLoaded
     } = stateList;
 
     const bounds = [[0, 0], [4767, 3070]];
@@ -34,22 +36,11 @@ export default function LeafletMap({stateList}) {
     //* ref flag for people coming from teh QR or direct link with the ?content
     const cameFromURLRef = useRef(true);
 
-    useEffect(()=>{
-        if(!icons) return;
-        if (iconStateRef.current === null && iconState.length > 0){
-            iconStateRef.current = [...iconState];
-        };
-    }, [iconState, icons]);
 
     const handleClick = useCallback((marker, index) => {
-        if(!iconStateRef.current) return;
+        // if(!iconStateRef.current) return;
         if(isWayfinding) return;
-        let resetState = resetIcons(iconStateRef.current);
-        iconStateRef.current = resetState;
-        setIconState(resetState);
-
-        let newIconState = changeIconColor(index, resetState);
-        setIconState(newIconState);
+        setActiveMarkers([marker.url]);
         setContent(marker.url);
 
         const otherMarkers = markersRef.current.filter((_, i) => i !== index);
@@ -68,19 +59,19 @@ export default function LeafletMap({stateList}) {
         params.set("content", marker.url);
         router.replace(`?${params.toString()}`);
         
-    }, [resetIcons, setIconState, changeIconColor, markersRef, flyToLocation, popupRef, router, searchParams, setContent, isWayfinding]);
+    }, [markersRef, flyToLocation, popupRef, router, searchParams, setContent, isWayfinding, setActiveMarkers]);
 
     useEffect(()=>{
         function reactToSearchParams(){
             const contentParam = searchParams.get("content");
+            console.log(contentParam);
             //* Gotta make sure that the flag is true (for when you come from QR or URL)
-            //* also have to check if both iconState and iconStateRef aren't null, just so it really waits.
-            if(contentParam && cameFromURLRef.current && iconState && iconStateRef.current){
-                const markerIndex = findMarkerIndex(iconStateRef.current, contentParam);
-
+            if(contentParam && cameFromURLRef.current && markerDataRef.current && markerDataLoaded){
+                const markerIndex = findMarkerIndex(markerDataRef.current, contentParam);
+                console.log(markerIndex)
                 if(markerIndex !== -1){
                     cameFromURLRef.current = false;
-                    const marker = iconStateRef.current[markerIndex];
+                    const marker = markerDataRef.current[markerIndex];
 
                     //* Setting the center here because the flyToLocation isn't gonna be perfect
                     //* when coming from the QR or URL
@@ -92,7 +83,7 @@ export default function LeafletMap({stateList}) {
             }
         };
         reactToSearchParams();
-    },[searchParams, setContent, handleClick, setCenter, iconState]);
+    },[searchParams, setContent, handleClick, setCenter, markerDataRef, markerDataLoaded]);
 
     function MapEventHandler(){
         const map = useMapEvent("zoom", ()=>{
@@ -115,7 +106,7 @@ export default function LeafletMap({stateList}) {
     };
 
     function getMarkerSize(zoom) {
-        console.log("getmarkersize", zoom)
+        // console.log("getmarkersize", zoom)
         const minZoom = -3;
         const maxZoom = -2;
         const minSize = 30;
@@ -146,7 +137,7 @@ export default function LeafletMap({stateList}) {
                 touchZoom={true}
                 ref={mapRef}
                 >
-                {/* <MapEventHandler /> */}
+                <MapEventHandler />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
                 {pathList.map((path, index) => {
                     return (
@@ -180,12 +171,12 @@ export default function LeafletMap({stateList}) {
                         </SVGOverlay>
                     )
                 })};
-                {iconState.map((marker, index) =>{
+                {markerDataLoaded && markerDataRef.current?.map((marker, index) =>{
                     return (
                         <Marker 
                             key={index}
                             position={marker.position}
-                            icon={iconState[index]?.icon}
+                            icon={activeMarkers.includes(marker.url) ? marker.iconCol : marker.iconGrey}
                             eventHandlers={{
                                 click: ()=>{
                                     // setCenter(marker.position);
