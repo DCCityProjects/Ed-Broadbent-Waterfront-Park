@@ -73,7 +73,13 @@ export default function GardenOfHumanRights() {
         <main>
             <ImageModal imageModalVariableList={imageModalVariableList} />
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="main image 1"></Image>
+                <Image
+                src="/Ed-Broadbent-Waterfront-Park/images/gardenOfHumanRights/hero-image.jpg"
+                className="page-banner__image page-banner__image--gardenOfHumanRights"
+                style={{objectFit: "cover"}}
+                fill={true}
+                priority={true}
+                alt="An aerial shot of the Garden of Human Rights in the evening, with several lights illuminating each of the garden beds."></Image>
             </section>
             <section className="page-section">
                 <h1 className="page-section__title">Garden of Human Rights</h1>
