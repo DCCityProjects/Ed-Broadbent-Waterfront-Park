@@ -115,6 +115,7 @@ export default function LeafletMap({stateList}) {
     };
 
     function getMarkerSize(zoom) {
+        console.log("getmarkersize", zoom)
         const minZoom = -3;
         const maxZoom = -2;
         const minSize = 30;
@@ -145,7 +146,7 @@ export default function LeafletMap({stateList}) {
                 touchZoom={true}
                 ref={mapRef}
                 >
-                <MapEventHandler />
+                {/* <MapEventHandler /> */}
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
                 {pathList.map((path, index) => {
                     return (
