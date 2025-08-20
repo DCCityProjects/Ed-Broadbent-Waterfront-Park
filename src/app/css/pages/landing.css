@@ -77,37 +77,44 @@
     background-position: center;
     border-radius: 15px;
     margin-bottom: 31px;
-
+    position: relative;
 }
 
-.home-nav__item--general{
-    background-image: url("/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg");
-}
-
-.home-nav__item--about{
-    background-image: url("/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg");
-}
-
-.home-nav__item--events{
-    background-image: url("/Ed-Broadbent-Waterfront-Park/images/events/slider1.jpg");
-    background-position: 0 3%;
-}
-
-.home-nav__link{
+.home-nav__image-wrapper::after{
     background-color: rgba(15, 11, 56, 0.7);
+    position: absolute;
+    z-index: 100;
+    content: "";
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%
+}
+.home-nav__link{
     border-radius: 15px;
-
+    overflow: hidden;
+    position: relative;
     width: 100%;
     height: 143px;
-    font-size: 1.75rem;
-    font-weight: 700;
+
 }
 
+.home-nav__link-text{
+    font-size: 1.75rem;
+    font-weight: 700;
+    z-index: 100;
+    color: #ffffff;
+}
+
+
 .home-nav__image{
-    /* position: ; */
-    width: 58px;
-    height: 58px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
+    /* position: absolute; */
+}
+
+.home-nav__image--events{
+    object-position: 0 3%;
 }
 
 /* ??? MODAL SECTION STYLES ??? */

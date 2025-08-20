@@ -36,7 +36,7 @@ a {
 
 p {
     font-size: var(--font-size--xsmall);
-    line-height: 22px;
+    line-height: 1.5rem;
 }
 
 /** UTILITY **/

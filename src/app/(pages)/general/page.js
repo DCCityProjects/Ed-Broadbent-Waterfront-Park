@@ -18,13 +18,13 @@ import Slider from "@/app/components/slider/Slider";
 export default function General() {
 
     const {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     } = UseImageModal();
     
     const imageModalVariableList = {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     };
@@ -32,23 +32,23 @@ export default function General() {
     const imageData = [
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/general/slider1.jpg",
-            alt: "Image 1 of slider"
+            alt: "A man on the Larry Ladd bridge."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/general/slider2.jpg",
-            alt: "Image 2 of slider"
+            alt: "An aerial shot of the Garden of Human Rights at night."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/general/slider3.JPG",
-            alt: "Image 3 of slider"
+            alt: `A sign of that says "Garden of Human Rights".`
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/general/slider4.jpg",
-            alt: "Image 4 of slider"
+            alt: "One section of the Garden of Human Rights with a long bench running along one side."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/general/slider5.jpg",
-            alt: "Image 5 of slider"
+            alt: "An indigenous performer in full regalia."
         },
     ];
 
@@ -57,7 +57,14 @@ export default function General() {
             <ImageModal imageModalVariableList={imageModalVariableList} />
 
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image General Information" />
+                <Image
+                    src="/Ed-Broadbent-Waterfront-Park/images/general/hero-image.jpg"
+                    className="page-banner__image page-banner__image--general"
+                    style={{objectFit: "cover"}}
+                    fill={true}
+                    priority={true}
+                    alt="An aerial shot from the north side of the Ed Broadbent Waterfront Park."
+                />
             </section>
 
             <section className="page-section">

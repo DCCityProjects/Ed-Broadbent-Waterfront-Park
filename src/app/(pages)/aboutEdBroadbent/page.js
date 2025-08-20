@@ -18,13 +18,13 @@ export default function EdBroadbent() {
 
 
     const {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     } = UseImageModal();
     
     const imageModalVariableList = {
-        imageModalOpen, setImageModalOpen,
+        isImageModalOpen, setIsImageModalOpen,
         selectedImage, setSelectedImage,
         openImageModal, closeImageModal
     };
@@ -33,19 +33,19 @@ export default function EdBroadbent() {
     const imageData = [
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider1.jpg",
-            alt: "Image 1 of Slider"
+            alt: "Ed Broadbent campaigning in 1971."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider2.jpg",
-            alt: "Image 2 of Slider"
+            alt: "Ed Broadbent happy in a cockpit in the 1980s."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider3.jpg",
-            alt: "Image 3 of Slider"
+            alt: "Ed Broadbent and Audrey Mclaughlin behind a podium with their hands raised together."
         },
         {
             src: "/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/slider4.jpg",
-            alt: "Image 4 of Slider"
+            alt: "Ed Broadbent and Governor General David Johnston gleefully shaking hands."
         }
     ];
 
@@ -54,7 +54,13 @@ export default function EdBroadbent() {
         <main>
             <ImageModal imageModalVariableList={imageModalVariableList} />
             <section className="page-banner">
-                <Image src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg" width={0} height={0} sizes="100vw" className="page-banner__image" alt="Featured Image About EdBroadbent"></Image>
+                <Image
+                src="/Ed-Broadbent-Waterfront-Park/images/aboutEdBroadbent/hero-image.jpg"
+                className="page-banner__image"
+                style={{objectFit: "cover"}}
+                fill={true}
+                priority={true}
+                alt="Ed Broadbent talking at a podium."></Image>
             </section>
             <section className="page-section u-flex-column-align-center">
                 <h1 className="page-section__title">ABOUT ED BROADBENT</h1>
