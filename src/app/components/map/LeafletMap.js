@@ -179,12 +179,14 @@ export default function LeafletMap({stateList}) {
                             position={marker.position}
                             icon={activeMarkers.includes(marker.url) ? marker.iconCol : marker.iconGrey}
                             eventHandlers={{
+                                touchend: (e)=>{
+                                    e.originalEvent?.preventDefault?.();
+                                    e.originalEvent?.stopPropagation?.();
+                                    handleClick(marker, index);
+                                },
                                 click: ()=>{
                                     // setCenter(marker.position);
                                     handleClick(marker, index);    
-                                },
-                                touchend: ()=>{
-                                    handleClick(marker, index);
                                 }
                             }}
                             zIndexOffset={marker.zIndexOffset}
