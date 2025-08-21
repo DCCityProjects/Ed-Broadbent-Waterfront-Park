@@ -115,7 +115,7 @@ export default function LeafletMap({stateList}) {
 
         return minSize * t + maxSize * (1 - t);
     };
-    
+    // TODO Change SVGOverlay to imageOverlay to increase performance on ios
     return (
         <div id="map-wrapper" ref={mapWrapperRef}>
             <MapContainer 
