@@ -135,6 +135,7 @@ export default function LeafletMap({stateList}) {
                 bounceAtZoomLimits={true}
                 scrollWheelZoom={true}
                 touchZoom={true}
+                tap={false}
                 ref={mapRef}
                 >
                 <MapEventHandler />
@@ -182,7 +183,7 @@ export default function LeafletMap({stateList}) {
                                     // setCenter(marker.position);
                                     handleClick(marker, index);    
                                 },
-                                pointerdown: ()=>{
+                                touchend: ()=>{
                                     handleClick(marker, index);
                                 }
                             }}
