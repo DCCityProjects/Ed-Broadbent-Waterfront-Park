@@ -56,7 +56,7 @@ export default function MapPopup({stateList}) {
             src360: "/360_panorama?content=about-ed-broadbent"
         },
         "benches": {
-            title: "SUN LOUNGERS",
+            title: "BENCHES",
             isPOI: false
         },
         "bike-parking-west": {
@@ -72,7 +72,7 @@ export default function MapPopup({stateList}) {
             isPOI: false
         },
         "parking": {
-            title: "PARKING LOT",
+            title: "ACCESSIBLE PARKING",
             isPOI: false
         }
     }
