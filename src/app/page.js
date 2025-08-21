@@ -17,7 +17,6 @@ export default function LandingPage() {
 				setTimeout(resolve, ms);
 			});
 			await delay(1500);
-			console.log("delay done!");
 			setFirstLoad(false);
 			sessionStorage.setItem("firstLoadDone", "true");
 		};
@@ -31,7 +30,6 @@ export default function LandingPage() {
 	}, []);
 
 	if(firstLoad){
-		console.log("showing for first load")
 		return <Loading />;
 	}
 
