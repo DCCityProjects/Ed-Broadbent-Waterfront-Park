@@ -182,7 +182,7 @@ export default function LeafletMap({stateList}) {
                                     // setCenter(marker.position);
                                     handleClick(marker, index);    
                                 },
-                                touchend: ()=>{
+                                pointerdown: ()=>{
                                     handleClick(marker, index);
                                 }
                             }}
