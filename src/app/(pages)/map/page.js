@@ -69,33 +69,13 @@ export default function Map() {
     // }, [activeMarkers]);
     const flyToLocation = useFlyToLocation(mapRef);
 
-    const changeIconColor = useCallback((index, iconState) => {
-        if(!icons) return;
-        const newIconState = [...iconState];
-
-        switch (iconState[index].icon) {
-            case icons.iconAmpGrey: newIconState[index].icon = icons.iconAmpCol; break;
-            case icons.iconBenchesGrey: newIconState[index].icon = icons.iconBenchesCol; break;
-            case icons.iconBikeGrey: newIconState[index].icon = icons.iconBikeCol; break;
-            case icons.iconBridgeGrey: newIconState[index].icon = icons.iconBridgeCol; break;
-            case icons.iconEBGrey: newIconState[index].icon = icons.iconEBCol; break;
-            case icons.iconHRGrey: newIconState[index].icon = icons.iconHRCol; break;
-            case icons.iconMapGrey: newIconState[index].icon = icons.iconMapCol; break;
-            case icons.iconOGGrey: newIconState[index].icon = icons.iconOGCol; break;
-            case icons.iconParkingGrey: newIconState[index].icon = icons.iconParkingCol; break;
-            default: break;
-        };
-        return newIconState;
-
-    }, [icons])
-
     const stateList = {
         content, setContent,
         zoom, setZoom,
         center, setCenter,
         resetIcons,
         iconState, setIconState,
-        popupRef, changeIconColor,
+        popupRef,
         mapRef, flyToLocation,
         icons, isWayfinding, setIsWayfinding,
         markersRef, markerDataRef,

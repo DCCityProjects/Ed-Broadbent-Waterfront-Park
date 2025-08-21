@@ -1,6 +1,4 @@
 export function getMidPoints(x, y) {
-    console.log("x", x);
-    console.log("y", y)
     const x1 = x[0];
     const x2 = x[1];
     const y1 = y[0];

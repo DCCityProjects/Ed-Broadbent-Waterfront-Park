@@ -25,10 +25,7 @@ export default function LandingPageContent() {
 
 	// Modal delay logic: run after loader fades out
 	useEffect(() => {
-		console.log("isvisible is", isVisible);
-		console.log("hasseenmodal is", hasSeenModal);
 		if (!isVisible && !hasSeenModal) {
-			console.log("start timer!")
 			const modalTimer = setTimeout(() => {
 				setShowModal(true);
 			}, 500);
