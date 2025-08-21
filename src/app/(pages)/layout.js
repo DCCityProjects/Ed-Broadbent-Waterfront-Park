@@ -57,7 +57,7 @@ export default function InternalLayout({ children }) {
 
 
     useEffect(()=>{
-        if(pathname.includes("/panorama_view")){ 
+        if(pathname.includes("/360_panorama")){ 
             setIs360View(true);
         } else {
             setIs360View(false);
@@ -88,15 +88,15 @@ export default function InternalLayout({ children }) {
 
     useEffect(()=>{
         if (pathname === "/aboutEdBroadbent") {
-            setPage360("/panorama_view?content=about-ed-broadbent");
+            setPage360("/360_panorama?content=about-ed-broadbent");
         } else if (pathname === "/gardenOfHumanRights") {
-            setPage360("/panorama_view?content=garden-of-human-rights");
+            setPage360("/360_panorama?content=garden-of-human-rights");
         } else if (pathname === "/orangeGarden") {
-            setPage360("/panorama_view?content=orange-garden");
+            setPage360("/360_panorama?content=orange-garden");
         }  else if (pathname === "/amphitheatreAndStage") {
-            setPage360("/panorama_view?content=amphitheatre-and-stage");
+            setPage360("/360_panorama?content=amphitheatre-and-stage");
         } else if (pathname === "/general") {
-            setPage360("/panorama_view?content=main-map-north");
+            setPage360("/360_panorama?content=main-map-north");
         } else {
             setPage360("");
         }

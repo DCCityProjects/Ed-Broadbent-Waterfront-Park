@@ -6,7 +6,7 @@ import PanoramaPopup from '@/app/components/360/PanoramaPopup';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function Panorama_view() {
+export default function Panorama360() {
     const [currentImage, setCurrentImage] = useState(null);
     const [currentImageURL, setCurrentImageURL] = useState(null);
     const searchParams = useSearchParams();
