@@ -14,7 +14,7 @@ import UseImageModal from "@/app/hooks/useImageModal";
 import ImageModal from "@/app/components/slider/imageModal";
 import Slider from "@/app/components/slider/Slider";
 
-export default function General() {
+export default function OrangeGarden() {
 
     const {
         isImageModalOpen, setIsImageModalOpen,

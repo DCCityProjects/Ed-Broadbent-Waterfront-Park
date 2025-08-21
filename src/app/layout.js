@@ -10,8 +10,8 @@ subsets: ["latin"],
 
 
 export const metadata = {
-title: "Ed Broadbent Park Pocket Guide",
-description: "placeholder",
+title: "Ed Broadbent Waterfront Park Pocket Guide",
+description: "Navigate Ed Broadbent Waterfront Park with our interactive map. Explore amenities, park info, park booking, and a 360° virtual tour.",
 };
 
 export default function RootLayout({ children }) {
