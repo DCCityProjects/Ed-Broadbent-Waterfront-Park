@@ -13,8 +13,8 @@ import L from "leaflet";
 // })
 
 function makeDivIcon(src, className){
-    return new L.DivIcon({
-        html: `<img src=${src}>`,
+    return new L.Icon({
+        iconUrl: src,
         iconSize: undefined,
         iconAnchor: undefined,
         popupAnchor: [0, -40],
