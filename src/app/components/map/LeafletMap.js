@@ -181,6 +181,9 @@ export default function LeafletMap({stateList}) {
                                 click: ()=>{
                                     // setCenter(marker.position);
                                     handleClick(marker, index);    
+                                },
+                                touchend: ()=>{
+                                    handleClick(marker, index);
                                 }
                             }}
                             zIndexOffset={marker.zIndexOffset}
