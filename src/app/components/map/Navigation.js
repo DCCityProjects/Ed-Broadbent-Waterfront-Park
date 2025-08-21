@@ -83,9 +83,9 @@ export default function Navigation({stateList}) {
             const distanceResult = checkDistance(location.position);
 
             if(distanceResult <= 500){
-                flyToLocation(location.position, -2, 1);
+                flyToLocation(location.position, -2, 0.5);
             } else if((distanceResult > 500) && (distanceResult < 3200)){
-                flyToLocation(location.position, -2, 1.5)
+                flyToLocation(location.position, -2, 0.8)
             };
         };
     };

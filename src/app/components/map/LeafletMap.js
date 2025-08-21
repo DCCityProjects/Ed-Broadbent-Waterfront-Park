@@ -51,7 +51,7 @@ export default function LeafletMap({stateList}) {
             markersRef.current[index].setZIndexOffset(10000);
         };
         
-        flyToLocation(marker.position, -1, 1);
+        flyToLocation(marker.position, -1, 0.5);
         gsap.to(popupRef.current, {y: 0, duration: 1});
 
         const params = new URLSearchParams(searchParams);
