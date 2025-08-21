@@ -20,7 +20,7 @@ export default function Navigation({stateList}) {
         zoom, setZoom,
         center, setCenter,
         popupRef, resetIcons, 
-        setIconState, changeIconColor,
+        setIconState,
         mapRef, setMapRef, flyToLocation,
         isWayfinding, setIsWayfinding,
         markersRef, markerDataRef,

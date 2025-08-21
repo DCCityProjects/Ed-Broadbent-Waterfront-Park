@@ -18,7 +18,7 @@ export default function LeafletMap({stateList}) {
         zoom, setZoom,
         center, setCenter,
         popupRef, resetIcons, 
-        setIconState, changeIconColor,
+        setIconState,
         setMapRef, mapRef, flyToLocation,
         icons, isWayfinding, setIsWayFinding,
         markersRef, markerDataRef,
