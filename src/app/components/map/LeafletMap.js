@@ -162,7 +162,7 @@ export default function LeafletMap({stateList}) {
                                 strokeLinejoin={path.strokeLinejoin}
                                 fill={path.fill}
                                 preserveAspectRatio="none"
-                                style={{ visibility: "hidden"}}
+                                style={{ visibility: "hidden", display: "none"}}
                                 >
                                 </path>
                             </svg>

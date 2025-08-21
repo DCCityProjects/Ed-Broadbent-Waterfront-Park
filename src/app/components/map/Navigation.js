@@ -209,7 +209,7 @@ export default function Navigation({stateList}) {
             hideOtherMarkers(markersRef, selectedOption1, selectedOption2)
 
             const path = pathList[pathIndex];
-            gsap.set(`#${path.id}`, {visibility: "visible"})
+            gsap.set(`#${path.id}`, {visibility: "visible", display: "block"})
             tl
                 .from(`#${path.id}`, {
                     drawSVG: "0%",
