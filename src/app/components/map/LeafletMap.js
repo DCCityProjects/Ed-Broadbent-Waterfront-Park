@@ -192,18 +192,6 @@ export default function LeafletMap({stateList}) {
                             zIndexOffset={marker.zIndexOffset}
                             ref={(markerRef) => (markersRef.current[index] = markerRef)}
                             >
-                            
-                            <Tooltip
-                                className="map-pin"
-                                direction="top"
-                                permanent={false}
-                                opacity={1}
-                                closeButton={false}
-                                interactive={false}
-                                autoClose={false}
-                                bubblingMouseEvents={false}
-                                sticky={false}
-                            >{marker.name}</Tooltip>
                         </Marker>
                     )
                 })}
