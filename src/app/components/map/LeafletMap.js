@@ -134,6 +134,7 @@ export default function LeafletMap({stateList}) {
                 touchZoom={true}
                 tap={false}
                 ref={mapRef}
+                preferCanvas={true}
                 >
                 <MapEventHandler />
                 <RecenterAutomatically lat={center[0]} lng={center[1]} />
