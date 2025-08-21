@@ -18,7 +18,7 @@ export default function LeafletMap({stateList}) {
         zoom, setZoom,
         center, setCenter,
         popupRef, resetIcons, 
-        setIconState, changeIconColor,
+        setIconState,
         setMapRef, mapRef, flyToLocation,
         icons, isWayfinding, setIsWayFinding,
         markersRef, markerDataRef,
@@ -51,7 +51,6 @@ export default function LeafletMap({stateList}) {
             markersRef.current[index].setZIndexOffset(10000);
         };
         
-        console.log(marker)
         flyToLocation(marker.position, -1, 1);
         gsap.to(popupRef.current, {y: 0, duration: 1});
 
@@ -64,11 +63,10 @@ export default function LeafletMap({stateList}) {
     useEffect(()=>{
         function reactToSearchParams(){
             const contentParam = searchParams.get("content");
-            console.log(contentParam);
             //* Gotta make sure that the flag is true (for when you come from QR or URL)
             if(contentParam && cameFromURLRef.current && markerDataRef.current && markerDataLoaded){
                 const markerIndex = findMarkerIndex(markerDataRef.current, contentParam);
-                console.log(markerIndex)
+
                 if(markerIndex !== -1){
                     cameFromURLRef.current = false;
                     const marker = markerDataRef.current[markerIndex];
@@ -106,7 +104,6 @@ export default function LeafletMap({stateList}) {
     };
 
     function getMarkerSize(zoom) {
-        // console.log("getmarkersize", zoom)
         const minZoom = -3;
         const maxZoom = -2;
         const minSize = 30;
@@ -192,18 +189,6 @@ export default function LeafletMap({stateList}) {
                             zIndexOffset={marker.zIndexOffset}
                             ref={(markerRef) => (markersRef.current[index] = markerRef)}
                             >
-                            
-                            <Tooltip
-                                className="map-pin"
-                                direction="top"
-                                permanent={false}
-                                opacity={1}
-                                closeButton={false}
-                                interactive={false}
-                                autoClose={false}
-                                bubblingMouseEvents={false}
-                                sticky={false}
-                            >{marker.name}</Tooltip>
                         </Marker>
                     )
                 })}

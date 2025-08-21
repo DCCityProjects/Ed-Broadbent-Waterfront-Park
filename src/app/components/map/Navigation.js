@@ -20,7 +20,7 @@ export default function Navigation({stateList}) {
         zoom, setZoom,
         center, setCenter,
         popupRef, resetIcons, 
-        setIconState, changeIconColor,
+        setIconState,
         mapRef, setMapRef, flyToLocation,
         isWayfinding, setIsWayfinding,
         markersRef, markerDataRef,
@@ -50,10 +50,8 @@ export default function Navigation({stateList}) {
 
 
     const handleSelectOption = (optionNum, e) =>{
-        console.log(e)
         const option = e.target.value;
         const location = markerDataRef.current.find(location => location.name === option);
-        console.log(`%c${content}`, `color: PURPLE`)
         const iconIndex = markerDataRef.current.findIndex((location) => location.name === option);
         
         if(optionNum === 1){
@@ -65,18 +63,16 @@ export default function Navigation({stateList}) {
             setSelectedOption2(option);
             setIsOption2Selected(true);
         };
-        console.log(location)
+
         if(iconIndex !== -1){
             setActiveMarkers(prev => {
                 const updated = [...prev];
                 updated[optionNum - 1] = location.url;
                 return updated;
             });
-            console.log(markersRef.current)
-            console.log(markersRef.current[iconIndex])
+            
             markersRef.current[iconIndex].options.zIndexOffset = 10000;
         };
-        console.log("markers ref", markersRef.current);
 
 
         const option1 = optionNum === 1 ? option : selectedOption1;
@@ -84,33 +80,28 @@ export default function Navigation({stateList}) {
         const areBothOptionsSelected = hasTwoSelectedOptions(option1, option2);
 
         if(!areBothOptionsSelected){
-            console.log("there's only one selected")
             const distanceResult = checkDistance(location.position);
-            console.log(distanceResult);
+
             if(distanceResult <= 500){
                 flyToLocation(location.position, -2, 1);
             } else if((distanceResult > 500) && (distanceResult < 3200)){
                 flyToLocation(location.position, -2, 1.5)
-                console.log("flying!");
             };
         };
     };
 
     const flyToMidPoint = useCallback((type) =>{
-        console.log("launch flytomidpoint!")
         const iconIndexOption1 = markerDataRef.current.findIndex((num) => num.name === selectedOption1);
         const iconIndexOption2 = markerDataRef.current.findIndex((num) => num.name === selectedOption2);
-        console.log(iconIndexOption1);
-        console.log(iconIndexOption2)
+
         const testMidPoints = getMidPoints(markerDataRef.current[iconIndexOption1].position, markerDataRef.current[iconIndexOption2].position);
-        console.log(testMidPoints);
 
         const map = mapRef.current;
         const bounds = L.latLngBounds([
             markerDataRef.current[iconIndexOption1].position,
             markerDataRef.current[iconIndexOption2].position,
         ]);
-        console.log(bounds)
+
         switch (type) {
             case "before wayfinding":
                 map.flyToBounds(bounds, {
@@ -135,17 +126,14 @@ export default function Navigation({stateList}) {
 
     useEffect(()=>{
         if(isOption1Selected && isOption2Selected){
-            console.log("both options selected!")
             flyToMidPoint("before wayfinding");
         };
     }, [isOption1Selected, isOption2Selected, flyToMidPoint])
 
     useEffect(()=>{
         if(isWayfinding){
-            console.log("wayfinding is starting!")
             flyToMidPoint("during wayfinding");
         } else if (!isWayfinding && isOption1Selected && isOption2Selected) {
-            console.log("wayfinding is stopping!")
             flyToMidPoint("before wayfinding");
         }
     }, [isWayfinding, flyToMidPoint, isOption1Selected, isOption2Selected])
@@ -171,9 +159,8 @@ export default function Navigation({stateList}) {
         switch (option) {
             case "1":
                 location = markerDataRef.current.find((location) => location.name === selectedOption1);
-                console.log(location)
+                
                 if (!location) return;
-                console.log(location)
                 setActiveMarkers(prev => {
                     const updated = [...prev];
                     updated[option - 1] = "";
@@ -184,7 +171,6 @@ export default function Navigation({stateList}) {
             case "2":
                 location = markerDataRef.current.find((location) => location.name === selectedOption2);
                 if (!location) return;
-                console.log(location);
                 setActiveMarkers(prev => {
                     const updated = [...prev];
                     updated[option - 1] = "";
@@ -200,10 +186,7 @@ export default function Navigation({stateList}) {
     };
 
     function resetZIndex(location){
-        console.log(location.name)
         const iconIndex = markerDataRef.current.findIndex((num) => num.name === location.name);
-        console.log(iconIndex);
-        console.log(markersRef.current[iconIndex])
         markersRef.current[iconIndex].options.zIndexOffset = 1000;
     };
 
@@ -214,21 +197,17 @@ export default function Navigation({stateList}) {
     }
 
     useEffect(()=>{
-        console.log("option 1 is:", selectedOption1);
-        console.log("option 2 is:", selectedOption2)
+
     }, [selectedOption1, selectedOption2])
 
     const handleGo = (pathList, markersRef) =>{
-        console.log("pressed go!");
         if(selectedOption1 && selectedOption2){
-            console.log("We have both options, time to wayfind!")
             setIsWayfinding(true);
             const tl = gsap.timeline();
-            console.log("selectedOption1", selectedOption1)
-            console.log("selectedOption2", selectedOption2)
+
             const pathIndex = findPathIndexToUse(pathList, selectedOption1, selectedOption2);
             hideOtherMarkers(markersRef, selectedOption1, selectedOption2)
-            console.log("path is", pathIndex);
+
             const path = pathList[pathIndex];
             gsap.set(`#${path.id}`, {visibility: "visible"})
             tl
@@ -270,18 +249,12 @@ export default function Navigation({stateList}) {
     }
 
     const handleExit = (pathList, markersRef) => {
-        console.log("pressed exit!");
         const pathIndex = findPathIndexToUse(pathList, selectedOption1, selectedOption2);
-        console.log("path is", pathIndex);
         const path = pathList[pathIndex];
         gsap.set(`#${path.id}`, {visibility: "hidden"});
         showOtherMarkers(markersRef, selectedOption1, selectedOption2)
         setIsWayfinding(false);
     }
-
-    useEffect(()=>{
-        console.log(isWayfinding)
-    }, [isWayfinding])
 
 
     return (

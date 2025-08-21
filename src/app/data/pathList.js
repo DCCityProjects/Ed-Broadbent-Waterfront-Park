@@ -1,8 +1,6 @@
 function getNewBounds(newMapSWX, newMapSWY, svgWidth, svgHeight){
     const sWBounds = [newMapSWY, newMapSWX];
     const nEBounds = [newMapSWY + svgHeight, newMapSWX + svgWidth];
-    console.log("South west bounds", sWBounds);
-    console.log("Northeast bounds:", nEBounds);
     return [sWBounds, nEBounds];
 }
 
