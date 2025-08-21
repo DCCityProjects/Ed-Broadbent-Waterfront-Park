@@ -18,42 +18,42 @@ export default function MapPopup({stateList}) {
             isPOI: true,
             p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/amphitheatreAndStage",
-            src360: "/panorama_view?content=amphitheatre-and-stage"
+            src360: "/360_panorama?content=amphitheatre-and-stage"
         },
         "garden-of-human-rights": {
             title: "GARDEN OF HUMAN RIGHTS",
             isPOI: true,
             p: "The Garden features 13 garden beds representing the 13 prohibited grounds of discrimination within the Canadian Human Rights Act.",
             srcReadMore: "/gardenOfHumanRights",
-            src360: "/panorama_view?content=garden-of-human-rights"
+            src360: "/360_panorama?content=garden-of-human-rights"
         },
         "orange-garden": {
             title: "ORANGE GARDEN",
             isPOI: true,
             p: "The Orange Garden is a designated space meant for community to reflect, learn and commemorate the legacy of harms caused towards the Indigenous stewards of Turtle Island (North America) to promote healing, equity and inclusion for all.",
             srcReadMore: "/orangeGarden",
-            src360: "/panorama_view?content=orange-garden"
+            src360: "/360_panorama?content=orange-garden"
         },
         "main-map-north": {
             title: "MAIN MAP NORTH",
             isPOI: true,
             p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/general",
-            src360: "/panorama_view?content=main-map-north"
+            src360: "/360_panorama?content=main-map-north"
         },
         "main-map-south": {
             title: "MAIN MAP SOUTH",
             isPOI: true,
             p: "Located at 169 Harbour Road on almost 35 acres and situated on former marina lands, the Ed Broadbent Waterfront Park is the City of Oshawa's newest addition to the waterfront parks system....",
             srcReadMore: "/general",
-            src360: "/panorama_view?content=main-map-south"
+            src360: "/360_panorama?content=main-map-south"
         },
         "about-ed-broadbent": {
             title: "ABOUT ED BROADBENT",
             isPOI: true,
             p: "Ed Broadbent was a Canadian political icon born and raised in Oshawa with long-standing service to our community and across our nation.",
             srcReadMore: "/aboutEdBroadbent",
-            src360: "/panorama_view?content=about-ed-broadbent"
+            src360: "/360_panorama?content=about-ed-broadbent"
         },
         "benches": {
             title: "SUN LOUNGERS",
@@ -110,7 +110,7 @@ export default function MapPopup({stateList}) {
                         {/* <button type="button" className="popup__read-more button-color-primary">READ MORE</button> */}
                         <Link href={currentContent.srcReadMore} className="popup__read-more button-color-primary" role="button">READ MORE</Link>
 
-                        {/* <Link className="popup__360" href={`panorama_view?location=/amphitheatre-and-stage`}> */}
+                        {/* <Link className="popup__360" href={`360_panorama?location=/amphitheatre-and-stage`}> */}
                         <Link className="popup__360" href={currentContent.src360}>
                             <img src="/Ed-Broadbent-Waterfront-Park/images/svgs/icons/ar.svg" alt="AR button" className="popup__button" />
                         </Link>
