@@ -83,10 +83,6 @@ export default function InternalLayout({ children }) {
     }, [pathname])
 
     useEffect(()=>{
-        console.log(is360View)
-    }, [is360View])
-
-    useEffect(()=>{
         if (pathname === "/aboutEdBroadbent") {
             setPage360("/360_panorama?content=about-ed-broadbent");
         } else if (pathname === "/gardenOfHumanRights") {
